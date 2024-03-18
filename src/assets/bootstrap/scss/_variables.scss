@@ -319,6 +319,7 @@ $theme-colors: (
   "dark":       $dark,
   "secondary":  #fffcf7,
   "footer":     #f3f2ee,
+  
 
 
 
@@ -489,7 +490,9 @@ $icon-link-icon-transform:    translate3d(.25em, 0, 0) !default;
 //
 // Style p element.
 
-$paragraph-margin-bottom:   1rem !default;
+// $paragraph-margin-bottom:   1rem !default;
+ $paragraph-margin-bottom:   0rem !default; //custom
+
 
 
 // Grid breakpoints
