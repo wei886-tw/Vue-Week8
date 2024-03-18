@@ -43,6 +43,7 @@ import { RouterView } from "vue-router";
       </div>
     </div>
   </nav>
+
   <router-view />
 </template>
 

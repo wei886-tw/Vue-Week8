@@ -7,13 +7,10 @@ import { RouterView } from "vue-router";
 <template>
   <div class="container-fluid bg-secondary px-0">
 
-    <div class="container-fluid px-0" style="background-image: url('../public/pic/bookstore.png');height: 600px; object-fit: cover; ;" >
+    <div class="container-fluid px-0" style="background-image: url('/pic/bookstore.png'); height: 600px; object-fit: cover;" >
       
-    
     </div>
     
-      <div class="container">
-    </div>
   </div>
   <!-- <page-footer></page-footer> -->
   <router-view/>
