@@ -7,8 +7,8 @@ import { RouterView } from "vue-router";
 <template>
   <div class="container-fluid bg-secondary px-0">
 
-    <div class="container-fluid px-0" style="background-image: url(../public/pic/bookstore.jpeg)" >
-      <img src="../public/pic/bookstore.jpeg." alt=" bookstore" style="width: 100%; height: 400px; object-fit: cover; filter: saturate(80%)">
+    <div class="container-fluid px-0" style="background-image: url('https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');height: 400px; object-fit: cover;" >
+      <!-- <img src="../public/pic/bookstore.png." alt=" bookstore" style="width: 100%; height: 400px; object-fit: cover; filter: saturate(80%)"> -->
       <div class="container">
         
       </div>

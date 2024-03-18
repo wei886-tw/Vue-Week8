@@ -11,7 +11,6 @@ export default defineConfig({
     VueDevTools(),
 
   ],
-  base: 'Vue-Week8',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
