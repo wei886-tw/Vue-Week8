@@ -6,6 +6,7 @@ import VueAxios from 'vue-axios'
 
 import App from './App.vue'
 import router from './router'
+import 'bootstrap/scss/bootstrap.scss';
 
 const app = createApp(App)
 
