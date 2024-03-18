@@ -1,4 +1,3 @@
-import 'bootstrap/scss/bootstrap.scss';
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import * as Vue from 'vue' // in Vue 3
