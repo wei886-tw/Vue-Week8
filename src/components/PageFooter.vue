@@ -1,9 +1,20 @@
 <template>
-  <div class="container-fluid bg-secondary px-0">
+  <div class="container-fluid  px-0 bg-light">
     <div class="container text-center text-dark">
       <h1 class="fs-32 tc-serif pt-16">Book41</h1>
-      <p><a href="#" class="text-dark">登入後台</a></p>
+      <router-link to="/adminLogin" class="text-dark">登入後台</router-link>
       <p>© 2024 COPYRIGHT</p>
     </div>
   </div>
+  <div class="container">
+    <router-view></router-view>
+  </div>
 </template>
+
+<script>
+import { RouterView } from "vue-router";
+
+export default {
+  components: {RouterView}
+}
+</script>

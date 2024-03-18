@@ -1,11 +1,9 @@
-<script setup>
-import { RouterView } from "vue-router";
-</script>
-
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <router-link to="/" class="tc-serif fs-32 text-dark me-16">Book41</router-link>
+      <router-link to="/home" class="tc-serif fs-32 text-dark me-16"
+        >Book41</router-link
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -21,7 +19,7 @@ import { RouterView } from "vue-router";
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-24">
           <li class="nav-item">
             <router-link to="/about" class="fs-24 text-dark tc-serif">
-            關於
+              關於
             </router-link>
           </li>
           <li class="nav-item">
@@ -29,7 +27,11 @@ import { RouterView } from "vue-router";
               >商品
             </RouterLink>
           </li>
-          <li class="nav-item"></li>
+          <li class="nav-item">
+              <RouterLink to="/adminLogin" class="fs-24 tc-serif text-dark"
+              >後台登入
+            </RouterLink>
+          </li>
         </ul>
         <form class="d-flex">
           <input
@@ -43,10 +45,32 @@ import { RouterView } from "vue-router";
       </div>
     </div>
   </nav>
-
   <router-view />
 </template>
 
+<script >
+import { RouterView } from "vue-router";
+import PageFooter from './components/PageFooter.vue';
+
+
+export default {
+  data() {
+    return {
+      
+    }
+  },
+
+  components: {PageFooter, RouterView},
+
+  methods: {
+    
+  },
+
+  mounted() {
+    
+  },
+}
+</script>
 
   
 

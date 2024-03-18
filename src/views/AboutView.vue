@@ -57,8 +57,15 @@
       </div>
     </div>
   </div>
-  <!-- <page-footer></page-footer> -->
+  <page-footer></page-footer>
   <RouterView />
 </template>
 
 
+<script>
+import { RouterView } from "vue-router";
+import PageFooter from "../components/PageFooter.vue";
+export default {
+  components: {PageFooter, RouterView}
+}
+</script>
