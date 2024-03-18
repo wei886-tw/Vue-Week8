@@ -1,15 +1,19 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+import PageFooter from './components/PageFooter.vue'
+
+
 
 </script>
 
 <template>
-  <div class="container-fluid bg-secondary px-0">
+  <div class="container-fluid bg-footer px-0 pb-48">
     <div class="container py-32">
       <nav class="d-flex gap-16 noto-serif align-items-center">
         <h2 class="text-center tc-serif fs-48">Book思議書店</h2>
         <RouterLink to="/" class="fs-24 text-dark tc-serif">關於</RouterLink>
-        <RouterLink to="/userProduct" class="fs-24 tc-serif text-dark">商品</RouterLink>
+        <RouterLink to="userProduct" class="fs-24 tc-serif text-dark">商品</RouterLink>
+
       </nav>
       <div>
       </div>
@@ -43,7 +47,7 @@ import { RouterLink, RouterView } from "vue-router";
         </div>
       </div>
 
-      <div class="container mb-48">
+      <div class="container">
         <div class="row">
           <div class="col-sm-12 d-md-none mb-sm-24">
             <img
@@ -71,6 +75,8 @@ import { RouterLink, RouterView } from "vue-router";
         </div>
       </div>
     </div>
+
+    <page-footer></page-footer>
 </template>
 
 
