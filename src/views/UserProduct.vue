@@ -53,7 +53,6 @@ export default {
         .get(`${this.api}/api/${this.api_path}/products/all`)
         .then((res) => {
           this.userProducts = res.data.products;
-          console.log(res);
         });
     },
 

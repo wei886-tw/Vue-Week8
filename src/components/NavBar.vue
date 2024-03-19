@@ -18,17 +18,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-24">
           <li class="nav-item">
-            <router-link to="/about" class="fs-24 text-dark tc-serif">
+            <router-link to="/about" class="fs-24 text-dark tc-serif nav-link">
               關於
             </router-link>
           </li>
           <li class="nav-item">
-            <RouterLink to="/userProduct" class="fs-24 tc-serif text-dark"
+            <RouterLink to="/userProduct" class="fs-24 tc-serif text-dark nav-link"
               >商品
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/adminLogin" class="fs-24 tc-serif text-dark"
+            <RouterLink to="/adminLogin" class="fs-24 tc-serif text-dark nav-link"
               >後台登入
             </RouterLink>
           </li>

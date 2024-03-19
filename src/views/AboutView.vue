@@ -1,5 +1,5 @@
 <template>
- <nav-bar></nav-bar>
+  <NavBar/>
   <div class="container-fluid bg-footer px-0 pb-48">
     <div class="mb-48">
       <img
@@ -64,11 +64,11 @@
 
 
 <script>
-import NavBar from '@/components/NavBar.vue';
+import NavBar from "@/components/NavBar.vue";
 import { RouterView } from "vue-router";
 import PageFooter from "../components/PageFooter.vue";
 
 export default {
-  components: {PageFooter, RouterView, NavBar}
-}
+  components: { PageFooter, RouterView, NavBar },
+};
 </script>
