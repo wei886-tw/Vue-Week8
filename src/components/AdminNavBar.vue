@@ -23,8 +23,8 @@
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/adminCart" class="fs-24 tc-serif text-dark"
-              >購物車列表
+            <RouterLink to="/adminOrders" class="fs-24 tc-serif text-dark">
+            訂單列表
             </RouterLink>
           </li>
           <li class="nav-item">

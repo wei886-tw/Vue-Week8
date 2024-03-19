@@ -20,6 +20,11 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
+      path: '/userCart',
+      name: 'userCart',
+      component: () => import('../views/UserCart.vue')
+    },
+    {
       path: '/adminLogin',
       name: 'adminLogin',
       component: () => import('../views/AdminLogin.vue')
@@ -30,9 +35,9 @@ const router = createRouter({
       component: () => import('../views/AdminProducts.vue')
     },
     {
-      path: '/adminCart',
-      name: 'adminCart',
-      component: () => import('../views/AdminCart.vue')
+      path: '/adminOrders',
+      name: 'adminOrders',
+      component: () => import('../views/AdminOrders.vue')
     },
   ]
 })

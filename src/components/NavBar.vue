@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <router-link to="/" class="tc-serif fs-32 text-dark me-16"
+  <nav class="navbar navbar-expand-md navbar-light bg-light  fixed-top" >
+    <div class="container ">
+      <router-link to="/" class="fs-48 tc-serif me-16 text-dark"
         >Book41</router-link
       >
       <button
@@ -23,16 +23,26 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <RouterLink to="/userProduct" class="fs-24 tc-serif text-dark nav-link"
+            <RouterLink
+              to="/userProduct"
+              class="fs-24 tc-serif text-dark nav-link"
               >商品
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/adminLogin" class="fs-24 tc-serif text-dark nav-link"
+            <RouterLink
+              to="/userCart"
+              class="fs-24 tc-serif text-dark nav-link"
+              >購物車
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink
+              to="/adminLogin"
+              class="fs-24 tc-serif text-dark nav-link"
               >後台登入
             </RouterLink>
           </li>
-
         </ul>
         <!-- <form class="d-flex">
           <input
@@ -47,3 +57,15 @@
     </div>
   </nav>
 </template>
+
+<style >
+.tc-serif {
+  font-family: "Noto Serif TC" !important;
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap");
+}
+
+.tc-sans {
+  font-family: "Noto Sans TC" !important;
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap");
+}
+</style>
