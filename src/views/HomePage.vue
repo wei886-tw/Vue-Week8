@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-secondary px-0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand navbar-light bg-light">
       <div class="container">
         <p class="fs-48 tc-serif me-16">Book41</p>
         <button
