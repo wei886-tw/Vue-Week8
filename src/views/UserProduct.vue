@@ -1,4 +1,5 @@
 <template>
+  <nav-bar></nav-bar>
   <div class="container-fluid py-48 bg-footer">
     <div class="container">
       <div class="row">
@@ -33,6 +34,7 @@
 
 <script>
 import PageFooter from "@/components/PageFooter.vue";
+import NavBar from "@/components/NavBar.vue"
 
 export default {
   data() {
@@ -43,7 +45,7 @@ export default {
     };
   },
 
-  components: { PageFooter },
+  components: { PageFooter, NavBar },
 
   methods: {
     getProducts() {

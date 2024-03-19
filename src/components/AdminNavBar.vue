@@ -1,0 +1,48 @@
+<template>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <router-link to="/" class="tc-serif fs-32 text-dark me-16"
+        >Book41</router-link
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-24">
+          <li class="nav-item">
+            <RouterLink to="/adminProducts" class="fs-24 tc-serif text-dark"
+              >後台產品列表
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink to="/adminCart" class="fs-24 tc-serif text-dark"
+              >購物車列表
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink to="/" class="fs-24 tc-serif text-dark"
+              >回到前台
+            </RouterLink>
+          </li>
+        </ul>
+        <!-- <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-gray" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+  </nav>
+</template>

@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h2 class="text-center">這裡是 後台 產品列表</h2>
+<admin-nav-bar></admin-nav-bar>
+  <div class="container py-48 bg-secondary">
+    <h2 class="text-center"> 後台產品列表</h2>
     <table class="table mt-4">
       <thead>
         <tr>
@@ -12,13 +13,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in products" :key="item.id">
+        <tr v-for="item in allProducts" :key="item.id">
           <td>{{ item.category }}</td>
           <td>{{ item.title }}</td>
-          <td class="text-end">
+          <td>
             {{ item.origin_price }}
           </td>
-          <td class="text-end">
+          <td>
             {{ item.price }}
           </td>
           <td>
@@ -28,33 +29,36 @@
         </tr>
       </tbody>
     </table>
-    <Pagination :pages="pagination" @emit-pages="getProducts" />
   </div>
 </template>
 
 <script>
+import AdminNavBar from '@/components/AdminNavBar.vue';
 export default {
+  components: { AdminNavBar },
   data() {
     return {
       allProducts: [],
-    }
+      api: import.meta.env.VITE_API,
+      api_path: import.meta.env.VITE_PATH,
+    };
   },
   methods: {
-    getAllProducts(){
-      const url = import.meta.env.VITE_API
-      const api_path = import.meta.env.VITE_PATH
-      this.$http.get(`${url}/v2/api/${api_path}/admin/products/all`)
-      .the(res=>{
-        console.log(res)
-      })
-      .catch(err=>{
-        console.log(err)
-      })
-    }
+    getProducts() {
+      this.$http
+        .get(`${this.api}/api/${this.api_path}/products/all`)
+        .then((res) => {
+          this.allProducts = res.data.products;
+
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+    },
   },
 
   mounted() {
-    this.getAllProducts();
+    this.getProducts();
   },
-}
+};
 </script>

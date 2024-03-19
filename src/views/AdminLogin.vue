@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div class="container py-48">
     <form class="row justify-content-center" @submit.prevent="signIn">
       <div class="col-md-6">
         <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
@@ -41,6 +41,9 @@
 </template>
 
 <script>
+import AdminNavBar from '@/components/NavBar.vue';
+
+
 export default {
   data() {
     return {
@@ -50,6 +53,8 @@ export default {
       },
     };
   },
+  components:{AdminNavBar},
+
   methods: {
     signIn() {
       this.$http

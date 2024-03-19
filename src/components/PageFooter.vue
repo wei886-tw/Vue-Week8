@@ -2,7 +2,6 @@
   <div class="container-fluid  px-0 bg-light">
     <div class="container text-center text-dark">
       <h1 class="fs-32 tc-serif pt-16">Book41</h1>
-      <router-link to="/adminLogin" class="text-dark">登入後台</router-link>
       <p>© 2024 COPYRIGHT</p>
     </div>
   </div>
