@@ -3,7 +3,7 @@
   <div class="container-fluid py-48 bg-footer">
     <div class="container">
       <div class="row">
-        <div class="col-4" v-for="product in userProducts" :key="product.id">
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center" v-for="product in userProducts" :key="product.id">
           <div class="card mb-24" style="width: 18rem; height: 36rem">
             <img
               :src="product.imageUrl"
