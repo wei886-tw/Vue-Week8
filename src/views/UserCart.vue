@@ -6,43 +6,43 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">品名</th>
-            <th scope="col">數量</th>
-            <th scope="col">價格</th>
+            <th scope="col" class="fs-md-24">品名</th>
+            <th scope="col" class="fs-md-24">數量</th>
+            <th scope="col" class="fs-md-24">價格</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="product in cartProducts" :key="product.id">
-            <td>{{ product.product.title }}</td>
-            <td class="algin-bottom">
+            <td class="fs-md-24">{{ product.product.title }}</td>
+            <td class="">
               <button
-                class="btn btn-danger me-4"
+                class="btn btn-danger me-4 d-flex"
                 @click="reviseQty(product.product.id, -1)"
                 v-if="product.qty >= 2"
               >
                 -
               </button>
               
-              <button class="rounded me-4 btn btn-danger" v-else style="width: 35px; height: 38px" @click="delCartItem(product.id)">
+              <button class="rounded me-4 btn btn-danger d-flex d-md-inline " v-else style="width: 35px; height: 38px" @click="delCartItem(product.id)">
                 <i class="bi bi-trash text-center" ></i>
               </button>
 
               <input
                 type="number"
-                class="border border-gray border-1 rounded me-4"
+                class="border border-gray border-1 rounded me-4 d-flex d-md-inline"
                 readonly
-                style="width: 50px; height: 36px"
+                style="width: 40px; height: 36px"
                 v-model="product.qty"
               />
               <button
-                class="btn btn-blue"
+                class="btn btn-blue d-flex d-md-inline"
                 @click="reviseQty(product.product.id, 1)"
               >
                 +
               </button>
             </td>
-            <td>
+            <td class="fs-md-24">
               {{ product.final_total }}
             </td>
 
@@ -59,7 +59,7 @@
         <tfoot>
           <td></td>
           <td></td>
-          <td>總計： {{ cartList.final_total }}</td>
+          <td class="fs-md-24">總計： {{ cartList.final_total }}</td>
         </tfoot>
       </table>
     </div>

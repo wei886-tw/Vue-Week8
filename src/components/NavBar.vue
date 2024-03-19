@@ -16,7 +16,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-24">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-md-24">
           <li class="nav-item">
             <router-link to="/about" class="fs-24 text-dark tc-serif nav-link">
               關於
