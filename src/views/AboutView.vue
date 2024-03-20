@@ -3,7 +3,7 @@
   <div class="container-fluid bg-footer px-0 pb-48">
     <div class="mb-48">
       <img
-        src="https://images.pexels.com/photos/4855385/pexels-photo-4855385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        src="/pic/reading.png"
         alt=""
         width="100%"
         height="450"
@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-6 mb-sm-24">
           <img
-            src="https://images.pexels.com/photos/5499560/pexels-photo-5499560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src="/pic/bookshelf.png"
             alt=""
             width="100%"
             height="360"
@@ -34,7 +34,7 @@
       <div class="row">
         <div class="col-sm-12 d-md-none mb-sm-24">
           <img
-            src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="/pic/latte.png"
             alt=""
             width="100%"
             height="360"

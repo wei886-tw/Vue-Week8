@@ -4,7 +4,7 @@
   </div>
 
 
-    <div class="container-fluid vh-100 bg-footer px-0">
+    <div class="container-fluid  bg-footer px-0">
       <div
         class="container-fluid px-0 "
         style="
@@ -18,18 +18,31 @@
 
       </div>
     </div>
+    <button class="btn btn-outline-primary" :open-modal="openModal" ref="modalBtn">click</button>
+    <info-modal></info-modal>
 
   <PageFooter />
-  <!-- </div> -->
+
   <router-view />
 </template>
 
 <script>
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
+import InfoModal from "@/components/InfoModal.vue";
 
 export default {
-  components: { PageFooter, NavBar },
+  components: { PageFooter, NavBar, InfoModal },
+  methods: {
+    openModal(){
+      console.log(44)
+
+    }
+  },
+
+  mounted() {
+    
+  },
 };
 </script>
 

@@ -1,32 +1,96 @@
 <template>
   <nav-bar></nav-bar>
   <div class="container-fluid py-48 bg-footer">
-    <div class="container">
+    <div class="container pt-60">
       <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center" v-for="product in userProducts" :key="product.id">
+        <div
+          class="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
+          v-for="product in userProducts"
+          :key="product.id"
+          @click="tempProduct = product"
+        >
           <div class="card mb-24" style="width: 18rem; height: 36rem">
             <img
               :src="product.imageUrl"
               class="card-img-top"
               alt="商品圖片"
-              style="height: 24rem; object-fit: cover"
+              style="height: 384px; object-fit: cover"
             />
             <div class="card-body d-flex flex-column justify-content-between">
               <h5 class="card-title">產品名稱：{{ product.title }}</h5>
               <p class="card-text">產品描述：{{ product.description }}</p>
-              <p class="card-text">產品特價：{{ product.price }}</p>
-              <a
-                href="#"
-                class="btn btn-outline-primary d-flex justify-content-center"
-                @click.prevent="addToCart(product.id)"
-                >加入購物車</a
-              >
+              <p class="card-text">特價：{{ product.price }} 元</p>
+              <div class="container">
+                <button
+                  class="btn border border-2 me-12"
+                  @click.prevent="addToCart(product.id)"
+                >
+                  加入購物車
+                </button>
+                <button class="btn border border-2" @click="openModal">
+                  詳細資訊
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- modal -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="modal" tabindex="-1" ref="myModal" id="myModal" style="height: 960px;">
+          <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+              <template v-if="tempProduct.title">
+                <div class="card mb-3">
+                  <img
+                    :src="tempProduct.imageUrl"
+                    class="card-img-top primary-image img"
+                    alt="主圖"
+                    style="height: 600px; object-fit: cover;"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      {{ tempProduct.title }}
+                      <span class="badge bg-footer ms-2 text-white">{{
+                        tempProduct.category
+                      }}</span>
+                    </h5>
+                    <p class="card-text">
+                      商品描述：{{ tempProduct.description }}
+                    </p>
+                    <p class="card-text">商品內容：{{ tempProduct.content }}</p>
+                    <div class="d-flex">
+                      <p class="card-text me-2">{{}}</p>
+                      <p class="card-text text-secondary">
+                        <del>原價：{{ tempProduct.origin_price }} 元</del>
+                      </p>
+                      <p>特價： {{ tempProduct.price }} 元</p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <span v-for="(img, index) in tempProduct.imagesUrl" :key="index">
+                    <img
+                      :src="img"
+                      alt="副圖"
+                      class="images m-2 img"
+                      style="height: 150px"
+                    />
+                  </span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container-fluid px-0">
     <PageFooter />
   </div>
@@ -34,7 +98,7 @@
 
 <script>
 import PageFooter from "@/components/PageFooter.vue";
-import NavBar from "@/components/NavBar.vue"
+import NavBar from "@/components/NavBar.vue";
 
 export default {
   data() {
@@ -42,9 +106,12 @@ export default {
       userProducts: [],
       api: import.meta.env.VITE_API,
       api_path: import.meta.env.VITE_PATH,
+      myModal: null,
+      tempProduct: {},
     };
   },
 
+  props: [],
   components: { PageFooter, NavBar },
 
   methods: {
@@ -57,23 +124,31 @@ export default {
     },
 
     addToCart(product_id) {
-      this.$http.post(`${this.api}/v2/api/${this.api_path}/cart`, {
-        data: {
-          product_id,
-          qty: 1,
-        },
-      })
-      .then(()=>{
-        alert("成功加入購物車")
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
+      this.$http
+        .post(`${this.api}/v2/api/${this.api_path}/cart`, {
+          data: {
+            product_id,
+            qty: 1,
+          },
+        })
+        .then(() => {
+          alert("成功加入購物車");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    openModal() {
+      this.myModal.show();
+      console.log(this.tempProduct);
     },
   },
 
   mounted() {
     this.getProducts();
+    this.myModal = new bootstrap.Modal("#myModal");
+    this.openModal();
   },
 };
 </script>

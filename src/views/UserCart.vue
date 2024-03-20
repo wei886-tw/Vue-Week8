@@ -17,7 +17,7 @@
             <td class="fs-md-24">{{ product.product.title }}</td>
             <td class="">
               <button
-                class="btn btn-danger me-4 d-flex"
+                class="btn btn-danger me-4 d-flex d-md-inline"
                 @click="reviseQty(product.product.id, -1)"
                 v-if="product.qty >= 2"
               >
@@ -170,6 +170,7 @@
     </div>
   </div>
   <PageFooter/>
+  
 </template>
 
 <script type="module">
