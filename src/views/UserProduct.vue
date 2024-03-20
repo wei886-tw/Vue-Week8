@@ -50,9 +50,8 @@
           tabindex="-1"
           ref="myModal"
           id="myModal"
-          style="height: 80%"
         >
-          <div class="modal-dialog modal-dialog-center">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
               <div v-if="tempProduct.title">
                 <div class="card">
@@ -60,7 +59,7 @@
                     :src="tempProduct.imageUrl"
                     class="card-img-top primary-image img ps-128 pt-16"
                     alt="主圖"
-                    style="height: 384px; width: 80%; object-fit: cover"
+                    style="height: 50%; width: 80%; object-fit: cover"
                   />
                   <div class="card-body">
                     <h5 class="card-title">
@@ -75,7 +74,7 @@
                     <p class="card-text">商品內容：{{ tempProduct.content }}</p>
                     <p>特價： {{ tempProduct.price }} 元</p>
                     <div class="container px-0">
-                      <button class="btn btn-outline-primary me-0" @click="addToCart(tempProduct.id)">加入購物車</button>
+                      <button class="btn border border-2 me-0" @click="addToCart(tempProduct.id)">加入購物車</button>
                       </div>
                   </div>
                 </div>
@@ -150,7 +149,6 @@ export default {
 
     openModal() {
       this.myModal.show();
-      console.log(this.cartList);
     },
   },
 
