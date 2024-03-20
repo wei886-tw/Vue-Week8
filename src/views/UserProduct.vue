@@ -17,7 +17,7 @@
               :src="product.imageUrl"
               class="card-img-top"
               alt="商品圖片"
-              style="height: 384px; width: 90%; object-fit: cover"
+              style="height: 384px; width: 100%; object-fit: cover"
             />
             <div class="card-body d-flex flex-column justify-content-between">
               <h5 class="card-title">產品名稱：{{ product.title }}</h5>
@@ -45,14 +45,19 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <div
-          class="modal"
-          tabindex="-1"
-          ref="myModal"
-          id="myModal"
-        >
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal" tabindex="-1" ref="myModal" id="myModal">
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
             <div class="modal-content">
+              <div class="container">
+                <!-- <button
+                  type="button"
+                  class="btn-close border-0 ms-0"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button> -->
+              </div>
               <div v-if="tempProduct.title">
                 <div class="card">
                   <img
@@ -74,8 +79,21 @@
                     <p class="card-text">商品內容：{{ tempProduct.content }}</p>
                     <p>特價： {{ tempProduct.price }} 元</p>
                     <div class="container px-0">
-                      <button class="btn border border-2 me-0" @click="addToCart(tempProduct.id)">加入購物車</button>
+                      <div class="container d-flex justify-content-between">
+                        <button
+                          class="btn border border-2 me-0"
+                          @click="addToCart(tempProduct.id)"
+                        >
+                          加入購物車
+                        </button>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
                       </div>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -155,7 +173,6 @@ export default {
   mounted() {
     this.getProducts();
     this.myModal = new bootstrap.Modal("#myModal");
-    this.openModal();
   },
 };
 </script>

@@ -18,9 +18,6 @@
 
       </div>
     </div>
-    <button class="btn btn-outline-primary" :open-modal="openModal" ref="modalBtn">click</button>
-    <info-modal></info-modal>
-
   <PageFooter />
 
   <router-view />
@@ -29,13 +26,11 @@
 <script>
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
-import InfoModal from "@/components/InfoModal.vue";
 
 export default {
-  components: { PageFooter, NavBar, InfoModal },
+  components: { PageFooter, NavBar },
   methods: {
     openModal(){
-      console.log(44)
 
     }
   },
@@ -50,7 +45,20 @@ export default {
 <style >
 .tc-serif {
   font-family: "Noto Serif TC" !important;
-  src: url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap");
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap'");
+}
+
+.noto-serif  {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.noto-sans  {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
 }
 
 .tc-sans {
