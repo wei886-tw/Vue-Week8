@@ -2,15 +2,20 @@
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
+        <a class="page-link text-primary" href="#" aria-label="Previous" :class="{disabled: !pagination.has_pre}"  @click.prevent="getPageProducts(page = pagination.current_page - 1)">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item" v-for="page in pagination.total_pages" :key="page">
+        <a
+          class="page-link text-primary"
+          href="#"
+          @click.prevent="getPageProducts((page = page))"
+          >{{ page }}</a
+        >
+      </li>
       <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+        <a class="page-link text-primary" href="#" aria-label="Next" :class="{disabled: !pagination.has_next}" @click.prevent="getPageProducts(page = pagination.current_page + 1)">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
@@ -20,18 +25,19 @@
 
 <script>
 export default {
+  props: ["pagination", "getPageProducts"],
+
   data() {
     return {
-      
-    }
+      url: import.meta.env.VITE_API,
+      api_path: import.meta.env.VITE_PATH,
+    };
   },
 
-  methods: {
-    
-  },
+  methods: {},
 
   mounted() {
-    
+
   },
-}
+};
 </script>

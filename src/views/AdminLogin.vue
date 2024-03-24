@@ -1,4 +1,5 @@
 <template>
+  <admin-nav-bar></admin-nav-bar>
   <div class="container py-48">
     <form class="row justify-content-center" @submit.prevent="signIn">
       <div class="col-md-6">
@@ -41,8 +42,7 @@
 </template>
 
 <script>
-import AdminNavBar from '@/components/NavBar.vue';
-
+import AdminNavBar from "@/components/AdminNavBar.vue";
 
 export default {
   data() {
@@ -51,9 +51,11 @@ export default {
         username: "",
         password: "",
       },
+      url: import.meta.env.VITE_API,
+      api_path: import.meta.env.VITE_PATH,
     };
   },
-  components:{AdminNavBar},
+  components: {},
 
   methods: {
     signIn() {
@@ -68,6 +70,23 @@ export default {
           alert(err.response.data.message);
         });
     },
+
+    getPageProducts() {
+      this.$http
+        .get(`${this.url}/v2/api/${this.api_path}/admin/products`)
+        .then((res) => {
+          console.log(res.request.responseURL);
+          this.pages = res.data.pagination;
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+          console.log(err.request.responseURL);
+        });
+    },
+  },
+
+  mounted() {
+    this.getPageProducts();
   },
 };
 </script>

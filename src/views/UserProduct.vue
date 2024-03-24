@@ -2,26 +2,26 @@
   <nav-bar></nav-bar>
   <div class="container-fluid py-48 bg-footer">
     <div class="container pt-60">
+      <filter-components @emit-filter-item="getFilterItem"></filter-components>
       <div class="row">
         <div
-          class="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
+          class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center"
           v-for="product in userProducts"
           :key="product.id"
           @click="tempProduct = product"
         >
           <div
             class="card mb-24 py-16 px-16"
-            style="width: 18rem; height: 36rem"
+            style="width: 18rem; height: 30rem"
           >
             <img
               :src="product.imageUrl"
               class="card-img-top"
               alt="商品圖片"
-              style="height: 384px; width: 100%; object-fit: cover"
+              style="height: 100%; width: 100%; object-fit: cover"
             />
             <div class="card-body d-flex flex-column justify-content-between">
               <h5 class="card-title">產品名稱：{{ product.title }}</h5>
-              <p class="card-text">產品描述：{{ product.description }}</p>
               <p class="card-text">特價：{{ product.price }} 元</p>
               <div class="container px-0">
                 <button
@@ -38,6 +38,13 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="container pt-32">
+      <PageNation
+        class="d-flex justify-content-center"
+        :pagination="pagination"
+        :get-page-products="getProducts"
+      />
     </div>
   </div>
 
@@ -73,13 +80,17 @@
                         tempProduct.category
                       }}</span>
                     </h5>
-                    <p class="card-text">
+                    <p>特價： {{ tempProduct.price }} 元</p>
+                    <p class="card-text mb-4">
                       商品描述：{{ tempProduct.description }}
                     </p>
-                    <p class="card-text">商品內容：{{ tempProduct.content }}</p>
-                    <p>特價： {{ tempProduct.price }} 元</p>
+                    <p class="card-text mb-4">
+                      商品內容：{{ tempProduct.content }}
+                    </p>
                     <div class="container px-0">
-                      <div class="container d-flex justify-content-between">
+                      <div
+                        class="container d-flex justify-content-between px-0"
+                      >
                         <button
                           class="btn border border-2 me-0"
                           @click="addToCart(tempProduct.id)"
@@ -125,8 +136,12 @@
 <script>
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
+import PageNation from "@/components/PageNation.vue";
+import FilterComponents from "@/components/FilterComponents.vue"
 
 export default {
+  components: { PageFooter, NavBar, PageNation, FilterComponents },
+
   data() {
     return {
       userProducts: [],
@@ -134,21 +149,26 @@ export default {
       api_path: import.meta.env.VITE_PATH,
       myModal: null,
       tempProduct: {},
+      pagination: {},
+      filterItem: [],
     };
   },
 
-  props: [],
-  components: { PageFooter, NavBar },
-
   methods: {
-    getProducts() {
+    getFilterItem(filterItem){
+      this.userProducts = filterItem
+    },
+
+    getProducts(page) {
       this.$http
-        .get(`${this.api}/api/${this.api_path}/products/all`)
+        .get(`${this.api}/api/${this.api_path}/products?page=${page}`)
         .then((res) => {
           this.userProducts = res.data.products;
+          this.pagination = res.data.pagination;
         });
     },
 
+  
     addToCart(product_id) {
       this.$http
         .post(`${this.api}/v2/api/${this.api_path}/cart`, {

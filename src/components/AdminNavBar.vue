@@ -18,20 +18,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-24">
           <li class="nav-item">
-            <RouterLink to="/adminProducts" class="fs-24 tc-serif text-dark"
+            <RouterLink to="/adminProducts" class="fs-24 noto-serif text-dark"
               >後台產品列表
             </RouterLink>
           </li>
-          <li class="nav-item">
-            <RouterLink to="/adminOrders" class="fs-24 tc-serif text-dark">
+          <!-- <li class="nav-item">
+            <RouterLink to="/adminOrders" class="fs-24 noto-serif text-dark">
             訂單列表
             </RouterLink>
-          </li>
+          </li> -->
           <li class="nav-item">
-            <RouterLink to="/" class="fs-24 tc-serif text-dark"
+            <RouterLink to="/" class="fs-24 noto-serif text-dark"
               >回到前台
             </RouterLink>
           </li>
+          <!-- <li class="nav-item">
+            <RouterLink to="/adminLogout" class="fs-24 noto-serif text-dark"
+              >登出
+            </RouterLink>
+          </li> -->
         </ul>
         <!-- <form class="d-flex">
           <input
@@ -46,3 +51,28 @@
     </div>
   </nav>
 </template>
+
+<style >
+.tc-serif {
+  font-family: "Noto Serif TC" !important;
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap'");
+}
+
+.noto-serif {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.noto-sans {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.tc-sans {
+  font-family: "Noto Sans TC" !important;
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap");
+}
+</style>

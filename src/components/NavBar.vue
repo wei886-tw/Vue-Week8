@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <div class="container">
-      <router-link to="/" class="fs-48 noto-serif me-16 text-dark"
+      <router-link to="/" class="fs-48 noto-serif me-16 text-dark router-link-active"
         >Book41</router-link
       >
       <button
@@ -20,7 +20,8 @@
           <li class="nav-item">
             <router-link
               to="/about"
-              class="fs-24 text-dark noto-serif nav-link"
+              class="fs-24 text-dark noto-serif nav-link router-link-active"
+              
             >
               關於
             </router-link>
@@ -28,19 +29,19 @@
           <li class="nav-item">
             <RouterLink
               to="/userProduct"
-              class="fs-24 noto-serif text-dark nav-link"
+              class="fs-24 noto-serif text-dark nav-link router-link-active"
               >商品
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/userCart" class="fs-24 noto-serif text-dark nav-link"
+            <RouterLink to="/userCart" class="fs-24 noto-serif text-dark nav-link router-link-active"
               >購物車
             </RouterLink>
           </li>
           <li class="nav-item">
             <RouterLink
               to="/adminLogin"
-              class="fs-24 noto-serif text-dark nav-link"
+              class="fs-24 noto-serif text-dark nav-link router-link-active"
               >後台登入
             </RouterLink>
           </li>

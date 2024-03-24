@@ -40,6 +40,11 @@ const router = createRouter({
       component: () => import('../views/AdminOrders.vue')
     },
     {
+      path: '/adminLogout',
+      name: 'adminLogout',
+      component: () => import('../views/AdminLogout.vue')
+    },
+    {
       path: '/testUse',
       name: 'testUse',
       component: () => import('../views/TestUse.vue')
