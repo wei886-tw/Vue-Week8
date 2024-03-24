@@ -18,7 +18,7 @@
               :src="product.imageUrl"
               class="card-img-top"
               alt="商品圖片"
-              style="height: 80%; width: 100%; object-fit: cover"
+              style="height: 336px; width: 100%; object-fit: cover"
             />
             <div class="card-body d-flex flex-column justify-content-between">
               <h5 class="card-title">產品名稱：{{ product.title }}</h5>
