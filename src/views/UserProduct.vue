@@ -1,6 +1,6 @@
 <template>
   <nav-bar></nav-bar>
-  <div class="container-fluid py-48 bg-footer">
+  <div class="container-fluid py-48">
     <div class="container pt-60">
       <filter-components @emit-filter-item="getFilterItem"></filter-components>
       <div class="row">
@@ -18,7 +18,7 @@
               :src="product.imageUrl"
               class="card-img-top"
               alt="商品圖片"
-              style="height: 336px; width: 100%; object-fit: cover"
+              style="height: 310px; width: 100%; object-fit: cover"
             />
             <div class="card-body d-flex flex-column justify-content-between">
               <h5 class="card-title">產品名稱：{{ product.title }}</h5>
@@ -67,16 +67,24 @@
               </div>
               <div v-if="tempProduct.title">
                 <div class="card">
+                  <div class="container d-flex justify-content-end pt-8">
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
                   <img
                     :src="tempProduct.imageUrl"
                     class="card-img-top primary-image img ps-128 pt-16"
                     alt="主圖"
                     style="height: 50%; width: 80%; object-fit: cover"
                   />
-                  <div class="card-body">
+                  <div class="card-body ps-80">
                     <h5 class="card-title">
                       {{ tempProduct.title }}
-                      <span class="badge bg-footer ms-2 text-white">{{
+                      <span class="badge bg-footer ms-2 text-dark">{{
                         tempProduct.category
                       }}</span>
                     </h5>
@@ -87,24 +95,16 @@
                     <p class="card-text mb-4">
                       商品內容：{{ tempProduct.content }}
                     </p>
-                    <div class="container px-0">
-                      <div
-                        class="container d-flex justify-content-between px-0"
-                      >
-                        <button
-                          class="btn border border-2 me-0"
-                          @click="addToCart(tempProduct.id)"
-                        >
-                          加入購物車
-                        </button>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
-                    </div>
+                  </div>
+                  <div
+                    class="container d-flex justify-content-center pt-8 px-0"
+                  >
+                    <button
+                      class="btn btn-dark border border-2  w-75 mb-24"
+                      @click="addToCart(tempProduct.id)"
+                    >
+                      加入購物車
+                    </button>
                   </div>
                 </div>
                 <div>
@@ -137,7 +137,7 @@
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
 import PageNation from "@/components/PageNation.vue";
-import FilterComponents from "@/components/FilterComponents.vue"
+import FilterComponents from "@/components/FilterComponents.vue";
 
 export default {
   components: { PageFooter, NavBar, PageNation, FilterComponents },
@@ -155,8 +155,8 @@ export default {
   },
 
   methods: {
-    getFilterItem(filterItem){
-      this.userProducts = filterItem
+    getFilterItem(filterItem) {
+      this.userProducts = filterItem;
     },
 
     getProducts(page) {
@@ -168,7 +168,6 @@ export default {
         });
     },
 
-  
     addToCart(product_id) {
       this.$http
         .post(`${this.api}/v2/api/${this.api_path}/cart`, {

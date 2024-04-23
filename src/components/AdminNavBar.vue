@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg bg-footer ">
     <div class="container">
-      <router-link to="/" class="tc-serif fs-32 text-dark me-16"
+      <router-link to="/" class="noto-serif fs-32 text-dark me-16"
         >Book41</router-link
       >
       <button
@@ -22,35 +22,59 @@
               >後台產品列表
             </RouterLink>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <RouterLink to="/adminOrders" class="fs-24 noto-serif text-dark">
-            訂單列表
+              訂單管理
             </RouterLink>
-          </li> -->
+          </li>
+          <li class="nav-item">
+            <RouterLink to="/adminBlog" class="fs-24 noto-serif text-dark">
+              文章管理
+            </RouterLink>
+          </li>
+        </ul>
+
+        <ul class="d-flex list-unstyled gap-md-24">
           <li class="nav-item">
             <RouterLink to="/" class="fs-24 noto-serif text-dark"
               >回到前台
             </RouterLink>
           </li>
-          <!-- <li class="nav-item">
-            <RouterLink to="/adminLogout" class="fs-24 noto-serif text-dark"
+          <li class="nav-item d-flex justify-content-end">
+            <a
+              class="fs-24 noto-serif text-dark"
+              @click="logOut()"
               >登出
-            </RouterLink>
-          </li> -->
+            </a>
+          </li>
         </ul>
-        <!-- <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-gray" type="submit">Search</button>
-        </form> -->
       </div>
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  methods: {
+    data() {
+      return {
+        api_path: import.meta.env.VITE_PATH,
+        url: import.meta.env.VITE_API,
+      };
+    },
+    logOut() {
+      this.$http(`${this.api_path}/v2/logout`)
+        .then((res) => {
+          alert(res);
+          this.$router.push("/");
+        })
+        .catch((err) => {
+          console.log(err.data.message);
+        });
+    },
+  },
+};
+</script>
 
 <style >
 .tc-serif {

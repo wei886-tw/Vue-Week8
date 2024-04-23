@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 // import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -25,6 +25,33 @@ const router = createRouter({
       component: () => import('../views/UserCart.vue')
     },
     {
+      path: '/userPayment',
+      name: 'userPayment',
+      component: () => import('../views/UserPayment.vue')
+    },
+    {
+      path: '/blogPage',
+      name: 'blogPage',
+      component: () => import('../views/BlogPage.vue'),
+      child: [
+        {
+          path: 'dynamicRouter/:id',
+          component: () => import('../views/DynamicRouter.vue'),
+        },
+        {
+          path: 'dynamicRouterByProps/:id',
+          component: () => import('../views/DynamicRouterByProps.vue'),
+          props: (route) => {
+            console.log('route:', route);
+            return {
+              id: '',
+            };
+          }
+        },
+
+      ]
+    },
+    {
       path: '/adminLogin',
       name: 'adminLogin',
       component: () => import('../views/AdminLogin.vue')
@@ -40,9 +67,14 @@ const router = createRouter({
       component: () => import('../views/AdminOrders.vue')
     },
     {
-      path: '/adminLogout',
-      name: 'adminLogout',
-      component: () => import('../views/AdminLogout.vue')
+      path: '/adminBlog',
+      name: 'adminBlog',
+      component: () => import('../views/AdminBlog.vue')
+    },
+    {
+      path: '/newArticle',
+      name: 'newArticle',
+      component: () => import('../views/NewArticle.vue')
     },
     {
       path: '/testUse',
@@ -50,6 +82,6 @@ const router = createRouter({
       component: () => import('../views/TestUse.vue')
     },
   ]
-})
+});
 
-export default router
+export default router;

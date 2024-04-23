@@ -320,10 +320,8 @@ $theme-colors: (
   "secondary":  #fffcf7,
   "footer":     #f3f2ee,
   "blue":       #0d6efd,
+  "gray":       #eeeeee,
   
-
-
-
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -434,6 +432,7 @@ $spacers: (
   40: $spacer * 2.5,
   48: $spacer * 3,
   60: $spacer * 3.75,
+  80: $spacer * 4,
   128: $spacer * 8,
 ) !default;
 // scss-docs-end spacer-variables-maps
@@ -679,6 +678,9 @@ $font-sizes: (
   40: 2.5rem,
   32: 2rem,
   24: 1.5rem,
+  16: 1.0rem,
+  12: 0.75rem,
+  8:  0.5rem,
 ) !default;
 // scss-docs-end font-sizes
 

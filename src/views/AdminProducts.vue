@@ -1,6 +1,6 @@
 <template>
   <admin-nav-bar></admin-nav-bar>
-  <div class="container py-48 bg-secondary">
+  <div class="container py-48 ">
     <h2 class="text-center fs-16 fs-md-24 fs-lg-32">後台產品列表</h2>
     <table class="table mt-4">
       <thead>
@@ -31,8 +31,12 @@
     </table>
   </div>
 
-  <div class="container ">
-    <page-nation class="d-flex justify-content-end" :pagination="pagination" :get-page-products="getPageProducts"></page-nation>
+  <div class="container d-flex justify-content-end">
+    <page-nation
+      class=""
+      :pagination="pagination"
+      :get-page-products="getPageProducts"
+    ></page-nation>
   </div>
 </template>
 
@@ -41,7 +45,7 @@ import AdminNavBar from "@/components/AdminNavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 
 export default {
-  components: { AdminNavBar, PageNation, },
+  components: { AdminNavBar, PageNation },
 
   data() {
     return {
@@ -73,20 +77,18 @@ export default {
           this.allProducts = res.data.products;
         })
         .catch((err) => {
-          console.log(err.response.data.message);
-          console.log(err.request.responseURL);
+          alert(err.response.data.message);
         });
     },
   },
 
   mounted() {
     const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
+      /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
       "$1"
     );
     this.$http.defaults.headers.common.Authorization = token;
     this.checkAdmin();
-
   },
 };
 </script>

@@ -10,7 +10,7 @@
         <a
           class="page-link text-primary"
           href="#"
-          @click.prevent="getPageProducts((page = page))"
+          @click.prevent="getPageProducts(page = page)"
           >{{ page }}</a
         >
       </li>
@@ -25,19 +25,13 @@
 
 <script>
 export default {
-  props: ["pagination", "getPageProducts"],
+  props: ["pagination", "getPageProducts", "ordersPagination", "blogPagination"],
 
   data() {
     return {
       url: import.meta.env.VITE_API,
       api_path: import.meta.env.VITE_PATH,
     };
-  },
-
-  methods: {},
-
-  mounted() {
-
   },
 };
 </script>

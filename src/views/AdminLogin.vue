@@ -3,7 +3,7 @@
   <div class="container py-48">
     <form class="row justify-content-center" @submit.prevent="signIn">
       <div class="col-md-6">
-        <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
+        <h1 class="fs-32 mb-3 font-weight-normal">請先登入</h1>
         <div class="mb-40">
           <label for="inputEmail" class="sr-only">Email address</label>
           <input
@@ -55,38 +55,25 @@ export default {
       api_path: import.meta.env.VITE_PATH,
     };
   },
-  components: {},
+  components: { AdminNavBar },
 
   methods: {
     signIn() {
       this.$http
-        .post(`${import.meta.env.VITE_API}/v2/admin/signin`, this.user)
+        .post(`${this.url}/v2/admin/signin`, this.user)
         .then((res) => {
           const { token, expired } = res.data;
-          document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
+          document.cookie = `hexToken=${token}; expires=${new Date(expired)};`;
           this.$router.push("/adminProducts");
         })
         .catch((err) => {
           alert(err.response.data.message);
         });
     },
-
-    getPageProducts() {
-      this.$http
-        .get(`${this.url}/v2/api/${this.api_path}/admin/products`)
-        .then((res) => {
-          console.log(res.request.responseURL);
-          this.pages = res.data.pagination;
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-          console.log(err.request.responseURL);
-        });
-    },
   },
 
   mounted() {
-    this.getPageProducts();
+   
   },
 };
 </script>

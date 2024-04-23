@@ -6,66 +6,75 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">下單時間</th>
             <th scope="col">訂單編號</th>
-            <th scope="col">產品名稱</th>
+            <th scope="col">價格</th>
             <th scope="col">是否付款</th>
+            <th scope="col">買家資訊</th>
+            <th scope="col">留言</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+          <tr v-for="order in orders" :key="order + 123" class="align-center">
+            <td class="align-center">{{new Date(order.create_at).toLocaleDateString()}}</td>
+            <td class="align-center">{{order.id}} </td>
+            <td class="align-center">{{ order.total }}</td>
+            <td class="align-center">
+              {{ order.is_paid ? "已付款" : "未付款" }}
+            </td>
+            <td class="align-center">
+              email: {{ order.user.email }}
+              <br />
+              地址： {{ order.user.address }}
+              <br />
+              姓名: {{ order.user.name }}
+            </td>
+            <td>{{ order.message }}</td>
           </tr>
         </tbody>
       </table>
+      <div class="container d-flex justify-content-end">
+        <page-nation
+          :pagination="ordersPagination"
+          :get-page-products="getOrders"
+        ></page-nation>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import AdminNavBar from "@/components/AdminNavBar.vue";
+import PageNation from "@/components/PageNation.vue";
 
 export default {
-  components: { AdminNavBar },
+  components: { AdminNavBar, PageNation },
 
   data() {
     return {
       api: import.meta.env.VITE_API,
       api_path: import.meta.env.VITE_PATH,
       orders: [],
+      ordersPagination: {},
     };
   },
 
   methods: {
-    getOrders() {
+    getOrders(page=1) {
       this.$http
-        .get(`${this.api}/v2/api/${this.api_path}/admin/orders`)
+        .get(`${this.api}/v2/api/${this.api_path}/admin/orders?page=${page}`)
         .then((res) => {
-          console.log(res);
           this.orders = res.data.orders;
+          this.ordersPagination = res.data.pagination;
         })
         .catch((err) => {
-          console.log(err.message);
+          alert(err.response.data.message);
         });
     },
   },
 
   mounted() {
-    this.getOrders();
+    this.getOrders(1);
   },
 };
 </script>

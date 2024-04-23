@@ -1,6 +1,6 @@
 <template>
   <NavBar/>
-  <div class="container-fluid bg-footer px-0 pb-48">
+  <div class="container-fluid px-0 pb-48">
     <div class="mb-48">
       <img
         src="/pic/reading.png"

@@ -6,6 +6,7 @@
     <button class="btn btn-danger">click</button>
 
     <router-view></router-view>
+    
   </div>
 
   <div>
