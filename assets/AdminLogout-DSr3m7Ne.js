@@ -1,1 +1,0 @@
-import{A as n}from"./AdminNavBar-DrUfQYQU.js";import{_ as e,c as t,b as a,o as r,r as s}from"./index-CyP_o6Dz.js";/* empty css                                                    */const c={components:{AdminNavBar:n}},_={class:"container-fluid px-0"};function i(m,p,d,f,l,u){const o=s("admin-nav-bar");return r(),t("div",_,[a(o)])}const b=e(c,[["render",i]]);export{b as default};
