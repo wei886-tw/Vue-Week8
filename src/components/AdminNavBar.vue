@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-footer ">
+  <nav class="navbar navbar-expand-lg bg-footer">
     <div class="container">
-      <router-link to="/" class="noto-serif fs-32 text-dark me-16"
-        >Book41</router-link
+      <router-link to="/" class="noto-serif fs-48 text-dark me-16"
+        >3C Reuse</router-link
       >
       <button
         class="navbar-toggler"
@@ -41,11 +41,7 @@
             </RouterLink>
           </li>
           <li class="nav-item d-flex justify-content-end">
-            <a
-              class="fs-24 noto-serif text-dark"
-              @click="logOut()"
-              >登出
-            </a>
+            <a class="fs-24 noto-serif text-dark" @click="logOut()">登出 </a>
           </li>
         </ul>
       </div>
@@ -55,17 +51,18 @@
 
 <script>
 export default {
+  data() {
+    return {
+      api_path: import.meta.env.VITE_PATH,
+      url: import.meta.env.VITE_API,
+    };
+  },
   methods: {
-    data() {
-      return {
-        api_path: import.meta.env.VITE_PATH,
-        url: import.meta.env.VITE_API,
-      };
-    },
     logOut() {
-      this.$http(`${this.api_path}/v2/logout`)
-        .then((res) => {
-          alert(res);
+      this.$http
+        .post(`${this.url}/v2/logout`)
+        .then(() => {
+          alert("成功登出");
           this.$router.push("/");
         })
         .catch((err) => {

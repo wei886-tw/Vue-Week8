@@ -3,38 +3,29 @@
   <div class="container-fluid py-48">
     <div class="container pt-60">
       <filter-components @emit-filter-item="getFilterItem"></filter-components>
-      <div class="row">
+      <div class="row ">
         <div
-          class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center"
+          class="col-12 col-md-6 col-lg-4 d-flex justify-content-between"
           v-for="product in userProducts"
           :key="product.id"
           @click="tempProduct = product"
         >
           <div
-            class="card mb-24 py-16 px-16"
-            style="width: 18rem; height: 30rem"
+            class="mb-24 py-16 px-16"
+          
           >
-            <img
-              :src="product.imageUrl"
-              class="card-img-top"
-              alt="商品圖片"
-              style="height: 310px; width: 100%; object-fit: cover"
-            />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">產品名稱：{{ product.title }}</h5>
-              <p class="card-text">特價：{{ product.price }} 元</p>
-              <div class="container px-0">
-                <button
-                  class="btn btn-sm border border-2 me-12"
-                  @click.prevent="addToCart(product.id)"
-                >
-                  加入購物車
-                </button>
-                <button class="btn btn-sm border border-2" @click="openModal">
-                  詳細資訊
-                </button>
+            <router-link :to="`/userProductInfo/${product.id}`">
+              <img
+                :src="product.imageUrl"
+                alt="商品圖片"
+                style="height: 360px; width: 100%; object-fit: cover"
+                class="mb-16"
+              />
+              <div class="d-flex flex-column justify-content-between px-32">
+                <h5 class="mb-16 text-dark">產品名稱：{{ product.title }}</h5>
+                <p class="mb-16 text-dark">特價：{{ product.price }} 元</p>
               </div>
-            </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -191,7 +182,6 @@ export default {
 
   mounted() {
     this.getProducts();
-    this.myModal = new bootstrap.Modal("#myModal");
   },
 };
 </script>

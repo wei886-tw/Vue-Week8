@@ -1,9 +1,9 @@
 <template>
-  <NavBar/>
+  <NavBar />
   <div class="container-fluid px-0 pb-48">
     <div class="mb-48">
       <img
-        src="/pic/reading.png"
+        src="/pic/store-1.jpg"
         alt=""
         width="100%"
         height="450"
@@ -13,47 +13,111 @@
 
     <div class="container mb-48">
       <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <p class="fs-16 fs-md-24 tc-sans mb-16">歡迎來到 3C Reuse</p>
+          <p class="fs-16 fs-md-24 tc-sans">
+            您好！如果您正在尋找性價比超高的二手
+            3C產品，那麼您來對地方了！我們是一個經驗豐富的團隊，在這裡為您提供各種優質的二手電子產品，無論您是需要手機、筆記型電腦、平板電腦還是其他電子設備，我們都能滿足您的需求。
+          </p>
+        </div>
         <div class="col-sm-12 col-md-6 mb-sm-24">
           <img
-            src="/pic/bookshelf.png"
-            alt=""
+            src="/pic/open.jpeg"
+            alt="開門圖"
             width="100%"
             height="360"
             style="object-fit: cover"
           />
         </div>
+      </div>
+    </div>
+
+    <div class="container mb-48">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 mb-sm-24">
+          <img
+            src="/pic/pc.jpg"
+            alt="電腦圖"
+            width="100%"
+            height="360"
+            style="object-fit: cover; filter: saturate(50%)"
+          />
+        </div>
         <div class="col-sm-12 col-md-6">
-          <p class="fs-sm-8 fs-16 fs-md-24 tc-sans">
-            在這裡，我們相信每一本書都是一個故事，每一位讀者都是一個冒險者。因此，我們精心挑選了各種類型和風格的書籍，包括經典文學、最新暢銷小說、精美的藝術圖冊、引人入勝的非虛構作品以及充滿啟發性的自助和成長類書籍。無論您是在尋找一本打發閒暇時間的小說，還是想深入探討某個主題的非虛構作品，我們都有您所需的書籍。
+          <p class="fs-24 fs-md-32 tc-sans mb-16">電腦</p>
+          <p class="fs-16 fs-md-24 tc-sans">
+            如果您需要一台便攜輕薄的筆記型電腦來辦公或者學習，我們也有各種規格和型號的二手筆記型電腦可供選擇。無論您是需要一台性能強悍的遊戲本還是一台適合日常辦公的輕薄本，我們都能滿足您的需求。
           </p>
         </div>
       </div>
     </div>
 
-    <div class="container">
+    <div class="container mb-48">
       <div class="row">
-        <div class="col-sm-12 d-md-none mb-sm-24">
+        <div class="col-sm-12 col-md-6">
+          <p class="fs-24 fs-md-32 tc-sans mb-16">手機</p>
+          <p class="fs-16 fs-md-24 tc-sans">
+            我們擁有各種品牌和型號的二手手機，從經典的 iPhone
+            到功能強大的安卓手機，無論您是需要一部用於日常通訊還是用於遊戲和娛樂，我們都能幫您找到心儀的手機。
+          </p>
+        </div>
+        <div class="col-sm-12 col-md-6 mb-sm-24">
           <img
-            src="/pic/latte.png"
-            alt=""
+            src="/pic/phone.jpg"
+            alt="手機圖"
+            width="100%"
+            height="360"
+            style="object-fit: cover; filter: saturate(50%)"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-48">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 mb-sm-24">
+          <img
+            src="/pic/ipad.jpg"
+            alt="手機圖"
             width="100%"
             height="360"
             style="object-fit: cover; filter: saturate(50%)"
           />
         </div>
         <div class="col-sm-12 col-md-6">
-          <p class="fs-sm-16 fs-16 fs-md-24 tc-sans">
-            此外，我們提供舒適的閱讀區域，供您放鬆身心，沉浸在書海中。您可以在這裡品味一杯咖啡或點心，與朋友交流，或者享受孤獨的閱讀時光。我們的店內設計簡潔舒適，讓您能夠專注於書籍和閱讀的魅力。
+          <p class="fs-24 fs-md-32 tc-sans mb-16">平板電腦</p>
+          <p class="fs-16 fs-md-24 tc-sans">
+            平板電腦已經成為了日常生活中必不可少的電子設備之一，我們也提供各種型號和品牌的二手平板電腦，從
+            iPad 到安卓平板，您可以在這裡找到適合您的平板電腦。
           </p>
         </div>
-        <div class="d-none d-md-block col-md-6">
-          <img
-            src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            width="100%"
-            height="360"
-            style="object-fit: cover; filter: saturate(50%)"
-          />
+      </div>
+    </div>
+
+    <div class="container mb-48">
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="fs-24 fs-md-32 tc-sans mb-16">品質保證</p>
+          <p class="fs-16 fs-md-24 tc-sans">
+            我們所有的二手產品都經過嚴格的品質檢查和測試，確保其性能穩定和品質優良。您可以放心購買，我們提供的每一台產品都有品質保證。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-48">
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="fs-24 fs-md-32 tc-sans mb-16">快速交易</p>
+          <p class="fs-16 fs-md-24 tc-sans">
+            我們的交易流程簡單快捷，您只需選擇心儀的產品，聯繫我們的客服，我們將會盡快為您安排交易，讓您盡快擁有心儀的二手
+            3C 產品。
+          </p>
+          <br>
+          <p class="fs-16 fs-md-24 tc-sans">
+            如果您對我們的產品有任何疑問或者需要幫助，請隨時聯繫我們的客服團隊，我們將竭誠為您服務！
+            謝謝您的光臨，期待與您的合作！
+          </p>
         </div>
       </div>
     </div>

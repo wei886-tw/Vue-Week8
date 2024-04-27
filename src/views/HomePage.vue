@@ -5,17 +5,16 @@
 
   <div class="container-fluid  px-0 vh-100 ">
     <div
-      class="container-fluid px-0 overflow-hidden"
+      class="container-fluid px-0 overflow-hidden position-relative"
       style="
-        background-image: url('pic/bookstore.png');
-        height: 600px;
+        background-image: url('pic/store-2.jpg');
+        height: 70%;
         width: 100%
         object-fit: cover;
-
-
-
       "
-    ></div>
+    >
+    <!-- <h2 class="fs-80 text-white noto-serif position-absolute top-50 start-50">Book41</h2> -->
+    </div>
   </div>
   <PageFooter />
 

@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +13,17 @@ const router = createRouter({
       name: 'userProduct',
       component: () => import('../views/UserProduct.vue'),
     },
+    {
+      path: '/userProductInfo/:id',
+      name: 'userProductInfo',
+      component: () => import('../views/UserProductInfo.vue'),
+      props: (route) => {
+        return {
+          id: route.params.id
+        };
+      }
+    },
+
     {
       path: '/about',
       name: 'AboutView',
@@ -30,26 +40,19 @@ const router = createRouter({
       component: () => import('../views/UserPayment.vue')
     },
     {
-      path: '/blogPage',
-      name: 'blogPage',
-      component: () => import('../views/BlogPage.vue'),
-      child: [
-        {
-          path: 'dynamicRouter/:id',
-          component: () => import('../views/DynamicRouter.vue'),
-        },
-        {
-          path: 'dynamicRouterByProps/:id',
-          component: () => import('../views/DynamicRouterByProps.vue'),
-          props: (route) => {
-            console.log('route:', route);
-            return {
-              id: '',
-            };
-          }
-        },
-
-      ]
+      path: '/userBlog',
+      name: 'userBlog',
+      component: () => import('../views/UserBlog.vue'),
+    },
+    {
+      path: '/userArticle/:id',
+      name: 'userArticle',
+      component: () => import('../views/UserArticle.vue'),
+      props: (route) => {
+        return {
+          id: route.params.id,
+        };
+      }
     },
     {
       path: '/adminLogin',
@@ -72,14 +75,19 @@ const router = createRouter({
       component: () => import('../views/AdminBlog.vue')
     },
     {
+      path: '/adviseArticle/:id',
+      name: 'adviseArticle',
+      component: () => import('../views/AdviseArticle.vue'),
+      props: (route) => {
+        return {
+          id: route.params.id,
+        };
+      }
+    },
+    {
       path: '/newArticle',
       name: 'newArticle',
       component: () => import('../views/NewArticle.vue')
-    },
-    {
-      path: '/testUse',
-      name: 'testUse',
-      component: () => import('../views/TestUse.vue')
     },
   ]
 });

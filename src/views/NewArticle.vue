@@ -175,6 +175,7 @@ export default {
           alert("文章建立成功");
           this.$refs.form.reset()
           this.imageUrl = ''
+          this.$router.push('/adminBlog')
         })
 
         .catch((err) => {

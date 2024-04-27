@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid px-0 bg-footer">
     <div class="container text-center text-dark py-16">
-      <h1 class="fs-32  mb-4 noto-serif">Book41</h1>
+      <h1 class="fs-32  mb-4 noto-serif">3C Reuse</h1>
       <a class="nav-item list-unstyled mb-4">
         <RouterLink
           to="/adminLogin"
@@ -9,7 +9,7 @@
           >後台登入
         </RouterLink>
       </a>
-      <p class="mb-8">© 2024 COPYRIGHT</p>
+      <p>© 2024 COPYRIGHT</p>
     </div>
   </div>
   <div class="container">

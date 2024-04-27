@@ -21,12 +21,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="article in articles" :key="article + 123">
+          <tr v-for="article in articles" :key="article.id">
             <td>{{ article.title }}</td>
             <td>{{ article.author }}</td>
             <td>{{ article.isPublic ? "是" : "否" }}</td>
             <td>
-              <button class="btn btn-success">修改文章</button>
+              <button
+                class="btn btn-success"
+                @click="goAdviseArticle(article.id)"
+              >
+                <!-- <router-link :to="`/adviseArticle/${article.id}`"> </router-link> -->
+                修改文章
+              </button>
             </td>
             <td>
               <button class="btn btn-danger" @click="deleteArticle(article.id)">
@@ -36,12 +42,13 @@
           </tr>
         </tbody>
       </table>
+
       <div class="container">
         <page-nation
-        :pagination="blogPagination"
-        :get-page-products="getPageArticle"
-        class="d-flex justify-content-end"
-            ></page-nation>
+          :pagination="blogPagination"
+          :get-page-products="getPageArticle"
+          class="d-flex justify-content-end"
+        ></page-nation>
       </div>
     </div>
   </div>
@@ -56,7 +63,7 @@ import AdminNavBar from "@/components/AdminNavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 
 export default {
-  components: { AdminNavBar, PageNation },
+  components: { AdminNavBar, PageNation,  },
 
   data() {
     return {
@@ -72,6 +79,8 @@ export default {
       isPublic: true,
       create_at: "",
       articles: "",
+      bsModal: "",
+      id: "",
     };
   },
 
@@ -120,7 +129,12 @@ export default {
           console.log(err.response.data.message);
         });
     },
+
+    goAdviseArticle(id) {
+      this.$router.push(`/adviseArticle/${id}`);
+    },
   },
+
   mounted() {
     const token = document.cookie.replace(
       /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,

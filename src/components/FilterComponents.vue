@@ -9,14 +9,14 @@
           @click="filter('所有產品')"
           >所有產品</a
         >
-        <a href="#" class="btn btn-footer btn-lg" @click="filter('書籍')"
-          >書籍</a
+        <a href="#" class="btn btn-footer btn-lg" @click="filter('筆電')"
+          >筆電</a
         >
-        <a href="#" class="btn btn-footer btn-lg" @click="filter('飲料')"
-          >飲料</a
+        <a href="#" class="btn btn-footer btn-lg" @click="filter('手機')"
+          >手機</a
         >
-        <a href="#" class="btn btn-footer btn-lg" @click="filter('甜點')"
-          >甜點</a
+        <a href="#" class="btn btn-footer btn-lg" @click="filter('平板')"
+          >平板</a
         >
       </div>
     </div>

@@ -6,7 +6,7 @@
         <router-link
           to="/"
           class="fs-48 noto-serif me-16 text-dark router-link-active"
-          >Book41</router-link
+          >3C Reuse</router-link
         >
         <button
           class="navbar-toggler"
@@ -31,7 +31,7 @@
             </li>
             <li class="nav-item">
               <RouterLink
-                to="/blogPage"
+                to="/userBlog"
                 class="fs-24 noto-serif text-dark nav-link router-link-active"
                 >最新消息
               </RouterLink>

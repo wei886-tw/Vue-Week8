@@ -1,6 +1,6 @@
 <template>
   <admin-nav-bar></admin-nav-bar>
-  <div class="container py-48 ">
+  <div class="container py-48">
     <h2 class="text-center fs-16 fs-md-24 fs-lg-32">後台產品列表</h2>
     <table class="table mt-4">
       <thead>
@@ -25,6 +25,7 @@
           <td>
             <span v-if="item.is_enabled" class="">啟用</span>
             <span v-else class="text-danger">未啟用</span>
+            <!-- <button class="btn btn-primary" @click="deleteAll(item.id)">刪除</button> -->
           </td>
         </tr>
       </tbody>
@@ -55,6 +56,7 @@ export default {
       pagination: {},
     };
   },
+
   methods: {
     checkAdmin() {
       const link = `${this.url}/api/user/check`;
@@ -80,6 +82,8 @@ export default {
           alert(err.response.data.message);
         });
     },
+
+  
   },
 
   mounted() {
