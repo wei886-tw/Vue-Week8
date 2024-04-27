@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as t}from"./index-BmGdtGRh.js";const s={created(){console.log(this.$route.params.seed),this.$route.params.seed}};function r(a,c,n,p,_,d){return t(),o("div")}const m=e(s,[["render",r]]);export{m as default};

@@ -1,1 +1,0 @@
-import{_ as o,c as e,o as t}from"./index-BmGdtGRh.js";const s={props:["id"],created(){console.log("id:",this.id),this.id}};function c(r,n,a,i,p,d){return t(),e("div")}const f=o(s,[["render",c]]);export{f as default};
