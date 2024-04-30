@@ -3,19 +3,180 @@
     <NavBar />
   </div>
 
-  <div class="container-fluid  px-0 vh-100 ">
+  <div class="container-fluid px-0">
     <div
-      class="container-fluid px-0 overflow-hidden position-relative"
+      class="container-fluid px-0 overflow-hidden position-relative mb-48 d-none d-lg-block"
       style="
-        background-image: url('pic/store-2.jpg');
-        height: 70%;
+        background-image: url('pic/apple-store.jpg');
+        height: 640px;
         width: 100%
         object-fit: cover;
+        background-repeat: no-repeat;        
+        background-position: center;
       "
-    >
-    <!-- <h2 class="fs-80 text-white noto-serif position-absolute top-50 start-50">Book41</h2> -->
+    ></div>
+    <div
+      class="container-fluid px-0 overflow-hidden position-relative mb-48 d-lg-none"
+      style="
+        background-image: url('pic/apple-store.jpg');
+        height: 540px;
+        width: 100%
+        object-fit: cover;
+        background-repeat: no-repeat;        
+        background-position: center;
+      "
+    ></div>
+    <div class="container mb-48">
+      <div class="row">
+        <div class="col-sm-12 d-md-none mb-sm-16">
+          <img
+            src="/pic/open.jpeg"
+            alt="開門圖"
+            width="100%"
+            height="360px"
+            style="object-fit: cover"
+            class="mb-16"
+          />
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <h3 class="fs-24 fs-md-32 tc-sans mb-sm-16">歡迎來到 3C Reuse</h3>
+          <p class="fs-16 fs-md-24 tc-sans">
+            您好！如果您正在尋找性價比超高的二手
+            3C產品，那麼您來對地方了！我們是一個經驗豐富的團隊，在這裡為您提供各種優質的二手電子產品，無論您是需要手機、筆記型電腦、平板電腦還是其他電子設備，我們都能滿足您的需求。
+          </p>
+        </div>
+        <div class="d-none d-md-block col-md-6 mb-sm-16 mb-md-none">
+          <img
+            src="/pic/open.jpeg"
+            alt="開門圖"
+            width="100%"
+            height="360px"
+            style="object-fit: cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-48">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 mb-16 mb-md-none">
+          <img
+            src="/pic/pc.jpg"
+            alt="電腦圖"
+            width="100%"
+            height="100%"
+            style="object-fit: cover; filter: saturate(50%)"
+          />
+        </div>
+        <div class="col-sm-12 col-md-6 d-flex flex-column mb-sm-24">
+          <h3 class="fs-24 fs-md-32 tc-sans mb-16">電腦</h3>
+          <p class="fs-16 fs-md-24 tc-sans mb-16">
+            如果您需要一台便攜輕薄的筆記型電腦來辦公或者學習，我們也有各種規格和型號的二手筆記型電腦可供選擇。無論您是需要一台性能強悍的遊戲本還是一台適合日常辦公的輕薄本，我們都能滿足您的需求。
+          </p>
+          <div class="container mt-auto px-0">
+            <button class="btn btn-primary fs-16 fs-md-24 tc-sans w-100">
+              前往電腦賣場
+              <router-link class=""></router-link>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-48">
+      <div class="row">
+        <div class="col-sm-12 d-md-none mb-16">
+          <img
+            src="/pic/phone.jpg"
+            alt="手機圖"
+            width="100%"
+            height="100%"
+            style="object-fit: cover; filter: saturate(50%)"
+          />
+        </div>
+        <div class="col-sm-12 col-md-6 d-flex flex-column mb-16">
+          <h3 class="fs-24 fs-md-32 tc-sans mb-16">手機</h3>
+          <p class="fs-16 fs-md-24 tc-sans mb-16">
+            我們擁有各種品牌和型號的二手手機，從經典的 iPhone
+            到功能強大的安卓手機，無論您是需要一部用於日常通訊還是用於遊戲和娛樂，我們都能幫您找到心儀的手機。
+          </p>
+          <div class="container mt-auto px-0">
+            <button
+              class="btn btn-primary fs-16 fs-md-24 tc-sans mt-auto w-100"
+            >
+              前往手機賣場
+              <router-link class=""></router-link>
+            </button>
+          </div>
+        </div>
+        <div class="d-none d-md-block col-md-6 mb-sm-24">
+          <img
+            src="/pic/phone.jpg"
+            alt="手機圖"
+            width="100%"
+            height="100%"
+            style="object-fit: cover; filter: saturate(50%)"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-48">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 mb-16 d-flex flex-column">
+          <img
+            src="/pic/ipad.jpg"
+            alt="平板圖"
+            width="100%"
+            height="100%"
+            style="object-fit: cover; filter: saturate(50%)"
+          />
+        </div>
+        <div class="col-sm-12 col-md-6 d-flex flex-column mb-sm-24">
+          <h3 class="fs-24 fs-md-32 tc-sans mb-16">平板電腦</h3>
+          <p class="fs-16 fs-md-24 tc-sans mb-16">
+            平板電腦已經成為了日常生活中必不可少的電子設備之一，我們也提供各種型號和品牌的二手平板電腦，從
+            iPad 到安卓平板，您可以在這裡找到適合您的平板電腦。
+          </p>
+          <div class="container mt-auto px-0">
+            <button class="btn btn-primary fs-16 fs-md-24 tc-sans w-100">
+              前往平板賣場
+              <router-link class=""></router-link>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="container-fluid px-0">
+    <div class="container">
+      <h2 class="fs-40">最新消息</h2>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid px-0">
+    <div
+      class="container-fluid px-0 d-flex flex-column align-items-center justify-content-center"
+      style="
+        background-image: url('pic/coupon.jpg');
+        height: 400px;
+        width: 100%
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      "
+    >
+      <button class="btn btn-white fs-48 mb-16" @click="getCoupon()">
+        領取折價券
+      </button>
+    </div>
+  </div>
+
   <PageFooter />
 
   <router-view />
@@ -25,13 +186,31 @@
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
 
-
 export default {
-  components: { PageFooter, NavBar,  },
+  components: { PageFooter, NavBar },
   data() {
-    return {};
+    return {
+      url: import.meta.env.VITE_API,
+      api_path: import.meta.env.VITE_PATH,
+    };
   },
-  methods: {},
+
+  methods: {
+    getCoupon() {
+      this.$http
+        .post(`${this.url}/v2/api/${this.api_path}/coupon`, {
+          data: {
+            code: "-coupon123",
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
+    },
+  },
 
   mounted() {},
 };

@@ -79,7 +79,6 @@
                 type="text"
                 style="width: 100%; height: 120px"
                 placeholder="請填入 100 字內描述"
-                name="description"
                 id="description"
               />
             </div>
@@ -92,8 +91,7 @@
                 v-model="content"
                 class="rounded mb-24 form-check-input form-control"
                 style="width: 100%; height: 240px"
-                placeholder="請輸入文章內容"
-                name="content"
+                placeholder="請輸入文章內容"  
                 id="content"
               />
             </div>

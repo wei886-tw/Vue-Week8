@@ -10,90 +10,9 @@
         style="object-fit: cover; filter: saturate(80%)"
       />
     </div>
+  </div>
 
-    <div class="container mb-48">
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <p class="fs-16 fs-md-24 tc-sans mb-16">歡迎來到 3C Reuse</p>
-          <p class="fs-16 fs-md-24 tc-sans">
-            您好！如果您正在尋找性價比超高的二手
-            3C產品，那麼您來對地方了！我們是一個經驗豐富的團隊，在這裡為您提供各種優質的二手電子產品，無論您是需要手機、筆記型電腦、平板電腦還是其他電子設備，我們都能滿足您的需求。
-          </p>
-        </div>
-        <div class="col-sm-12 col-md-6 mb-sm-24">
-          <img
-            src="/pic/open.jpeg"
-            alt="開門圖"
-            width="100%"
-            height="360"
-            style="object-fit: cover"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="container mb-48">
-      <div class="row">
-        <div class="col-sm-12 col-md-6 mb-sm-24">
-          <img
-            src="/pic/pc.jpg"
-            alt="電腦圖"
-            width="100%"
-            height="360"
-            style="object-fit: cover; filter: saturate(50%)"
-          />
-        </div>
-        <div class="col-sm-12 col-md-6">
-          <p class="fs-24 fs-md-32 tc-sans mb-16">電腦</p>
-          <p class="fs-16 fs-md-24 tc-sans">
-            如果您需要一台便攜輕薄的筆記型電腦來辦公或者學習，我們也有各種規格和型號的二手筆記型電腦可供選擇。無論您是需要一台性能強悍的遊戲本還是一台適合日常辦公的輕薄本，我們都能滿足您的需求。
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container mb-48">
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <p class="fs-24 fs-md-32 tc-sans mb-16">手機</p>
-          <p class="fs-16 fs-md-24 tc-sans">
-            我們擁有各種品牌和型號的二手手機，從經典的 iPhone
-            到功能強大的安卓手機，無論您是需要一部用於日常通訊還是用於遊戲和娛樂，我們都能幫您找到心儀的手機。
-          </p>
-        </div>
-        <div class="col-sm-12 col-md-6 mb-sm-24">
-          <img
-            src="/pic/phone.jpg"
-            alt="手機圖"
-            width="100%"
-            height="360"
-            style="object-fit: cover; filter: saturate(50%)"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="container mb-48">
-      <div class="row">
-        <div class="col-sm-12 col-md-6 mb-sm-24">
-          <img
-            src="/pic/ipad.jpg"
-            alt="手機圖"
-            width="100%"
-            height="360"
-            style="object-fit: cover; filter: saturate(50%)"
-          />
-        </div>
-        <div class="col-sm-12 col-md-6">
-          <p class="fs-24 fs-md-32 tc-sans mb-16">平板電腦</p>
-          <p class="fs-16 fs-md-24 tc-sans">
-            平板電腦已經成為了日常生活中必不可少的電子設備之一，我們也提供各種型號和品牌的二手平板電腦，從
-            iPad 到安卓平板，您可以在這裡找到適合您的平板電腦。
-          </p>
-        </div>
-      </div>
-    </div>
-
+  <div class="container-fluid">
     <div class="container mb-48">
       <div class="row">
         <div class="col-sm-12">
@@ -113,7 +32,7 @@
             我們的交易流程簡單快捷，您只需選擇心儀的產品，聯繫我們的客服，我們將會盡快為您安排交易，讓您盡快擁有心儀的二手
             3C 產品。
           </p>
-          <br>
+          <br />
           <p class="fs-16 fs-md-24 tc-sans">
             如果您對我們的產品有任何疑問或者需要幫助，請隨時聯繫我們的客服團隊，我們將竭誠為您服務！
             謝謝您的光臨，期待與您的合作！

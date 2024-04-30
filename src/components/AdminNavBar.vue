@@ -28,6 +28,11 @@
             </RouterLink>
           </li>
           <li class="nav-item">
+            <RouterLink to="/adminCoupon" class="fs-24 noto-serif text-dark">
+              優惠券管理
+            </RouterLink>
+          </li>
+          <li class="nav-item">
             <RouterLink to="/adminBlog" class="fs-24 noto-serif text-dark">
               文章管理
             </RouterLink>

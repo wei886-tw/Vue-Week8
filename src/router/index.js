@@ -70,6 +70,11 @@ const router = createRouter({
       component: () => import('../views/AdminOrders.vue')
     },
     {
+      path: '/adminCoupon',
+      name: 'adminCoupon',
+      component: () => import('../views/AdminCoupon.vue')
+    },
+    {
       path: '/adminBlog',
       name: 'adminBlog',
       component: () => import('../views/AdminBlog.vue')
