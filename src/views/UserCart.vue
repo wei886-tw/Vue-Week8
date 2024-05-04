@@ -294,7 +294,7 @@ export default {
           })
 
           .then(() => {
-            this.$refs.form.resetForm();
+            this.$refs.form.reset();
             alert("成功送出訂單");
           })
           .catch((err) => {

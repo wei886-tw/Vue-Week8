@@ -1,4 +1,5 @@
-let a = 2
-let b = a
-+a 
-console.log(b)
+function fn() {
+}
+
+fn.property = "cool";
+console.dir(fn);

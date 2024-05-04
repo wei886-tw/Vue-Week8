@@ -4,14 +4,14 @@
     <div class="container py-32">
       <div class="row g-16 mb-48" v-if="product">
         <div
-          class="col-2 d-flex flex-column">
+          class="col-lg-2 d-none d-lg-flex flex-lg-column">
           <div class="container pt-60">
-            <img :src="img" alt="多圖" style="width: 100%; height: 120px" v-for="(img, index) in product.imagesUrl" @click="changeImg(index)"
-            :key="img" class="mb-24" /> 
+            <img :src="img" alt="多圖" style="width: 100%; height: 120px" v-for="(img, index) in product.imagesUrl" @click="changeImg(index)" 
+            :key="img" class="mb-36 border border-4" /> 
           </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
           <img
             :src="product.imageUrl"
             alt="首圖"
@@ -19,7 +19,15 @@
           />
         </div>
 
-        <div class="col-4">
+        <div
+          class="col-12  d-lg-none d-sm-flex flex-sm-row ">
+          <div class="container pt-60">
+            <img :src="img" alt="多圖" style="width: 20%; " v-for="(img, index) in product.imagesUrl" @click="changeImg(index)"
+            :key="img" class="me-36 border border-4 " /> 
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
           <div
             class="container d-flex flex-column justify-content-between pt-80"
           >
@@ -120,7 +128,7 @@ export default {
     },
 
     changeImg(index) {
-      this.product.imageUrl = this.product.imagesUrl[index]
+      this.product.imageUrl = this.product.imagesUrl[index];
     },
   },
 
@@ -133,3 +141,4 @@ export default {
   },
 };
 </script>
+

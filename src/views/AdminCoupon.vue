@@ -3,45 +3,40 @@
   <div class="container-fluid px-0">
     <div class="container py-48">
       <div class="container d-flex justify-content-between mb-24">
-        <h2 class="fs-32">文章管理</h2>
-        <button type="button" class="btn btn-dark">
-          <router-link to="/newArticle" class="text-white"
-            >建立優惠券</router-link
-          >
+        <h2 class="fs-32">優惠券管理</h2>
+        <button type="button" class="btn btn-dark" @click="openModal('')">
+          建立優惠券
         </button>
       </div>
-      <table class="table mb-162">
+      <table class="table mb-16">
         <thead>
           <tr>
             <th scope="col">優惠券標題</th>
             <th scope="col">折價</th>
             <th scope="col">到期日</th>
-            <th scope="col">代碼</th>
             <th scope="col">是否啟用</th>
             <th scope="col">修改</th>
             <th scope="col">刪除</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="article in articles" :key="article.id">
-            <td>{{ article.title }}</td>
-            <td>{{ article.author }}</td>
-            <td>{{ article.author }}</td>
-            <td>{{ article.author }}</td>
-            <td>{{ article.author }}</td>
-            <td>{{ article.isPublic ? "是" : "否" }}</td>
+          <tr v-for="coupon in coupons" :key="coupon.id">
+            <td>{{ coupon.title }}</td>
+            <td>{{ coupon.percent }} 折</td>
             <td>
-              <button
-                class="btn btn-success"
-                @click="goAdviseArticle(article.id)"
-              >
-                <!-- <router-link :to="`/adviseArticle/${article.id}`"> </router-link> -->
-                修改文章
+              {{ new Date(coupon.due_date).getFullYear() }}/
+              {{ new Date(coupon.due_date).getMonth() }}/
+              {{ new Date(coupon.due_date).getDate() }}
+            </td>
+            <td>{{ coupon.is_enabled ? "是" : "否" }}</td>
+            <td>
+              <button class="btn btn-success" @click="adviseCoupon(coupon.id)">
+                修改優惠券
               </button>
             </td>
             <td>
-              <button class="btn btn-danger" @click="deleteArticle(article.id)">
-                刪除文章
+              <button class="btn btn-danger" @click="deleteCoupon(coupon.id)">
+                刪除優惠券
               </button>
             </td>
           </tr>
@@ -50,8 +45,8 @@
 
       <div class="container">
         <page-nation
-          :pagination="blogPagination"
-          :get-page-products="getPageArticle"
+          :pagination="couponPagination"
+          :get-page-products="getCoupons"
           class="d-flex justify-content-end"
         ></page-nation>
       </div>
@@ -72,75 +67,77 @@
           ></button>
         </div>
         <div class="modal-body">
-          <div class="form-group mb-16">
-            <label for="title" class="form-label">優惠券名稱</label>
-            <textarea
-              id="title"
-              v-model="title"
-              type="text"
-              class="form-control"
-              placeholder="請輸入優惠券名稱"
-            >
-            </textarea>
-          </div>
+          <form action="" ref="form">
+            <div class="form-group mb-16">
+              <label for="title" class="form-label">優惠券名稱</label>
+              <input
+                id="title"
+                v-model="title"
+                type="text"
+                class="form-control"
+                placeholder="請輸入優惠券名稱"
+              />
+            </div>
 
-          <div class="form-group mb-16">
-            <label for="percent" class="form-label">折扣</label>
-            <textarea
-              id="percent"
-              v-model="percent"
-              type="number"
-              class="form-control"
-              placeholder="請輸入折扣"
-            >
-            </textarea>
-          </div>
+            <div class="form-group mb-16">
+              <label for="percent" class="form-label">折扣</label>
+              <input
+                id="percent"
+                v-model="percent"
+                type="number"
+                class="form-control"
+                placeholder="請輸入折扣"
+              />
+            </div>
 
-          <div class="form-group mb-16">
-            <label for="due_date" class="form-label">到期日</label>
-            <textarea
-              id="due_date"
-              v-model="due_date"
-              type="text"
-              class="form-control"
-              placeholder="請輸入到期日，按照'年-月-日'格式"
-            >
-            </textarea>
-          </div>
+            <div class="form-group mb-16">
+              <label for="due_date" class="form-label">到期日</label>
+              <input
+                id="due_date"
+                v-model="date"
+                type="date"
+                class="form-control"
+                placeholder="請輸入到期日"
+                ref="date"
+              />
+            </div>
 
-          <div class="form-group mb-16">
-            <label for="code" class="form-label">優惠券代碼</label>
-            <textarea
-              id="code"
-              v-model="code"
-              type="text"
-              class="form-control"
-              placeholder="請輸入優惠券代碼"
-            >
-            </textarea>
-          </div>
+            <div class="form-group mb-16">
+              <label for="code" class="form-label">優惠券代碼</label>
+              <input
+                id="code"
+                v-model="code"
+                type="text"
+                class="form-control"
+                placeholder="請輸入優惠券代碼"
+              />
+            </div>
 
-          <div class="form-group mb-16">
-            <label for="is_enabled" class="form-label">是否啟用優惠券</label>
-            <textarea
-              id="is_enabled"
-              v-model="is_enabled"
-              type="number"
-              class="form-control"
-              placeholder=""
-            >
-            </textarea>
-          </div>
+            <div class="form-check form-switch mb-16">
+              <label for="is_enabled" class="form-check-label"
+                >是否啟用優惠券</label
+              >
+              <input
+                id="is_enabled"
+                v-model="is_enabled"
+                type="checkbox"
+                class="form-check-input"
+              />
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button
             type="button"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
+            @click="closeModal"
           >
-            Close
+            關閉
           </button>
-          <button type="button" class="btn btn-primary" @click="createCoupon">Save changes</button>
+          <button type="button" class="btn btn-primary" @click="createCoupon">
+            建立優惠券
+          </button>
         </div>
       </div>
     </div>
@@ -153,25 +150,34 @@
 
 <script>
 import AdminNavBar from "@/components/AdminNavBar.vue";
+import PageNation from "@/components/PageNation.vue";
 
 export default {
-  components: { AdminNavBar },
+  components: { AdminNavBar, PageNation },
   data() {
     return {
       api_path: import.meta.env.VITE_PATH,
       url: import.meta.env.VITE_API,
       title: "",
-      is_enabled: "",
+      is_enabled: true,
       percent: "",
       due_date: "",
       code: "",
+      myModal: "",
+      coupons: "",
+      couponPagination: "",
+      date: "",
     };
   },
 
   methods: {
     createCoupon() {
-      this.date = new Date(this.date).getTime();
-      this.is_enabled = parseInt(this.is_enabled)
+      this.due_date = parseInt(new Date(this.$refs.date.value).getTime());
+      if (this.is_enabled === true) {
+        this.is_enabled = 1;
+      } else {
+        this.is_enabled = 0;
+      }
       this.$http
         .post(`${this.url}/v2/api/${this.api_path}/admin/coupon`, {
           data: {
@@ -182,18 +188,68 @@ export default {
             code: this.code,
           },
         })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          alert("建立優惠券成功");
+          this.$refs.form.reset();
+          this.myModal.hide();
+          this.getCoupons(1);
         })
         .catch((err) => {
           console.log(err.response.data.message);
         });
     },
+
+    openModal() {
+      this.myModal.show();
+    },
+
+    closeModal() {
+      this.myModal.hide();
+    },
+
+    getCoupons(page) {
+      this.$http
+        .get(`${this.url}/v2/api/${this.api_path}/admin/coupons?page=${page}`)
+        .then((res) => {
+          this.coupons = res.data.coupons;
+          this.couponPagination = res.data.pagination;
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
+    },
+
+    adviseCoupon(id) {
+      this.$http
+        .put(`${this.url}/v2/api/${this.api_path}/admin/coupon/${id}`, {
+          data: {
+            title: this.title,
+            is_enabled: this.is_enabled,
+            percent: this.percent,
+            due_date: this.due_date,
+          },
+        })
+        .then(() => {
+          this.myModal.show();
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
+    },
+
+    deleteCoupon(id) {
+      this.$http
+        .delete(`${this.url}/v2/api/${this.api_path}/admin/coupon/${id}`)
+        .then(() => {
+          alert("已刪除優惠券");
+          this.getCoupons(1);
+        });
+    },
   },
 
   mounted() {
-    const myModal = new bootstrap.Modal(this.$refs.couponModal);
-    myModal.show();
+    this.myModal = new bootstrap.Modal(this.$refs.couponModal);
+    this.getCoupons(1);
   },
 };
 </script>
