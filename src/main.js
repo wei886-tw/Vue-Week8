@@ -1,15 +1,12 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
-
-import * as Vue from 'vue'; // in Vue 3
+import * as Vue from 'vue'; 
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
 import App from './App.vue';
 import router from './router';
-
-
 
 import {
   Field, Form, ErrorMessage, defineRule, configure
@@ -26,11 +23,6 @@ Object.keys(AllRules).forEach(rule => {
   defineRule(rule, AllRules[ rule ]);
 });
 
-// 使用 Object.keys 將 AllRules 轉為陣列並使用 forEach 迴圈將驗證規則加入 VeeValidate
-Object.keys(AllRules).forEach(rule => {
-  defineRule(rule, AllRules[rule])
-})
-
 // 將當前 VeeValidate 的語系設定為繁體中文
 configure({
   generateMessage: localize({ zh_TW: zhTW }),
@@ -40,18 +32,15 @@ configure({
 // 設定預設語系
 setLocale('zh_TW')
 
-
 import '../src/assets/bootstrap/scss/bootstrap.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const app = createApp(App);
-
 app.use(createPinia());
 app.use(router);
 app.use(VueAxios, axios);
 app.component('VField', Field);
 app.component('VForm', Form);
 app.component('ErrorMessage', ErrorMessage);
-
 
 app.mount('#app');

@@ -4,7 +4,7 @@
     <div class="container py-48">
       <div class="container d-flex justify-content-between mb-24">
         <h2 class="fs-32">優惠券管理</h2>
-        <button type="button" class="btn btn-dark" @click="openModal('')">
+        <button type="button" class="btn btn-dark" @click="openModal">
           建立優惠券
         </button>
       </div>
@@ -67,16 +67,19 @@
           ></button>
         </div>
         <div class="modal-body">
-          <form action="" ref="form">
+          <v-form v-slot="{errors}" action="" ref="form" >
             <div class="form-group mb-16">
               <label for="title" class="form-label">優惠券名稱</label>
-              <input
-                id="title"
-                v-model="title"
-                type="text"
-                class="form-control"
-                placeholder="請輸入優惠券名稱"
-              />
+              <input id="title" v-model="title" type="text" class="form-control"
+              placeholder="請輸入優惠券名稱" 
+              rules="required"
+              name="優惠券名稱"
+              :class="{ 'is-invalid': errors['優惠券名稱'] }"
+              >
+              <error-message
+                name="優惠券名稱"
+                class="invalid-feedback"
+              ></error-message>
             </div>
 
             <div class="form-group mb-16">
@@ -88,18 +91,18 @@
                 class="form-control"
                 placeholder="請輸入折扣"
               />
+              <!-- <error-message>
+                name="折扣" class="invalid-feedback"
+              </error-message> -->
             </div>
 
             <div class="form-group mb-16">
               <label for="due_date" class="form-label">到期日</label>
-              <input
-                id="due_date"
-                v-model="date"
-                type="date"
-                class="form-control"
-                placeholder="請輸入到期日"
-                ref="date"
-              />
+              <input id="due_date" v-model="date" type="date" class="form-control"
+              placeholder="請輸入到期日" ref="date" >
+              <!-- <error-message>
+                name="折扣" class="invalid-feedback"
+              </error-message> -->
             </div>
 
             <div class="form-group mb-16">
@@ -110,7 +113,7 @@
                 type="text"
                 class="form-control"
                 placeholder="請輸入優惠券代碼"
-              />
+              >
             </div>
 
             <div class="form-check form-switch mb-16">
@@ -124,7 +127,7 @@
                 class="form-check-input"
               />
             </div>
-          </form>
+          </v-form>
         </div>
         <div class="modal-footer">
           <button
@@ -148,7 +151,7 @@
   </div>
 </template>
 
-<script>
+<script type="module">
 import AdminNavBar from "@/components/AdminNavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 

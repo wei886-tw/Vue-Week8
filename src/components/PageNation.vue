@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ["pagination", "getPageProducts", "ordersPagination", "blogPagination"],
+  props: ["pagination", "getPageProducts", "ordersPagination", "blogPagination", "getCoupons", "couponPagination"],
 
   data() {
     return {

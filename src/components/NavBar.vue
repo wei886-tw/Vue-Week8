@@ -1,7 +1,6 @@
-<template>
-  <!-- <pre :cart-list="cartList">{{ cartList }}</pre> -->
+<template :cart-list="cartList">
   <div class="container-fluid px-0">
-    <nav class="navbar navbar-expand-md bg-footer fixed-top  py-8">
+    <nav class="navbar navbar-expand-md bg-footer fixed-top py-8">
       <div class="container">
         <router-link
           to="/"
@@ -26,7 +25,7 @@
                 to="/about"
                 class="fs-24 text-dark noto-serif nav-link router-link-active"
               >
-                關於
+                品牌故事
               </router-link>
             </li>
             <li class="nav-item">
@@ -45,7 +44,7 @@
             </li>
           </ul>
           <ul class="gap-md-24 list-unstyled">
-            <li class="nav-item d-flex position-relative ">
+            <li class="nav-item d-flex position-relative">
               <RouterLink
                 to="/userCart"
                 class="fs-24 noto-serif text-dark nav-link router-link-active"
@@ -54,7 +53,8 @@
                   <span
                     class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger fs-12"
                   >
-                    <pre :cart-list="cartList">{{ cartList }}</pre>
+                    <p>
+                      {{}} </p>
                   </span>
                 </i>
               </RouterLink>
@@ -65,40 +65,28 @@
     </nav>
   </div>
 
-  <div style="height: 88px;"></div> 
+  <div style="height: 88px"></div>
 </template>
 
 <script>
 export default {
-  prop: ["cartList"],
+  props: ["cartList"],
+
+  data() {
+    return {
+
+    };
+  },
+
+  methods: {
+    getCartList() {
+
+    },
+  },
 
   mounted() {
-    console.log(this.cartList);
-  },
+    console.log(this.cartList)
+  }
 };
 </script>
 
-<style >
-.tc-serif {
-  font-family: "Noto Serif TC" !important;
-  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap'");
-}
-
-.noto-serif {
-  font-family: "Noto Serif TC", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.noto-sans {
-  font-family: "Noto Sans TC", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-}
-
-.tc-sans {
-  font-family: "Noto Sans TC" !important;
-  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap");
-}
-</style>

@@ -45,6 +45,13 @@
               >回到前台
             </RouterLink>
           </li>
+
+          <li class="nav-item d-flex justify-content-end">
+            <router-link to="/adminLogin" class="fs-24 noto-serif text-dark"
+              >登入
+            </router-link>
+          </li>
+
           <li class="nav-item d-flex justify-content-end">
             <a class="fs-24 noto-serif text-dark" @click="logOut()">登出 </a>
           </li>

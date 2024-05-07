@@ -35,9 +35,19 @@ const router = createRouter({
       component: () => import('../views/UserCart.vue')
     },
     {
-      path: '/userPayment',
+      path: '/userOrder',
+      name: 'userOrder',
+      component: () => import('../views/UserOrder.vue')
+    },
+    {
+      path: '/userPayment/:id',
       name: 'userPayment',
-      component: () => import('../views/UserPayment.vue')
+      component: () => import('../views/UserOrder.vue'),
+      // props: (route) => {
+      //   return {
+      //     id: route.params.id,
+      //   };
+      // }
     },
     {
       path: '/userBlog',
