@@ -214,9 +214,7 @@ export default {
 
           .then((res) => {
             this.orderId = res.data.orderId;
-            console.log(this.orderId)
-            // this.$router.push(`/userPayment${this.orderId}`)
-            alert("success")
+            alert("成功送出訂單")
             this.$refs.form.reset();
             this.data = res.data;
             this.total = res.data.total;
