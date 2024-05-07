@@ -192,33 +192,6 @@ export default {
       window.scrollTo(0, 0);
       this.$emit("emit-cart-list", this.cartList)
     },
-
-    // submitOrder() {
-    //   if (this.cartList.carts.length === 0) {
-    //     alert("目前購物車是空的，請加入產品！");
-    //   } else {
-    //     this.$http
-    //       .post(`${this.url}/v2/api/${this.api_path}/order`, {
-    //         data: {
-    //           user: {
-    //             name: this.form.user.name,
-    //             email: this.form.user.email,
-    //             tel: this.form.user.tel,
-    //             address: this.form.user.address,
-    //           },
-    //           message: this.form.message,
-    //         },
-    //       })
-
-    //       .then(() => {
-    //         this.$refs.form.reset();
-    //         alert("成功送出訂單");
-    //       })
-    //       .catch((err) => {
-    //         console.log(err.message);
-    //       });
-    //   }
-    // },
   },
 
   mounted() {

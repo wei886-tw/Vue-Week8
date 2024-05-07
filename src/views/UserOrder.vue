@@ -1,10 +1,10 @@
 <template>
   <nav-bar-vue></nav-bar-vue>
   <div class="container-fluid px-0">
-    <h1 class="fs-24 fs-md-40 mb-32 text-center pt-32">購物車</h1>
+    <pre>{{form}}</pre>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 mx-auto">
+        <div class="col-md-6 col-lg-12 mx-auto">
           <ol
             class="pay-list mt-16 d-flex justify-content-between list-unstyled position-relative"
           >
@@ -188,7 +188,7 @@ export default {
         .then((res) => {
           this.cartProducts = res.data.data.carts;
           this.cartList = res.data.data;
-          console.log(this.cartProducts)
+
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -196,6 +196,7 @@ export default {
     },
 
     submitOrder() {
+      console.log(123)
       if (this.cartList.carts.length === 0) {
         alert("目前購物車是空的，請加入產品！");
       } else {
@@ -215,6 +216,7 @@ export default {
           .then((res) => {
             this.orderId = res.data.orderId;
             alert("成功送出訂單")
+            this.$router.push(`/userPayment/$`)
             this.$refs.form.reset();
             this.data = res.data;
             this.total = res.data.total;

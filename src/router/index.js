@@ -38,16 +38,22 @@ const router = createRouter({
       path: '/userOrder',
       name: 'userOrder',
       component: () => import('../views/UserOrder.vue'),
-      // props: (route) => {
-      //   return {
-      //     id: route.params.id,
-      //   };
-      // }
     },
     {
-      path: '/userPayment/:id',
+      path: '/userPayment',
       name: 'userPayment',
-      component: () => import('../views/UserOrder.vue'),
+      component: () => import('../views/UserPayment.vue'),
+      props: (route) => {
+        return {
+          id: route.params.id,
+        };
+      }
+      
+    },
+    {
+      path: '/userOrderResult',
+      name: 'userOrderResult',
+      component: () => import('../views/UserOrderResult.vue'),
       
     },
     {
