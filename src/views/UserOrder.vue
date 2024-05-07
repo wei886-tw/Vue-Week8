@@ -215,7 +215,7 @@ export default {
           .then((res) => {
             this.orderId = res.data.orderId;
             console.log(this.orderId)
-            this.$router.push(`/userPayment${this.orderId}`)
+            // this.$router.push(`/userPayment${this.orderId}`)
             alert("success")
             this.$refs.form.reset();
             this.data = res.data;
