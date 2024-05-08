@@ -6,10 +6,16 @@
     <div class="container px-0">
       <div class="row">
         <div class="col-2">
-          <ul class="list-unstyled mt-60 gy-16 ">
-            <li class="fs-24 mb-16 "><a href="" class="text-dark">全部文章</a></li>
-            <li class="fs-24 mb-16 " ><a href="" class="text-dark">最新消息</a></li>
-            <li class="fs-24 mb-16 "><a href="" class="text-dark">活動講座</a></li>
+          <ul class="list-unstyled mt-60 gy-16">
+            <li class="fs-24 mb-16">
+              <a href="" class="text-dark special">全部文章</a>
+            </li>
+            <li class="fs-24 mb-16">
+              <a href="" class="text-dark special">最新消息</a>
+            </li>
+            <li class="fs-24 mb-16">
+              <a href="" class="text-dark special">活動講座</a>
+            </li>
             <!-- <li class="fs-24 mb-16">專欄文章</li> -->
           </ul>
         </div>
@@ -21,21 +27,22 @@
           >
             <div class="mb-16" v-for="article in articles" :key="article.id">
               <li class="">
-                <RouterLink :to="`/userArticle/:${article.id}`"/>
-                  <div class="mb-8" style="">
+                <router-link :to="`/userArticle/:${article.id}`">
+                  <div class="mb-8 " style="">
                     <img
                       :src="article.image"
                       alt="文章圖片"
                       style="height: 240px; object-fit: cover"
-                    >
+                    />
                   </div>
-                  <h3 class="fw-bold">
+                  <h3 class="fw-bold text-dark">
                     {{ article.title }}
                   </h3>
-                  <h4 class="liu-over">作者： {{ article.author }}</h4>
-                  <p class="overflow-hidden w-100" style="height: 120px">
+                  <h4 class="text-dark">作者： {{ article.author }}</h4>
+                  <p class="overflow-hidden text-dark w-100" style="height: 120px">
                     {{ article.description }}
                   </p>
+                </router-link>
               </li>
             </div>
           </ul>
@@ -48,7 +55,7 @@
     </div>
   </div>
   <div class="container">
-      <RouterView/>
+    <RouterView />
   </div>
 </template>
 
@@ -89,8 +96,8 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-a:hover{
+<style lang="scss" scoped>
+a.special:hover {
   text-decoration: underline black;
 }
 
