@@ -40,10 +40,11 @@ const router = createRouter({
       component: () => import('../views/UserOrder.vue'),
     },
     {
-      path: '/userPayment',
+      path: '/userPayment/:id',
       name: 'userPayment',
       component: () => import('../views/UserPayment.vue'),
       props: (route) => {
+        console.log(route.params.id)
         return {
           id: route.params.id,
         };

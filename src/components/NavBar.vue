@@ -1,4 +1,4 @@
-<template :cart-list="cartList">
+<template>
   <div class="container-fluid px-0">
     <nav class="navbar navbar-expand-md bg-footer fixed-top py-8">
       <div class="container">
@@ -44,6 +44,8 @@
             </li>
           </ul>
           <ul class="gap-md-24 list-unstyled">
+            <p @click="test">1</p>
+
             <li class="nav-item d-flex position-relative">
               <RouterLink
                 to="/userCart"
@@ -53,8 +55,9 @@
                   <span
                     class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger fs-12"
                   >
-                    <p>
-                      {{}} </p>
+                    <p>1</p>
+
+                    <!-- {{cartProducts.length}} -->
                   </span>
                 </i>
               </RouterLink>
@@ -69,24 +72,23 @@
 </template>
 
 <script>
+import productStore from '../store/productStore.js'
+
 export default {
-  props: ["cartList"],
+  props: ["cartProducts"],
 
   data() {
     return {
-
+      api_path: import.meta.env.VITE_PATH,
+      url: import.meta.env.VITE_API,
     };
   },
 
   methods: {
-    getCartList() {
-
+    test() {
+      console.log(this.cartProducts);
     },
   },
-
-  mounted() {
-    console.log(this.cartList)
-  }
 };
 </script>
 

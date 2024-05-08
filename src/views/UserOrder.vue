@@ -1,10 +1,9 @@
 <template>
   <nav-bar-vue></nav-bar-vue>
-  <div class="container-fluid px-0">
-    <pre>{{form}}</pre>
+  <div class="container-fluid px-0 pt-16">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-lg-12 mx-auto">
+        <div class="col-md-6 col-lg-8 mx-auto">
           <ol
             class="pay-list mt-16 d-flex justify-content-between list-unstyled position-relative"
           >
@@ -157,7 +156,6 @@ export default {
     return {
       api_path: import.meta.env.VITE_PATH,
       url: import.meta.env.VITE_API,
-      selectValue: "",
       cartProducts: [],
       cartList: {},
       form: {
@@ -196,7 +194,6 @@ export default {
     },
 
     submitOrder() {
-      console.log(123)
       if (this.cartList.carts.length === 0) {
         alert("目前購物車是空的，請加入產品！");
       } else {
@@ -209,15 +206,15 @@ export default {
                 tel: this.form.user.tel,
                 address: this.form.user.address,
               },
-              message: this.form.message,
-            },
+              // message: this.form.message,
+            }
           })
 
           .then((res) => {
             this.orderId = res.data.orderId;
             alert("成功送出訂單")
-            this.$router.push(`/userPayment/$`)
-            this.$refs.form.reset();
+            // this.$router.go(`/userPayment`)
+            // this.$refs.form.reset();
             this.data = res.data;
             this.total = res.data.total;
             this.create_at = res.create_at;
@@ -260,12 +257,12 @@ export default {
 
 .pay-list::before {
   content: "";
-  width: 83%;
+  width: 90%;
   height: 1px;
   background-color: black;
   transform: translate(-50%, -50%);
   left: 50%;
-  top: 30%;
+  top: 50%;
   position: absolute;
   z-index: 1;
 }

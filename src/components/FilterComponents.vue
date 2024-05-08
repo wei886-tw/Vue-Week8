@@ -4,12 +4,16 @@
       <div class="btn-group mb-32" v-on="filter">
         <a
           href="#"
-          class="btn btn-secondary active btn-lg"
+          class="btn btn-secondary btn-lg"
           aria-current="page"
           @click="filter('所有產品')"
+          :class="{ 'btn-secondary': isActive }"
           >所有產品</a
         >
-        <a href="#" class="btn btn-footer btn-lg" @click="filter('筆電')"
+        <a
+          href="#"
+          class="btn btn-footer btn-lg"
+          @click="filter('筆電')"
           >筆電</a
         >
         <a href="#" class="btn btn-footer btn-lg" @click="filter('手機')"
@@ -31,6 +35,7 @@ export default {
       filterItem: [],
       api: import.meta.env.VITE_API,
       api_path: import.meta.env.VITE_PATH,
+      isActive: false,
     };
   },
 
@@ -42,6 +47,7 @@ export default {
         this.filterItem = this.allItem.filter(
           (product) => product.category === category
         );
+        this.isActive = true;
       }
       this.$emit("emitFilterItem", this.filterItem);
     },

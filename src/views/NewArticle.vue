@@ -1,5 +1,5 @@
 <template>
-  <admin-nav-bar></admin-nav-bar>
+  <AdminNavBar/>
   <div class="container-fluid">
     <div class="container py-48">
       <form ref="form">
@@ -73,7 +73,7 @@
             >
             <textarea
               v-model="description"
-              class="rounded mb-24 form-check-input"
+              class="rounded mb-24 form-check-input "
               style="width: 100%; height: 120px"
               placeholder="請填入 100 字內描述"
               name="description"
@@ -85,7 +85,7 @@
             <textarea
               type="text"
               v-model="content"
-              class="rounded mb-24 form-check-input"
+              class="rounded mb-24 form-check-input  "
               style="width: 100%; height: 240px"
               placeholder="請輸入文章內容"
               name="content"
@@ -97,7 +97,7 @@
         <div class="card mb-32" style="width: 240px">
           <img :src="imageUrl" class="card-img-top" />
           <div class="card-body">
-            <upload-image-modal v-on:emit-imgUrl="getUrl"></upload-image-modal>
+            <UploadImageModal v-on:emit-imgUrl="getUrl"/>
           </div>
         </div>
         <div class="row">
@@ -185,3 +185,10 @@ export default {
   },
 };
 </script>
+
+<style lang="css" scoped>
+  .new-line{
+    white-space: pre-wrap;
+  }
+
+</style>

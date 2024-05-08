@@ -32,8 +32,8 @@
             class="container d-flex flex-column justify-content-between pt-80"
           >
             <h1 class="fs-24 fs-lg-48 fw-bold">{{ product.title }}</h1>
-            <p class="mb-16">{{ product.description }}</p>
-            <p class="mb-16">{{ product.content }}</p>
+            <p class="mb-16 new-line">{{ product.description }}</p>
+            <p class="mb-16 new-line">{{ product.content }}</p>
             <div class="container d-flex px-0 mb-16">
               <p class="fs-lg-20 text-danger me-36">
                 特價： {{ product.price * qty }}
@@ -142,3 +142,9 @@ export default {
 };
 </script>
 
+
+<style lang="css" scoped>
+  .new-line{
+    white-space:pre-wrap ;
+  }
+</style>

@@ -161,7 +161,7 @@ export default {
 
 .pay-list::before {
   content: "";
-  width: 90%;
+  width: 87%;
   height: 1px;
   background-color: black;
   transform: translate(-50%, -50%);

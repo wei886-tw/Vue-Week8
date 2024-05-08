@@ -1,5 +1,5 @@
 <template>
-  <nav-bar :cart-list="cartList" ></nav-bar>
+  <nav-bar :cartProducts="cartProducts"></nav-bar>
   <div class="container-fluid">
     <div class="container py-48">
       <h2 class="text-center py-60 fs-24 fs-lg-32">購物車列表</h2>
@@ -7,13 +7,13 @@
         <table class="table table-responsive">
           <thead>
             <tr>
-              <th scope="col"  class="fs-md-24">品名</th>
-              <th scope="col"  class="fs-md-24">圖片</th>
-              <th scope="col"  class="fs-md-24">數量</th>
+              <th scope="col" class="fs-md-24">品名</th>
+              <th scope="col" class="fs-md-24">圖片</th>
+              <th scope="col" class="fs-md-24">數量</th>
               <th scope="col" class="fs-md-24">價格</th>
             </tr>
           </thead>
-          <tbody >
+          <tbody>
             <tr v-for="product in cartProducts" :key="product.id">
               <td class="fs-md-24 align-middle">{{ product.product.title }}</td>
               <td class="align-middle">
@@ -23,7 +23,7 @@
                   style="height: 100px; weight: 100px"
                 />
               </td>
-              <td class="align-middle ">
+              <td class="align-middle">
                 <button
                   class="btn d-flex d-md-inline"
                   @click="reviseQty(product.product.id, -1)"
@@ -45,25 +45,6 @@
                   style="width: 100px; height: 36px"
                   v-model="product.qty"
                 />
-                <!-- <select
-                  style="width: 100px; height: 36px"
-                  id="select"
-                  ref="selectValue"
-                  @change="
-                    reviseQty(product.product.id, this.$refs.selectValue.value)
-                  "
-                >
-                  <option value="product.qty" selected readonly>
-                    {{ product.qty }}
-                  </option>
-                  <option
-                    v-for="n in 10"
-                    :key="n"
-                    placeholder="product.qty"
-                  >
-                    {{ n }}
-                  </option>
-                </select> -->
                 <button
                   class="btn d-flex d-md-inline"
                   @click="reviseQty(product.product.id, 1)"
@@ -74,14 +55,6 @@
               <td class="fs-md-24 align-middle">
                 {{ product.final_total }}
               </td>
-              <!-- <td>
-                <button
-                  class="btn btn-outline-danger"
-                  @click="delCartItem(product.id)"
-                >
-                  X
-                </button>
-              </td> -->
             </tr>
           </tbody>
           <tfoot>
@@ -91,13 +64,20 @@
             <td class="fs-md-24 pt-32">
               <div class="container d-flex justify-content-between">
                 <p>原價:</p>
-                <p>${{ parseInt(cartList.final_total) }}</p> 
+                <p>${{ cartList.final_total }}</p>
               </div>
-              <div class="container d-flex justify-content-between" v-on:final-total="getFinalTotal" >
+              <div
+                class="container d-flex justify-content-between"
+                v-on:final-total="getFinalTotal"
+              >
                 <p>折扣:</p>
                 <p>${{}}</p>
               </div>
-              <button type="button" class="btn btn-dark w-100 mb-60" @click="enterPayment">
+              <button
+                type="button"
+                class="btn btn-dark w-100 mb-60"
+                @click="enterPayment"
+              >
                 進入付款頁面
               </button>
             </td>
@@ -117,7 +97,7 @@ import NavBar from "../components/NavBar.vue";
 import PageFooter from "../components/PageFooter.vue";
 
 export default {
-  props: ['finalTotal'],
+  props: ["finalTotal"],
   data() {
     return {
       api_path: import.meta.env.VITE_PATH,
@@ -138,8 +118,7 @@ export default {
     };
   },
 
-
-  components: { NavBar, PageFooter},
+  components: { NavBar, PageFooter },
 
   methods: {
     getCartProducts() {
@@ -148,7 +127,6 @@ export default {
         .then((res) => {
           this.cartProducts = res.data.data.carts;
           this.cartList = res.data.data;
-          console.log("cartList:", this.cartList.carts)
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -169,7 +147,6 @@ export default {
         })
         .catch((err) => {
           console.log(err.response.data.message);
-          console.log(this.$refs.selectValue);
         });
     },
 
@@ -185,12 +162,10 @@ export default {
         });
     },
 
-
-
     enterPayment() {
       this.$router.push("/userOrder");
       window.scrollTo(0, 0);
-      this.$emit("emit-cart-list", this.cartList)
+      this.$emit("emit-cart-list", this.cartList);
     },
   },
 
