@@ -183,12 +183,9 @@ export default {
         });
     },
   },
+
+  mounted() {
+    const bootstrap.Modal();
+  }
 };
 </script>
-
-<style lang="css" scoped>
-  .new-line{
-    white-space: pre-wrap;
-  }
-
-</style>

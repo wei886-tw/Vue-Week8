@@ -2,7 +2,7 @@
   <!-- Button trigger modal -->
   <button
     type="button"
-    class="btn btn-primary w-100"
+    class="btn btn-gray w-100"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
     ref="btn"
@@ -133,7 +133,7 @@ export default {
     );
     this.$http.defaults.headers.common.Authorization = token;
     this.checkAdmin();
-    // this.myModal = new bootstrap.Modal(this.$refs.uploadImageModal)
+    this.myModal = new bootstrap.Modal(this.$refs.uploadImageModal)
   },
 };
 </script>

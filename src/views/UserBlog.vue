@@ -14,9 +14,12 @@
               <a href="" class="text-dark special">最新消息</a>
             </li>
             <li class="fs-24 mb-16">
-              <a href="" class="text-dark special">活動講座</a>
+              <a href="" class="text-dark special">本站獨家</a>
             </li>
-            <!-- <li class="fs-24 mb-16">專欄文章</li> -->
+            <li class="fs-24 mb-16">
+              <a href="" class="text-dark special">活動消息</a>
+            </li>
+
           </ul>
         </div>
 
@@ -27,7 +30,7 @@
           >
             <div class="mb-16" v-for="article in articles" :key="article.id">
               <li class="">
-                <router-link :to="`/userArticle/:${article.id}`">
+                <router-link :to="`/userArticle/${article.id}`">
                   <div class="mb-8 " style="">
                     <img
                       :src="article.image"
@@ -38,7 +41,7 @@
                   <h3 class="fw-bold text-dark">
                     {{ article.title }}
                   </h3>
-                  <h4 class="text-dark">作者： {{ article.author }}</h4>
+                  <h4 style="color: #7B7B7B;">作者： {{ article.author }}</h4>
                   <p class="overflow-hidden text-dark w-100" style="height: 120px">
                     {{ article.description }}
                   </p>
