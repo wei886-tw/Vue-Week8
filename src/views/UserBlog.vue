@@ -3,48 +3,73 @@
     <NavBar />
   </div>
   <div class="container-fluid px-0">
-    <div class="container px-0">
+    <div class="container">
       <div class="row">
-        <div class="col-2">
-          <ul class="list-unstyled mt-60 gy-16">
-            <li class="fs-24 mb-16">
-              <a href="" class="text-dark special">全部文章</a>
+        <div class="col-2 d-none d-lg-block">
+          <ul class="list-unstyled mt-128 gy-16">
+            <li class="fs-lg-24 mb-16">
+              <a href="" class="text-dark a-hover">全部文章</a>
             </li>
-            <li class="fs-24 mb-16">
-              <a href="" class="text-dark special">最新消息</a>
+            <li class="fs-lg-24 mb-16">
+              <a href="" class="text-dark a-hover">最新消息</a>
             </li>
-            <li class="fs-24 mb-16">
-              <a href="" class="text-dark special">本站獨家</a>
+            <li class="fs-lg-24 mb-16">
+              <a href="" class="text-dark a-hover">本站獨家</a>
             </li>
-            <li class="fs-24 mb-16">
-              <a href="" class="text-dark special">活動消息</a>
+            <li class="fs-lg-24 mb-16">
+              <a href="" class="text-dark a-hover">活動消息</a>
             </li>
-
           </ul>
         </div>
-
-        <div class="col-10">
+        
+        <div class="col-lg-10">
           <h3 class="fs-32 py-24 text-start">全部文章</h3>
+          <hr>
           <ul
-            class="list-unstyled d-flex justify-content-between row row-cols-2"
+            class="list-unstyled gy-16 d-flex d-block d-lg-none justify-content-between"
           >
-            <div class="mb-16" v-for="article in articles" :key="article.id">
+            <li class="fs-16 fs-md-24 mb-16">
+              <a href="" class="text-dark a-hover">全部文章</a>
+            </li>
+            <li class="fs-16 fs-md-24 mb-16">
+              <a href="" class="text-dark a-hover">最新消息</a>
+            </li>
+            <li class="fs-16 fs-md-24 mb-16">
+              <a href="" class="text-dark a-hover">本站獨家</a>
+            </li>
+            <li class="fs-16 fs-md-24 mb-16">
+              <a href="" class="text-dark a-hover">活動消息</a>
+            </li>
+            <hr />
+          </ul>
+          <ul
+            class="list-unstyled d-flex justify-content-between row row-cols-1  row-cols-md-2 row-sm-cols-1 "
+          >
+            <div
+              class="mb-16 d-flex flex-column justify-content-between"
+              v-for="article in articles"
+              :key="article.id"
+            >
               <li class="">
                 <router-link :to="`/userArticle/${article.id}`">
-                  <div class="mb-8 " style="">
+                  <div class="mb-8 d-flex flex-column justify-content-between">
                     <img
                       :src="article.image"
                       alt="文章圖片"
-                      style="height: 240px; object-fit: cover"
+                      style="height: 240px; width: 100%; object-fit: cover"
+                      class="mb-16"
                     />
+                    <h3 class="fw-bold text-dark">
+                      {{ article.title }}
+                    </h3>
+                    <h4 style="color: #7b7b7b">作者： {{ article.author }}</h4>
+                    <p
+                      class="overflow-hidden text-dark w-100"
+                      style="height: 120px"
+                    >
+                      {{ article.description }}
+                    </p>
                   </div>
-                  <h3 class="fw-bold text-dark">
-                    {{ article.title }}
-                  </h3>
-                  <h4 style="color: #7B7B7B;">作者： {{ article.author }}</h4>
-                  <p class="overflow-hidden text-dark w-100" style="height: 120px">
-                    {{ article.description }}
-                  </p>
                 </router-link>
               </li>
             </div>
@@ -103,6 +128,5 @@ export default {
 a.special:hover {
   text-decoration: underline black;
 }
-
 </style>>
 

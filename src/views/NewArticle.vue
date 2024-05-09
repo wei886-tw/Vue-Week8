@@ -1,5 +1,5 @@
 <template>
-  <AdminNavBar/>
+  <AdminNavBar />
   <div class="container-fluid">
     <div class="container py-48">
       <form ref="form">
@@ -44,36 +44,39 @@
               placeholder="請填入文章分類"
               name="articleCategory"
               id="articleCategory"
-              v-model="articleCategory"
+              v-model="tag"
             />
             <p>
               點擊帶入文章分類：
-              <button class="btn btn-gray me-8">最新消息</button>
-              <button class="btn btn-gray me-8">活動講座</button>
-              <button class="btn btn-gray me-8">專欄講座</button>
+              <button
+                class="btn btn-gray me-8"
+                @click.prevent="addTag('最新消息')"
+              >
+                最新消息
+              </button>
+              <button
+                class="btn btn-gray me-8"
+                @click.prevent="addTag('活動講座')"
+              >
+                活動講座
+              </button>
+              <button
+                class="btn btn-gray me-8"
+                @click.prevent="addTag('本站獨家')"
+              >
+                本站獨家
+              </button>
             </p>
           </div>
         </div>
         <div class="row mb-24">
           <div class="col">
-            <label class="fs-24" for="tag"
-              >文章標籤<span class="text-danger">*</span></label
-            >
-            <input
-              type="text"
-              v-model="tag"
-              class="rounded mb-24 form-check-input"
-              name="tag"
-              id="tag"
-              style="width: 100%; height: 40px"
-              placeholder="請填入文章標籤"
-            />
             <label class="fs-24" for="description"
               >文章簡述<span class="text-danger">*</span></label
             >
             <textarea
               v-model="description"
-              class="rounded mb-24 form-check-input "
+              class="rounded mb-24 form-check-input"
               style="width: 100%; height: 120px"
               placeholder="請填入 100 字內描述"
               name="description"
@@ -85,7 +88,7 @@
             <textarea
               type="text"
               v-model="content"
-              class="rounded mb-24 form-check-input  "
+              class="rounded mb-24 form-check-input"
               style="width: 100%; height: 240px"
               placeholder="請輸入文章內容"
               name="content"
@@ -97,7 +100,7 @@
         <div class="card mb-32" style="width: 240px">
           <img :src="imageUrl" class="card-img-top" />
           <div class="card-body">
-            <UploadImageModal v-on:emit-imgUrl="getUrl"/>
+            <UploadImageModal v-on:emit-imgUrl="getUrl" />
           </div>
         </div>
         <div class="row">
@@ -116,7 +119,9 @@
             </div>
           </div>
           <div class="col-6 d-flex justify-content-end">
-            <button class="btn btn-dark" @click.prevent="postArticle">送出文章</button>
+            <button class="btn btn-footer" @click.prevent="postArticle">
+              送出文章
+            </button>
           </div>
         </div>
       </form>
@@ -130,7 +135,7 @@ import UploadImageModal from "@/components/UploadImageModal.vue";
 
 export default {
   components: { AdminNavBar, UploadImageModal },
-
+  emits: { emitImgUrl: null },
   data() {
     return {
       myModal: null,
@@ -173,19 +178,34 @@ export default {
         })
         .then(() => {
           alert("文章建立成功");
-          this.$refs.form.reset()
-          this.imageUrl = ''
-          this.$router.push('/adminBlog')
+          this.$refs.form.reset();
+          this.imageUrl = "";
+          this.$router.push("/adminBlog");
         })
 
         .catch((err) => {
           console.log(err.response.data.message);
         });
     },
+
+    addTag(text) {
+      this.tag.push(text);
+      console.log(this.tag);
+    },
+
+    emitImg() {
+      this.$emit("emit-imgUrl", this.imageUrl);
+    },
   },
 
-  mounted() {
-
-  }
+  mounted() {},
 };
 </script>
+
+<style lang="scss" scoped>
+input[type="checkbox"] {
+  color: black;
+  background-color: #f3f2ee;
+  border-color: #f3f2ee;
+}
+</style>

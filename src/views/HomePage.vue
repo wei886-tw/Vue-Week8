@@ -74,7 +74,7 @@
             如果您需要一台便攜輕薄的筆記型電腦來辦公或者學習，我們也有各種規格和型號的二手筆記型電腦可供選擇。無論您是需要一台性能強悍的遊戲本還是一台適合日常辦公的輕薄本，我們都能滿足您的需求。
           </p>
           <div class="container mt-auto px-0">
-            <button class="btn btn-gray fs-16 fs-md-24 tc-sans w-100">
+            <button class="btn btn-footer fs-16 fs-md-24 tc-sans w-100">
               前往電腦賣場
               <router-link class=""></router-link>
             </button>
@@ -102,7 +102,7 @@
           </p>
           <div class="container mt-auto px-0">
             <button
-              class="btn btn-gray fs-16 fs-md-24 tc-sans mt-auto w-100 "
+              class="btn btn-footer fs-16 fs-md-24 tc-sans mt-auto w-100 "
             >
               前往手機賣場
               <router-link class=""></router-link>
@@ -140,7 +140,7 @@
           </p>
           <div class="container mt-auto px-0">
             <button
-              class="btn btn-gray fs-16 fs-md-24 tc-sans w-100"
+              class="btn btn-footer fs-16 fs-md-24 tc-sans w-100"
             >
               前往平板賣場
               <router-link class=""></router-link>
@@ -258,7 +258,7 @@ export default {
   border: black;
 }
 
-.btn-gray:hover{
+.btn-footer:hover{
   background-color: black;
   color: white;
 }
