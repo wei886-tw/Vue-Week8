@@ -185,7 +185,7 @@ export default {
   },
 
   mounted() {
-    const bootstrap.Modal();
+
   }
 };
 </script>
