@@ -23,35 +23,36 @@
             <li class="nav-item">
               <router-link
                 to="/about"
-                class="fs-24 text-dark noto-serif nav-link router-link-active"
+                class="fs-24 text-dark noto-serif nav-link router-link-active underline"
               >
                 品牌故事
               </router-link>
             </li>
             <li class="nav-item">
-              <RouterLink
+              <router-link
                 to="/userBlog"
-                class="fs-24 noto-serif text-dark nav-link router-link-active"
+                class="fs-24 noto-serif text-dark nav-link router-link-active underline"
                 >最新消息
-              </RouterLink>
+              </router-link>
             </li>
             <li class="nav-item">
-              <RouterLink
+              <router-link
                 to="/userProduct"
-                class="fs-24 noto-serif text-dark nav-link router-link-active"
+                class="fs-24 noto-serif text-dark nav-link router-link-active underline"
                 >商品
-              </RouterLink>
+              </router-link>
             </li>
+           
           </ul>
           <ul class="gap-md-24 list-unstyled">
             <p @click="test">1</p>
-
-            <li class="nav-item d-flex position-relative">
-              <RouterLink
+             <li class="nav-item position-relative">
+              <router-link
                 to="/userCart"
-                class="fs-24 noto-serif text-dark nav-link router-link-active"
+                class="fs-24 noto-serif text-dark nav-link router-link-active underline"
               >
-                <i class="bi bi-cart fs-32">
+                <p class="d-block d-md-none">購物車</p>
+                <i class="d-none d-md-block bi bi-cart fs-32 text-end">
                   <span
                     class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger fs-12"
                   >
@@ -60,7 +61,7 @@
                     <!-- {{cartProducts.length}} -->
                   </span>
                 </i>
-              </RouterLink>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -72,7 +73,7 @@
 </template>
 
 <script>
-import productStore from '../store/productStore.js'
+// import productStore from "../store/productStore.js";
 
 export default {
   props: ["cartProducts"],
@@ -91,4 +92,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+a.underline:hover {
+  border-bottom:2px solid black;
+  padding-block: 0px;
+
+}
+
+</style>
 

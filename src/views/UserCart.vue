@@ -1,6 +1,6 @@
 <template>
-  <nav-bar :cartProducts="cartProducts"></nav-bar>
-  <div class="container-fluid">
+  <NavBar :cartProducts="cartProducts" />
+  <div class="container-fluid" style="min-height: 100vh;">
     <div class="container py-48">
       <h2 class="text-center py-60 fs-24 fs-lg-32">購物車列表</h2>
       <div class="container-sm">
@@ -73,26 +73,28 @@
                 <p>折扣:</p>
                 <p>${{}}</p>
               </div>
-              <button
-                type="button"
-                class="btn btn-dark w-100 mb-60"
-                @click="enterPayment"
-              >
-                進入付款頁面
-              </button>
             </td>
           </tfoot>
         </table>
+        <div class="container d-flex px-0 justify-content-end">
+          <button
+            type="button"
+            class="btn w-50 mb-60 btn-footer "
+            @click="enterPayment"
+          >
+            進入付款頁面
+          </button>
+        </div>
       </div>
     </div>
   </div>
   <PageFooter />
   <div class="container">
-    <router-view></router-view>
+    <RouterView />
   </div>
 </template>
 
-<script type="module">
+<script>
 import NavBar from "../components/NavBar.vue";
 import PageFooter from "../components/PageFooter.vue";
 
@@ -174,3 +176,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+
+</style>

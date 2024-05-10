@@ -130,7 +130,7 @@
 
             <div class="d-flex justify-content-center">
               <button
-                type="submit"
+                type="button"
                 class="btn btn-footer w-100 mb-60"
                 @click="submitOrder"
               >
@@ -262,7 +262,7 @@ export default {
   background-color: black;
   transform: translate(-50%, -50%);
   left: 50%;
-  top: 50%;
+  top: 30%;
   position: absolute;
   z-index: 1;
 }

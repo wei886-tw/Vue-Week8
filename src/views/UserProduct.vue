@@ -1,9 +1,9 @@
 <template>
   <NavBar />
-  <div class="container-fluid py-48">
-    <div class="container pt-32">
+  <div class="container-fluid py-48 mx-auto">
+    <div class="container pt-32 mx-auto">
       <div class="row mx-auto">
-        <div class="col-10">
+        <div class="col-10 mx-auto">
           <div class="container d-flex justify-content-between"></div>
           <table class="table d-none d-md-block">
             <thead>
@@ -53,14 +53,22 @@
               </tr>
             </tbody>
           </table>
+
           <!-- mobile -->
           <div class="container d-md-none d-flex justify-content-between">
             <p class="fs-24">全部商品</p>
-            <select name="" ref="select" class="border-2">
+
+            <select
+              name=""
+              class="btn btn-footer"
+              ref="select"
+              style="width: 30%"
+            >
               <option value="tablet">平板</option>
               <option value="phone">手機</option>
               <option value="pc">電腦</option>
             </select>
+
             <hr />
           </div>
           <div
@@ -73,7 +81,7 @@
               <img
                 :src="product.imageUrl"
                 alt="商品圖片"
-                style="height: 320px; width: 320px; object-fit: cover"
+                style="height: 280px; width: 280px; object-fit: cover"
                 class="mb-16"
               />
               <div class="d-flex flex-column justify-content-between px-32">
