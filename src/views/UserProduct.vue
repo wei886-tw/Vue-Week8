@@ -73,7 +73,7 @@
               <img
                 :src="product.imageUrl"
                 alt="商品圖片"
-                style="height: 360px; width: 360px; object-fit: cover"
+                style="height: 320px; width: 320px; object-fit: cover"
                 class="mb-16"
               />
               <div class="d-flex flex-column justify-content-between px-32">
