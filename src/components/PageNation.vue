@@ -35,3 +35,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  a:hover{
+    background-color:black;
+    color: white !important;
+  }
+</style>

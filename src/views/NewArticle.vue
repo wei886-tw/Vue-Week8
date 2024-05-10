@@ -100,7 +100,8 @@
         <div class="card mb-32" style="width: 240px">
           <img :src="imageUrl" class="card-img-top" />
           <div class="card-body">
-            <UploadImageModal v-on:emit-imgUrl="getUrl" />
+            <upload-image-modal v-on:emit-imgUrl="getUrl(url)" >
+            </upload-image-modal>
           </div>
         </div>
         <div class="row">
@@ -135,7 +136,7 @@ import UploadImageModal from "@/components/UploadImageModal.vue";
 
 export default {
   components: { AdminNavBar, UploadImageModal },
-  emits: { emitImgUrl: null },
+  emits: ["emitImgUrl"],
   data() {
     return {
       myModal: null,
@@ -193,8 +194,8 @@ export default {
       console.log(this.tag);
     },
 
-    emitImg() {
-      this.$emit("emit-imgUrl", this.imageUrl);
+    emitImg(url) {
+      this.imageUrl = url;
     },
   },
 

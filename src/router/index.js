@@ -12,6 +12,11 @@ const router = createRouter({
       path: '/userProduct',
       name: 'userProduct',
       component: () => import('../views/UserProduct.vue'),
+    },  
+    {
+      path: '/userProductCopy',
+      name: 'userProductCopy',
+      component: () => import('../views/UserProductCopy.vue'),
     },
     {
       path: '/userProductInfo/:id',

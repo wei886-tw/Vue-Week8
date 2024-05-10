@@ -74,7 +74,7 @@
 
             <UploadImageModalVue />
 
-            <button class="btn btn-gray" @click="adviseArticle(id)">
+            <button type="button" class="btn btn-gray" @click="adviseArticle(id)">
               修改文章
             </button>
           </div>

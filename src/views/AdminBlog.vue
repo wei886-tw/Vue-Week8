@@ -27,6 +27,7 @@
             <td>{{ article.isPublic ? "是" : "否" }}</td>
             <td>
               <button
+                type="button"
                 class="btn btn-success"
                 @click="goAdviseArticle(article.id)"
               >
@@ -63,7 +64,7 @@ import AdminNavBar from "@/components/AdminNavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 
 export default {
-  components: { AdminNavBar, PageNation,  },
+  components: { AdminNavBar, PageNation },
 
   data() {
     return {

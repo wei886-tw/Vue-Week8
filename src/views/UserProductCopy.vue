@@ -2,7 +2,7 @@
   <NavBar />
   <div class="container-fluid py-48">
     <div class="container pt-32">
-      <div class="row mx-auto">
+      <div class="row">
         <div class="col-10">
           <div class="container d-flex justify-content-between"></div>
           <table class="table d-none d-md-block">
@@ -53,16 +53,26 @@
               </tr>
             </tbody>
           </table>
-          <!-- mobile -->
-          <div class="container d-md-none d-flex justify-content-between">
-            <p class="fs-24">全部商品</p>
-            <select name="" ref="select" class="border-2">
-              <option value="tablet">平板</option>
-              <option value="phone">手機</option>
-              <option value="pc">電腦</option>
-            </select>
-            <hr />
-          </div>
+
+          <table class="table d-md-none">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  全部商品
+                  <select name="" id="" class="d-flex justify-content-between">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <div
             class="d-md-none d-flex justify-content-between"
             v-for="product in userProducts"
@@ -70,39 +80,43 @@
             @click="tempProduct = product"
           >
             <div class="mb-24 py-16 px-16">
-              <img
-                :src="product.imageUrl"
-                alt="商品圖片"
-                style="height: 360px; width: 360px; object-fit: cover"
-                class="mb-16"
-              />
-              <div class="d-flex flex-column justify-content-between px-32">
-                <router-link
-                  :to="`/userProductInfo/${product.id}`"
-                  target="_blank"
-                >
+              <router-link :to="`/userProductInfo/${product.id}`">
+                <img
+                  :src="product.imageUrl"
+                  alt="商品圖片"
+                  style="height: 400px; width: 100%; object-fit: cover"
+                  class="mb-16"
+                />
+                <div class="d-flex flex-column justify-content-between px-32">
                   <h5 class="mb-16 text-dark">產品名稱：{{ product.title }}</h5>
-                </router-link>
-
-                <p class="mb-16 text-danger fw-bold">
-                  特價：{{ product.price }} 元
-                </p>
-
-                <p class="mb-16" style="color: #8e8e8e">
-                  {{ product.description }}
-                </p>
-
-                <div class="container d-flex justify-content-between px-0">
-                  <select class="btn btn-footer" style="width: 45%">
-                    <option :value="num" v-for="num in 10" :key="num">
-                      {{ num }}
-                    </option>
-                  </select>
-                  <button class="btn btn-footer" style="width: 45%">
-                    加入購物車
-                  </button>
+                  <p class="mb-16 text-dark">特價：{{ product.price }} 元</p>
                 </div>
-              </div>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          class="d-md-none d-flex justify-content-between"
+          v-for="product in userProducts"
+          :key="product.id"
+          @click="tempProduct = product"
+        >
+          <div class="mb-24 py-16 px-16">
+            <img
+              :src="product.imageUrl"
+              alt="商品圖片"
+              style="height: 400px; width: 100%; object-fit: cover"
+              class="mb-16"
+            />
+            <div class="d-flex flex-column justify-content-between px-32">
+              <router-link :to="`/userProductInfo/${product.id}`">
+                <h5 class="mb-16 text-dark">產品名稱：{{ product.title }}</h5>
+              </router-link>
+
+              <p class="mb-16 text-dark">特價：{{ product.price }} 元</p>
             </div>
           </div>
         </div>

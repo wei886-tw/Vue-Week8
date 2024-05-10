@@ -83,8 +83,8 @@
 </template>
 
 <script>
-
-export default {
+export default  {
+  emits: ['emit-imgUrl'],
   data() {
     return {
       api: import.meta.env.VITE_API,
@@ -112,7 +112,6 @@ export default {
       const file = fileInput.files[0];
       const formData = new FormData();
       formData.append("file-to-upload", file);
-
       this.$http
         .post(`${this.api}/v2/api/${this.api_path}/admin/upload`, formData )
         .then((res) => {
@@ -134,6 +133,7 @@ export default {
     this.$http.defaults.headers.common.Authorization = token;
     this.checkAdmin();
     this.myModal = new bootstrap.Modal(this.$refs.uploadImageModal)
+    this.$emit('emit-imgUrl', 123)
   },
 };
 </script>

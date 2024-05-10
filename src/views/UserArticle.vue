@@ -20,7 +20,7 @@
             align-items-baseline" >
               <p class="me-16" @click="test">作者：{{ article.author }}</p>
               <p>文章分類：</p>
-              <button class="btn btn-footer" v-for="tag in article.tag" :key="tag + 23">
+              <button type="button" class="btn btn-footer" v-for="tag in article.tag" :key="tag + 23">
                 {{tag}}</button>
                 <button class="btn btn-primary">{{article.tag}}</button>
             </div>
