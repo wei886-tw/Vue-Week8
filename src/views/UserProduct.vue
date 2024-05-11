@@ -54,7 +54,7 @@
             </tbody>
           </table>
 
-          <!-- mobile -->
+
           <div class="container d-md-none d-flex justify-content-between">
             <p class="fs-24">全部商品</p>
 
@@ -87,7 +87,7 @@
               <div class="d-flex flex-column justify-content-between px-32">
                 <router-link
                   :to="`/userProductInfo/${product.id}`"
-                  target="_blank"
+                  :target="_blank"
                 >
                   <h5 class="mb-16 text-dark">產品名稱：{{ product.title }}</h5>
                 </router-link>
