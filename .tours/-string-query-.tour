@@ -1,0 +1,12 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "2024/05/13",
+  "steps": [
+    {
+      "file": "src/views/UserProduct.vue",
+      "description": "string query 沒用\n",
+      "line": 161
+    }
+  ],
+  "ref": "main"
+}

@@ -149,22 +149,28 @@ export default {
       tempProduct: {},
       pagination: {},
       filterProducts: [],
-      category: "",
+      category: "平板",
     };
   },
 
   methods: {
     changeProductType() {
+      this.category = this.$refs.type.value;
+      console.log(this.category);
       this.$http
-        .get(`${this.api}/api/${this.api_path}/products`)
+        .get(
+          `${this.api}/api/${this.api_path}/products?category=${this.category}`
+        )
         .then((res) => {
+          console.log(res.data.products);
           this.userProducts = res.data.products;
-          this.category = this.$refs.type.value;
-          console.log(this.category);
+          console.log(this.userProducts);
           this.userProducts = this.userProducts.filter(
             (item) => item.category === this.category
           );
-          console.log(this.userProducts);
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
         });
     },
 
