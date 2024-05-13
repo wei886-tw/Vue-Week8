@@ -149,15 +149,15 @@ export default {
       tempProduct: {},
       pagination: {},
       filterProducts: [],
-      category: "平板",
+      category: "",
     };
   },
 
   methods: {
     changeProductType() {
       this.category = this.$refs.type.value;
-      console.log(this.category);
-      this.$http
+      if(this.category != "所有產品") {
+        this.$http
         .get(
           `${this.api}/api/${this.api_path}/products?category=${this.category}`
         )
@@ -172,6 +172,8 @@ export default {
         .catch((err) => {
           console.log(err.response.data.message);
         });
+      }
+      
     },
 
     getProducts(page) {
