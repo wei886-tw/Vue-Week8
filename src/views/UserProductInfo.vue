@@ -5,9 +5,9 @@
       <div class="row g-16 mb-48" v-if="product">
         <div
           class="col-lg-2 d-none d-lg-flex flex-lg-column">
-          <div class="container pt-60">
+          <div class="container pt-60 ">
             <img :src="img" alt="多圖" style="width: 100%; height: 120px" v-for="(img, index) in product.imagesUrl" @click="changeImg(index)" 
-            :key="img" class="mb-36 border border-4" /> 
+            :key="img" class="mb-36 border border-4 border-hover" /> 
           </div>
         </div>
 
@@ -23,7 +23,8 @@
           class="col-12  d-lg-none d-sm-flex flex-sm-row ">
           <div class="container pt-60">
             <img :src="img" alt="多圖" style="width: 20%; " v-for="(img, index) in product.imagesUrl" @click="changeImg(index)"
-            :key="img" class="me-36 border border-4 " /> 
+            :key="img" class="me-36 border border-4" /> 
+          
           </div>
         </div>
 
@@ -147,4 +148,16 @@ export default {
   .new-line{
     white-space:pre-wrap ;
   }
+
+  .border:hover{
+    border: 4px solid black;
+  }
+
+  .hover-element {
+  border: 4px solid  #f3f2ee;
+}
+
+.hover-element:hover {
+  border: 4px solid black;
+}
 </style>

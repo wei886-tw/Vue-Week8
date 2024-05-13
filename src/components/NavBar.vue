@@ -42,11 +42,10 @@
                 >商品
               </router-link>
             </li>
-           
           </ul>
           <ul class="gap-md-24 list-unstyled">
             <p @click="test">1</p>
-             <li class="nav-item position-relative">
+            <li class="nav-item position-relative">
               <router-link
                 to="/userCart"
                 class="fs-24 noto-serif text-dark nav-link router-link-active underline"
@@ -95,10 +94,8 @@ export default {
 
 <style lang="scss" scoped>
 a.underline:hover {
-  border-bottom:2px solid black;
+  border-bottom: 2px solid black;
   padding-block: 0px;
-
 }
-
 </style>
 

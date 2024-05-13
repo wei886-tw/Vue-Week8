@@ -16,12 +16,15 @@
                   <select
                     name=""
                     id=""
-                    class="rounded border-2 border-hard-gray"
-                    style="width: 100px; height: 44px"
+                    class="rounded border-2 btn btn-footer"
+                    style="width: 132px; height: 48px"
+                    ref="type"
+                    @change="changeProductType"
                   >
-                    <option value="tablet">平板</option>
-                    <option value="phone">手機</option>
-                    <option value="pc">電腦</option>
+                    <option value="所有產品">所有產品</option>
+                    <option value="平板">平板</option>
+                    <option value="手機">手機</option>
+                    <option value="筆電">筆電</option>
                   </select>
                 </th>
               </tr>
@@ -54,7 +57,6 @@
             </tbody>
           </table>
 
-
           <div class="container d-md-none d-flex justify-content-between">
             <p class="fs-24">全部商品</p>
 
@@ -64,9 +66,9 @@
               ref="select"
               style="width: 30%"
             >
-              <option value="tablet">平板</option>
-              <option value="phone">手機</option>
-              <option value="pc">電腦</option>
+              <option value="平板">平板</option>
+              <option value="手機">手機</option>
+              <option value="電腦">電腦</option>
             </select>
 
             <hr />
@@ -146,13 +148,24 @@ export default {
       myModal: null,
       tempProduct: {},
       pagination: {},
-      filterItem: [],
+      filterProducts: [],
+      category: "",
     };
   },
 
   methods: {
-    getFilterItem(filterItem) {
-      this.userProducts = filterItem;
+    changeProductType() {
+      this.$http
+        .get(`${this.api}/api/${this.api_path}/products`)
+        .then((res) => {
+          this.userProducts = res.data.products;
+          this.category = this.$refs.type.value;
+          console.log(this.category);
+          this.userProducts = this.userProducts.filter(
+            (item) => item.category === this.category
+          );
+          console.log(this.userProducts);
+        });
     },
 
     getProducts(page) {

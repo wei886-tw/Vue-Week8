@@ -5,7 +5,7 @@
       <h2 class="fs-40 mb-32 text-center">修改文章</h2>
       <form ref="form">
         <div class="row justify-content-center">
-          <div class="col-8">
+          <div class="col-10">
             <label class="fs-24 mb-8" for="title"
               >文章標題<span class="text-danger">*</span></label
             >
@@ -21,7 +21,7 @@
         </div>
 
         <div class="row mb-32 justify-content-center">
-          <div class="col-4">
+          <div class="col-5">
             <label class="fs-24" for="author">
               文章作者<span class="text-danger">*</span>
             </label>
@@ -35,7 +35,7 @@
               v-model="author"
             />
           </div>
-          <div class="col-4">
+          <div class="col-5">
             <label class="fs-24" for="articleCategory">
               文章分類<span class="text-danger">*</span>
             </label>
@@ -58,7 +58,7 @@
         </div>
 
         <div class="row justify-content-center">
-          <div class="col-4 d-flex flex-column justify-content-between">
+          <div class="col-5 d-flex flex-column justify-content-between align-items-start">
             <h3 class="fs-24">文章發佈狀態</h3>
             <div class="form-check form-switch">
               <input
@@ -74,11 +74,11 @@
 
             <UploadImageModalVue />
 
-            <button type="button" class="btn btn-gray" @click="adviseArticle(id)">
+            <button type="button" class="btn btn-gray w-100" @click="adviseArticle(id)">
               修改文章
             </button>
           </div>
-          <div class="col-4">
+          <div class="col-5">
             <p class="fs-24">圖片預覽</p>
             <img
               :src="imageUrl"
