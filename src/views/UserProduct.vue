@@ -52,6 +52,29 @@
                 <td class="pt-32 fs-lg-24 fw-bold text-danger">
                   <p class=" ">特價：</p>
                   <p class="mb-16">{{ product.price }}</p>
+                  <select
+                    class="rounded border-2 mb-16"
+                    name="num"
+                    style="width: 100%"
+                    ref="qty"
+                    @change="changeQty"
+                  >
+                    <option :value="num" v-for="num in 10" :key="num">
+                      {{ num }}
+                    </option>
+                  </select>
+                  <button
+                    class="btn btn-footer hover mb-16 color"
+                    style="width: 100%"
+                    @click="addToCart(product.id)"
+                  >
+                    <i class="bi bi-cart-fill"></i>
+                    加入購物車
+                  </button>
+                  <button class="btn btn-footer hover" style="width: 100%">
+                    <i class="bi bi-heart-fill"></i>
+                    &nbsp加入追蹤
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -66,9 +89,10 @@
               ref="select"
               style="width: 30%"
             >
+              <option value="所有產品">所有產品</option>
               <option value="平板">平板</option>
               <option value="手機">手機</option>
-              <option value="電腦">電腦</option>
+              <option value="筆電">筆電</option>
             </select>
 
             <hr />
@@ -150,10 +174,31 @@ export default {
       pagination: {},
       filterProducts: [],
       category: "",
+      qty: "",
     };
   },
 
   methods: {
+    changeQty() {
+      this.qty = parseInt(event.target.value);
+    },
+
+    addToCart(product_id) {
+      this.$http
+        .post(`${this.api}/v2/api/${this.api_path}/cart`, {
+          data: {
+            product_id,
+            qty: this.qty,
+          },
+        })
+        .then(() => {
+          alert("成功加入購物車");
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
+    },
+
     changeProductType() {
       this.category = this.$refs.type.value;
       if (this.category != "所有產品") {
@@ -164,7 +209,6 @@ export default {
           .then((res) => {
             this.userProducts = res.data.products;
             this.pagination = res.data.pagination;
-            console.log(this.userProducts);
             this.userProducts = this.userProducts.filter(
               (item) => item.category === this.category
             );
@@ -186,22 +230,6 @@ export default {
         });
     },
 
-    addToCart(product_id) {
-      this.$http
-        .post(`${this.api}/v2/api/${this.api_path}/cart`, {
-          data: {
-            product_id,
-            qty: 1,
-          },
-        })
-        .then(() => {
-          alert("成功加入購物車");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-
     openModal() {
       this.myModal.show();
     },
@@ -219,5 +247,9 @@ export default {
 }
 a:hover {
   text-decoration: underline black 2px;
+}
+.btn.hover:hover {
+  background-color: black;
+  color: white;
 }
 </style>
