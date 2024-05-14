@@ -156,24 +156,25 @@ export default {
   methods: {
     changeProductType() {
       this.category = this.$refs.type.value;
-      if(this.category != "所有產品") {
+      if (this.category != "所有產品") {
         this.$http
-        .get(
-          `${this.api}/api/${this.api_path}/products?category=${this.category}`
-        )
-        .then((res) => {
-          console.log(res.data.products);
-          this.userProducts = res.data.products;
-          console.log(this.userProducts);
-          this.userProducts = this.userProducts.filter(
-            (item) => item.category === this.category
-          );
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-        });
+          .get(
+            `${this.api}/v2/api/${this.api_path}/products?category=${this.category}`
+          )
+          .then((res) => {
+            this.userProducts = res.data.products;
+            this.pagination = res.data.pagination;
+            console.log(this.userProducts);
+            this.userProducts = this.userProducts.filter(
+              (item) => item.category === this.category
+            );
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      } else {
+        this.getProducts(1);
       }
-      
     },
 
     getProducts(page) {

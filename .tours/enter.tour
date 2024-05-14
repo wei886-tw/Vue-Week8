@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "enter",
+  "steps": [
+    {
+      "file": "src/App.vue",
+      "description": "background-image 沒有成功",
+      "line": 18
+    }
+  ]
+}
