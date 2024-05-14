@@ -126,16 +126,34 @@
                   {{ product.description }}
                 </p>
 
-                <div class="container d-flex justify-content-between px-0">
-                  <select class="btn btn-footer" style="width: 45%">
+                <div
+                  class="container d-flex justify-content-between px-0 mb-16"
+                >
+                  <select
+                    class="btn btn-footer fs-14"
+                    style="width: 45%"
+                    @change="changeQty"
+                  >
                     <option :value="num" v-for="num in 10" :key="num">
                       {{ num }}
                     </option>
                   </select>
-                  <button class="btn btn-footer" style="width: 45%">
+                  <button
+                    class="btn btn-footer fs-14 hover"
+                    style="width: 45%"
+                    @click="addToCart(product.id)"
+                  >
+                    <i class="bi bi-cart-fill"></i>
                     加入購物車
                   </button>
                 </div>
+                <button
+                  class="btn btn-footer fs-14 hover"
+                  style="width: 100%"
+                  @click="addToCart(product.id)"
+                >
+                  <i class="bi bi-heart-fill"></i>&nbsp加入追蹤
+                </button>
               </div>
             </div>
           </div>
