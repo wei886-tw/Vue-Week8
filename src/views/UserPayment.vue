@@ -43,11 +43,11 @@
           >
             <div class="container d-flex justify-content-between pt-8 mb-8">
               <p>訂單編號：</p>
-              <p>123</p>
+              <p>{{ id }}</p>
             </div>
-            <div class="container d-flex justify-content-between mb-8">
+            <div class="container d-flex justify-content-between mb-8" v-on:emit-total="getTotal(total)">
               <p>訂單總額：</p>
-              <p>123</p>
+              <p>{{ total }}</p>
             </div>
           </div>
 
@@ -56,18 +56,21 @@
               <select
                 name="payment"
                 id="payment"
-                class="w-100 border-2 
-                mb-32"
+                class="w-100 border-2 mb-32"
                 style="height: 60px"
                 ref="paymentMethod"
                 @change="selectChange"
               >
-                <option value="" disabled selected class="position-absolute">請選擇付款方式</option>
+                <option value="" disabled selected class="position-absolute">
+                  請選擇付款方式
+                </option>
                 <option value="刷卡">刷卡</option>
                 <option value="ATM 繳費">ATM 繳費</option>
               </select>
             </form>
-            <button class="btn btn-dark w-100" @click="payBill(id)">結帳付款</button>
+            <button class="btn btn-footer hover w-100" @click="payBill(id)">
+              結帳付款
+            </button>
           </div>
         </div>
       </div>
@@ -82,6 +85,7 @@ import NavBarVue from "@/components/NavBar.vue";
 import PageFooterVue from "@/components/PageFooter.vue";
 
 export default {
+  props: ["id",],
   components: { NavBarVue, PageFooterVue },
   data() {
     return {
@@ -98,17 +102,22 @@ export default {
         message: "",
       },
       paymentMethod: "",
+      total:"",
     };
   },
 
   methods: {
+    getTotal(total) {
+      console.log(total)
+
+    },
+
     getCartProducts() {
       this.$http
         .get(`${this.url}/v2/api/${this.api_path}/cart`)
         .then((res) => {
           this.cartProducts = res.data.data.carts;
           this.cartList = res.data.data;
-          console.log(this.cartProducts);
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -133,6 +142,7 @@ export default {
 
   mounted() {
     this.getCartProducts();
+    this.getTotal();
   },
 };
 </script>
@@ -169,5 +179,10 @@ export default {
   top: 50%;
   position: absolute;
   z-index: 1;
+}
+
+.btn.hover:hover{
+  background-color: black;
+  color:white;
 }
 </style>

@@ -39,7 +39,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <v-form v-slot="{ errors }" ref="form" id="form" >
+          <v-form v-slot="{ errors }" ref="form" id="form">
             <div class="mb-12">
               <label for="email" class="form-label"></label>
               <v-field
@@ -133,6 +133,7 @@
                 type="button"
                 class="btn btn-footer w-100 mb-60"
                 @click="submitOrder"
+                v-on:emit-total="getTotal(total)"
               >
                 送出訂單
               </button>
@@ -175,6 +176,10 @@ export default {
   },
 
   methods: {
+    emitTotal() {
+      this.$emit('emit-total', this.total);
+    },
+    
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;
       return phoneNumber.test(value) ? true : "需要正確的電話號碼";
@@ -186,7 +191,6 @@ export default {
         .then((res) => {
           this.cartProducts = res.data.data.carts;
           this.cartList = res.data.data;
-
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -206,19 +210,17 @@ export default {
                 tel: this.form.user.tel,
                 address: this.form.user.address,
               },
-              // message: this.form.message,
-            }
+              message: this.form.message,
+            },
           })
 
           .then((res) => {
             this.orderId = res.data.orderId;
-            alert("成功送出訂單")
-            // this.$router.go(`/userPayment`)
-            // this.$refs.form.reset();
-            this.data = res.data;
+            alert("成功送出訂單");
+            this.$router.push(`/userPayment/${this.orderId}`);
+            this.$refs.form.reset();
+            this.orderId = res.data.orderId;
             this.total = res.data.total;
-            this.create_at = res.create_at;
-            
           })
           .catch((err) => {
             console.log(err.response.data.message);

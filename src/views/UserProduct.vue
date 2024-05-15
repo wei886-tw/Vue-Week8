@@ -203,19 +203,36 @@ export default {
     },
 
     addToCart(product_id) {
-      this.$http
-        .post(`${this.api}/v2/api/${this.api_path}/cart`, {
-          data: {
-            product_id,
-            qty: this.qty,
-          },
-        })
-        .then(() => {
-          alert("成功加入購物車");
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-        });
+      if (this.qty != '') {
+        this.$http
+          .post(`${this.api}/v2/api/${this.api_path}/cart`, {
+            data: {
+              product_id,
+              qty: this.qty,
+            },
+          })
+          .then(() => {
+            alert("成功加入購物車");
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      }
+      else{
+        this.$http
+          .post(`${this.api}/v2/api/${this.api_path}/cart`, {
+            data: {
+              product_id,
+              qty: 1,
+            },
+          })
+          .then(() => {
+            alert("成功加入購物車");
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      }
     },
 
     changeProductType() {
