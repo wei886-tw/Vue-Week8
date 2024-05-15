@@ -132,6 +132,7 @@
                   <select
                     class="btn btn-footer fs-14"
                     style="width: 45%"
+                    ref="qty"
                     @change="changeQty"
                   >
                     <option :value="num" v-for="num in 10" :key="num">

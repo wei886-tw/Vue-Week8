@@ -21,10 +21,10 @@
             </li>
           </ul>
         </div>
-        
+
         <div class="col-lg-10">
           <h3 class="fs-32 py-24 text-start">全部文章</h3>
-          <hr>
+          <hr />
           <ul
             class="list-unstyled gy-16 d-flex d-block d-lg-none justify-content-between"
           >
@@ -43,7 +43,7 @@
             <hr />
           </ul>
           <ul
-            class="list-unstyled d-flex justify-content-between row row-cols-1  row-cols-md-2 row-sm-cols-1 "
+            class="list-unstyled d-flex justify-content-between row row-cols-1 row-cols-md-2 row-sm-cols-1"
           >
             <div
               class="mb-16 d-flex flex-column justify-content-between"
@@ -78,13 +78,10 @@
       </div>
     </div>
 
-    <div class="container-fluid px-0">
-      <PageFooter />
-    </div>
+    <PageFooter />
   </div>
-  <div class="container">
-    <RouterView />
-  </div>
+  <RouterView />
+
 </template>
 
 <script>

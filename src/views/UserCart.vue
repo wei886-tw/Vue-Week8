@@ -1,6 +1,8 @@
 <template>
-  <NavBar :cartProducts="cartProducts" />
-  <div class="container-fluid" style="min-height: 100vh;">
+  <div class="container">
+    <NavBar :cartProducts="cartProducts" />
+  </div>
+  <div class="container-fluid" style="min-height: 100vh">
     <div class="container py-48">
       <h2 class="text-center py-60 fs-24 fs-lg-32">購物車列表</h2>
       <div class="container-sm">
@@ -79,7 +81,7 @@
         <div class="container d-flex px-0 justify-content-end">
           <button
             type="button"
-            class="btn w-50 mb-60 btn-footer "
+            class="btn w-50 mb-60 btn-footer"
             @click="enterPayment"
           >
             進入付款頁面
@@ -88,15 +90,21 @@
       </div>
     </div>
   </div>
-  <PageFooter />
-  <div class="container">
-    <RouterView />
+
+  <div class="container px-0 ">
+    <PageFooter />
   </div>
+
+  <div class="container">
+    <router-view ></router-view>
+  </div>
+
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
 import PageFooter from "../components/PageFooter.vue";
+// impo
 
 export default {
   props: ["finalTotal"],
@@ -182,6 +190,4 @@ button:hover {
   background-color: black;
   color: white;
 }
-
-
 </style>
