@@ -51,10 +51,14 @@ const router = createRouter({
       
     },
     {
-      path: '/userOrderResult',
+      path: '/userOrderResult/:id',
       name: 'userOrderResult',
       component: () => import('../views/UserOrderResult.vue'),
-      
+      props: (route) => {
+        return {
+          id: route.params.id,
+        };
+      }
     },
     {
       path: '/userBlog',

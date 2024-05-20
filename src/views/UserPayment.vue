@@ -1,8 +1,7 @@
 <template>
-  <nav-bar-vue></nav-bar-vue>
+  <NavBarVue />
   <div class="container-fluid px-0 py-32 vh-100">
     <div class="container">
-      <p></p>
       <div class="row">
         <div class="col-sm-6 col-lg-8 mx-auto">
           <ol
@@ -33,10 +32,6 @@
               <p class="fw-bold">訂單結果</p>
             </li>
           </ol>
-          <p class="mb-32">
-            ※ 您的訂單將在付款後開始訂製，付款後，從開始製作到寄出商品為 14
-            個工作天。
-          </p>
 
           <div
             class="container px-0 border-2 border-dark border-top border-bottom mb-32"
@@ -45,7 +40,11 @@
               <p>訂單編號：</p>
               <p>{{ id }}</p>
             </div>
-            <div class="container d-flex justify-content-between mb-8" v-on:emit-total="getTotal(total)">
+              <div class="container d-flex justify-content-between pt-8 mb-8">
+              <p>繳費狀態：</p>
+              <p>{{ is_paid ? "已付款":"尚未付款" }}</p>
+            </div>
+            <div class="container d-flex justify-content-between mb-8">
               <p>訂單總額：</p>
               <p>{{ total }}</p>
             </div>
@@ -68,11 +67,12 @@
                 <option value="ATM 繳費">ATM 繳費</option>
               </select>
             </form>
-            <button class="btn btn-footer hover w-100" @click="payBill(id)">
+            <button class="btn btn-footer hover w-100" @click="payBill(id)" v-on:emit-is-paid-out="getEmit(paid)">
               結帳付款
             </button>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -102,13 +102,27 @@ export default {
         message: "",
       },
       paymentMethod: "",
-      total:"",
+      total:123,
+      is_paid: true,
     };
   },
 
   methods: {
-    getTotal(total) {
-      console.log(total)
+    emitIsPaidOut(){
+      this.$emit("is-paid", this.is_paid);
+
+    },
+
+    getOrder() {
+      this.$http.get(`${this.url}/v2/api/${this.api_path}/order/${this.id}`)
+      .then((res)=>{
+        this.is_paid = res.data.order.is_paid;
+        this.total = res.data.order.total;
+        this.$emit("emit-total", this.total)
+      })
+      .catch((err)=>{
+        console.log(err.response.data.message)
+      })
 
     },
 
@@ -127,8 +141,9 @@ export default {
     payBill(id) {
       this.$http
         .post(`${this.url}/v2/api/{api_path}/pay/${id}`)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+            alert("成功付款");
+            this.$router.push(`/userOrderResult/${id}`);
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -142,7 +157,7 @@ export default {
 
   mounted() {
     this.getCartProducts();
-    this.getTotal();
+    this.getOrder();
   },
 };
 </script>

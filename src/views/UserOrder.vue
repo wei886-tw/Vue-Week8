@@ -133,7 +133,6 @@
                 type="button"
                 class="btn btn-footer w-100 mb-60"
                 @click="submitOrder"
-                v-on:emit-total="getTotal(total)"
               >
                 送出訂單
               </button>
@@ -176,10 +175,6 @@ export default {
   },
 
   methods: {
-    emitTotal() {
-      this.$emit('emit-total', this.total);
-    },
-    
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;
       return phoneNumber.test(value) ? true : "需要正確的電話號碼";
@@ -235,7 +230,7 @@ export default {
 };
 </script>
 
-<style >
+<style lang="scss">
 .number {
   border: 1px solid #000;
   border-radius: 50%;

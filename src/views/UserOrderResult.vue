@@ -1,8 +1,7 @@
 <template>
-  <nav-bar-vue></nav-bar-vue>
+  <NavBarVue />
   <div class="container-fluid px-0 py-32 vh-100">
     <div class="container">
-      <p></p>
       <div class="row">
         <div class="col-sm-6 col-lg-8 mx-auto">
           <ol
@@ -33,14 +32,30 @@
               <p class="fw-bold">訂單結果</p>
             </li>
           </ol>
-          
-
 
           <p class="mb-32">
             ※ 您的訂單將在付款後開始訂製，付款後，從開始製作到寄出商品為 14
             個工作天。
           </p>
+        </div>
+      </div>
 
+      <div class="row">
+        <div
+          class="container px-0 border-2 border-dark border-top border-bottom mb-32"
+        >
+          <div class="container d-flex justify-content-between pt-8 mb-8">
+            <p>訂單編號：</p>
+            <p>{{ id }}</p>
+          </div>
+          <div class="container d-flex justify-content-between pt-8 mb-8">
+            <p>繳費狀態：</p>
+            <p>{{ is_paid ? "已付款" : "尚未付款" }}</p>
+          </div>
+          <div class="container d-flex justify-content-between mb-8">
+            <p>訂單總額：</p>
+            <p>{{ total }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -49,11 +64,27 @@
 </template>
 
 <script>
+import NavBarVue from "@/components/NavBar.vue";
+import PageFooterVue from "@/components/PageFooter.vue";
+
 export default {
-  mounted() {
-    alert("付款完成")
+  props: ["id"],
+  components: {
+    NavBarVue,
+    PageFooterVue,
   },
-}
+
+  methods: {
+    getEmit(paid){
+      console.log(paid)
+    }
+  },
+
+  mounted(){
+    this.getEmit()
+  }
+  
+};
 </script>
 
 <style >
@@ -89,4 +120,6 @@ export default {
   position: absolute;
   z-index: 1;
 }
+
+
 </style>
