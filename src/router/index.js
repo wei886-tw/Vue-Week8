@@ -12,7 +12,32 @@ const router = createRouter({
       path: '/userProduct',
       name: 'userProduct',
       component: () => import('../views/UserProduct.vue'),
-    },  
+    },
+    // {
+    //   path: '/userProductTypeChosen/:type',
+    //   name: 'userProductTypeChosen',
+    //   component: () => import('../views/UserProductTypeChosen.vue'),
+    //   props: (route) => {
+    //     return {
+    //       type: route.params.id
+    //     };
+    //   }
+    // }, 
+    {
+      path: '/userProductPc',
+      name: 'userProductPc',
+      component: () => import('../views/UserProductPc.vue'),
+    },
+    {
+      path: '/userProductPad',
+      name: 'userProductPad',
+      component: () => import('../views/UserProductPad.vue'),
+    },
+    {
+      path: '/userProductPhone',
+      name: 'userProductPhone',
+      component: () => import('../views/UserProductPhone.vue'),
+    },
     {
       path: '/userProductInfo/:id',
       name: 'userProductInfo',
@@ -48,7 +73,7 @@ const router = createRouter({
           id: route.params.id,
         };
       }
-      
+
     },
     {
       path: '/userOrderResult/:id',

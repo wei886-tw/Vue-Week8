@@ -9,9 +9,9 @@
       style="
         background-image: url('pic/apple-store.jpg');
         height: 640px;
-        width: 100%
+        width: 100%;
         object-fit: cover;
-        background-repeat: no-repeat;        
+        background-repeat: no-repeat;
         background-position: center;
       "
     ></div>
@@ -20,9 +20,9 @@
       style="
         background-image: url('pic/apple-store.jpg');
         height: 540px;
-        width: 100%
+        width: 100%;
         object-fit: cover;
-        background-repeat: no-repeat;        
+        background-repeat: no-repeat;
         background-position: center;
       "
     ></div>
@@ -74,9 +74,11 @@
             如果您需要一台便攜輕薄的筆記型電腦來辦公或者學習，我們也有各種規格和型號的二手筆記型電腦可供選擇。無論您是需要一台性能強悍的遊戲本還是一台適合日常辦公的輕薄本，我們都能滿足您的需求。
           </p>
           <div class="container mt-auto px-0">
-            <button class="btn btn-footer fs-16 fs-md-24 tc-sans w-100">
+            <button
+              class="btn btn-footer fs-16 fs-md-24 tc-sans w-100"
+              @click="goToShop('pc')"
+            >
               前往電腦賣場
-              <router-link class=""></router-link>
             </button>
           </div>
         </div>
@@ -101,11 +103,8 @@
             到功能強大的安卓手機，無論您是需要一部用於日常通訊還是用於遊戲和娛樂，我們都能幫您找到心儀的手機。
           </p>
           <div class="container mt-auto px-0">
-            <button
-              class="btn btn-footer fs-16 fs-md-24 tc-sans mt-auto w-100 "
-            >
+            <button class="btn btn-footer fs-16 fs-md-24 tc-sans mt-auto w-100" @click="goToShop('phone')">
               前往手機賣場
-              <router-link class=""></router-link>
             </button>
           </div>
         </div>
@@ -139,11 +138,8 @@
             iPad 到安卓平板，您可以在這裡找到適合您的平板電腦。
           </p>
           <div class="container mt-auto px-0">
-            <button
-              class="btn btn-footer fs-16 fs-md-24 tc-sans w-100"
-            >
+            <button class="btn btn-footer fs-16 fs-md-24 tc-sans w-100" @click="goToShop('pad')">
               前往平板賣場
-              <router-link class=""></router-link>
             </button>
           </div>
         </div>
@@ -167,7 +163,7 @@
       style="
         background-image: url('pic/coupon.jpg');
         height: 400px;
-        width: 100%
+        width: 100%;
         object-fit: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -181,7 +177,9 @@
 
   <PageFooter />
 
-  <router-view />
+  <div class="container">
+    <router-view />
+  </div>
 </template>
 
 <script>
@@ -217,6 +215,18 @@ export default {
           console.log(err.response.data.message);
         });
     },
+
+    goToShop(type) {
+      if (type === "pc") {
+        this.$router.push(`/userProductPc`);
+      }
+      else if(type === "pad") {
+        this.$router.push(`/userProductPad`);
+      }
+      else if(type === "phone") {
+        this.$router.push(`/userProductPhone`);
+      }
+    },
   },
 
   mounted() {},
@@ -247,20 +257,17 @@ export default {
   font-family: "Noto Sans TC" !important;
   src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap");
 }
-
-
 </style>
 
 <style lang="scss" scoped>
-.btn-white:hover{
+.btn-white:hover {
   background-color: black;
-  color:white;
+  color: white;
   border: black;
 }
 
-.btn-footer:hover{
+.btn-footer:hover {
   background-color: black;
   color: white;
 }
-  
 </style>
