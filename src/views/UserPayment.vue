@@ -38,7 +38,7 @@
           >
             <div class="container d-flex justify-content-between pt-8 mb-8">
               <p>訂單編號：</p>
-              <p>{{ id }}</p>
+              <p class="text-end">{{ id }}</p>
             </div>
               <div class="container d-flex justify-content-between pt-8 mb-8">
               <p>繳費狀態：</p>

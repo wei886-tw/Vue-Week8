@@ -131,7 +131,7 @@
             <div class="d-flex justify-content-center">
               <button
                 type="button"
-                class="btn btn-footer w-100 mb-60"
+                class="btn btn-footer hover w-100 mb-60"
                 @click="submitOrder"
               >
                 送出訂單
@@ -262,5 +262,10 @@ export default {
   top: 30%;
   position: absolute;
   z-index: 1;
+}
+
+.btn.hover:hover{
+  background-color: black;
+  color:white;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <NavBarVue />
-  <div class="container-fluid px-0 py-32 vh-100">
+  <div class="container-fluid px-0 py-32 vh-100 mb-32">
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-lg-8 mx-auto">
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mb-32">
         <div
           class="container px-0 border-2 border-dark border-top border-bottom mb-32"
         >
@@ -50,13 +50,22 @@
           </div>
           <div class="container d-flex justify-content-between pt-8 mb-8">
             <p>繳費狀態：</p>
-            <p>{{ is_paid ? "已付款" : "尚未付款" }}</p>
+            <p>已付款</p>
           </div>
           <div class="container d-flex justify-content-between mb-8">
             <p>訂單總額：</p>
-            <p>{{ total }}</p>
+            <p>{{ order.total }}</p>
           </div>
         </div>
+      </div>
+
+      <div class="row mb-32">
+        <button
+          class="btn btn-footer w-75 mx-auto hover"
+          @click="backToHomePage"
+        >
+          返回首頁
+        </button>
       </div>
     </div>
   </div>
@@ -74,16 +83,34 @@ export default {
     PageFooterVue,
   },
 
-  methods: {
-    getEmit(paid){
-      console.log(paid)
-    }
+  data() {
+    return {
+      api_path: import.meta.env.VITE_PATH,
+      url: import.meta.env.VITE_API,
+      order: "",
+    };
   },
 
-  mounted(){
-    this.getEmit()
-  }
-  
+  methods: {
+    getOrderResult() {
+      this.$http
+        .get(`${this.url}/v2/api/${this.api_path}/order/${this.id}`)
+        .then((res) => {
+          this.order = res.data.order;
+        })
+        .catch((err) => {
+          console.log(err.data.response.message);
+        });
+    },
+
+    backToHomePage() {
+      this.$router.push(`/`)
+    },
+  },
+
+  mounted() {
+    this.getOrderResult();
+  },
 };
 </script>
 
@@ -121,5 +148,8 @@ export default {
   z-index: 1;
 }
 
-
+.btn.hover:hover {
+  background-color: black;
+  color: white;
+}
 </style>

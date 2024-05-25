@@ -44,7 +44,6 @@
             </li>
           </ul>
           <ul class="gap-md-24 list-unstyled">
-            <p @click="test">1</p>
             <li class="nav-item position-relative">
               <router-link
                 to="/userCart"
@@ -56,8 +55,6 @@
                     class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger fs-12"
                   >
                     <p>1</p>
-
-                    <!-- {{cartProducts.length}} -->
                   </span>
                 </i>
               </router-link>
@@ -72,8 +69,6 @@
 </template>
 
 <script>
-// import productStore from "../store/productStore.js";
-
 export default {
   props: ["cartProducts"],
 
