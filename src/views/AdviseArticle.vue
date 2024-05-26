@@ -1,7 +1,7 @@
 <template>
   <AdminNavBarVue />
-  <div class="container-fluid ">
-    <div class="container py-48 " id="id">
+  <div class="container-fluid">
+    <div class="container py-48" id="id">
       <h2 class="fs-40 mb-32 text-center">修改文章</h2>
       <form ref="form">
         <div class="row justify-content-center">
@@ -46,19 +46,37 @@
               placeholder="請填入文章分類"
               name="articleCategory"
               id="articleCategory"
-              v-model="articleCategory"
+              v-model="tag"
             />
             <p>
               點擊帶入文章分類：
-              <button class="btn btn-gray me-8">最新消息</button>
-              <button class="btn btn-gray me-8">活動消息</button>
-              <button class="btn btn-gray me-8">本站獨家</button>
+              <button
+                class="btn btn-gray me-8"
+                @click.prevent="addTag('最新消息')"
+              >
+                最新消息
+              </button>
+              <button
+                class="btn btn-gray me-8"
+                @click.prevent="addTag('活動消息')"
+              >
+                活動消息
+              </button>
+              <button
+                class="btn btn-gray me-8"
+                @click.prevent="addTag('本站獨家')"
+              >
+                本站獨家
+              </button>
             </p>
           </div>
+          <!-- <pre>{{ tag.search('最新消息') }}</pre> -->
         </div>
 
         <div class="row justify-content-center">
-          <div class="col-5 d-flex flex-column justify-content-between align-items-start">
+          <div
+            class="col-5 d-flex flex-column justify-content-between align-items-start"
+          >
             <h3 class="fs-24">文章發佈狀態</h3>
             <div class="form-check form-switch">
               <input
@@ -74,7 +92,11 @@
 
             <UploadImageModalVue />
 
-            <button type="button" class="btn btn-gray w-100" @click="adviseArticle(id)">
+            <button
+              type="button"
+              class="btn btn-gray w-100"
+              @click="adviseArticle(id)"
+            >
               修改文章
             </button>
           </div>
@@ -87,7 +109,6 @@
             />
           </div>
         </div>
-
       </form>
     </div>
   </div>
@@ -160,16 +181,25 @@ export default {
         })
         .then(() => {
           alert("修改文章成功");
+          this.$router.push('//adminBlog')
         })
         .catch((err) => {
           console.log(err.response.data.message);
         });
     },
+    addTag(text) {
+      if (this.tag.search(text) === -1 && this.tag.length === 0) {
+        this.tag = this.tag.concat(text);
+      }
+      else if(this.tag.search(text) === -1 && this.tag.length !== 0) {
+        this.tag = this.tag.concat("、", text);
+      }
+    },
   },
 
   mounted() {
     this.getArticle(this.id);
-    this.getUrl();  
+    this.getUrl();
   },
 };
 </script>

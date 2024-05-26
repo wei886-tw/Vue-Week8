@@ -1,44 +1,44 @@
 <template>
-  <div class="container-fluid px-0">
+  <div class="container-fluid  px-0">
     <NavBar />
   </div>
-  <div class="container-fluid px-0">
-    <div class="container">
+  <div class="container-fluid py-48 px-0">
+    <div class="container pt-32">
       <div class="row">
         <div class="col-2 d-none d-lg-block">
           <ul class="list-unstyled mt-128 gy-16">
             <li class="fs-lg-24 mb-16">
-              <a href="" class="text-dark a-hover">全部文章</a>
+              <a href="" class="text-dark hover">全部文章</a>
             </li>
             <li class="fs-lg-24 mb-16">
-              <a href="" class="text-dark a-hover">最新消息</a>
+              <a href="" class="text-dark hover">最新消息</a>
             </li>
             <li class="fs-lg-24 mb-16">
-              <a href="" class="text-dark a-hover">本站獨家</a>
+              <a href="" class="text-dark hover">本站獨家</a>
             </li>
             <li class="fs-lg-24 mb-16">
-              <a href="" class="text-dark a-hover">活動消息</a>
+              <a href="" class="text-dark hover">活動消息</a>
             </li>
           </ul>
         </div>
 
         <div class="col-lg-10">
-          <h3 class="fs-32 py-24 text-start">全部文章</h3>
+          <h3 class="fs-40 py-24 text-start">全部文章</h3>
           <hr />
           <ul
             class="list-unstyled gy-16 d-flex d-block d-lg-none justify-content-between"
           >
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark a-hover">全部文章</a>
+              <a href="" class="text-dark hover">全部文章</a>
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark a-hover">最新消息</a>
+              <a href="" class="text-dark hover">最新消息</a>
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark a-hover">本站獨家</a>
+              <a href="" class="text-dark hover">獨家消息</a>
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark a-hover">活動消息</a>
+              <a href="" class="text-dark hover">活動講座</a>
             </li>
             <hr />
           </ul>
@@ -104,15 +104,18 @@ export default {
     getArticles() {
       this.$http(`${this.url}/v2/api/${this.api_path}/articles`)
         .then((res) => {
-          console.log(res);
           this.articles = res.data.articles;
           this.pagination = res.data.pagination;
-          console.log(this.articles);
+
         })
         .catch((err) => {
           console.log(err.response.data.message);
         });
     },
+
+    filterArticles() {
+      
+    }
   },
 
   mounted() {
@@ -122,8 +125,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a.special:hover {
+a.hover:hover {
   text-decoration: underline black;
 }
-</style>>
+</style>
 

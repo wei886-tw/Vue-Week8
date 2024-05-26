@@ -8,7 +8,6 @@
             class="container d-flex flex-column align-items-center"
             style="width: 80%"
           >
-
             <img
               :src="article.image"
               alt="文章圖片"
@@ -16,15 +15,19 @@
               class="mb-32 pt-60"
             />
             <h2 class="fs-24 fs-lg-40 mb-16">{{ article.title }}</h2>
-            <div class="container d-flex justify-content-start
-            align-items-baseline" >
+            <div
+              class="container d-flex justify-content-start align-items-baseline mb-8"
+            >
               <p class="me-16" @click="test">作者：{{ article.author }}</p>
               <p>文章分類：</p>
-              <button type="button" class="btn btn-footer" v-for="tag in article.tag" :key="tag + 23">
-                {{tag}}</button>
-                <button class="btn btn-primary">{{article.tag}}</button>
+              <button
+                class="btn btn-dark-gray text-white me-8"
+                v-for="tags in tagArr"
+                :key="tags + 1"
+              >
+                {{ tags }}
+              </button>
             </div>
-
             <p class="fs-16 fs-lg-24 new-line">{{ article.content }}</p>
           </div>
         </div>
@@ -48,6 +51,7 @@ export default {
       api_path: import.meta.env.VITE_PATH,
       article: [],
       tag: [],
+      tagArr: [],
     };
   },
 
@@ -56,7 +60,7 @@ export default {
       this.$http(`${this.url}/v2/api/${this.api_path}/article/${id}`)
         .then((res) => {
           this.article = res.data.article;
-          this.tag = res.data.article.tag;
+          this.tagArr = res.data.article.tag.split("、");
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -66,7 +70,6 @@ export default {
 
   mounted() {
     this.getArticle(this.id);
-    console.log(this.tag)
   },
 };
 </script>

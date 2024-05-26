@@ -115,7 +115,7 @@
                   :to="`/userProductInfo/${product.id}`"
                   target="_blank"
                 >
-                  <h5 class="mb-16 text-dark">產品名稱：{{ product.title }}</h5>
+                  <h5 class="mb-16 text-dark">{{ product.title }}</h5>
                 </router-link>
 
                 <p class="mb-16 text-danger fw-bold">

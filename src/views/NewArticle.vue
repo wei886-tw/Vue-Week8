@@ -41,11 +41,13 @@
               type="text"
               class="rounded mb-16 form-check-input"
               style="width: 100%; height: 40px"
-              placeholder="請填入文章分類"
+              placeholder="請填入文章分類，以 space 分隔"
               name="articleCategory"
               id="articleCategory"
               v-model="tag"
+              ref="tagText"
             />
+            <pre>{{ tag }}</pre>
             <p>
               點擊帶入文章分類：
               <button
@@ -100,8 +102,7 @@
         <div class="card mb-32" style="width: 240px">
           <img :src="imageUrl" class="card-img-top" />
           <div class="card-body">
-            <upload-image-modal v-on:emit-imgUrl="getUrl(url)" >
-            </upload-image-modal>
+            <upload-image-modal> </upload-image-modal>
           </div>
         </div>
         <div class="row">
@@ -136,7 +137,6 @@ import UploadImageModal from "@/components/UploadImageModal.vue";
 
 export default {
   components: { AdminNavBar, UploadImageModal },
-  emits: ["emitImgUrl"],
   data() {
     return {
       myModal: null,
@@ -190,8 +190,10 @@ export default {
     },
 
     addTag(text) {
-      this.tag.push(text);
-      console.log(this.tag);
+      if (this.tag.findIndex === -1) {
+        this.tag.push(`${text} + `);
+        console.log(1)
+      }
     },
 
     emitImg(url) {
