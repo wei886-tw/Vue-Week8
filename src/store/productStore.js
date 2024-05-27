@@ -4,29 +4,28 @@ const { VITE_API, VITE_PATH } = import.meta.env;
 
 export default defineStore("productStore", {
   state: () => ({
-    allProducts: [ '1' ],
+    storeAllProducts: [],
+    storPagination: {},
 
   }),
 
   actions: {
-    getAllProducts() {
-      const url = `${VITE_API}/api/${VITE_PATH}/products/all`;
+    getAllProducts(page) {
+      const url = `${VITE_API}/api/${VITE_PATH}/products?page=${page}`;
       return axios.get(url)
         .then((res) => {
-          this.allProducts = res.data.products;
-          console.log(this.allProducts);
+          this.storeAllProducts = res.data.products;
+          this.storePagination = res.data.pagination;
         })
         .catch((err) => {
           console.log(err.response.data.message);
         })
-
   },
 
   getters: {
-    sortedProducts: ({ allProducts }) => {
-      return allProducts.sort((a, b) => a.price - b.price);
+    storeSortedProducts: ({ storeAllProducts }) => {
+      return storeAllProducts.sort((a, b) => a.price - b.price);
     }
   },
-
 }
 });
