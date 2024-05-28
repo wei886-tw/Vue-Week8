@@ -77,6 +77,7 @@ export default {
         .then((res) => {
           this.pagination = res.data.pagination;
           this.allProducts = res.data.products;
+          window.scrollTo(0, 0);
         })
         .catch((err) => {
           alert(err.response.data.message);

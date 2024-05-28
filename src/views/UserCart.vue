@@ -22,7 +22,7 @@
                 <img
                   :src="product.product.imageUrl"
                   alt="產品圖片"
-                  style="height: 100px; weight: 100px"
+                  style="height: 100px; width: 100px"
                 />
               </td>
               <td class="align-middle">
@@ -55,7 +55,7 @@
                 </button>
               </td>
               <td class="fs-md-24 align-middle">
-                {{ product.final_total }}
+                {{ Math.floor(product.final_total) }}
               </td>
             </tr>
           </tbody>
@@ -63,21 +63,15 @@
             <td></td>
             <td></td>
             <td></td>
-            <td class="fs-md-24 pt-32">
-              <div class="container d-flex justify-content-between">
-                <p>原價:</p>
-                <p>${{ cartList.final_total }}</p>
-              </div>
-              <div
-                class="container d-flex justify-content-between"
-                v-on:final-total="getFinalTotal"
-              >
-                <p>折扣:</p>
-                <p>${{}}</p>
+            <td class="fs-md-16 fs-lg-24 pt-32">
+              <div class="container d-lg-flex justify-content-between">
+                <p>總價: ${{ Math.floor(cartList.final_total) }}</p>
+
               </div>
             </td>
           </tfoot>
         </table>
+        
         <div class="container d-flex px-0 justify-content-end">
           <button
             type="button"
@@ -91,7 +85,7 @@
     </div>
   </div>
 
-  <div class="container px-0 ">
+  <div class="container-fluid px-0 ">
     <PageFooter />
   </div>
 
@@ -104,7 +98,6 @@
 <script>
 import NavBar from "../components/NavBar.vue";
 import PageFooter from "../components/PageFooter.vue";
-// impo
 
 export default {
   props: ["finalTotal"],

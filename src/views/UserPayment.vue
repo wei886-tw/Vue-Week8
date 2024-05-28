@@ -46,7 +46,7 @@
             </div>
             <div class="container d-flex justify-content-between mb-8">
               <p>訂單總額：</p>
-              <p>{{ total }}</p>
+              <p>{{ Math.floor(total) }}</p>
             </div>
           </div>
 

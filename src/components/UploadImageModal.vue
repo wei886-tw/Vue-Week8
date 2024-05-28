@@ -7,7 +7,7 @@
     data-bs-target="#exampleModal"
     ref="btn"
   >
-    新增圖片
+    上傳圖片
   </button>
 
   <!-- Modal -->

@@ -1,5 +1,7 @@
 <template>
-  <NavBar />
+  <div class="container-fluid px-0">
+    <NavBar />
+  </div>
   <div class="container-fluid py-48 mx-auto">
     <div class="container pt-32 mx-auto">
       <div class="row mx-auto">
@@ -42,7 +44,7 @@
                 <td class="pt-32" style="width: 70%">
                   <router-link :to="`/userProductInfo/${product.id}`">
                     <h5 class="mb-16 fs-16 fs-md-24 text-dark">
-                      產品名稱：{{ product.title }}
+                      {{ product.title }}
                     </h5>
                   </router-link>
                   <p class="d-none d-md-block" style="color: #8e8e8e">
@@ -79,7 +81,6 @@
               </tr>
             </tbody>
           </table>
-
           <div class="container d-md-none d-flex justify-content-between">
             <p class="fs-24">全部商品</p>
 
@@ -99,7 +100,7 @@
           </div>
           <div
             class="d-md-none d-flex justify-content-between"
-            v-for="product in userProducts"
+            v-for="product in storeAllProducts"
             :key="product.id"
             @click="tempProduct = product"
           >
@@ -180,6 +181,9 @@ import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 
+import productStore from "@/store/productStore.js";
+import { mapState, mapActions } from "pinia";
+
 export default {
   components: { PageFooter, NavBar, PageNation },
 
@@ -196,14 +200,19 @@ export default {
       qty: "",
     };
   },
+  computed: {
+    ...mapState(productStore, ["storeAllProducts", "storeSortedProducts"]),
+  },
 
   methods: {
+    ...mapActions(productStore, ["getAllProducts", "changeProductType"]),
+
     changeQty() {
       this.qty = parseInt(event.target.value);
     },
 
     addToCart(product_id) {
-      if (this.qty != '') {
+      if (this.qty != "") {
         this.$http
           .post(`${this.api}/v2/api/${this.api_path}/cart`, {
             data: {
@@ -217,8 +226,7 @@ export default {
           .catch((err) => {
             console.log(err.response.data.message);
           });
-      }
-      else{
+      } else {
         this.$http
           .post(`${this.api}/v2/api/${this.api_path}/cart`, {
             data: {
@@ -263,6 +271,10 @@ export default {
         .then((res) => {
           this.userProducts = res.data.products;
           this.pagination = res.data.pagination;
+          window.scrollTo(0, 0);
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
         });
     },
 
@@ -273,6 +285,7 @@ export default {
 
   mounted() {
     this.getProducts();
+    // this.getAllProducts();
   },
 };
 </script>

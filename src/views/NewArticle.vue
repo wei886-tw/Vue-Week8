@@ -41,13 +41,12 @@
               type="text"
               class="rounded mb-16 form-check-input"
               style="width: 100%; height: 40px"
-              placeholder="請填入文章分類，以 space 分隔"
+              placeholder="請點擊按鈕填入文章分類"
               name="articleCategory"
               id="articleCategory"
               v-model="tag"
               ref="tagText"
             />
-            <pre>{{ tag }}</pre>
             <p>
               點擊帶入文章分類：
               <button
@@ -70,6 +69,7 @@
               </button>
             </p>
           </div>
+          <pre>{{typeof tag }}</pre>
         </div>
         <div class="row mb-24">
           <div class="col">
@@ -190,9 +190,12 @@ export default {
     },
 
     addTag(text) {
-      if (this.tag.findIndex === -1) {
-        this.tag.push(`${text} + `);
-        console.log(1)
+      if (this.tag.length === 0 ) {
+        this.tag = text
+      }
+
+      else if(this.tag.indexOf(text) === -1){
+        this.tag = this.tag.concat("、", text)
       }
     },
 

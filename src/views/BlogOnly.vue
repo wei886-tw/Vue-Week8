@@ -1,13 +1,13 @@
 <template>
-  <div class="container-fluid px-0 d-flex">
+  <div class="container-fluid px-0">
     <NavBar />
   </div>
   <div class="container-fluid py-48 px-0">
-    <div class="container pt-32 d-flex">
-      <div class="row">
-        <SideNavbar class="col-2" />
+    <div class="container pt-32">
+      <div class="row d-flex">
+        <SideNavbar class="col-2"/>
         <div class="col-lg-10">
-          <h3 class="fs-40 py-24 text-start">全部文章</h3>
+          <h3 class="fs-40 py-24 text-start">本站獨家</h3>
           <hr />
           <ul
             class="list-unstyled gy-16 d-flex d-block d-lg-none justify-content-between"
@@ -89,14 +89,16 @@ export default {
       this.$http(`${this.url}/v2/api/${this.api_path}/articles`)
         .then((res) => {
           this.articles = res.data.articles;
+          this.articles = this.articles.filter(
+            (item) => item.tag.indexOf("最新消息") !== -1
+          );
+          console.log(this.articles);
           this.pagination = res.data.pagination;
         })
         .catch((err) => {
           console.log(err.response.data.message);
         });
     },
-
-    filterArticles() {},
   },
 
   mounted() {

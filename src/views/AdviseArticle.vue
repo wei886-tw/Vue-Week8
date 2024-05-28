@@ -70,7 +70,7 @@
               </button>
             </p>
           </div>
-          <!-- <pre>{{ tag.search('最新消息') }}</pre> -->
+          <!-- <pre>{{typeof tag}}</pre> -->
         </div>
 
         <div class="row justify-content-center">
@@ -148,7 +148,7 @@ export default {
 
     getArticle(id) {
       this.$http
-        .get(`${this.url}/v2/api/${this.api_path}/article/${id}`)
+        .get(`${this.url}/v2/api/${this.api_path}/admin/article/${id}`)
         .then((res) => {
           this.article = res.data.article;
           this.title = res.data.article.title;
@@ -181,17 +181,17 @@ export default {
         })
         .then(() => {
           alert("修改文章成功");
-          this.$router.push('//adminBlog')
+          this.$router.push("/adminBlog");
         })
         .catch((err) => {
           console.log(err.response.data.message);
         });
     },
+    
     addTag(text) {
-      if (this.tag.search(text) === -1 && this.tag.length === 0) {
-        this.tag = this.tag.concat(text);
-      }
-      else if(this.tag.search(text) === -1 && this.tag.length !== 0) {
+      if (this.tag === undefined) {
+        this.tag = text;
+      } else if (this.tag.search(text) === -1 && this.tag.length !== 0) {
         this.tag = this.tag.concat("、", text);
       }
     },

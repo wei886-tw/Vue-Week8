@@ -103,7 +103,10 @@
             到功能強大的安卓手機，無論您是需要一部用於日常通訊還是用於遊戲和娛樂，我們都能幫您找到心儀的手機。
           </p>
           <div class="container mt-auto px-0">
-            <button class="btn btn-footer fs-16 fs-md-24 tc-sans mt-auto w-100" @click="goToShop('phone')">
+            <button
+              class="btn btn-footer fs-16 fs-md-24 tc-sans mt-auto w-100"
+              @click="goToShop('phone')"
+            >
               前往手機賣場
             </button>
           </div>
@@ -138,7 +141,10 @@
             iPad 到安卓平板，您可以在這裡找到適合您的平板電腦。
           </p>
           <div class="container mt-auto px-0">
-            <button class="btn btn-footer fs-16 fs-md-24 tc-sans w-100" @click="goToShop('pad')">
+            <button
+              class="btn btn-footer fs-16 fs-md-24 tc-sans w-100"
+              @click="goToShop('pad')"
+            >
               前往平板賣場
             </button>
           </div>
@@ -148,11 +154,20 @@
   </div>
 
   <div class="container-fluid px-0">
-    <div class="container">
+    <div class="container d-flex justify-content-between ㄅㄩㄦ">
       <h2 class="fs-40">最新消息</h2>
+      <router-link to="/userBlog" class="text-dark fw-bold hover"
+        >瀏覽更多</router-link
+      >
+    </div>
+    <div class="container">
       <div class="row">
-        <div class="col"></div>
-        <div class="col"></div>
+        <div class="col-6">
+          <!-- <img :src="articles[0].image" alt="文章首圖" style="width: 100%;"> -->
+        </div>
+        <div class="col-6">
+          <!-- <img :src="articles[1].image" alt="文章首圖"> -->
+        </div>
       </div>
     </div>
   </div>
@@ -194,6 +209,7 @@ export default {
       api_path: import.meta.env.VITE_PATH,
       final_total: "",
       isHover: false,
+      articles: [],
     };
   },
 
@@ -206,9 +222,8 @@ export default {
           },
         })
         .then((res) => {
-          alert(res.data.message);
+          alert("成功領取折價券，商品可打 75 折！");
           this.final_total = res.data.data.final_total;
-          console.log(this.final_total);
           this.$emit("finalTotal", this.final_total);
         })
         .catch((err) => {
@@ -219,17 +234,26 @@ export default {
     goToShop(type) {
       if (type === "pc") {
         this.$router.push(`/userProductPc`);
-      }
-      else if(type === "pad") {
+      } else if (type === "pad") {
         this.$router.push(`/userProductPad`);
-      }
-      else if(type === "phone") {
+      } else if (type === "phone") {
         this.$router.push(`/userProductPhone`);
       }
     },
+
+    getArticles() {
+      this.$http
+        .get(`${this.url}/v2/api/${this.api_path}/articles`)
+        .then((res) => {
+          this.articles = res.data.articles;
+          console.log(this.articles);
+        });
+    },
   },
 
-  mounted() {},
+  mounted() {
+    this.getArticles();
+  },
 };
 </script>
 
