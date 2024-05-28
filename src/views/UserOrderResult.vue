@@ -1,5 +1,8 @@
 <template>
-  <NavBarVue />
+  <div class="container-fluid px-0">
+    <NavBar />
+  </div>
+  
   <div class="container-fluid px-0 py-32 vh-100 mb-32">
     <div class="container">
       <div class="row">
@@ -69,18 +72,21 @@
       </div>
     </div>
   </div>
-  <page-footer-vue></page-footer-vue>
+
+  <div class="container-fluid px-0">
+    <PageFooter />
+  </div>
 </template>
 
 <script>
-import NavBarVue from "@/components/NavBar.vue";
-import PageFooterVue from "@/components/PageFooter.vue";
+import NavBar from "@/components/NavBar.vue";
+import PageFooter from "@/components/PageFooter.vue";
 
 export default {
   props: ["id"],
   components: {
-    NavBarVue,
-    PageFooterVue,
+    NavBar,
+    PageFooter,
   },
 
   data() {
@@ -104,7 +110,7 @@ export default {
     },
 
     backToHomePage() {
-      this.$router.push(`/`)
+      this.$router.push(`/`);
     },
   },
 

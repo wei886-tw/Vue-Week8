@@ -54,7 +54,7 @@
                   <span
                     class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger fs-12"
                   >
-                    <p>1</p>
+                    <p>{{ storeCart.length ? `${storeCart.length}` : 0 }}</p>
                   </span>
                 </i>
               </router-link>
@@ -69,6 +69,9 @@
 </template>
 
 <script>
+import cartStore from "@/store/cartStore.js";
+import { mapState, mapActions } from "pinia";
+
 export default {
   props: ["cartProducts"],
 
@@ -79,10 +82,16 @@ export default {
     };
   },
 
+  computed: {
+    ...mapState(cartStore, ["storeCart"]),
+  },
+
   methods: {
-    test() {
-      console.log(this.cartProducts);
-    },
+    ...mapActions(cartStore, ["getCartList"]),
+  },
+
+  mounted() {
+    this.getCartList();
   },
 };
 </script>

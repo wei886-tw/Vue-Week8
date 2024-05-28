@@ -1,5 +1,7 @@
 <template>
-  <NavBarVue />
+  <div class="container-fluid px-0">
+    <NavBar />
+  </div>
   <div class="container-fluid px-0 py-32 vh-100">
     <div class="container">
       <div class="row">
@@ -21,7 +23,7 @@
               >
                 2
               </p>
-              <p class="fw-bold mb-0">結帳付款</p>
+              <p class="fw-bold ">結帳付款</p>
             </li>
             <li class="d-flex flex-column align-items-center">
               <p
@@ -76,17 +78,19 @@
       </div>
     </div>
   </div>
-  <page-footer-vue></page-footer-vue>
+  <div class="container-fluid px-0">
+    <PageFooter />
+  </div>
 </template>
 
 
 <script>
-import NavBarVue from "@/components/NavBar.vue";
-import PageFooterVue from "@/components/PageFooter.vue";
+import NavBar from "@/components/NavBar.vue";
+import PageFooter from "@/components/PageFooter.vue";
 
 export default {
   props: ["id",],
-  components: { NavBarVue, PageFooterVue },
+  components: { NavBar, PageFooter },
   data() {
     return {
       api_path: import.meta.env.VITE_PATH,

@@ -1,5 +1,7 @@
 <template>
-  <nav-bar-vue></nav-bar-vue>
+  <div class="container-fluid px-0">
+    <NavBar />
+  </div>
   <div class="container-fluid px-0 pt-16">
     <div class="container">
       <div class="row">
@@ -142,16 +144,18 @@
       </div>
     </div>
   </div>
-  <page-footer-vue></page-footer-vue>
+  <div class="container-fluid px-0">
+    <page-footer></page-footer>
+  </div>
 </template>
 
 
 <script>
-import NavBarVue from "@/components/NavBar.vue";
-import PageFooterVue from "@/components/PageFooter.vue";
+import NavBar from "@/components/NavBar.vue";
+import PageFooter from "@/components/PageFooter.vue";
 
 export default {
-  components: { NavBarVue, PageFooterVue },
+  components: { NavBar, PageFooter },
   data() {
     return {
       api_path: import.meta.env.VITE_PATH,

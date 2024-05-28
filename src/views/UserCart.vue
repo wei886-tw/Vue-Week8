@@ -1,12 +1,15 @@
 <template>
-  <div class="container">
+  <!-- <div class="container">
     <NavBar :cartProducts="cartProducts" />
+  </div> -->
+  <div class="container-fluid px-0">
+    <NavBar />
   </div>
   <div class="container-fluid" style="min-height: 100vh">
     <div class="container py-48">
       <h2 class="text-center py-60 fs-24 fs-lg-32">購物車列表</h2>
-      <div class="container-sm">
-        <table class="table table-responsive">
+      <div  class="container-sm">
+        <table class="table table-responsive" v-if="cartProducts.length !== 0">
           <thead>
             <tr>
               <th scope="col" class="fs-md-24">品名</th>
@@ -71,9 +74,13 @@
             </td>
           </tfoot>
         </table>
+
+        <h2 v-else class="text-center fs-24">您的購物車沒有東西喔，請先加入商品！<br>
+          <button class="btn btn-gray mt-32" @click="backToShop">返回商品頁面</button>
+        </h2>
         
         <div class="container d-flex px-0 justify-content-end">
-          <button
+          <button v-if="cartProducts.length !== 0"
             type="button"
             class="btn w-50 mb-60 btn-footer"
             @click="enterPayment"
@@ -170,6 +177,12 @@ export default {
       window.scrollTo(0, 0);
       this.$emit("emit-cart-list", this.cartList);
     },
+    
+    backToShop() {
+      this.$router.push('/userProduct')
+    }
+
+
   },
 
   mounted() {

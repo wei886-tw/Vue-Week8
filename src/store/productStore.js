@@ -22,27 +22,26 @@ export default defineStore("productStore", {
         });
     },
 
-    changeProductType() {
-      console.log(123);
-      if (this.storeCategory != "所有產品") {
-        this.$http
-          .get(
-            `${this.api}/v2/api/${this.api_path}/products?category=${this.storeCategory}`
-          )
-          .then((res) => {
-            this.storeAllProducts = res.data.products;
-            this.storePagination = res.data.pagination;
-            this.storeAllProducts = this.storeAllProducts.filter(
-              (item) => item.category === this.category
-            );
-          })
-          .catch((err) => {
-            console.log(err.response.data.message);
-          });
-      } else {
-        this.getProducts(1);
-      }
-    },
+    // changeProductType() {
+    //   if (this.storeCategory != "所有產品") {
+    //     this.$http
+    //       .get(
+    //         `${this.api}/v2/api/${this.api_path}/products?category=${this.storeCategory}`
+    //       )
+    //       .then((res) => {
+    //         this.storeAllProducts = res.data.products;
+    //         this.storePagination = res.data.pagination;
+    //         this.storeAllProducts = this.storeAllProducts.filter(
+    //           (item) => item.category === this.category
+    //         );
+    //       })
+    //       .catch((err) => {
+    //         console.log(err.response.data.message);
+    //       });
+    //   } else {
+    //     this.getProducts(1);
+    //   }
+    // },
   },
 
   getters: {

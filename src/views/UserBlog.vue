@@ -2,7 +2,7 @@
   <div class="container-fluid px-0 d-flex">
     <NavBar />
   </div>
-  <div class="container-fluid py-48 px-0">
+  <div class="container-fluid pt-48 px-0">
     <div class="container pt-32 d-flex">
       <div class="row">
         <SideNavbar class="col-2" />
@@ -62,7 +62,9 @@
       </div>
     </div>
 
-    <PageFooter />
+    <div class="container-fluid px-0">
+      <PageFooter />
+    </div>
   </div>
   <RouterView />
 </template>

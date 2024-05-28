@@ -100,7 +100,7 @@
           </div>
           <div
             class="d-md-none d-flex justify-content-between"
-            v-for="product in storeAllProducts"
+            v-for="product in userProducts"
             :key="product.id"
             @click="tempProduct = product"
           >
@@ -181,7 +181,7 @@ import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 
-import productStore from "@/store/productStore.js";
+import cartStore from "@/store/cartStore.js";
 import { mapState, mapActions } from "pinia";
 
 export default {
@@ -201,11 +201,11 @@ export default {
     };
   },
   computed: {
-    ...mapState(productStore, ["storeAllProducts", "storeSortedProducts"]),
+    ...mapState(cartStore, ["storeCart"]),
   },
 
   methods: {
-    ...mapActions(productStore, ["getAllProducts", "changeProductType"]),
+    ...mapActions(cartStore, ["getCartList"]),
 
     changeQty() {
       this.qty = parseInt(event.target.value);
@@ -221,6 +221,7 @@ export default {
             },
           })
           .then(() => {
+            this.getCartList();
             alert("成功加入購物車");
           })
           .catch((err) => {
@@ -235,6 +236,7 @@ export default {
             },
           })
           .then(() => {
+            this.getCartList();
             alert("成功加入購物車");
           })
           .catch((err) => {

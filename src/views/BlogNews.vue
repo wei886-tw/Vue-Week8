@@ -2,7 +2,7 @@
   <div class="container-fluid px-0">
     <NavBar />
   </div>
-  <div class="container-fluid py-48 px-0">
+  <div class="container-fluid pt-48 px-0">
     <div class="container pt-32">
       <div class="row d-flex">
         <SideNavbar class="col-2"/>
@@ -92,7 +92,6 @@ export default {
           this.articles = this.articles.filter(
             (item) => item.tag.indexOf("最新消息") !== -1
           );
-          console.log(this.articles);
           this.pagination = res.data.pagination;
         })
         .catch((err) => {
