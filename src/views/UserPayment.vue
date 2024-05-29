@@ -2,6 +2,7 @@
   <div class="container-fluid px-0">
     <NavBar />
   </div>
+  
   <div class="container-fluid px-0 py-32 vh-100">
     <div class="container">
       <div class="row">
@@ -78,6 +79,7 @@
       </div>
     </div>
   </div>
+
   <div class="container-fluid px-0">
     <PageFooter />
   </div>

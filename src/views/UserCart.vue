@@ -1,31 +1,29 @@
 <template>
-  <!-- <div class="container">
-    <NavBar :cartProducts="cartProducts" />
-  </div> -->
   <div class="container-fluid px-0">
     <NavBar />
   </div>
-  <div class="container-fluid" style="min-height: 100vh">
+
+  <div class="container-fluid px-0" style="min-height: 100vh">
     <div class="container py-48">
       <h2 class="text-center py-60 fs-24 fs-lg-32">購物車列表</h2>
-      <div  class="container-sm">
+      <div class="container px-0">
         <table class="table table-responsive" v-if="cartProducts.length !== 0">
           <thead>
             <tr>
-              <th scope="col" class="fs-md-24">品名</th>
-              <th scope="col" class="fs-md-24">圖片</th>
-              <th scope="col" class="fs-md-24">數量</th>
-              <th scope="col" class="fs-md-24">價格</th>
+              <th class="fs-md-24">品名</th>
+              <th class="fs-md-24">圖片</th>
+              <th class="fs-md-24">數量</th>
+              <th class="fs-md-24">價格</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="product in cartProducts" :key="product.id">
-              <td class="fs-md-24 align-middle">{{ product.product.title }}</td>
+              <td class="fs-12 fs-sm-16 fs-md-24 align-middle">{{ product.product.title }}</td>
               <td class="align-middle">
                 <img
                   :src="product.product.imageUrl"
                   alt="產品圖片"
-                  style="height: 100px; width: 100px"
+                  class="rwd"
                 />
               </td>
               <td class="align-middle">
@@ -47,7 +45,7 @@
                 <input
                   type="number"
                   class="border border-gray border-1 rounded me-4 d-flex d-md-inline"
-                  style="width: 100px; height: 36px"
+                  style="height: 36px"
                   v-model="product.qty"
                 />
                 <button
@@ -57,7 +55,7 @@
                   +
                 </button>
               </td>
-              <td class="fs-md-24 align-middle">
+              <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
                 {{ Math.floor(product.final_total) }}
               </td>
             </tr>
@@ -69,18 +67,21 @@
             <td class="fs-md-16 fs-lg-24 pt-32">
               <div class="container d-lg-flex justify-content-between">
                 <p>總價: ${{ Math.floor(cartList.final_total) }}</p>
-
               </div>
             </td>
           </tfoot>
         </table>
 
-        <h2 v-else class="text-center fs-24">您的購物車沒有東西喔，請先加入商品！<br>
-          <button class="btn btn-gray mt-32" @click="backToShop">返回商品頁面</button>
+        <h2 v-else class="text-center fs-24">
+          您的購物車沒有東西喔，請先加入商品！<br />
+          <button class="btn btn-gray mt-32" @click="backToShop">
+            返回商品頁面
+          </button>
         </h2>
-        
+
         <div class="container d-flex px-0 justify-content-end">
-          <button v-if="cartProducts.length !== 0"
+          <button
+            v-if="cartProducts.length !== 0"
             type="button"
             class="btn w-50 mb-60 btn-footer"
             @click="enterPayment"
@@ -92,14 +93,13 @@
     </div>
   </div>
 
-  <div class="container-fluid px-0 ">
+  <div class="container-fluid px-0">
     <PageFooter />
   </div>
 
-  <div class="container">
-    <router-view ></router-view>
+  <div class="container-fluid">
+    <router-view></router-view>
   </div>
-
 </template>
 
 <script>
@@ -177,12 +177,10 @@ export default {
       window.scrollTo(0, 0);
       this.$emit("emit-cart-list", this.cartList);
     },
-    
+
     backToShop() {
-      this.$router.push('/userProduct')
-    }
-
-
+      this.$router.push("/userProduct");
+    },
   },
 
   mounted() {
@@ -195,5 +193,22 @@ export default {
 button:hover {
   background-color: black;
   color: white;
+}
+
+input {
+  @media (max-width: 576px) {
+    width: 50px;
+  }
+}
+
+img.rwd {
+  @media (max-width: 576px) {
+    width: 80px;
+    height: 80px;
+  }
+  @media (min-width: 577px) {
+    width: 100px;
+    height: 100px;
+  }
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
-  <div class="container-fluid px-0">
+  <div class="container-fluid px-0 w-100">
     <nav class="navbar navbar-expand-md bg-footer fixed-top py-8">
-      <div class="container">
+      <div class="container ">
         <router-link
           to="/"
-          class="fs-48 noto-serif me-16 text-dark router-link-active"
+          class="fs-24 fs-md-48 noto-serif me-md-16 text-dark router-link-active"
           >3C Reuse</router-link
         >
         <button
