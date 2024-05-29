@@ -99,15 +99,16 @@
                 </td>
               </tr>
             </tbody>
-            <p v-if="userProducts.length === 0" class="pt-32 mb-32">找不到該產品</p>
-            <div class="container px-0">
-              <button
-                class="btn btn-gray w-50"
-                v-if="userProducts.length === 0"
-                @click="backToPreviousPage"
-              >
-                返回上一頁
-              </button>
+            <div class="container " v-if="tempProduct.length === 0">
+              <p class="pt-32 mb-32 text-center">找不到該產品</p>
+              <div class="container d-flex justify-content-center">
+                <button
+                  class="btn btn-footer w-50 "
+                  @click="backToPreviousPage"
+                >
+                  返回上一頁
+                </button>
+              </div>
             </div>
           </table>
 
@@ -340,7 +341,8 @@ export default {
           this.userProducts = this.userProducts.filter((item) =>
             item.title.includes(this.title)
           );
-          this.title = ''
+          this.tempProduct = this.userProducts;
+          this.title = "";
         })
         .catch((err) => {
           console.log(err.response.data.message);
