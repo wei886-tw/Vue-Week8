@@ -4,12 +4,12 @@
       <div class="container">
         <router-link
           to="/"
-          class="fs-48 fs-md-48 noto-serif me-md-16 text-dark router-link-active"
+          class="fs-48 fs-md-48 noto-serif me-md-16 text-dark router-link-active active"
           >3C Reuse</router-link
         >
         <router-link
           to="/userCart"
-          class="fs-24 noto-serif text-dark nav-link router-link-active underline ms-auto me-24 d-md-none"
+          class="fs-24 noto-serif text-dark nav-link active router-link-active underline ms-auto me-24 d-md-none"
         >
           <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
             <span
@@ -36,7 +36,7 @@
             <li class="nav-item">
               <router-link
                 to="/about"
-                class="fs-24 text-dark noto-serif nav-link router-link-active underline"
+                class="fs-24 text-dark noto-serif nav-link router-link-active underline "
               >
                 品牌故事
               </router-link>
@@ -52,7 +52,7 @@
               <router-link
                 to="/userProduct"
                 class="fs-24 noto-serif text-dark nav-link router-link-active underline"
-                >商品
+                >所有產品
               </router-link>
             </li>
           </ul>
@@ -113,6 +113,9 @@ a.underline:hover {
 .button.rwd {
   width: 32px;
   height: 32px;
+}
+.router-link-exact-active {
+  font-weight: bolder;
 }
 </style>
 

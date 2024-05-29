@@ -266,7 +266,7 @@ export default {
 
 .noto-serif {
   font-family: "Noto Serif TC", serif;
-  font-weight: 400;
+  font-weight: normal ;
   font-style: normal;
 }
 

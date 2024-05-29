@@ -10,6 +10,7 @@
         <a
           class="page-link text-primary"
           href="#"
+          :class="{ activate: page === pagination.current_pagePage }"
           @click.prevent="getPageProducts(page = page)"
           >{{ page }}</a
         >
@@ -40,5 +41,10 @@ export default {
   a:hover{
     background-color:black;
     color: white !important;
+  }
+
+  .activate{
+    background-color: black;
+    color: white;
   }
 </style>

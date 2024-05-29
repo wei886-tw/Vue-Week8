@@ -10,11 +10,30 @@
           <table class="table d-none d-md-block">
             <thead>
               <tr>
-                <th>
+                <th style="width: 25%" class="align-items-bottom p-0">
                   <p class="fs-24 fs-lg-40">所有產品</p>
                 </th>
-                <th></th>
-                <th>
+                <th style="width: 60%">
+                  <div
+                    class="rounded border-2 py-0 bg-footer d-flex justify-content-between align-items-center"
+                    style="height: 48px"
+                  >
+                    <input
+                      type="text"
+                      class="rounded border-2 border-white bg-footer py-0 px-0"
+                      placeholder="請輸入欲搜尋產品"
+                      ref="search"
+                      style="width: 90%; height: 44px"
+                    />
+                    <button for="input" class="border-0">
+                      <i
+                        class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8"
+                        @click="searchProduct"
+                      ></i>
+                    </button>
+                  </div>
+                </th>
+                <th style="width: 15%">
                   <select
                     name=""
                     id=""
@@ -75,15 +94,40 @@
                   </button>
                   <button class="btn btn-footer hover" style="width: 100%">
                     <i class="bi bi-heart-fill"></i>
-                    &nbsp加入追蹤
+                    &nbsp;加入追蹤
                   </button>
                 </td>
               </tr>
             </tbody>
+            <p v-if="userProducts.length === 0" class="pt-32 mb-32">找不到該產品</p>
+            <div class="container px-0">
+              <button
+                class="btn btn-gray w-50"
+                v-if="userProducts.length === 0"
+                @click="backToPreviousPage"
+              >
+                返回上一頁
+              </button>
+            </div>
           </table>
-          <div class="container d-md-none d-flex justify-content-between">
-            <p class="fs-24">全部商品</p>
 
+          <div class="container d-md-none d-flex justify-content-between">
+            <th>
+              <div
+                class="rounded border-2 py-0 bg-footer d-flex justify-content-between align-items-center"
+                style="height: 48px"
+              >
+                <input
+                  type="text"
+                  class="rounded border-2 border-white bg-footer py-0 px-0"
+                  placeholder="請輸入欲搜尋產品"
+                  style="width: 90%; height: 44px"
+                />
+                <button for="input" class="border-0">
+                  <i class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8"></i>
+                </button>
+              </div>
+            </th>
             <select
               name=""
               class="btn btn-footer"
@@ -108,7 +152,7 @@
               <img
                 :src="product.imageUrl"
                 alt="商品圖片"
-                style="height: 280px; width: 280px; object-fit: cover"
+                style="height: 280px; width: 95%; object-fit: cover"
                 class="mb-16"
               />
               <div class="d-flex flex-column justify-content-between px-32">
@@ -154,7 +198,7 @@
                   style="width: 100%"
                   @click="addToCart(product.id)"
                 >
-                  <i class="bi bi-heart-fill"></i>&nbsp加入追蹤
+                  <i class="bi bi-heart-fill"></i>&nbsp;加入追蹤
                 </button>
               </div>
             </div>
@@ -162,8 +206,10 @@
         </div>
       </div>
     </div>
-    <div class="container pt-32">
+
+    <div class="container px-0 pt-32">
       <PageNation
+        v-if="userProducts.length !== 0"
         class="d-flex justify-content-center"
         :pagination="pagination"
         :get-page-products="getProducts"
@@ -283,8 +329,28 @@ export default {
     openModal() {
       this.myModal.show();
     },
-  },
 
+    searchProduct() {
+      this.title = this.$refs.search.value;
+      this.$http
+        .get(`${this.api}/v2/api/${this.api_path}/products/all`)
+        .then((res) => {
+          this.userProducts = res.data.products;
+          this.pagination = {};
+          this.userProducts = this.userProducts.filter((item) =>
+            item.title.includes(this.title)
+          );
+          this.title = ''
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
+    },
+
+    backToPreviousPage() {
+      window.location.reload();
+    },
+  },
   mounted() {
     this.getProducts();
     // this.getAllProducts();

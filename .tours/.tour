@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "搜尋欄寫得不夠好",
+  "steps": [
+    {
+      "file": "src/views/UserProduct.vue",
+      "description": "搜尋欄寫得不夠好",
+      "line": 20
+    }
+  ]
+}
