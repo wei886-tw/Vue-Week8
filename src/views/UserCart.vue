@@ -197,7 +197,10 @@ button:hover {
 
 input {
   @media (max-width: 576px) {
-    width: 50px;
+    width: 40px;
+  }
+  @media (min-width: 577px) {
+    width: 60px;
   }
 }
 
@@ -209,6 +212,14 @@ img.rwd {
   @media (min-width: 577px) {
     width: 100px;
     height: 100px;
+  }
+  @media (min-width: 768px) {
+    width: 160px;
+    height: 160px;
+  }
+  @media (min-width: 976px) {
+    width: 200px;
+    height: 200px;
   }
 }
 </style>

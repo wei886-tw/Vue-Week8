@@ -1,14 +1,26 @@
 <template>
   <div class="container-fluid px-0 w-100">
     <nav class="navbar navbar-expand-md bg-footer fixed-top py-8">
-      <div class="container ">
+      <div class="container">
         <router-link
           to="/"
-          class="fs-24 fs-md-48 noto-serif me-md-16 text-dark router-link-active"
+          class="fs-48 fs-md-48 noto-serif me-md-16 text-dark router-link-active"
           >3C Reuse</router-link
         >
+        <router-link
+          to="/userCart"
+          class="fs-24 noto-serif text-dark nav-link router-link-active underline ms-auto me-24 d-md-none"
+        >
+          <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
+            <span
+              class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger fs-12 align-middle mt-4"
+            >
+              <p>{{ storeCart.length ? `${storeCart.length}` : 0 }}</p>
+            </span>
+          </i>
+        </router-link>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler px-4 py-4 "
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -18,6 +30,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-md-24">
             <li class="nav-item">
@@ -43,24 +56,20 @@
               </router-link>
             </li>
           </ul>
-          <ul class="gap-md-24 list-unstyled">
-            <li class="nav-item position-relative">
-              <router-link
-                to="/userCart"
-                class="fs-24 noto-serif text-dark nav-link router-link-active underline"
-              >
-                <p class="d-block d-md-none">購物車</p>
-                <i class="d-none d-md-block bi bi-cart fs-32 text-end">
-                  <span
-                    class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger fs-12"
-                  >
-                    <p>{{ storeCart.length ? `${storeCart.length}` : 0 }}</p>
-                  </span>
-                </i>
-              </router-link>
-            </li>
-          </ul>
         </div>
+
+        <router-link
+          to="/userCart"
+          class="fs-24 noto-serif text-dark nav-link router-link-active underline ms-auto me-16 d-none d-md-block"
+        >
+          <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
+            <span
+              class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger fs-12 align-middle mt-4"
+            >
+              <p>{{ storeCart.length ? `${storeCart.length}` : 0 }}</p>
+            </span>
+          </i>
+        </router-link>
       </div>
     </nav>
   </div>
@@ -100,6 +109,10 @@ export default {
 a.underline:hover {
   border-bottom: 2px solid black;
   padding-block: 0px;
+}
+.button.rwd {
+  width: 32px;
+  height: 32px;
 }
 </style>
 
