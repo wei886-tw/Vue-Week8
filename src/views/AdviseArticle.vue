@@ -35,6 +35,7 @@
               v-model="author"
             />
           </div>
+
           <div class="col-5">
             <label class="fs-24" for="articleCategory">
               文章分類<span class="text-danger">*</span>
@@ -70,8 +71,35 @@
               </button>
             </p>
           </div>
-          <!-- <pre>{{typeof tag}}</pre> -->
+
+          <div class="col-10">
+            <label class="fs-24" for="description"
+              >文章簡述<span class="text-danger">*</span></label
+            >
+            <textarea
+              v-model="description"
+              class="rounded mb-24 form-check-input"
+              style="width: 100%; height: 120px"
+              placeholder="請填入 100 字內描述"
+              name="description"
+              id="description"
+            />
+            <label class="fs-24" for="description"
+              >文章內容<span class="text-danger">*</span></label
+            >
+            <textarea
+              type="text"
+              v-model="content"
+              class="rounded mb-24 form-check-input"
+              style="width: 100%; height: 240px"
+              placeholder="請輸入文章內容"
+              name="content"
+              id="content"
+            />
+          </div>
         </div>
+
+          
 
         <div class="row justify-content-center">
           <div
@@ -187,7 +215,7 @@ export default {
           console.log(err.response.data.message);
         });
     },
-    
+
     addTag(text) {
       if (this.tag === undefined) {
         this.tag = text;

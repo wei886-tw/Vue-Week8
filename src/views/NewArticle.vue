@@ -69,7 +69,6 @@
               </button>
             </p>
           </div>
-          <pre>{{typeof tag }}</pre>
         </div>
         <div class="row mb-24">
           <div class="col">

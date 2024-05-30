@@ -5,24 +5,72 @@
   <div class="container-fluid pt-48 px-0">
     <div class="container pt-32 d-flex">
       <div class="row">
-        <SideNavbar class="col-2" />
-        <div class="col-lg-10">
+        <div class="col-lg-2 d-none d-lg-block">
+          <ul class="list-unstyled mt-128 gy-16 d-flex flex-column">
+            <li class="fs-lg-24 mb-16">
+              <router-link
+                to="/userBlog"
+                class="router-link-active text-dark hover"
+                >全部文章</router-link
+              >
+            </li>
+            <li class="fs-lg-24 mb-16">
+              <router-link
+                to="/blogNews"
+                class="router-link-active text-dark hover"
+                >最新消息</router-link
+              >
+            </li>
+            <li class="fs-lg-24 mb-16">
+              <router-link
+                to="/blogOnly"
+                class="router-link-active text-dark hover"
+                >本站獨家</router-link
+              >
+            </li>
+            <li class="fs-lg-24 mb-16">
+              <router-link
+                to="/blogEvent"
+                class="router-link-active text-dark hover"
+                >活動講座</router-link
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-10">
           <h3 class="fs-40 py-24 text-start">全部文章</h3>
           <hr />
           <ul
             class="list-unstyled gy-16 d-flex d-block d-lg-none justify-content-between"
           >
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark hover">全部文章</a>
+              <router-link
+                to="/userBlog"
+                class="router-link-active text-dark hover"
+                >全部文章</router-link
+              >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark hover">最新消息</a>
+              <router-link
+                to="/blogNews"
+                class="router-link-active text-dark hover"
+                >最新消息</router-link
+              >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark hover">獨家消息</a>
+              <router-link
+                to="/blogOnly"
+                class="router-link-active text-dark hover"
+                >本站獨家</router-link
+              >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark hover">活動講座</a>
+              <router-link
+                to="/blogEvent"
+                class="router-link-active text-dark hover"
+                >活動講座</router-link
+              >
             </li>
             <hr />
           </ul>
@@ -72,7 +120,7 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
-import SideNavbar from "@/components/SideNavbar.vue";
+
 
 export default {
   data() {
@@ -84,7 +132,7 @@ export default {
       isActive: true,
     };
   },
-  components: { NavBar, PageFooter, SideNavbar },
+  components: { NavBar, PageFooter },
 
   methods: {
     getArticles() {
@@ -102,12 +150,10 @@ export default {
 
     loadingCircle() {
       let loader = this.$loading.show({
-        // Optional parameters
         container: this.fullPage ? null : this.$refs.formContainer,
         canCancel: true,
         onCancel: this.onCancel,
       });
-      // simulate AJAX
       setTimeout(() => {
         loader.hide();
       }, 500);
@@ -115,8 +161,8 @@ export default {
   },
 
   mounted() {
-    this.loadingCircle();
     this.getArticles();
+    this.loadingCircle();
   },
 };
 </script>
@@ -124,6 +170,9 @@ export default {
 <style lang="scss" scoped>
 a.hover:hover {
   text-decoration: underline black;
+}
+.router-link-exact-active {
+  font-weight: bolder;
 }
 </style>
 

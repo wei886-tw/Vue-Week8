@@ -45,7 +45,7 @@
               <router-link
                 to="/userBlog"
                 class="fs-24 noto-serif text-dark nav-link router-link-active underline"
-                >最新消息
+                >部落格
               </router-link>
             </li>
             <li class="nav-item">

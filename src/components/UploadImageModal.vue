@@ -133,7 +133,6 @@ export default  {
     this.$http.defaults.headers.common.Authorization = token;
     this.checkAdmin();
     this.myModal = new bootstrap.Modal(this.$refs.uploadImageModal)
-    this.$emit('emit-imgUrl', 123)
   },
 };
 </script>

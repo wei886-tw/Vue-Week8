@@ -12,17 +12,33 @@
           <ul
             class="list-unstyled gy-16 d-flex d-block d-lg-none justify-content-between"
           >
-            <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark hover">全部文章</a>
+          <li class="fs-16 fs-md-24 mb-16">
+              <router-link
+                to="/userBlog"
+                class="router-link-active text-dark hover"
+                >全部文章</router-link
+              >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark hover">最新消息</a>
+              <router-link
+                to="/blogNews"
+                class="router-link-active text-dark hover"
+                >最新消息</router-link
+              >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark hover">獨家消息</a>
+              <router-link
+                to="/blogOnly"
+                class="router-link-active text-dark hover"
+                >本站獨家</router-link
+              >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <a href="" class="text-dark hover">活動講座</a>
+              <router-link
+                to="/blogEvent"
+                class="router-link-active text-dark hover"
+                >活動講座</router-link
+              >
             </li>
             <hr />
           </ul>

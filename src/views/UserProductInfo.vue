@@ -131,14 +131,23 @@ export default {
     changeImg(index) {
       this.product.imageUrl = this.product.imagesUrl[index];
     },
+
+    loadingCircle() {
+      let loader = this.$loading.show({
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: true,
+        onCancel: this.onCancel,
+      });
+      setTimeout(() => {
+        loader.hide();
+      }, 500);
+    },
   },
 
-  created() {
-    console.log(this.$route.params.id);
-  },
 
   mounted() {
     this.getProduct(this.id);
+    this.loadingCircle();
   },
 };
 </script>
