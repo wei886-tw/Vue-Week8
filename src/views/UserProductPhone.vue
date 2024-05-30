@@ -75,7 +75,7 @@
                   </button>
                   <button class="btn btn-footer hover" style="width: 100%">
                     <i class="bi bi-heart-fill"></i>
-                    &nbsp加入追蹤
+                    &nbsp;加入追蹤
                   </button>
                 </td>
               </tr>
@@ -155,7 +155,7 @@
                   style="width: 100%"
                   @click="addToCart(product.id)"
                 >
-                  <i class="bi bi-heart-fill"></i>&nbsp加入追蹤
+                  <i class="bi bi-heart-fill"></i>&nbsp;加入追蹤
                 </button>
               </div>
             </div>
@@ -259,12 +259,26 @@ export default {
       }
     },
 
-    getProducts() {
+    getPhoneProducts() {
       this.$http
         .get(`${this.api}/v2/api/${this.api_path}/products?category=手機`)
         .then((res) => {
           this.userProducts = res.data.products;
           this.pagination = res.data.pagination;
+          window.scrollTo(0, 0);
+        });
+    },
+
+    getProducts(page) {
+      this.$http
+        .get(`${this.api}/api/${this.api_path}/products?page=${page}`)
+        .then((res) => {
+          this.userProducts = res.data.products;
+          this.pagination = res.data.pagination;
+          window.scrollTo(0, 0);
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
         });
     },
 
@@ -274,7 +288,7 @@ export default {
   },
 
   mounted() {
-    this.getProducts();
+    this.getPhoneProducts();
   },
 };
 </script>
