@@ -11,7 +11,7 @@
             <thead>
               <tr>
                 <th style="width: 25%" class="align-items-bottom p-0">
-                  <p class="fs-24 fs-lg-40">所有產品</p>
+                  <p class="fs-24 fs-md-32 fs-lg-40">所有產品</p>
                 </th>
                 <th style="width: 60%">
                   <div
@@ -99,41 +99,39 @@
                 </td>
               </tr>
             </tbody>
-            <div class="container " v-if="tempProduct.length === 0">
+            <div class="container" v-if="searchProducts.length === 0">
               <p class="pt-32 mb-32 text-center">找不到該產品</p>
               <div class="container d-flex justify-content-center">
-                <button
-                  class="btn btn-footer w-50 "
-                  @click="backToPreviousPage"
-                >
+                <button class="btn btn-footer w-50" @click="backToPreviousPage">
                   返回上一頁
                 </button>
               </div>
             </div>
           </table>
 
-          <div class="container d-md-none d-flex justify-content-between">
-            <th>
-              <div
-                class="rounded border-2 py-0 bg-footer d-flex justify-content-between align-items-center"
-                style="height: 48px"
-              >
-                <input
-                  type="text"
-                  class="rounded border-2 border-white bg-footer py-0 px-0"
-                  placeholder="請輸入欲搜尋產品"
-                  style="width: 90%; height: 44px"
-                />
-                <button for="input" class="border-0">
-                  <i class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8"></i>
-                </button>
-              </div>
-            </th>
+          <p class="fs-48 d-md-none text-center mb-16">所有產品</p>
+          <div class="container d-md-none d-flex justify-content-between mb-16">
+            <div
+              class="rounded border-2 py-0 bg-footer d-flex justify-content-between align-items-center"
+              style="height: 48px; width: 50%;"
+            >
+              <input
+                type="text"
+                class="rounded border-2 border-white bg-footer py-0 px-0"
+                placeholder="搜尋產品"
+                ref="searchMobile"
+                style="width: 90%; height: 44px"
+              />
+              <button for="input" class="border-0">
+                <i class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8" @click="searchProductMobile"></i>
+              </button>
+            </div>
+
             <select
               name=""
-              class="btn btn-footer"
+              class="btn btn-footer fs-12"
               ref="select"
-              style="width: 30%"
+              style="width: 40%;"
             >
               <option value="所有產品">所有產品</option>
               <option value="平板">平板</option>
@@ -241,6 +239,7 @@ export default {
       api_path: import.meta.env.VITE_PATH,
       myModal: null,
       tempProduct: {},
+      searchProducts: ["2"],
       pagination: {},
       filterProducts: [],
       category: "",
@@ -341,7 +340,8 @@ export default {
           this.userProducts = this.userProducts.filter((item) =>
             item.title.includes(this.title)
           );
-          this.tempProduct = this.userProducts;
+          console.log(this.userProducts)
+          this.searchProducts = this.userProducts;
           this.title = "";
         })
         .catch((err) => {
@@ -351,6 +351,25 @@ export default {
 
     backToPreviousPage() {
       window.location.reload();
+    },
+
+    searchProductMobile() {
+      this.title = this.$refs.searchMobile.value;
+      this.$http
+        .get(`${this.api}/v2/api/${this.api_path}/products/all`)
+        .then((res) => {
+          this.userProducts = res.data.products;
+          this.pagination = {};
+          this.userProducts = this.userProducts.filter((item) =>
+            item.title.includes(this.title)
+          );
+          console.log(this.userProducts)
+          this.searchProducts = this.userProducts;
+          this.title = "";
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
     },
   },
   mounted() {
