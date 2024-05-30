@@ -204,13 +204,13 @@
                 </button>
               </div>
             </div>
-            <div class="container" v-if="searchProducts.length === 0">
-              <p class="pt-32 mb-32 text-center">找不到該產品</p>
-              <div class="container d-flex justify-content-center">
-                <button class="btn btn-footer w-50" @click="backToPreviousPage">
-                  返回上一頁
-                </button>
-              </div>
+          </div>
+          <div class="container" v-if="searchProducts.length === 0">
+            <p class="pt-32 mb-32 text-center">找不到該產品</p>
+            <div class="container d-flex justify-content-center">
+              <button class="btn btn-footer w-50" @click="backToPreviousPage">
+                返回上一頁
+              </button>
             </div>
           </div>
         </div>
@@ -361,7 +361,9 @@ export default {
     },
 
     backToPreviousPage() {
-      location.reload();
+      this.getProducts();
+      this.$refs.search.value = "";
+      this.$refs.searchMobile.value = "";
     },
 
     searchProductMobile() {
@@ -385,7 +387,6 @@ export default {
   },
   mounted() {
     this.getProducts();
-    // this.getAllProducts();
   },
 };
 </script>
