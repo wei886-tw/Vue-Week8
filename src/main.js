@@ -10,6 +10,11 @@ import VueAxios from 'vue-axios';
 import App from './App.vue';
 import router from './router';
 
+// import Vue Loading
+import {LoadingPlugin} from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css'
+
+/* 引入 VeeValidate 元件跟功能 */
 import {
   Field, Form, ErrorMessage, defineRule, configure
 } from 'vee-validate';
@@ -34,6 +39,7 @@ configure({
 // 設定預設語系
 setLocale('zh_TW')
 
+// 引入 bootstrap
 import '../src/assets/bootstrap/scss/bootstrap.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -41,8 +47,10 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(VueAxios, axios);
+app.use(LoadingPlugin);
 app.component('VField', Field);
 app.component('VForm', Form);
 app.component('ErrorMessage', ErrorMessage);
+
 
 app.mount('#app');

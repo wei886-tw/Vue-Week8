@@ -154,7 +154,7 @@
   </div>
 
   <div class="container-fluid px-0">
-    <div class="container d-flex justify-content-between ㄅㄩㄦ">
+    <div class="container d-flex justify-content-between align=items-center">
       <h2 class="fs-40">最新消息</h2>
       <router-link to="/userBlog" class="text-dark fw-bold hover"
         >瀏覽更多</router-link
@@ -210,6 +210,9 @@ export default {
       final_total: "",
       isHover: false,
       articles: [],
+      newArticles: [],
+      isLoading: true,
+      fullPage: false,
     };
   },
 
@@ -222,9 +225,18 @@ export default {
           },
         })
         .then((res) => {
-          alert("成功領取折價券，商品可打 75 折！");
-          this.final_total = res.data.data.final_total;
-          this.$emit("finalTotal", this.final_total);
+          let loader = this.$loading.show({
+            // Optional parameters
+            container: this.fullPage ? null : this.$refs.formContainer,
+            canCancel: true,
+            onCancel: this.onCancel,
+          });
+          setTimeout(() => {
+            loader.hide();
+            alert("成功領取折價券，商品可打 75 折！");
+            this.final_total = res.data.data.final_total;
+            this.$emit("finalTotal", this.final_total);
+          }, 250);
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -239,6 +251,14 @@ export default {
       } else if (type === "phone") {
         this.$router.push(`/userProductPhone`);
       }
+      let loader = this.$loading.show({
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: true,
+        onCancel: this.onCancel,
+      });
+      setTimeout(() => {
+        loader.hide();
+      }, 1000);
     },
 
     getArticles() {
@@ -246,7 +266,8 @@ export default {
         .get(`${this.url}/v2/api/${this.api_path}/articles`)
         .then((res) => {
           this.articles = res.data.articles;
-          console.log(this.articles);
+          this.newArticles = JSON.parse(JSON.stringify(this.articles));
+          console.log(this.newArticles);
         });
     },
   },
@@ -266,7 +287,7 @@ export default {
 
 .noto-serif {
   font-family: "Noto Serif TC", serif;
-  font-weight: normal ;
+  font-weight: normal;
   font-style: normal;
 }
 
