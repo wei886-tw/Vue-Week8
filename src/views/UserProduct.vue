@@ -27,7 +27,7 @@
                     />
                     <button for="input" class="border-0">
                       <i
-                        class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8"
+                        class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8 text-dark"
                         @click="searchProduct"
                       ></i>
                     </button>
@@ -113,7 +113,7 @@
           <div class="container d-md-none d-flex justify-content-between mb-16">
             <div
               class="rounded border-2 py-0 bg-footer d-flex justify-content-between align-items-center"
-              style="height: 48px; width: 50%;"
+              style="height: 48px; width: 50%"
             >
               <input
                 type="text"
@@ -123,7 +123,10 @@
                 style="width: 90%; height: 44px"
               />
               <button for="input" class="border-0">
-                <i class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8" @click="searchProductMobile"></i>
+                <i
+                  class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8 text-dark"
+                  @click="searchProductMobile"
+                ></i>
               </button>
             </div>
 
@@ -131,7 +134,7 @@
               name=""
               class="btn btn-footer fs-12"
               ref="select"
-              style="width: 40%;"
+              style="width: 40%"
             >
               <option value="所有產品">所有產品</option>
               <option value="平板">平板</option>
@@ -201,6 +204,14 @@
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="container" v-if="searchProducts.length === 0">
+          <p class="pt-32 mb-32 text-center">找不到該產品</p>
+          <div class="container d-flex justify-content-center">
+            <button class="btn btn-footer w-50" @click="backToPreviousPage">
+              返回上一頁
+            </button>
           </div>
         </div>
       </div>
@@ -340,7 +351,7 @@ export default {
           this.userProducts = this.userProducts.filter((item) =>
             item.title.includes(this.title)
           );
-          console.log(this.userProducts)
+          alert(`搜尋 ${this.title} 的結果`);
           this.searchProducts = this.userProducts;
           this.title = "";
         })
@@ -363,7 +374,7 @@ export default {
           this.userProducts = this.userProducts.filter((item) =>
             item.title.includes(this.title)
           );
-          console.log(this.userProducts)
+          alert(`搜尋 ${this.title} 的結果`);
           this.searchProducts = this.userProducts;
           this.title = "";
         })
