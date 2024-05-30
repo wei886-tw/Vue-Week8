@@ -205,7 +205,7 @@
               </div>
             </div>
           </div>
-          <div class="container" v-if="searchProducts.length === 0">
+          <div class="container d-md-none" v-if="searchProducts.length === 0">
             <p class="pt-32 mb-32 text-center">找不到該產品</p>
             <div class="container d-flex justify-content-center">
               <button class="btn btn-footer w-50" @click="backToPreviousPage">

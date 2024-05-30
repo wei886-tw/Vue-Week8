@@ -10,7 +10,7 @@
         <table class="table table-responsive" v-if="cartProducts.length !== 0">
           <thead>
             <tr>
-              <th class="fs-md-24">品名</th>
+              <th class="fs-md-24" style="width:40%">品名</th>
               <th class="fs-md-24">圖片</th>
               <th class="fs-md-24">數量</th>
               <th class="fs-md-24">價格</th>
