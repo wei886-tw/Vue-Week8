@@ -38,7 +38,7 @@
           </ul>
         </div>
 
-        <div class="col-10">
+        <div class="col-12 col-lg-10">
           <h3 class="fs-40 py-24 text-start">全部文章</h3>
           <hr />
           <ul

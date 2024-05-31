@@ -20,7 +20,7 @@
                   >
                     <input
                       type="text"
-                      class="rounded border-footer py-0 px-0 form-control"
+                      class="rounded border-footer border-5 py-0 px-0 form-control"
                       placeholder="請輸入欲搜尋產品"
                       ref="search"
                       style="width: 90%; height: 44px"
