@@ -6,18 +6,24 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">下單時間</th>
-            <th scope="col">訂單編號</th>
-            <th scope="col">價格</th>
-            <th scope="col">是否付款</th>
-            <th scope="col">買家資訊</th>
-            <th scope="col">留言</th>
+            <th scope="col" style="width: 10%">刪除</th>
+            <th scope="col" style="width: 10%">下單時間</th>
+            <th scope="col" style="width: 15%">訂單編號</th>
+            <th scope="col" style="width: 10%">價格</th>
+            <th scope="col" style="width: 20%">是否付款</th>
+            <th scope="col" style="width: 20%">買家資訊</th>
+            <th scope="col" style="width: 10%">留言</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="order in orders" :key="order + 123" class="align-center">
-            <td class="align-center">{{new Date(order.create_at).toLocaleDateString()}}</td>
-            <td class="align-center">{{order.id}} </td>
+          <tr v-for="order in orders" :key="order.id" class="align-center">
+            <td>
+              <button class="btn btn-danger"><i class="bi bi-x-lg" @click="deleteOrder(order.id)"></i></button>
+            </td>
+            <td class="align-center">
+              {{ new Date(order.create_at).toLocaleDateString() }}
+            </td>
+            <td class="align-center">{{ order.id }}</td>
             <td class="align-center">{{ order.total }}</td>
             <td class="align-center">
               {{ order.is_paid ? "已付款" : "未付款" }}
@@ -60,21 +66,39 @@ export default {
   },
 
   methods: {
-    getOrders(page=1) {
+    getOrders(page = 1) {
       this.$http
         .get(`${this.api}/v2/api/${this.api_path}/admin/orders?page=${page}`)
         .then((res) => {
           this.orders = res.data.orders;
           this.ordersPagination = res.data.pagination;
+          console.log(this.orders)
         })
         .catch((err) => {
           alert(err.response.data.message);
+        });
+    },
+
+    deleteOrder(id) {
+      this.$http
+        .delete(`${this.api}/v2/api/${this.api_path}/admin/order/${id}`)
+        .then(() => {
+          alert("訂單已刪除！")
+          this.getOrders(1);
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
         });
     },
   },
 
   mounted() {
     this.getOrders(1);
+    const token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
+      "$1"
+    );
+    this.$http.defaults.headers.common.Authorization = token;
   },
 };
 </script>

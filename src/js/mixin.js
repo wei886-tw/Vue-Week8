@@ -12,5 +12,18 @@ export const myMixin = {
         loader.hide();
       }, 500);
     },
+
+    checkAdmin() {
+      const link = `${this.url}/api/user/check`;
+      this.$http
+        .post(link)
+        .then(() => {
+          this.getPageArticle(1);
+        })
+        .catch((err) => {
+          alert(err.response.data.message);
+          this.$router.push("/adminLogin");
+        });
+    },
   }
 };

@@ -155,41 +155,23 @@
 
   <div class="container-fluid px-0">
     <div class="container d-flex justify-content-between align=items-center">
-      <h2 class="fs-40">最新消息</h2>
+      <!-- <h2 class="fs-40">最新消息</h2>
       <router-link to="/userBlog" class="text-dark fw-bold hover"
         >瀏覽更多</router-link
-      >
+      > -->
     </div>
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <!-- <img :src="articles[0].image" alt="文章首圖" style="width: 100%;"> -->
+          <!-- <img :src="articles[0].image" alt="文章首圖" style="width:100%; height:320px; object-fit: cover;" > -->
+          
         </div>
         <div class="col-6">
-          <!-- <img :src="articles[1].image" alt="文章首圖"> -->
+          <!-- <img :src="articles[1].image" alt="文章首圖" style="width:100%; height:320px; object-fit: cover;"> -->
         </div>
       </div>
     </div>
   </div>
-
-  <div class="container-fluid px-0">
-    <div
-      class="container-fluid px-0 d-flex flex-column align-items-center justify-content-center"
-      style="
-        background-image: url('pic/coupon.jpg');
-        height: 400px;
-        width: 100%;
-        object-fit: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-      "
-    >
-      <button class="btn btn-white fs-48 mb-16" @click="getCoupon">
-        領取折價券
-      </button>
-    </div>
-  </div>
-
   <PageFooter />
 
   <div class="container">
@@ -268,6 +250,9 @@ export default {
           this.articles = res.data.articles;
           this.newArticles = JSON.parse(JSON.stringify(this.articles));
           console.log(this.newArticles);
+          this.newArticles.forEach((item) => {
+            console.log(item)
+          })
         });
     },
   },

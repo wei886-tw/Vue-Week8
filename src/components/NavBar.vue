@@ -60,7 +60,7 @@
 
         <router-link
           to="/userCart"
-          class="fs-24 noto-serif text-dark nav-link router-link-active underline ms-auto me-16 d-none d-md-block"
+          class="fs-24 noto-serif text-dark nav-link  underline ms-auto me-16 d-none d-md-block"
         >
           <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
             <span
@@ -108,8 +108,8 @@ export default {
 <style lang="scss" scoped>
 a.underline:hover {
   border-bottom: 2px solid black;
-  padding-bottom: 4px;
 }
+
 .button.rwd {
   width: 32px;
   height: 32px;

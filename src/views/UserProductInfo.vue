@@ -1,5 +1,8 @@
 <template>
-  <NavBar />
+  <div class="container-fluid px-0">
+    <NavBar />
+  </div>
+
   <div class="container-fluid">
     <div class="container py-32">
       <div class="row g-16 mb-48" v-if="product">
@@ -68,24 +71,29 @@
         </div>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-10">
           <p class="fs-lg-48">相似產品</p>
         </div>
         <div class="col-2">
           <router-link to="/userProduct" class="fs-lg-24 text-dark">瀏覽更多</router-link>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
+  
+  <div class="container-fluid px-0">
+      <PageFooter />
+    </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import PageFooter from "@/components/PageFooter.vue";
 import { myMixin } from "@/js/mixin";
 
 export default {
-  components: { NavBar },
+  components: { NavBar, PageFooter },
   props: ["id"],
   mixins: [myMixin],
 
