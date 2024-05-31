@@ -163,7 +163,6 @@ export default {
   mounted() {
     this.getArticles();
     this.loadingCircle();
-    window.scroll(0, 0)
   },
 };
 </script>

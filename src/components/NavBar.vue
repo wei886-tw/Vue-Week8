@@ -101,6 +101,7 @@ export default {
 
   mounted() {
     this.getCartList();
+    window.scroll(0, 0)
   },
 };
 </script>
