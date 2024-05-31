@@ -20,7 +20,7 @@
                   >
                     <input
                       type="text"
-                      class="rounded border-2 border-white bg-footer py-0 px-0"
+                      class="rounded border-footer py-0 px-0 form-control"
                       placeholder="請輸入欲搜尋產品"
                       ref="search"
                       style="width: 90%; height: 44px"
@@ -239,10 +239,11 @@ import PageNation from "@/components/PageNation.vue";
 
 import cartStore from "@/store/cartStore.js";
 import { mapState, mapActions } from "pinia";
+import { myMixin } from "@/js/mixin";
 
 export default {
   components: { PageFooter, NavBar, PageNation },
-
+  mixins: [myMixin],
   data() {
     return {
       userProducts: [],
@@ -315,6 +316,7 @@ export default {
             this.userProducts = this.userProducts.filter(
               (item) => item.category === this.category
             );
+            alert(`顯示所有${this.category}產品`);
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -342,22 +344,27 @@ export default {
     },
 
     searchProduct() {
-      this.title = this.$refs.search.value;
-      this.$http
-        .get(`${this.api}/v2/api/${this.api_path}/products/all`)
-        .then((res) => {
-          this.userProducts = res.data.products;
-          this.pagination = {};
-          this.userProducts = this.userProducts.filter((item) =>
-            item.title.includes(this.title)
-          );
-          alert(`搜尋 ${this.title} 的結果`);
-          this.searchProducts = this.userProducts;
-          this.title = "";
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-        });
+      if (this.title !== undefined) {
+        this.title = this.$refs.search.value;
+        this.$http
+          .get(`${this.api}/v2/api/${this.api_path}/products/all`)
+          .then((res) => {
+            this.userProducts = res.data.products;
+            this.pagination = {};
+            this.userProducts = this.userProducts.filter((item) =>
+              item.title.includes(this.title)
+            );
+            alert(`搜尋 ${this.title} 的結果`);
+            console.log(this.userProducts);
+            this.searchProducts = this.userProducts;
+            this.title = "";
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      } else {
+        alert("請輸入關鍵字");
+      }
     },
 
     backToPreviousPage() {
@@ -367,35 +374,27 @@ export default {
     },
 
     searchProductMobile() {
-      this.title = this.$refs.searchMobile.value;
-      this.$http
-        .get(`${this.api}/v2/api/${this.api_path}/products/all`)
-        .then((res) => {
-          this.userProducts = res.data.products;
-          this.pagination = {};
-          this.userProducts = this.userProducts.filter((item) =>
-            item.title.includes(this.title)
-          );
-          alert(`搜尋 ${this.title} 的結果`);
-          this.searchProducts = this.userProducts;
-          this.title = "";
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-        });
-    },
-
-    loadingCircle() {
-      let loader = this.$loading.show({
-        // Optional parameters
-        container: this.fullPage ? null : this.$refs.formContainer,
-        canCancel: true,
-        onCancel: this.onCancel,
-      });
-      // simulate AJAX
-      setTimeout(() => {
-        loader.hide();
-      }, 500);
+      if (this.title !== undefined) {
+        this.title = this.$refs.searchMobile.value;
+        this.$http
+          .get(`${this.api}/v2/api/${this.api_path}/products/all`)
+          .then((res) => {
+            this.userProducts = res.data.products;
+            this.pagination = {};
+            this.userProducts = this.userProducts.filter((item) =>
+              item.title.includes(this.title)
+            );
+            alert(`搜尋 ${this.title} 的結果`);
+            console.log(this.userProducts);
+            this.searchProducts = this.userProducts;
+            this.title = "";
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      } else {
+        alert("請輸入關鍵字");
+      }
     },
   },
   mounted() {

@@ -38,7 +38,7 @@
                 to="/about"
                 class="fs-24 text-dark noto-serif nav-link router-link-active underline "
               >
-                品牌故事
+                關於我們
               </router-link>
             </li>
             <li class="nav-item">
@@ -108,7 +108,7 @@ export default {
 <style lang="scss" scoped>
 a.underline:hover {
   border-bottom: 2px solid black;
-  padding-block: 0px;
+  padding-bottom: 4px;
 }
 .button.rwd {
   width: 32px;

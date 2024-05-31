@@ -2,7 +2,7 @@
   <div class="container-fluid px-0">
     <NavBar />
   </div>
-  
+
   <div class="container-fluid px-0 py-32 vh-100">
     <div class="container">
       <div class="row">
@@ -24,7 +24,7 @@
               >
                 2
               </p>
-              <p class="fw-bold ">結帳付款</p>
+              <p class="fw-bold">結帳付款</p>
             </li>
             <li class="d-flex flex-column align-items-center">
               <p
@@ -43,9 +43,9 @@
               <p>訂單編號：</p>
               <p class="text-end">{{ id }}</p>
             </div>
-              <div class="container d-flex justify-content-between pt-8 mb-8">
+            <div class="container d-flex justify-content-between pt-8 mb-8">
               <p>繳費狀態：</p>
-              <p>{{ is_paid ? "已付款":"尚未付款" }}</p>
+              <p>{{ is_paid ? "已付款" : "尚未付款" }}</p>
             </div>
             <div class="container d-flex justify-content-between mb-8">
               <p>訂單總額：</p>
@@ -54,28 +54,38 @@
           </div>
 
           <div class="container px-0 position-relative">
-            <form action="">
-              <select
-                name="payment"
+            <v-form v-slot="{ errors }">
+              <v-field
+                name="付款方式"
                 id="payment"
-                class="w-100 border-2 mb-32"
-                style="height: 60px"
+                as="select"
+                class="w-100 border-2 mb-32 form-control"
+                :class="{ 'is-invalid': errors['付款方式'] }"
+                placeholder="請選擇付款方式"
                 ref="paymentMethod"
+                rules="required"
                 @change="selectChange"
               >
-                <option value="" disabled selected class="position-absolute">
+                <option value="請選擇付款方式" disabled selected>
                   請選擇付款方式
                 </option>
                 <option value="刷卡">刷卡</option>
                 <option value="ATM 繳費">ATM 繳費</option>
-              </select>
-            </form>
-            <button class="btn btn-footer hover w-100" @click="payBill(id)" v-on:emit-is-paid-out="getEmit(paid)">
+              </v-field>
+
+              <error-message name="付款方式" class="invalid-feedback"
+                ><span class="text-danger">付款方式必選</span></error-message
+              >
+            </v-form>
+            <button
+              class="btn btn-footer hover w-100"
+              @click="payBill(id)"
+              v-on:emit-is-paid-out="getEmit(paid)"
+            >
               結帳付款
             </button>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -91,7 +101,7 @@ import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
 
 export default {
-  props: ["id",],
+  props: ["id"],
   components: { NavBar, PageFooter },
   data() {
     return {
@@ -108,28 +118,27 @@ export default {
         message: "",
       },
       paymentMethod: "",
-      total:123,
+      total: 123,
       is_paid: true,
     };
   },
 
   methods: {
-    emitIsPaidOut(){
+    emitIsPaidOut() {
       this.$emit("is-paid", this.is_paid);
-
     },
 
     getOrder() {
-      this.$http.get(`${this.url}/v2/api/${this.api_path}/order/${this.id}`)
-      .then((res)=>{
-        this.is_paid = res.data.order.is_paid;
-        this.total = res.data.order.total;
-        this.$emit("emit-total", this.total)
-      })
-      .catch((err)=>{
-        console.log(err.response.data.message)
-      })
-
+      this.$http
+        .get(`${this.url}/v2/api/${this.api_path}/order/${this.id}`)
+        .then((res) => {
+          this.is_paid = res.data.order.is_paid;
+          this.total = res.data.order.total;
+          this.$emit("emit-total", this.total);
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
     },
 
     getCartProducts() {
@@ -148,8 +157,8 @@ export default {
       this.$http
         .post(`${this.url}/v2/api/{api_path}/pay/${id}`)
         .then(() => {
-            alert("成功付款");
-            this.$router.push(`/userOrderResult/${id}`);
+          alert("成功付款");
+          this.$router.push(`/userOrderResult/${id}`);
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -202,8 +211,8 @@ export default {
   z-index: 1;
 }
 
-.btn.hover:hover{
+.btn.hover:hover {
   background-color: black;
-  color:white;
+  color: white;
 }
 </style>

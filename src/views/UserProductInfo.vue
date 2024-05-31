@@ -82,10 +82,12 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import { myMixin } from "@/js/mixin";
 
 export default {
   components: { NavBar },
   props: ["id"],
+  mixins: [myMixin],
 
   data() {
     return {
@@ -130,17 +132,6 @@ export default {
 
     changeImg(index) {
       this.product.imageUrl = this.product.imagesUrl[index];
-    },
-
-    loadingCircle() {
-      let loader = this.$loading.show({
-        container: this.fullPage ? null : this.$refs.formContainer,
-        canCancel: true,
-        onCancel: this.onCancel,
-      });
-      setTimeout(() => {
-        loader.hide();
-      }, 500);
     },
   },
 

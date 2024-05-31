@@ -120,7 +120,7 @@ export default {
 };
 </script>
 
-<style >
+<style lang="scss">
 .number {
   border: 1px solid #000;
   border-radius: 50%;

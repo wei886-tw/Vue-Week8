@@ -250,6 +250,7 @@ export default {
             this.userProducts = this.userProducts.filter(
               (item) => item.category === this.category
             );
+            alert(`顯示所有${this.category}產品`)
           })
           .catch((err) => {
             console.log(err.response.data.message);

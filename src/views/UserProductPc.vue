@@ -181,9 +181,11 @@
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
 import PageNation from "@/components/PageNation.vue";
+import { myMixin } from "@/js/mixin";
 
 export default {
   components: { PageFooter, NavBar, PageNation },
+  mixins: [myMixin],
 
   data() {
     return {
@@ -205,7 +207,7 @@ export default {
     },
 
     addToCart(product_id) {
-      if (this.qty != '') {
+      if (this.qty != "") {
         this.$http
           .post(`${this.api}/v2/api/${this.api_path}/cart`, {
             data: {
@@ -219,8 +221,7 @@ export default {
           .catch((err) => {
             console.log(err.response.data.message);
           });
-      }
-      else{
+      } else {
         this.$http
           .post(`${this.api}/v2/api/${this.api_path}/cart`, {
             data: {
@@ -250,6 +251,8 @@ export default {
             this.userProducts = this.userProducts.filter(
               (item) => item.category === this.category
             );
+            alert(`顯示所有${this.category}產品`)
+
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -265,8 +268,9 @@ export default {
         .then((res) => {
           this.userProducts = res.data.products;
           this.pagination = res.data.pagination;
-          window.scrollTo(0, 0);
+          this, this.loadingCircle();
 
+          window.scrollTo(0, 0);
         });
     },
 
@@ -276,6 +280,8 @@ export default {
         .then((res) => {
           this.userProducts = res.data.products;
           this.pagination = res.data.pagination;
+          this, this.loadingCircle();
+
           window.scrollTo(0, 0);
         })
         .catch((err) => {
