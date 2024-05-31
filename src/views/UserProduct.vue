@@ -344,8 +344,8 @@ export default {
     },
 
     searchProduct() {
+      this.title = this.$refs.search.value;
       if (this.title !== undefined) {
-        this.title = this.$refs.search.value;
         this.$http
           .get(`${this.api}/v2/api/${this.api_path}/products/all`)
           .then((res) => {
@@ -374,8 +374,8 @@ export default {
     },
 
     searchProductMobile() {
+      this.title = this.$refs.searchMobile.value;
       if (this.title !== undefined) {
-        this.title = this.$refs.searchMobile.value;
         this.$http
           .get(`${this.api}/v2/api/${this.api_path}/products/all`)
           .then((res) => {
