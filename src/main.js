@@ -10,6 +10,8 @@ import VueAxios from 'vue-axios';
 import App from './App.vue';
 import router from './router';
 
+import { register } from 'swiper/element/bundle';
+
 // import Vue Loading
 import {LoadingPlugin} from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css'
@@ -42,6 +44,8 @@ setLocale('zh_TW')
 // 引入 bootstrap
 import '../src/assets/bootstrap/scss/bootstrap.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
+
+register();
 
 const app = createApp(App);
 app.use(createPinia());

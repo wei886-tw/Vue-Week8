@@ -162,13 +162,19 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-6">
-          <!-- <img :src="articles[0].image" alt="文章首圖" style="width:100%; height:320px; object-fit: cover;" > -->
-          
-        </div>
-        <div class="col-6">
-          <!-- <img :src="articles[1].image" alt="文章首圖" style="width:100%; height:320px; object-fit: cover;"> -->
-        </div>
+        <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true">
+          <swiper-slide
+            style="
+              background-image: url('../../dist/pic/acer-2.jpg');
+              height: 600px;
+            "
+          >
+            slide 1
+          </swiper-slide>
+          <swiper-slide>Slide 2</swiper-slide>
+          <swiper-slide>Slide 3</swiper-slide>
+          ...
+        </swiper-container>
       </div>
     </div>
   </div>
@@ -182,6 +188,26 @@
 <script>
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
+
+const swiperEl = document.querySelector("swiper-container");
+
+// swiper parameters
+const swiperParams = {
+  slidesPerView: 1,
+  breakpoints: {
+    640: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+  on: {
+    init() {
+      // ...
+    },
+  },
+};
 
 export default {
   components: { PageFooter, NavBar },
@@ -251,14 +277,18 @@ export default {
           this.newArticles = JSON.parse(JSON.stringify(this.articles));
           console.log(this.newArticles);
           this.newArticles.forEach((item) => {
-            console.log(item)
-          })
+            console.log(item);
+          });
         });
     },
   },
 
   mounted() {
     this.getArticles();
+    Object.assign(swiperEl, swiperParams);
+
+    // and now initialize it
+    swiperEl.initialize();
   },
 };
 </script>

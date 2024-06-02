@@ -2,8 +2,8 @@
   <div class="container-fluid px-0">
     <NavBar />
   </div>
-  <div class="container-fluid py-48 mx-auto">
-    <div class="container pt-32 mx-auto">
+  <div class="container-fluid  mx-auto">
+    <div class="container pt-48 mx-auto">
       <div class="row mx-auto">
         <div class="col-10 mx-auto">
           <div class="container d-flex justify-content-between"></div>
