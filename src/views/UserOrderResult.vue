@@ -6,9 +6,9 @@
   <div class="container-fluid px-0 py-32 vh-100 mb-32">
     <div class="container">
       <div class="row">
-        <div class="col-sm-6 col-lg-8 mx-auto">
+        <div class="col-sm-6 col-lg-8 mx-auto ">
           <ol
-            class="pay-list pt-32 mb-32 d-flex justify-content-between list-unstyled position-relative"
+            class="pay-list pt-32 mb-60 d-flex justify-content-between list-unstyled position-relative"
           >
             <li class="d-flex flex-column align-items-center">
               <p
@@ -44,7 +44,8 @@
       </div>
 
       <div class="row mb-32">
-        <div
+        <div class="col-6 col-lg-8 mx-auto">
+          <div
           class="container px-0 border-2 border-dark border-top border-bottom mb-32"
         >
           <div class="container d-flex justify-content-between pt-8 mb-8">
@@ -60,15 +61,19 @@
             <p>{{ Math.floor(order.total) }}</p>
           </div>
         </div>
+        </div>
+       
       </div>
 
-      <div class="row mb-32">
-        <button
-          class="btn btn-footer w-75 mx-auto hover"
-          @click="backToHomePage"
-        >
-          返回首頁
-        </button>
+      <div class="row mb-32 ">
+        <div class="col-6 col-lg-8 mx-auto">
+          <button
+            class="btn btn-footer w-100 mx-auto hover"
+            @click="backToHomePage"
+          >
+            返回首頁
+          </button>
+        </div>
       </div>
     </div>
   </div>

@@ -4,8 +4,8 @@
   </div>
 
   <div class="container-fluid px-0" style="min-height: 100vh">
-    <div class="container py-48">
-      <h2 class="text-center py-60 fs-24 fs-lg-32">購物車列表</h2>
+    <div class="container ">
+      <h2 class="text-center mb-60 pb-16 fs-24 fs-lg-32">購物車列表</h2>
       <div class="container px-0">
         <table class="table table-responsive" v-if="cartProducts.length !== 0">
           <thead>

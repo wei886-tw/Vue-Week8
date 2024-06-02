@@ -3,7 +3,7 @@
     <NavBar />
   </div>
 
-  <div class="container-fluid px-0 py-32 vh-100">
+  <div class="container-fluid px-0 py-32 vh-100 mb-32">
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-lg-8 mx-auto">

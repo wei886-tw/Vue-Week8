@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid px-0 w-100">
-    <nav class="navbar navbar-expand-md bg-footer fixed-top py-8">
+    <nav class="navbar navbar-expand-lg bg-footer fixed-top py-8">
       <div class="container">
         <router-link
           to="/"
@@ -9,7 +9,7 @@
         >
         <router-link
           to="/userCart"
-          class="fs-24 noto-serif text-dark nav-link active router-link-active underline ms-auto me-24 d-md-none"
+          class="fs-24 noto-serif text-dark nav-link active router-link-active underline ms-auto me-24 d-lg-none"
         >
           <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
             <span
@@ -60,7 +60,7 @@
 
         <router-link
           to="/userCart"
-          class="fs-24 noto-serif text-dark nav-link  underline ms-auto me-16 d-none d-md-block"
+          class="fs-24 noto-serif text-dark nav-link  underline ms-auto me-16 d-none d-lg-block"
         >
           <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
             <span

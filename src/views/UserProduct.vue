@@ -345,7 +345,7 @@ export default {
 
     searchProduct() {
       this.title = this.$refs.search.value;
-      if (this.title !== undefined) {
+      if (this.title !== undefined && this.title !== "") {
         this.$http
           .get(`${this.api}/v2/api/${this.api_path}/products/all`)
           .then((res) => {
@@ -355,7 +355,6 @@ export default {
               item.title.includes(this.title)
             );
             alert(`搜尋 ${this.title} 的結果`);
-            console.log(this.userProducts);
             this.searchProducts = this.userProducts;
             this.title = "";
           })
