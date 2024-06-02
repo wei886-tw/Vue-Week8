@@ -46,79 +46,87 @@
 
   <div class="container mb-48">
     <div class="row d-flex justify-content-center">
-      <div class="col-sm-4 col-lg-5 ">
-        <div class="container d-flex flex-column  px-0">
-          <p class="fs-16 fs-md-24 tc-sans">
-            謝謝您對 3C Reuse
-            認可與提攜，我們歡迎各種問題及二手收購，誠摯邀請您來信提案，我們將有專門窗口與您聯繫。
-          </p>
+      <div class="col-sm-8 col-lg-5 d-flex flex-column ">
+        <p class="fs-16 fs-md-24 tc-sans ">
+          謝謝您對 3C Reuse
+          認可與提攜，我們歡迎各種問題及二手收購，誠摯邀請您來信提案，我們將有專門窗口與您聯繫。
+        </p>
 
-          <button type="submit" class="btn btn-dark mt-auto" @click="sendEmail">
-            寄出信件
-          </button>
-        </div>
+        <button
+          type="submit"
+          class="btn btn-dark mt-auto d-none d-lg-block"
+          @click="sendEmail"
+        >
+          寄出信件
+        </button>
       </div>
 
-      <div class="col-sm-4 col-lg-5 ">
-    <v-form v-slot="{ errors }">
-      <div class="container px-0 mb-16">
-        <v-field
-          type="text"
-          id="title"
-          name="標題"
-          class="w-100 border rounded form-control"
-          placeholder="來信標題"
-          style="height: 48px"
-          v-model="mailTitle"
-          :class="{ 'is-invalid': errors['標題'] }"
-          rules="required"
-        />
-        <error-message name="標題" class="invalid-feedback"
-          ><span class="text-danger ps-8">標題必填</span></error-message
-        >
-      </div>
+      <div class="col-sm-8 col-lg-5">
+        <v-form v-slot="{ errors }">
+          <div class="container px-0 mb-16">
+            <v-field
+              type="text"
+              id="title"
+              name="標題"
+              class="w-100 border rounded form-control"
+              placeholder="來信標題"
+              style="height: 48px"
+              v-model="mailTitle"
+              :class="{ 'is-invalid': errors['標題'] }"
+              rules="required"
+            />
+            <error-message name="標題" class="invalid-feedback"
+              ><span class="text-danger ps-8">標題必填</span></error-message
+            >
+          </div>
 
-      <div class="container px-0 mb-16">
-        <v-field
-          type="text"
-          id="sender"
-          name="寄件者"
-          class="w-100 border rounded form-control"
-          placeholder="姓名"
-          style="height: 48px"
-          v-model="mailSender"
-          :class="{ 'is-invalid': errors['寄件者'] }"
-          rules="required"
-        />
-        <error-message name="寄件者" class="invalid-feedback">
-          <span class="text-danger ps-8">姓名必填</span></error-message
-        >
-      </div>
+          <div class="container px-0 mb-16">
+            <v-field
+              type="text"
+              id="sender"
+              name="寄件者"
+              class="w-100 border rounded form-control"
+              placeholder="姓名"
+              style="height: 48px"
+              v-model="mailSender"
+              :class="{ 'is-invalid': errors['寄件者'] }"
+              rules="required"
+            />
+            <error-message name="寄件者" class="invalid-feedback">
+              <span class="text-danger ps-8">姓名必填</span></error-message
+            >
+          </div>
 
-      <div class="container px-0">
-        <v-field
-          name="來信內容"
-          id="message"
-          class="w-100 px-8 py-8 border rounded form-control"
-          as="textarea"
-          placeholder="來信內容"
-          type="text"
-          rows="10"
-          v-model="mailMessage"
-          :class="{ 'is-invalid': errors['來信內容'] }"
-          rules="required"
+          <div class="container px-0 mb-16">
+            <v-field
+              name="來信內容"
+              id="message"
+              class="w-100 px-8 py-8 border rounded form-control mb-16"
+              as="textarea"
+              placeholder="來信內容"
+              type="text"
+              rows="10"
+              v-model="mailMessage"
+              :class="{ 'is-invalid': errors['來信內容'] }"
+              rules="required"
+            >
+            </v-field>
+            <error-message name="來信內容" class="invalid-feedback "
+              ><span class="text-danger ps-8">信件內容必填</span></error-message
+            >
+            <button
+          type="submit"
+          class="btn btn-dark mt-auto d-block d-lg-none w-100"
+          @click="sendEmail"
         >
-        </v-field>
-        <error-message name="來信內容" class="invalid-feedback"
-          ><span class="text-danger ps-8">信件內容必填</span></error-message
-        >
+          寄出信件
+        </button>
+          </div>
+        </v-form>
       </div>
-    </v-form>
-  </div>
     </div>
   </div>
 
-  
   <page-footer></page-footer>
   <RouterView />
 </template>

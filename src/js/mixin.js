@@ -10,7 +10,7 @@ export const myMixin = {
       // simulate AJAX
       setTimeout(() => {
         loader.hide();
-      }, 500);
+      }, 1000);
     },
 
     checkAdmin() {
