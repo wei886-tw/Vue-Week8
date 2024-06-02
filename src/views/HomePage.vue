@@ -154,31 +154,16 @@
   </div>
 
   <div class="container-fluid px-0">
-    <div class="container d-flex justify-content-between align=items-center">
-      <!-- <h2 class="fs-40">最新消息</h2>
-      <router-link to="/userBlog" class="text-dark fw-bold hover"
-        >瀏覽更多</router-link
-      > -->
-    </div>
-    <div class="container">
-      <div class="row">
-        <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true">
-          <swiper-slide
-            style="
-              background-image: url('../../dist/pic/acer-2.jpg');
-              height: 600px;
-            "
-          >
-            slide 1
-          </swiper-slide>
-          <swiper-slide>Slide 2</swiper-slide>
-          <swiper-slide>Slide 3</swiper-slide>
-          ...
-        </swiper-container>
-      </div>
-    </div>
+      <swiper-container slides-per-view="1" speed="100" loop="true" css-mode="true">
+        <swiper-slide>Slide 1</swiper-slide>
+        <swiper-slide>Slide 2</swiper-slide>
+        <swiper-slide>Slide 3</swiper-slide>
+      </swiper-container>
   </div>
-  <PageFooter />
+
+  <div class="container-fluid px-0">
+    <PageFooter />
+  </div>
 
   <div class="container">
     <router-view />
@@ -188,26 +173,6 @@
 <script>
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
-
-const swiperEl = document.querySelector("swiper-container");
-
-// swiper parameters
-const swiperParams = {
-  slidesPerView: 1,
-  breakpoints: {
-    640: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-  on: {
-    init() {
-      // ...
-    },
-  },
-};
 
 export default {
   components: { PageFooter, NavBar },
@@ -221,6 +186,7 @@ export default {
       newArticles: [],
       isLoading: true,
       fullPage: false,
+      swiperEl: "",
     };
   },
 
@@ -275,20 +241,33 @@ export default {
         .then((res) => {
           this.articles = res.data.articles;
           this.newArticles = JSON.parse(JSON.stringify(this.articles));
-          console.log(this.newArticles);
-          this.newArticles.forEach((item) => {
-            console.log(item);
-          });
         });
     },
   },
 
   mounted() {
     this.getArticles();
-    Object.assign(swiperEl, swiperParams);
+    this.swiperEl = document.querySelector("swiper-container");
+    const swiperParams = {
+      slidesPerView: 1,
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+      on: {
+        init() {
+          // ...
+        },
+      },
+    };
+    Object.assign(this.swiperEl, swiperParams);
 
     // and now initialize it
-    swiperEl.initialize();
+    this.swiperEl.initialize();
   },
 };
 </script>

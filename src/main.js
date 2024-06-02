@@ -10,7 +10,10 @@ import VueAxios from 'vue-axios';
 import App from './App.vue';
 import router from './router';
 
+
 import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
 
 // import Vue Loading
 import {LoadingPlugin} from 'vue-loading-overlay';
@@ -45,7 +48,6 @@ setLocale('zh_TW')
 import '../src/assets/bootstrap/scss/bootstrap.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-register();
 
 const app = createApp(App);
 app.use(createPinia());
