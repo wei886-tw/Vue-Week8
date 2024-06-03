@@ -11,10 +11,6 @@ import App from './App.vue';
 import router from './router';
 
 
-import { register } from 'swiper/element/bundle';
-// register Swiper custom elements
-register();
-
 // import Vue Loading
 import {LoadingPlugin} from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css'

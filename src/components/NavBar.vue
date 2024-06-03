@@ -4,7 +4,7 @@
       <div class="container">
         <router-link
           to="/"
-          class="fs-48 fs-md-48 noto-serif me-md-16 text-dark "
+          class="fs-48 fs-md-48 noto-serif me-md-16 text-dark nav-brand"
           >3C Reuse</router-link
         >
         <router-link

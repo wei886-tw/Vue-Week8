@@ -153,12 +153,9 @@
     </div>
   </div>
 
-  <div class="container-fluid px-0">
-      <swiper-container slides-per-view="1" speed="100" loop="true" css-mode="true">
-        <swiper-slide>Slide 1</swiper-slide>
-        <swiper-slide>Slide 2</swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
-      </swiper-container>
+  <div class="container mb-48">
+    <p class="fs-24 fs-md-32 fw-bold">顧客評論</p>
+    <SwiperComponent />
   </div>
 
   <div class="container-fluid px-0">
@@ -173,9 +170,10 @@
 <script>
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
+import SwiperComponent from "@/components/SwiperComponent.vue";
 
 export default {
-  components: { PageFooter, NavBar },
+  components: { PageFooter, NavBar, SwiperComponent },
   data() {
     return {
       url: import.meta.env.VITE_API,
@@ -247,27 +245,6 @@ export default {
 
   mounted() {
     this.getArticles();
-    this.swiperEl = document.querySelector("swiper-container");
-    const swiperParams = {
-      slidesPerView: 1,
-      breakpoints: {
-        640: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 3,
-        },
-      },
-      on: {
-        init() {
-          // ...
-        },
-      },
-    };
-    Object.assign(this.swiperEl, swiperParams);
-
-    // and now initialize it
-    this.swiperEl.initialize();
   },
 };
 </script>
