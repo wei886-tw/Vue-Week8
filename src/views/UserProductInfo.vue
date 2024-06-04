@@ -91,6 +91,8 @@
 import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
 import { myMixin } from "@/js/mixin";
+import { mapState, mapActions } from "pinia";
+import cartStore from "@/store/cartStore.js";
 
 export default {
   components: { NavBar, PageFooter },
@@ -106,7 +108,13 @@ export default {
     };
   },
 
+  computed: {
+    ...mapState(cartStore, ["storeCart"]),
+  },
+
   methods: {
+    ...mapActions(cartStore, ["getCartList"]),
+
     getProduct(id) {
       this.$http
         .get(`${this.url}/v2/api/${this.api_path}/product/${id}`)
@@ -131,6 +139,7 @@ export default {
           },
         })
         .then(() => {
+          this.getCartList();
           alert("成功加入購物車");
         })
         .catch((err) => {
