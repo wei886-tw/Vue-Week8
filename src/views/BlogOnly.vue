@@ -2,7 +2,7 @@
   <div class="container-fluid px-0">
     <NavBar />
   </div>
-  <div class="container-fluid pt-48 px-0">
+  <div class="container-fluid px-0">
     <div class="container pt-32">
       <div class="row d-flex">
         <SideNavbar class="col-2"/>

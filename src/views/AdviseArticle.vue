@@ -118,7 +118,7 @@
               }}</label>
             </div>
 
-            <UploadImageModalVue />
+            <UploadImageModalVue  v-on:emit-img-url="getUrl" />
 
             <button
               type="button"
@@ -171,6 +171,7 @@ export default {
 
   methods: {
     getUrl(url) {
+      console.log(url)
       this.imageUrl = url;
     },
 

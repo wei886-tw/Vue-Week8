@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-footer">
     <div class="container">
-      <router-link to="/" class="noto-serif fs-48 text-dark me-16"
-        >3C Reuse</router-link
+      <p  class="noto-serif fs-48 text-dark me-16"
+        >3C Reuse</p
       >
       <button
         class="navbar-toggler"
@@ -82,30 +82,9 @@ export default {
         });
     },
   },
+
+  mounted() {
+    window.scroll(0, 0);
+  }
 };
 </script>
-
-<style >
-.tc-serif {
-  font-family: "Noto Serif TC" !important;
-  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap'");
-}
-
-.noto-serif {
-  font-family: "Noto Serif TC", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.noto-sans {
-  font-family: "Noto Sans TC", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-}
-
-.tc-sans {
-  font-family: "Noto Sans TC" !important;
-  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC&display=swap");
-}
-</style>

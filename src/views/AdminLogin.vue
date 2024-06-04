@@ -70,10 +70,26 @@ export default {
           alert(err.response.data.message);
         });
     },
+
+    checkAdmin() {
+      const link = `${this.url}/api/user/check`;
+      this.$http
+        .post(link)
+        .then(() => {})
+        .catch((err) => {
+          alert(err.response.data.message);
+          this.$router.push("/adminLogin");
+        });
+    },
   },
 
   mounted() {
-   
+    const token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
+      "$1"
+    );
+    this.$http.defaults.headers.common.Authorization = token;
+    this.checkAdmin();
   },
 };
 </script>

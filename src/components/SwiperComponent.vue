@@ -5,7 +5,7 @@
     :pagination="{ clickable: true }"
     :slides-per-view="1"
     :space-between="10"
-    :autoplay="{ delay: 3000, disableOnInteraction: false }"
+    :autoplay="{ delay: 5000, disableOnInteraction: false }"
     @slideChange="onSlideChange"
     class="mySwiper"
   >

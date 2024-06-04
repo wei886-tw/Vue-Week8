@@ -84,7 +84,7 @@
 
 <script>
 export default  {
-  emits: ['emit-imgUrl'],
+  emits: ['emitImgUrl'],
   data() {
     return {
       api: import.meta.env.VITE_API,
@@ -116,7 +116,7 @@ export default  {
         .post(`${this.api}/v2/api/${this.api_path}/admin/upload`, formData )
         .then((res) => {
           this.imageUrl = res.data.imageUrl
-          this.$emit("emit-imgUrl", this.imageUrl)
+          this.$emit("emitImgUrl", this.imageUrl)
           this.imageUrl = '';
         })
         .catch((err) => {

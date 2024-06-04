@@ -13,16 +13,6 @@ const router = createRouter({
       name: 'userProduct',
       component: () => import('../views/UserProduct.vue'),
     },
-    // {
-    //   path: '/userProductTypeChosen/:type',
-    //   name: 'userProductTypeChosen',
-    //   component: () => import('../views/UserProductTypeChosen.vue'),
-    //   props: (route) => {
-    //     return {
-    //       type: route.params.id
-    //     };
-    //   }
-    // }, 
     {
       path: '/userProductPc',
       name: 'userProductPc',
