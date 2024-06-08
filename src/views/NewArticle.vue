@@ -87,50 +87,12 @@
               id="content"
             />
 
-            <div class="row ">
-              <div class="col-6 ">
-                <div
-                  class="d-flex flex-column justify-content-between px-0"
-                >
-                  <h3 class="fs-24">文章發佈狀態</h3>
-                  <div class="form-check form-switch  px-0">
-                    <form action="" class="form-check form-switch">
-                      <label
-                        class="form-check-label"
-                        for="flexSwitchCheckDefault"
-                        >{{ isPublic ? "文章公開" : "文章不公開" }}</label
-                      >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="flexSwitchCheckDefault"
-                        v-model="isPublic"
-                      />
-                    </form>
-                  </div>
-
-                  <button class="btn btn-footer " @click.prevent="postArticle">
-                    送出文章
-                  </button>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="container px-0">
+            <div class="row">
+              <div class="col-6 d-flex flex-column justify-content-between">
+                <div class="container px-0 d-flex align-items-center">
                   <label class="fs-24 mb-8 h3" for="title"
                     >圖片預覽<span class="text-danger">*</span></label
                   >
-                  <div
-                    v-if="imageUrl"
-                    :style="`background-image:url(${imageUrl})`"
-                    class="w-100 h-75"
-                  ></div>
-                  <img
-                    v-if="imageUrl"
-                    :src="imageUrl"
-                    alt="picture"
-                    style="width: 100%; object-fit: cover"
-                  />
-                  <p v-else class="text-dark-gray">現在沒有圖片</p>
                 </div>
                 <p class="mb-16">
                   僅限使用 jpg、jpeg 與 png 格式，檔案大小限制為 3MB 以下
@@ -153,11 +115,49 @@
                 </form>
                 <button
                   type="button"
-                  class="btn border w-100"
+                  class="btn border w-100 mb-16"
                   @click="submitImgUrl"
                 >
                   上傳圖片
                 </button>
+                <div class="form-check form-switch  px-0">
+                    <form action="" class="form-check form-switch mb-16">
+                      <label
+                        class="form-check-label"
+                        for="flexSwitchCheckDefault"
+                        >{{ isPublic ? "文章公開" : "文章不公開" }}</label
+                      >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="flexSwitchCheckDefault"
+                        v-model="isPublic"
+                      />
+                    </form>
+                  </div>
+
+                  <button class="btn btn-footer w-100" @click.prevent="postArticle">
+                    送出文章
+                  </button>
+              </div>
+
+              <div class="col-6">
+                <div
+                  class="border border-1"
+                  style="height: 360px;"
+                >
+                  <img
+                    v-if="imageUrl"
+                    :src="imageUrl"
+                    alt="picture"
+                    style="width: 100%; object-fit: cover"
+                  />
+                  <p v-else class="text-dark-gray text-center">現在沒有圖片
+                    <img src="https://www.samys.com/images/product/main/S-008607x1000.jpg" alt="代替圖片"
+                    style="width: 100%; height: 360px; object-fit: cover"
+                    >
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -244,9 +244,7 @@ export default {
       this.$http
         .post(`${this.url}/v2/api/${this.api_path}/admin/upload`, formData)
         .then((res) => {
-          console.log(res.data);
           this.imageUrl = res.data.imageUrl;
-          console.log(this.imageUrl);
         })
         .catch((err) => {
           console.log(err.response.data.message);
