@@ -1,1 +1,0 @@
-const i={methods:{loadingCircle(){let e=this.$loading.show({container:this.fullPage?null:this.$refs.formContainer,canCancel:!0,onCancel:this.onCancel});setTimeout(()=>{e.hide()},2e3)},checkAdmin(){const e=`${this.url}/api/user/check`;this.$http.post(e).then(()=>{this.getPageArticle(1)}).catch(t=>{alert(t.response.data.message),this.$router.push("/adminLogin")})}}};export{i as m};
