@@ -7,7 +7,6 @@ export const myMixin = {
         canCancel: true,
         onCancel: this.onCancel,
       });
-      // simulate AJAX
       setTimeout(() => {
         loader.hide();
       }, 2000);
@@ -25,5 +24,9 @@ export const myMixin = {
           this.$router.push("/adminLogin");
         });
     },
+
+    openModal() {
+      
+    }
   }
 };

@@ -200,9 +200,7 @@
                     <label
                       class="form-check-label"
                       for="flexSwitchCheckDefault"
-                      >{{
-                        is_enabled ? "產品公開" : "產品不公開"
-                      }}</label
+                      >{{ is_enabled ? "產品公開" : "產品不公開" }}</label
                     >
                   </div>
                 </div>
@@ -229,6 +227,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="container d-flex justify-content-end">
     <page-nation
@@ -312,7 +311,6 @@ export default {
           this.is_enabled = res.data.product.is_enabled;
           this.imageUrl = res.data.product.imageUrl;
           this.imagesUrl = res.data.product.imagesUrl;
-
         })
         .catch((err) => {
           console.log(err.response.data.message);

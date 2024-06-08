@@ -10,6 +10,7 @@
         <table class="table table-responsive" v-if="cartProducts.length !== 0">
           <thead>
             <tr>
+              <th class="fs-md-24">刪除</th>
               <th class="fs-md-24" style="width:40%">品名</th>
               <th class="fs-md-24">圖片</th>
               <th class="fs-md-24">數量</th>
@@ -18,6 +19,7 @@
           </thead>
           <tbody>
             <tr v-for="product in cartProducts" :key="product.id">
+              <td class="align-middle"><button class="btn btn-danger " @click="delCartItem(product.id)">刪除</button></td>
               <td class="fs-12 fs-sm-16 fs-md-24 align-middle">{{ product.product.title }}</td>
               <td class="align-middle">
                 <img

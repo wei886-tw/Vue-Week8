@@ -2,11 +2,13 @@
   <admin-nav-bar></admin-nav-bar>
   <div class="container-fluid px-0">
     <div class="container py-48">
-      <div class="container d-flex justify-content-between mb-24">
-        <h2 class="fs-32">優惠券管理</h2>
-        <button type="button" class="btn btn-dark" @click="openModal">
-          建立優惠券
-        </button>
+      <div class="container mb-24">
+        <h2 class="fs-32 text-center">優惠券管理</h2>
+        <div class="container d-flex justify-content-end">
+          <button type="button" class="btn btn-dark" @click="openModal">
+            建立優惠券
+          </button>
+        </div>
       </div>
       <table class="table mb-16">
         <thead>
@@ -67,15 +69,19 @@
           ></button>
         </div>
         <div class="modal-body">
-          <v-form v-slot="{errors}" action="" ref="form" >
+          <v-form v-slot="{ errors }" action="" ref="form">
             <div class="form-group mb-16">
               <label for="title" class="form-label">優惠券名稱</label>
-              <input id="title" v-model="title" type="text" class="form-control"
-              placeholder="請輸入優惠券名稱" 
-              rules="required"
-              name="優惠券名稱"
-              :class="{ 'is-invalid': errors['優惠券名稱'] }"
-              >
+              <input
+                id="title"
+                v-model="title"
+                type="text"
+                class="form-control"
+                placeholder="請輸入優惠券名稱"
+                rules="required"
+                name="優惠券名稱"
+                :class="{ 'is-invalid': errors['優惠券名稱'] }"
+              />
               <error-message
                 name="優惠券名稱"
                 class="invalid-feedback"
@@ -91,18 +97,18 @@
                 class="form-control"
                 placeholder="請輸入折扣"
               />
-              <!-- <error-message>
-                name="折扣" class="invalid-feedback"
-              </error-message> -->
             </div>
 
             <div class="form-group mb-16">
               <label for="due_date" class="form-label">到期日</label>
-              <input id="due_date" v-model="date" type="date" class="form-control"
-              placeholder="請輸入到期日" ref="date" >
-              <!-- <error-message>
-                name="折扣" class="invalid-feedback"
-              </error-message> -->
+              <input
+                id="due_date"
+                v-model="date"
+                type="date"
+                class="form-control"
+                placeholder="請輸入到期日"
+                ref="date"
+              />
             </div>
 
             <div class="form-group mb-16">
@@ -113,7 +119,7 @@
                 type="text"
                 class="form-control"
                 placeholder="請輸入優惠券代碼"
-              >
+              />
             </div>
 
             <div class="form-check form-switch mb-16">
@@ -202,8 +208,16 @@ export default {
         });
     },
 
-    openModal() {
+    openModal(id) {
       this.myModal.show();
+      this.$http
+        .get(`${this.url}/v2/api/${this.api_path}/admin/coupons/${id}`)
+        .then(() => {
+          console.log(123);
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
     },
 
     closeModal() {
