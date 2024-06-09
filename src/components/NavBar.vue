@@ -4,7 +4,7 @@
       <div class="container">
         <router-link
           to="/"
-          class="fs-48 fs-md-48 noto-serif me-md-16 text-dark nav-brand"
+          class="fs-48 fs-md-48 noto-serif me-md-16 text-dark nav-brand no-active"
           >3C Reuse</router-link
         >
         <router-link
@@ -115,9 +115,12 @@ a.underline:hover {
   width: 32px;
   height: 32px;
 }
+.no-active.router-link-active {
+  border-bottom: 0px; 
+
+}
 .router-link-exact-active {
   border-bottom: 2px solid black;
-
 }
 </style>
 

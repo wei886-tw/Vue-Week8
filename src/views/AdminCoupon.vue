@@ -1,14 +1,14 @@
 <template>
-  <admin-nav-bar></admin-nav-bar>
+  <div class="container-fluid px-0">
+    <admin-nav-bar></admin-nav-bar>
+  </div>
   <div class="container-fluid px-0">
     <div class="container py-48">
-      <div class="container mb-24">
+      <div class="container mb-24 d-flex justify-content-between">
         <h2 class="fs-32 text-center">優惠券管理</h2>
-        <div class="container d-flex justify-content-end">
-          <button type="button" class="btn btn-dark" @click="openModal">
-            建立優惠券
-          </button>
-        </div>
+        <button type="button" class="btn btn-dark" @click="openModal">
+          建立優惠券
+        </button>
       </div>
       <table class="table mb-16">
         <thead>

@@ -4,14 +4,14 @@
   </div>
 
   <div class="container-fluid px-0" style="min-height: 100vh">
-    <div class="container ">
+    <div class="container">
       <h2 class="text-center py-60 pb-16 fs-24 fs-lg-32">購物車列表</h2>
       <div class="container px-0">
         <table class="table table-responsive" v-if="cartProducts.length !== 0">
           <thead>
             <tr>
               <th class="fs-md-24">刪除</th>
-              <th class="fs-md-24" style="width:40%">品名</th>
+              <th class="fs-md-24" style="width: 40%">品名</th>
               <th class="fs-md-24">圖片</th>
               <th class="fs-md-24">數量</th>
               <th class="fs-md-24">價格</th>
@@ -19,8 +19,15 @@
           </thead>
           <tbody>
             <tr v-for="product in cartProducts" :key="product.id">
-              <td class="align-middle"><button class="btn btn-danger " @click="delCartItem(product.id)">刪除</button></td>
-              <td class="fs-12 fs-sm-16 fs-md-24 align-middle">{{ product.product.title }}</td>
+              <td class="align-middle">
+                <i
+                  class="bi bi-trash3-fill fs-md-24"
+                  @click="delCartItem(product.id)"
+                ></i>
+              </td>
+              <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
+                {{ product.product.title }}
+              </td>
               <td class="align-middle">
                 <img
                   :src="product.product.imageUrl"
@@ -29,36 +36,25 @@
                 />
               </td>
               <td class="align-middle">
-                <button
-                  class="btn d-flex d-md-inline"
-                  @click="reviseQty(product.product.id, -1)"
-                  v-if="product.qty >= 2"
+                <select
+                  name=""
+                  id=""
+                  @change="reviseQty(product.id)"
+                  class="border border-2 border-dark rounded"
+                  style="height: 40px; width: 50%"
                 >
-                  -
-                </button>
-                <button
-                  class="rounded btn d-flex d-md-inline"
-                  v-else
-                  style="width: 35px; height: 38px"
-                  @click="delCartItem(product.id)"
-                >
-                  <i class="bi bi-trash text-center"></i>
-                </button>
-                <input
-                  type="number"
-                  class="border border-gray border-1 rounded me-4 d-flex d-md-inline"
-                  style="height: 36px"
-                  v-model="product.qty"
-                />
-                <button
-                  class="btn d-flex d-md-inline"
-                  @click="reviseQty(product.product.id, 1)"
-                >
-                  +
-                </button>
+                  <option
+                    :value="num"
+                    v-for="num in 10"
+                    :key="num"
+                    :selected="num === product.qty"
+                  >
+                    {{ num }}
+                  </option>
+                </select>
               </td>
               <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
-                {{ Math.floor(product.final_total) }}
+                {{ Math.floor(parseInt(product.product.price * product.qty) ) }}
               </td>
             </tr>
           </tbody>
@@ -126,6 +122,7 @@ export default {
           address: "",
         },
         message: "",
+        qty: 0,
       },
     };
   },
@@ -145,12 +142,13 @@ export default {
         });
     },
 
-    reviseQty(id, qty) {
+    reviseQty(id) {
+      this.qty = parseInt(event.target.value);
       this.$http
-        .post(`${this.url}/v2/api/${this.api_path}/cart`, {
+        .put(`${this.url}/v2/api/${this.api_path}/cart/${id}`, {
           data: {
             product_id: id,
-            qty: qty,
+            qty: this.qty,
           },
         })
         .then(() => {
