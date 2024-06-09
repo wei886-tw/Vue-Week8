@@ -5,7 +5,7 @@
   <div class="container py-48">
     <div class="container d-flex justify-content-between mb-24">
       <h2 class="text-center fs-16 fs-md-24 fs-lg-32">後台產品列表</h2>
-      <button class="btn btn-dark" @click="newProduct('old')">
+      <button class="btn btn-dark" @click="openModal('new')">
         建立新產品
       </button>
     </div>
@@ -139,7 +139,7 @@
                     <div v-else>
                       <button
                         class="btn btn-danger btn-sm d-block w-100"
-                        @click="imagesUrl.pop()"
+                        @click="imagesUrlPop"
                       >
                         刪除圖片
                       </button>
@@ -285,7 +285,7 @@
               v-if="product.id"
               type="button"
               class="btn btn-primary"
-              @click="adviseProduct('old', product.id)"
+              @click="updateProduct('old', product.id)"
             >
               修改產品
             </button>
@@ -293,7 +293,7 @@
             <button
               class="btn btn-primary"
               v-else
-              @click="adviseProduct('old')"
+              @click="updateProduct('new')"
             >
               新增產品
             </button>
@@ -337,7 +337,7 @@ export default {
       content: "",
       is_enabled: false,
       imageUrl: "",
-      imagesUrl: "",
+      imagesUrl: [],
     };
   },
 
@@ -393,7 +393,7 @@ export default {
       }
     },
 
-    adviseProduct(status, id) {
+    updateProduct(status, id) {
       if (status === "old") {
         this.openModal('old', id);
         this.$http
@@ -460,12 +460,10 @@ export default {
     imagesUrlPush() {
       this.imagesUrl = [];
       this.imagesUrl.push();
-      console.log(this.imagesUrl);
     },
 
     imagesUrlPop() {
       this.imagesUrl.pop();
-      console.log(this.imagesUrl);
     },
   },
 
