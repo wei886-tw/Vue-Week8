@@ -40,7 +40,7 @@
                   name=""
                   id=""
                   @change="reviseQty(product.id)"
-                  class="border border-3 border-dark rounded"
+                  class="border border-2 border-dark rounded"
                   style="height: 40px; width: 100%"
                 >
                   <option
@@ -68,13 +68,11 @@
                 class="container d-lg-flex flex-column justify-content-between"
               >
                 <div class="container px-0 d-md-flex">
-                  <p>原價: </p>
-                  <del>
-                    <p class="mb-16">{{ Math.floor(cartList.total) }}</p>
-                  </del>
+                  <p>原價:&emsp;</p>
+                  <p class="mb-16">{{ Math.floor(cartList.total) }}</p>
                 </div>
-                <div class="container px-0 d-md-flex">
-                  <p>優惠: </p>
+                <div class="container px-0 d-md-flex" v-if="onSale">
+                  <p>優惠:&emsp;</p>
                   <p>{{ Math.floor(cartList.final_total) }}</p>
                 </div>
               </div>
@@ -255,13 +253,13 @@ export default {
         qty: 0,
       },
       couponModal: "",
+      onSale: false,
     };
   },
 
   computed: {
     ...mapState(cartStore, ["storeCart"]),
   },
-
 
   components: { NavBar, PageFooter },
 
@@ -338,6 +336,7 @@ export default {
           })
           .then(() => {
             alert("已套用優惠券，幫您打 77 折！");
+            this.onSale = true;
             this.couponModal.hide();
           })
           .catch((err) => {
@@ -365,7 +364,6 @@ export default {
     },
 
     ...mapActions(cartStore, ["getCartList"]),
-
   },
 
   mounted() {
