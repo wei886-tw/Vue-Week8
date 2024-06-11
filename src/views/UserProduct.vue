@@ -2,7 +2,7 @@
   <div class="container-fluid px-0">
     <NavBar />
   </div>
-  <div class="container-fluid  mx-auto">
+  <div class="container-fluid mx-auto">
     <div class="container pt-48 mx-auto">
       <div class="row mx-auto">
         <div class="col-10 mx-auto">
@@ -27,25 +27,26 @@
                     />
                     <button for="input" class="border-0">
                       <i
-                        class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8 text-dark"
+                        class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8 text-dark bg-footer border-dark"
                         @click="searchProduct"
                       ></i>
                     </button>
                   </div>
                 </th>
-                <th style="width: 15%">
+                <th style="width: 15%; " >
                   <select
                     name=""
                     id=""
                     class="rounded border-2 btn btn-footer"
-                    style="width: 132px; height: 48px"
+                    style="width: 132px; height: 48px; position: relative"
                     ref="type"
                     @change="changeProductType"
+
                   >
-                    <option value="所有產品">所有產品</option>
-                    <option value="平板">平板</option>
-                    <option value="手機">手機</option>
-                    <option value="筆電">筆電</option>
+                    <option value="所有產品" style="position:absolute">所有產品</option>
+                    <option value="平板" style="position:absolute">平板</option>
+                    <option value="手機" style="position:absolute">手機</option>
+                    <option value="筆電" style="position:absolute">筆電</option>
                   </select>
                 </th>
               </tr>
@@ -217,6 +218,15 @@
       </div>
     </div>
 
+    <div
+      class="container d-flex justify-content-center"
+      v-if="searchProduct.length !== 0"
+    >
+      <button class="btn btn-footer w-50" @click="backToPreviousPage">
+        返回上一頁
+      </button>
+    </div>
+
     <div class="container px-0 pt-32">
       <PageNation
         v-if="userProducts.length !== 0"
@@ -251,7 +261,7 @@ export default {
       api_path: import.meta.env.VITE_PATH,
       myModal: null,
       tempProduct: {},
-      searchProducts: ["2"],
+      searchProducts: ["2"], // 避免尚未搜尋前就出現找不到該產品
       pagination: {},
       filterProducts: [],
       category: "",
@@ -384,7 +394,6 @@ export default {
               item.title.includes(this.title)
             );
             alert(`搜尋 ${this.title} 的結果`);
-            console.log(this.userProducts);
             this.searchProducts = this.userProducts;
             this.title = "";
           })
@@ -413,5 +422,24 @@ a:hover {
 .btn.hover:hover {
   background-color: black;
   color: white;
+}
+
+.dropdown-container {
+  position: relative;
+  margin: 20px;
+}
+
+.dropdown-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 </style>

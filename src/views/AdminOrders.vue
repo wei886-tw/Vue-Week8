@@ -1,6 +1,8 @@
 <template>
   <div class="container-fluid px-0">
-    <admin-nav-bar></admin-nav-bar>
+    <div class="container-fluid px-0">
+      <admin-nav-bar></admin-nav-bar>
+    </div>
     <div class="container py-32">
       <h2 class="text-center mb-16 fs-32">訂單列表</h2>
       <table class="table">
@@ -72,7 +74,7 @@ export default {
         .then((res) => {
           this.orders = res.data.orders;
           this.ordersPagination = res.data.pagination;
-          console.log(this.orders)
+          // console.log(this.orders)
         })
         .catch((err) => {
           alert(err.response.data.message);

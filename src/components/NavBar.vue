@@ -60,7 +60,7 @@
 
         <router-link
           to="/userCart"
-          class="fs-24 noto-serif text-dark nav-link  underline ms-auto me-16 d-none d-lg-block"
+          class="fs-24 noto-serif text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
         >
           <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
             <span

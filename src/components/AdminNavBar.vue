@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-footer">
+  <nav class="navbar navbar-expand-xl bg-footer fixed-top">
     <div class="container">
-      <p  class="noto-serif fs-48 text-dark me-16"
-        >3C Reuse</p
+      <RouterLink to="/" class="noto-serif fs-48 text-dark me-16"
+        >3C Reuse</RouterLink
       >
       <button
         class="navbar-toggler"
@@ -16,36 +16,30 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-24">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-24 mb-24">
           <li class="nav-item">
-            <RouterLink to="/adminProducts" class="fs-24 noto-serif text-dark"
+            <router-link to="/adminProducts" class="fs-24 noto-serif text-dark router-link-active " 
               >後台產品列表
-            </RouterLink>
+            </router-link>
           </li>
           <li class="nav-item">
-            <RouterLink to="/adminOrders" class="fs-24 noto-serif text-dark">
+            <router-link to="/adminOrders" class="fs-24 noto-serif text-dark router-link-active underline">
               訂單管理
-            </RouterLink>
+            </router-link>
           </li>
           <li class="nav-item">
-            <RouterLink to="/adminCoupon" class="fs-24 noto-serif text-dark">
+            <router-link to="/adminCoupon" class="fs-24 noto-serif text-dark router-link-active underline">
               優惠券管理
-            </RouterLink>
+            </router-link>
           </li>
           <li class="nav-item">
-            <RouterLink to="/adminBlog" class="fs-24 noto-serif text-dark">
+            <router-link to="/adminBlog" class="fs-24 noto-serif text-dark router-link-active underline">
               文章管理
-            </RouterLink>
+            </router-link>
           </li>
         </ul>
 
         <ul class="d-flex list-unstyled gap-md-24">
-          <li class="nav-item">
-            <RouterLink to="/" class="fs-24 noto-serif text-dark"
-              >回到前台
-            </RouterLink>
-          </li>
-
           <li class="nav-item d-flex justify-content-end">
             <router-link to="/adminLogin" class="fs-24 noto-serif text-dark"
               >登入
@@ -59,6 +53,8 @@
       </div>
     </div>
   </nav>
+  <div style="height: 88px"></div>
+  
 </template>
 
 <script>
@@ -88,3 +84,21 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+a.underline:hover {
+  border-bottom: 2px solid black;
+}
+
+.button.rwd {
+  width: 32px;
+  height: 32px;
+}
+.no-active.router-link-active {
+  border-bottom: 0px; 
+
+}
+.router-link-exact-active {
+  border-bottom: 2px solid black;
+}
+</style>

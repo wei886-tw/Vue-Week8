@@ -10,11 +10,11 @@
         <table class="table table-responsive" v-if="cartProducts.length !== 0">
           <thead>
             <tr>
-              <th class="fs-md-24">刪除</th>
-              <th class="fs-md-24" style="width: 40%">品名</th>
-              <th class="fs-md-24">圖片</th>
-              <th class="fs-md-24">數量</th>
-              <th class="fs-md-24">價格</th>
+              <th class="fs-12 fs-md-24" style="width: 10%">X</th>
+              <th class="fs-12 fs-md-24" style="width: 30%">品名</th>
+              <th class="fs-12 fs-md-24 rwd">圖片</th>
+              <th class="fs-12 fs-md-24" style="width: 20%">數量</th>
+              <th class="fs-12 fs-md-24" style="width: 20%">價格</th>
             </tr>
           </thead>
           <tbody>
@@ -40,8 +40,8 @@
                   name=""
                   id=""
                   @change="reviseQty(product.id)"
-                  class="border border-2 border-dark rounded"
-                  style="height: 40px; width: 50%"
+                  class="border border-3 border-dark rounded"
+                  style="height: 40px; width: 100%"
                 >
                   <option
                     :value="num"
@@ -54,7 +54,7 @@
                 </select>
               </td>
               <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
-                {{ Math.floor(parseInt(product.product.price * product.qty) ) }}
+                {{ Math.floor(parseInt(product.product.price * product.qty)) }}
               </td>
             </tr>
           </tbody>
@@ -62,9 +62,21 @@
             <td></td>
             <td></td>
             <td></td>
-            <td class="fs-md-16 fs-lg-24 pt-32">
-              <div class="container d-lg-flex justify-content-between">
-                <p>總價: ${{ Math.floor(cartList.final_total) }}</p>
+            <td></td>
+            <td class="fs-12 fs-md-16 fs-lg-24 pt-32">
+              <div
+                class="container d-lg-flex flex-column justify-content-between"
+              >
+                <div class="container px-0 d-md-flex">
+                  <p>原價: </p>
+                  <del>
+                    <p class="mb-16">{{ Math.floor(cartList.total) }}</p>
+                  </del>
+                </div>
+                <div class="container px-0 d-md-flex">
+                  <p>優惠: </p>
+                  <p>{{ Math.floor(cartList.final_total) }}</p>
+                </div>
               </div>
             </td>
           </tfoot>
@@ -77,14 +89,130 @@
           </button>
         </h2>
 
-        <div class="container d-flex px-0 justify-content-end">
+        <div class="container px-0">
+          <div class="row">
+            <div class="col-6">
+              <div class="container d-flex px-0 justify-content-start"></div>
+            </div>
+            <div class="col-6">
+              <div class="container px-0 justify-content-end d-flex">
+                <button
+                  v-if="cartProducts.length !== 0"
+                  type="button"
+                  class="btn w-50 mb-32 btn-footer"
+                  @click="showCouponModal"
+                >
+                  領取優惠
+                </button>
+              </div>
+              <div class="container d-flex px-0 justify-content-end">
+                <button
+                  v-if="cartProducts.length !== 0"
+                  type="button"
+                  class="btn w-50 mb-60 btn-footer"
+                  @click="enterPayment"
+                >
+                  進入付款頁面
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    ref="couponModal"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">領取優惠券</h1>
           <button
-            v-if="cartProducts.length !== 0"
             type="button"
-            class="btn w-50 mb-60 btn-footer"
-            @click="enterPayment"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-16">
+            請填寫 Email 及姓名、電話等獲取優惠，我們將不定時發送優惠給您！
+          </p>
+          <v-form v-slot="{ errors }" ref="form" id="form">
+            <div class="mb-12">
+              <label for="email" class="form-label"></label>
+              <v-field
+                id="email"
+                name="email"
+                type="email"
+                class="form-control w-100"
+                :class="{ 'is-invalid': errors['email'] }"
+                placeholder="請輸入 Email"
+                rules="email|required"
+                v-model="form.user.email"
+              ></v-field>
+              <error-message
+                name="email"
+                class="invalid-feedback"
+              ></error-message>
+            </div>
+
+            <div class="mb-12">
+              <label for="inputName" class="form-label"></label>
+              <v-field
+                type="text"
+                class="form-control w-100"
+                id="inputName"
+                name="姓名"
+                :class="{ 'is-invalid': errors['姓名'] }"
+                placeholder="請輸入姓名"
+                rules="required"
+                v-model="form.user.name"
+              >
+              </v-field>
+              <error-message
+                name="姓名"
+                class="invalid-feedback"
+              ></error-message>
+            </div>
+
+            <div class="mb-12">
+              <label for="inputTelephone" class="form-label"></label>
+              <v-field
+                type="tel"
+                class="form-control w-100"
+                id="inputTelephone"
+                name="電話"
+                :class="{ 'is-invalid': errors['電話'] }"
+                placeholder="請輸入電話"
+                :rules="isPhone"
+                v-model="form.user.tel"
+              ></v-field>
+              <error-message
+                name="電話"
+                class="invalid-feedback"
+              ></error-message>
+            </div>
+          </v-form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
           >
-            進入付款頁面
+            取消
+          </button>
+          <button type="button" class="btn btn-primary" @click="getCoupon">
+            領取優惠
           </button>
         </div>
       </div>
@@ -124,6 +252,7 @@ export default {
         message: "",
         qty: 0,
       },
+      couponModal: "",
     };
   },
 
@@ -182,6 +311,34 @@ export default {
       this.$router.push("/userProduct");
     },
 
+    showCouponModal() {
+      this.couponModal.show();
+    },
+
+    getCoupon() {
+      if (
+        this.form.user.name !== "" &&
+        this.form.user.email !== "" &&
+        this.form.user.phone !== ""
+      ) {
+        this.$http
+          .post(`${this.url}/v2/api/${this.api_path}/coupon`, {
+            data: {
+              code: "test7",
+            },
+          })
+          .then(() => {
+            alert("已套用優惠券，幫您打 77 折！");
+            this.couponModal.hide();
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      } else {
+        alert("請輸入資料已獲取優惠券");
+      }
+    },
+
     loadingCircle() {
       let loader = this.$loading.show({
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -192,11 +349,17 @@ export default {
         loader.hide();
       }, 500);
     },
+
+    isPhone(value) {
+      const phoneNumber = /^(09)[0-9]{8}$/;
+      return phoneNumber.test(value) ? true : "需要正確的電話號碼";
+    },
   },
 
   mounted() {
     this.getCartProducts();
     this.loadingCircle();
+    this.couponModal = new bootstrap.Modal(this.$refs.couponModal);
   },
 };
 </script>
@@ -217,6 +380,25 @@ input {
 }
 
 img.rwd {
+  @media (max-width: 576px) {
+    width: 80px;
+    height: 80px;
+  }
+  @media (min-width: 577px) {
+    width: 100px;
+    height: 100px;
+  }
+  @media (min-width: 768px) {
+    width: 160px;
+    height: 160px;
+  }
+  @media (min-width: 976px) {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+td.rwd {
   @media (max-width: 576px) {
     width: 80px;
     height: 80px;
