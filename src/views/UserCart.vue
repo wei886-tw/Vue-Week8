@@ -231,6 +231,8 @@
 <script>
 import NavBar from "../components/NavBar.vue";
 import PageFooter from "../components/PageFooter.vue";
+import cartStore from "@/store/cartStore.js";
+import { mapState, mapActions } from "pinia";
 
 export default {
   props: ["finalTotal"],
@@ -255,6 +257,11 @@ export default {
       couponModal: "",
     };
   },
+
+  computed: {
+    ...mapState(cartStore, ["storeCart"]),
+  },
+
 
   components: { NavBar, PageFooter },
 
@@ -283,6 +290,7 @@ export default {
         .then(() => {
           alert("修改購物車成功");
           this.getCartProducts();
+          this.getCartList();
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -295,6 +303,7 @@ export default {
         .then(() => {
           alert("已經刪除");
           this.getCartProducts();
+          this.getCartList();
         })
         .cath((err) => {
           console.log(err.message);
@@ -354,6 +363,9 @@ export default {
       const phoneNumber = /^(09)[0-9]{8}$/;
       return phoneNumber.test(value) ? true : "需要正確的電話號碼";
     },
+
+    ...mapActions(cartStore, ["getCartList"]),
+
   },
 
   mounted() {
