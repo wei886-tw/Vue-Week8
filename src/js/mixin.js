@@ -9,7 +9,7 @@ export const myMixin = {
       });
       setTimeout(() => {
         loader.hide();
-      }, 3000);
+      }, 2500);
     },
 
     checkAdmin() {

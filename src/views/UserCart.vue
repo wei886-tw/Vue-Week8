@@ -72,6 +72,10 @@
                   <p class="mb-16">{{ Math.floor(cartList.total) }}</p>
                 </div>
                 <div class="container px-0 d-md-flex" v-if="onSale">
+                  <p>折扣:&emsp;</p>
+                  <p>{{ Math.floor(cartList.total) - (Math.floor(cartList.final_total)) }}</p>
+                </div>
+                <div class="container px-0 d-md-flex" v-if="onSale">
                   <p>優惠:&emsp;</p>
                   <p>{{ Math.floor(cartList.final_total) }}</p>
                 </div>

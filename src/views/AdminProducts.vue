@@ -5,9 +5,7 @@
   <div class="container py-48">
     <div class="container d-flex justify-content-between mb-24">
       <h2 class="text-center fs-16 fs-md-24 fs-lg-32">後台產品列表</h2>
-      <button class="btn btn-dark" @click="openModal('new')">
-        建立新產品
-      </button>
+      <button class="btn btn-dark" @click="openModal('new')">建立新產品</button>
     </div>
     <table class="table mt-4">
       <thead>
@@ -32,7 +30,7 @@
             <span v-else class="text-danger">未啟用</span>
           </td>
           <td>
-            <button class="btn btn-success" @click="openModal(item.id)">
+            <button class="btn btn-success" @click="openModal('old', item.id)">
               修改產品內容
             </button>
           </td>
@@ -46,6 +44,7 @@
     </table>
   </div>
 
+  <!-- Modal -->
   <div class="container">
     <div
       class="modal fade"
@@ -342,19 +341,6 @@ export default {
   },
 
   methods: {
-    checkAdmin() {
-      const link = `${this.url}/api/user/check`;
-      this.$http
-        .post(link)
-        .then(() => {
-          this.getPageProducts();
-        })
-        .catch((err) => {
-          alert(err.response.data.message);
-          this.$router.push("/adminLogin");
-        });
-    },
-
     getPageProducts(page = 1) {
       this.$http
         .get(`${this.url}/v2/api/${this.api_path}/admin/products?page=${page}`)
@@ -369,8 +355,6 @@ export default {
     },
 
     openModal(status, id) {
-      this.myModal.show();
-      this.loadingCircle();
       if (status === "old") {
         this.$http
           .get(`${this.url}/v2/api/${this.api_path}/product/${id}`)
@@ -385,41 +369,21 @@ export default {
             this.content = res.data.product.content;
             this.is_enabled = res.data.product.is_enabled;
             this.imageUrl = res.data.product.imageUrl;
-            this.imagesUrl = res.data.imagesUrl;
-          })
-          .catch((err) => {
-            console.log(err.response.data.message);
-          });
-      }
-    },
-
-    updateProduct(status, id) {
-      if (status === "old") {
-        this.openModal('old', id);
-        this.$http
-          .post(`${this.url}/v2/api/${this.api_path}/admin/product`, {
-            data: {
-              title: this.title,
-              category: this.category,
-              origin_price: this.origin_price,
-              price: this.price,
-              unit: this.unit,
-              description: this.description,
-              content: this.content,
-              is_enabled: this.is_enabled,
-              imageUrl: this.imageUrl,
-              imagesUrl: this.imagesUrl,
-            },
-          })
-          .then(() => {
-            alert("產品建立成功");
-            this.myModal.hide();
-            this.getPageProducts(1);
+            this.imagesUrl = res.data.product.imagesUrl;
+            this.loadingCircle();
+            this.myModal.show();
           })
           .catch((err) => {
             console.log(err.response.data.message);
           });
       } else {
+        this.myModal.show();
+      }
+    },
+
+    updateProduct(status, id) {
+      if (status === "old") {
+        this.openModal("old", id);
         this.$http
           .put(`${this.url}/v2/api/${this.api_path}/admin/product/${id}`, {
             data: {
@@ -436,7 +400,41 @@ export default {
             },
           })
           .then(() => {
-            alert("修改產品成功");
+            alert("產品修改成功");
+            this.title = "";
+            this.category = "";
+            this.origin_price = "";
+            this.price = "";
+            this.unit = "";
+            this.description = "";
+            this.content = "";
+            this.is_enabled = "";
+            this.imageUrl = "";
+            this.imagesUrl = "";
+            this.myModal.hide();
+            this.getPageProducts(1);
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      } else {
+        this.$http
+          .post(`${this.url}/v2/api/${this.api_path}/admin/product/`, {
+            data: {
+              title: this.title,
+              category: this.category,
+              origin_price: this.origin_price,
+              price: this.price,
+              unit: this.unit,
+              description: this.description,
+              content: this.content,
+              is_enabled: this.is_enabled,
+              imageUrl: this.imageUrl,
+              imagesUrl: this.imagesUrl,
+            },
+          })
+          .then(() => {
+            alert("建立產品成功");
             this.getPageProducts(1);
             this.myModal.hide();
           })
@@ -465,17 +463,13 @@ export default {
     imagesUrlPop() {
       this.imagesUrl.pop();
     },
+
   },
 
   mounted() {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
-    this.$http.defaults.headers.common.Authorization = token;
-    this.checkAdmin();
     this.myModal = new bootstrap.Modal(this.$refs.detailModal);
+    this.getPageProducts();
     this.loadingCircle();
   },
 };
-</script>
+</script>     
