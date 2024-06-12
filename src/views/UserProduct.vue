@@ -380,7 +380,9 @@ export default {
       this.getProducts();
       this.$refs.search.value = "";
       this.$refs.searchMobile.value = "";
-    },
+      this.searchProduct = ["2"];
+      this.$router.go('/userProduct')
+      },
 
     searchProductMobile() {
       this.title = this.$refs.searchMobile.value;
