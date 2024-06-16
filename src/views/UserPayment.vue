@@ -58,21 +58,20 @@
               <v-field
                 name="付款方式"
                 id="payment"
-                as="select"
                 class="w-100 border-2 mb-32 form-control"
                 :class="{ 'is-invalid': errors['付款方式'] }"
                 placeholder="請選擇付款方式"
                 ref="paymentMethod"
                 rules="required"
                 @change="selectChange"
+                as="select"
               >
-                <option value="請選擇付款方式" disabled selected>
+                <option value="" disabled selected>
                   請選擇付款方式
                 </option>
                 <option value="刷卡">刷卡</option>
                 <option value="ATM 繳費">ATM 繳費</option>
               </v-field>
-
               <error-message name="付款方式" class="invalid-feedback"
                 ><span class="text-danger">付款方式必選</span></error-message
               >

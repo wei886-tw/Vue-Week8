@@ -2,8 +2,8 @@
   <admin-nav-bar></admin-nav-bar>
   <div class="container-fluid px-0">
     <div class="container py-48">
-      <div class="container d-flex justify-content-between mb-24">
-        <h2 class="fs-32">文章管理</h2>
+      <div class="container d-flex justify-content-between mb-24 px-0">
+        <h2 class="fs-32 fw-bold">文章管理</h2>
         <button type="button" class="btn btn-dark">
           <router-link to="/newArticle" class="text-white"
             >建立新文章</router-link
@@ -62,9 +62,12 @@
 <script>
 import AdminNavBar from "@/components/AdminNavBar.vue";
 import PageNation from "@/components/PageNation.vue";
+import { myMixin } from "@/js/mixin";
+
 
 export default {
   components: { AdminNavBar, PageNation },
+  mixins: [myMixin],
 
   data() {
     return {
@@ -142,6 +145,7 @@ export default {
       "$1"
     );
     this.$http.defaults.headers.common.Authorization = token;
+    this.loadingCircle();
     this.checkAdmin();
   },
 };

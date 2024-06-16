@@ -231,7 +231,6 @@ export default {
   mounted() {
     this.getCartProducts();
     window.scrollTo(0, 0);
-
   },
 };
 </script>

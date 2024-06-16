@@ -4,8 +4,8 @@
   </div>
   <div class="container-fluid px-0">
     <div class="container py-48">
-      <div class="container mb-24 d-flex justify-content-between">
-        <h2 class="fs-32 text-center">優惠券管理</h2>
+      <div class="container mb-24 d-flex justify-content-between px-0">
+        <h2 class="fs-32 fw-bold">優惠券管理</h2>
         <button type="button" class="btn btn-dark" @click="openModal">
           建立優惠券
         </button>
@@ -32,7 +32,7 @@
             </td>
             <td>{{ coupon.is_enabled ? "是" : "否" }}</td>
             <td>
-              <button class="btn btn-success" @click="adviseCoupon(coupon.id)">
+              <button class="btn btn-success" @click="adviseCoupon(coupon)">
                 修改優惠券
               </button>
             </td>
@@ -74,7 +74,7 @@
               <label for="title" class="form-label">優惠券名稱</label>
               <input
                 id="title"
-                v-model="title"
+                v-model="tempCoupon.title"
                 type="text"
                 class="form-control"
                 placeholder="請輸入優惠券名稱"
@@ -92,7 +92,7 @@
               <label for="percent" class="form-label">折扣</label>
               <input
                 id="percent"
-                v-model="percent"
+                v-model="tempCoupon.percent"
                 type="number"
                 class="form-control"
                 placeholder="請輸入折扣"
@@ -103,7 +103,7 @@
               <label for="due_date" class="form-label">到期日</label>
               <input
                 id="due_date"
-                v-model="date"
+                v-model="tempCoupon.date"
                 type="date"
                 class="form-control"
                 placeholder="請輸入到期日"
@@ -115,7 +115,7 @@
               <label for="code" class="form-label">優惠券代碼</label>
               <input
                 id="code"
-                v-model="code"
+                v-model="tempCoupon.code"
                 type="text"
                 class="form-control"
                 placeholder="請輸入優惠券代碼"
@@ -128,7 +128,7 @@
               >
               <input
                 id="is_enabled"
-                v-model="is_enabled"
+                v-model="tempCoupon.is_enabled"
                 type="checkbox"
                 class="form-check-input"
               />
@@ -160,9 +160,11 @@
 <script type="module">
 import AdminNavBar from "@/components/AdminNavBar.vue";
 import PageNation from "@/components/PageNation.vue";
+import { myMixin } from "@/js/mixin";
 
 export default {
   components: { AdminNavBar, PageNation },
+  mixins: [myMixin],
   data() {
     return {
       api_path: import.meta.env.VITE_PATH,
@@ -176,6 +178,7 @@ export default {
       coupons: "",
       couponPagination: "",
       date: "",
+      tempCoupon: {},
     };
   },
 
@@ -236,14 +239,18 @@ export default {
         });
     },
 
-    adviseCoupon(id) {
+    adviseCoupon(item) {
+      this.tempCoupon = { ...item };
+      this.tempCoupon.is_enabled = (this.tempCoupon.is_enabled ? "true":"false")
+      this.tempCoupon.due_date = (`new Date(this.tempCoupon.due_date * 1000).getDate()/new Date(this.tempCoupon.due_date * 1000).getMonth()/new Date(this.tempCoupon.due_date * 1000).getYear() `)
+      console.log(this.tempCoupon.due_date)
       this.$http
-        .put(`${this.url}/v2/api/${this.api_path}/admin/coupon/${id}`, {
+        .put(`${this.url}/v2/api/${this.api_path}/admin/coupon/${this.tempCoupon.id}`, {
           data: {
-            title: this.title,
-            is_enabled: this.is_enabled,
-            percent: this.percent,
-            due_date: this.due_date,
+            title: this.tempCoupon.title,
+            is_enabled: this.tempCoupon.is_enabled,
+            percent: this.tempCoupon.percent,
+            due_date: this.tempCoupon.due_date,
           },
         })
         .then(() => {
@@ -266,6 +273,7 @@ export default {
 
   mounted() {
     this.myModal = new bootstrap.Modal(this.$refs.couponModal);
+    this.loadingCircle();
     this.getCoupons(1);
   },
 };

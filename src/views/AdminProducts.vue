@@ -3,8 +3,8 @@
     <admin-nav-bar></admin-nav-bar>
   </div>
   <div class="container py-48">
-    <div class="container d-flex justify-content-between mb-24">
-      <h2 class="text-center fs-16 fs-md-24 fs-lg-32">後台產品列表</h2>
+    <div class="container d-flex justify-content-between px-0">
+      <h2 class="text-start fs-16 fs-md-24 fs-lg-32 fw-bold">後台產品列表</h2>
       <button class="btn btn-dark" @click="openModal('new')">建立新產品</button>
     </div>
     <table class="table mt-4">

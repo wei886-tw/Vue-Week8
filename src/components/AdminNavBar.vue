@@ -19,7 +19,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-24 mb-24">
           <li class="nav-item">
             <router-link to="/adminProducts" class="fs-24 noto-serif text-dark router-link-active " 
-              >後台產品列表
+              >產品列表
             </router-link>
           </li>
           <li class="nav-item">
