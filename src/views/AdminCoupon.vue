@@ -6,7 +6,7 @@
     <div class="container py-48">
       <div class="container mb-24 d-flex justify-content-between px-0">
         <h2 class="fs-32 fw-bold">優惠券管理</h2>
-        <button type="button" class="btn btn-dark" @click="openModal">
+        <button type="button" class="btn btn-dark" @click="openModal('')">
           建立優惠券
         </button>
       </div>
@@ -24,10 +24,15 @@
         <tbody>
           <tr v-for="coupon in coupons" :key="coupon.id">
             <td>{{ coupon.title }}</td>
-            <td>{{ coupon.percent }} 折</td>
+            <td>{{ coupon.percent }} %</td>
             <td>
               {{ new Date(coupon.due_date).getFullYear() }}/
-              {{ new Date(coupon.due_date).getMonth() }}/
+              {{
+                String(new Date(coupon.due_date).getMonth() + 1).padStart(
+                  2,
+                  "0"
+                )
+              }}/
               {{ new Date(coupon.due_date).getDate() }}
             </td>
             <td>{{ coupon.is_enabled ? "是" : "否" }}</td>
@@ -104,7 +109,8 @@
               <input
                 id="due_date"
                 v-model="tempCoupon.due_date"
-                type="text"
+                value=""
+                type="date"
                 class="form-control"
                 placeholder="請輸入到期日"
                 ref="date"
@@ -148,7 +154,7 @@
             type="button"
             class="btn btn-primary"
             @click="createCoupon"
-            v-if="!tempCoupon"
+            v-if="!tempCoupon.id"
           >
             建立優惠券
           </button>
@@ -192,7 +198,7 @@ export default {
       couponPagination: "",
       date: "",
       tempCoupon: {},
-      original_due_date : '',
+      original_due_date: "",
     };
   },
 
@@ -226,15 +232,20 @@ export default {
     },
 
     openModal(item) {
-      this.tempCoupon = { ...item };
-      this.tempCoupon.is_enabled = this.tempCoupon.is_enabled
-        ? "true"
-        : "false";
-      this.original_due_date = this.tempCoupon.due_date
-      const month = parseInt(new Date(this.tempCoupon.due_date).getMonth());
-      const date = parseInt(new Date(this.tempCoupon.due_date).getDate());
-      const year = parseInt(new Date(this.tempCoupon.due_date).getFullYear());
-      this.tempCoupon.due_date = this.due_date = `${month}/${date}/${year}`;
+      if (item !== "") {
+        this.tempCoupon = { ...item };
+        this.tempCoupon.is_enabled = this.tempCoupon.is_enabled
+          ? "true"
+          : "false";
+        this.original_due_date = this.tempCoupon.due_date;
+        this.tempCoupon.due_date = new Date(this.tempCoupon.due_date)
+          .toISOString()
+          .split("T")[0];
+        // this.tempCoupon.due_date = this.due_date = `${year}-${month}-${date}`;
+      } else {
+        this.tempCoupon = {};
+      }
+
       this.myModal.show();
     },
 
@@ -255,33 +266,60 @@ export default {
     },
 
     adviseCoupon() {
-      console.log(this.tempCoupon.due_date);
       if (this.tempCoupon.is_enabled === true) {
         this.tempCoupon.is_enabled = 1;
       } else {
         this.tempCoupon.is_enabled = 0;
       }
-      this.$http
-        .put(
-          `${this.url}/v2/api/${this.api_path}/admin/coupon/${this.tempCoupon.id}`,
-          {
+      if (this.tempCoupon.id) {
+        console.log("be4:", this.tempCoupon.due_date);
+        this.tempCoupon.due_date = String(Date.parse(this.tempCoupon.due_date) / 1000);
+        console.log("after:", this.tempCoupon.due_date);
+
+        this.$http
+          .put(
+            `${this.url}/v2/api/${this.api_path}/admin/coupon/${this.tempCoupon.id}`,
+            {
+              data: {
+                title: this.tempCoupon.title,
+                is_enabled: this.tempCoupon.is_enabled,
+                percent: parseInt(this.tempCoupon.percent),
+                due_date: this.tempCoupon_due_date,
+                code: this.tempCoupon.code,
+              },
+            }
+          )
+          .then(() => {
+            alert("修改優惠券成功");
+            this.myModal.hide();
+            this.getCoupons();
+            this.loadingCircle();
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      } else {
+        this.tempCoupon.due_date = Date.parse(this.tempCoupon.due_date);
+        this.$http
+          .post(`${this.url}/v2/api/${this.api_path}/admin/coupon`, {
             data: {
               title: this.tempCoupon.title,
               is_enabled: this.tempCoupon.is_enabled,
-              percent: parseInt(this.tempCoupon.percent),
-              due_date: this.original_due_dat,
+              percent: this.tempCoupon.percent,
+              due_date: this.tempCoupon.due_date,
+              code: this.tempCoupon.code,
             },
-          }
-        )
-        .then(() => {
-          alert("修改優惠券成功");
-          this.myModal.hide();
-          this.getCoupons();
-          this.loadingCircle();
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-        });
+          })
+          .then(() => {
+            alert("優惠券建立成功");
+            this.myModal.hide();
+            this.getCoupons();
+            this.loadingCircle();
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      }
     },
 
     deleteCoupon(id) {
@@ -292,12 +330,14 @@ export default {
           this.getCoupons(1);
         });
     },
+
   },
 
   mounted() {
     this.myModal = new bootstrap.Modal(this.$refs.couponModal);
     this.loadingCircle();
     this.getCoupons(1);
+
   },
 };
 </script>

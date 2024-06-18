@@ -114,10 +114,21 @@ export default {
           console.log(err.response.data.message);
         });
     },
+    loadingCircle() {
+      let loader = this.$loading.show({
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: true,
+        onCancel: this.onCancel,
+      });
+      setTimeout(() => {
+        loader.hide();
+      }, 500);
+    },
   },
 
   mounted() {
     this.getArticles();
+    this.loadingCircle()
   },
 };
 </script>

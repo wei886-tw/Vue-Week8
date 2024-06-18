@@ -33,7 +33,7 @@
                     </button>
                   </div>
                 </th>
-                <th style="width: 15%; " >
+                <th style="width: 15%">
                   <select
                     name=""
                     id=""
@@ -41,12 +41,19 @@
                     style="width: 132px; height: 48px; position: relative"
                     ref="type"
                     @change="changeProductType"
-
                   >
-                    <option value="所有產品" style="position:absolute">所有產品</option>
-                    <option value="平板" style="position:absolute">平板</option>
-                    <option value="手機" style="position:absolute">手機</option>
-                    <option value="筆電" style="position:absolute">筆電</option>
+                    <option value="所有產品" style="position: absolute">
+                      所有產品
+                    </option>
+                    <option value="平板" style="position: absolute">
+                      平板
+                    </option>
+                    <option value="手機" style="position: absolute">
+                      手機
+                    </option>
+                    <option value="筆電" style="position: absolute">
+                      筆電
+                    </option>
                   </select>
                 </th>
               </tr>
@@ -54,12 +61,22 @@
             <tbody>
               <tr v-for="product in userProducts" :key="product.id">
                 <td class="pt-32" style="width: 20%">
-                  <img
-                    :src="product.imageUrl"
-                    alt="商品圖片"
-                    style="height: 240px; width: 240px; object-fit: cover"
-                    class="mb-16"
-                  />
+                  <div
+                    class="container"
+                    style="position: relative; display: inline-block"
+                  >
+                    <img
+                      :src="product.imageUrl"
+                      alt="商品圖片"
+                      style="
+                        height: 240px;
+                        width: 240px;
+                        object-fit: cover;
+                        position: relative;
+                      "
+                      class="mb-16 d-block"
+                    />
+                  </div>
                 </td>
                 <td class="pt-32" style="width: 70%">
                   <router-link :to="`/userProductInfo/${product.id}`">
@@ -93,9 +110,15 @@
                     <i class="bi bi-cart-fill"></i>
                     加入購物車
                   </button>
-                  <button class="btn btn-footer hover" style="width: 100%">
+                  <button
+                    class="btn btn-footer hover mb-16 color"
+                    style="width: 100%"
+                    @click="handleFavorite(product.id)"
+                    :class="favoriteList.indexOf(product.id) === -1 ? 'btn-footer' : 'hovered'"
+                    id="myButton"
+                    >
                     <i class="bi bi-heart-fill"></i>
-                    &nbsp;加入追蹤
+                    &nbsp;加入收藏
                   </button>
                 </td>
               </tr>
@@ -196,13 +219,6 @@
                     加入購物車
                   </button>
                 </div>
-                <button
-                  class="btn btn-footer fs-14 hover"
-                  style="width: 100%"
-                  @click="addToCart(product.id)"
-                >
-                  <i class="bi bi-heart-fill"></i>&nbsp;加入追蹤
-                </button>
               </div>
             </div>
           </div>
@@ -248,12 +264,11 @@ import NavBar from "@/components/NavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 
 import cartStore from "@/store/cartStore.js";
+import favoriteStore from "@/store/favoriteStore.js";
 import { mapState, mapActions } from "pinia";
-import { myMixin } from "@/js/mixin";
 
 export default {
   components: { PageFooter, NavBar, PageNation },
-  mixins: [myMixin],
   data() {
     return {
       userProducts: [],
@@ -266,14 +281,25 @@ export default {
       filterProducts: [],
       category: "",
       qty: "",
+      favoriteLis: [],
+      myButton: '',
     };
   },
   computed: {
     ...mapState(cartStore, ["storeCart"]),
+    ...mapState(favoriteStore, ["favoriteList", "favoriteId"]),
   },
+
+  watch: {},
 
   methods: {
     ...mapActions(cartStore, ["getCartList"]),
+    ...mapActions(favoriteStore, [
+      "handleFavorite",
+      "setStorage",
+      "getFavoriteList",
+      "test"
+    ]),
 
     changeQty() {
       this.qty = parseInt(event.target.value);
@@ -381,8 +407,8 @@ export default {
       this.$refs.search.value = "";
       this.$refs.searchMobile.value = "";
       this.searchProduct = ["2"];
-      this.$router.go('/userProduct')
-      },
+      this.$router.go("/userProduct");
+    },
 
     searchProductMobile() {
       this.title = this.$refs.searchMobile.value;
@@ -406,10 +432,24 @@ export default {
         alert("請輸入關鍵字");
       }
     },
+
+    loadingCircle() {
+      let loader = this.$loading.show({
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: true,
+        onCancel: this.onCancel,
+      });
+      setTimeout(() => {
+        loader.hide();
+      }, 1000);
+    },
+
+    
   },
   mounted() {
     this.loadingCircle();
     this.getProducts();
+
   },
 };
 </script>
@@ -424,6 +464,10 @@ a:hover {
 .btn.hover:hover {
   background-color: black;
   color: white;
+}
+.hovered {
+  background-color:#f3f2ee,;
+  color: red;
 }
 
 .dropdown-container {

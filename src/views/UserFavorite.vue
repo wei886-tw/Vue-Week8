@@ -5,7 +5,7 @@
 
   <div class="container-fluid px-0" style="min-height: 100vh">
     <div class="container">
-      <h2 class="text-center py-60 pb-16 fs-24 fs-lg-32">購物車列表</h2>
+      <h2 class="text-center py-60 pb-16 fs-24 fs-lg-32">收藏列表</h2>
       <div class="container px-0">
         <table class="table table-responsive" v-if="cartProducts.length !== 0">
           <thead>
@@ -20,13 +20,10 @@
           <tbody>
             <tr v-for="product in cartProducts" :key="product.id">
               <td class="align-middle">
-                <button class="btn btn-white" 
-                @click="delCartItem(product.id)"
-                >
-                  <i
-                    class="bi bi-trash3-fill fs-md-24"
-                  ></i>
-                </button>
+                <i
+                  class="bi bi-trash3-fill fs-md-24"
+                  @click="delCartItem(product.id)"
+                ></i>
               </td>
               <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
                 {{ product.product.title }}

@@ -156,7 +156,7 @@ export default {
       });
       setTimeout(() => {
         loader.hide();
-      }, 500);
+      }, 1500);
     },
   },
 

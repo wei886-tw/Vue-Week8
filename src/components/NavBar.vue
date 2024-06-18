@@ -7,6 +7,7 @@
           class="fs-48 fs-md-48 noto-serif me-md-16 text-dark nav-brand no-active"
           >3C Reuse</router-link
         >
+
         <router-link
           to="/userCart"
           class="fs-24 noto-serif text-dark nav-link active router-link-active underline ms-auto me-24 d-lg-none"
@@ -20,7 +21,7 @@
           </i>
         </router-link>
         <button
-          class="navbar-toggler px-4 py-4 "
+          class="navbar-toggler px-4 py-4"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -36,7 +37,7 @@
             <li class="nav-item">
               <router-link
                 to="/about"
-                class="fs-24 text-dark noto-serif nav-link router-link-active underline "
+                class="fs-24 text-dark noto-serif nav-link router-link-active underline"
               >
                 關於我們
               </router-link>
@@ -55,8 +56,23 @@
                 >所有產品
               </router-link>
             </li>
+            <li>
+              <router-link
+                to="/userFavorite"
+                class="fs-24 noto-serif text-dark nav-link  me-16 d-lg-none d-lg-block router-link-active "
+              >
+                我的收藏
+              </router-link>
+            </li>
           </ul>
         </div>
+
+        <router-link
+          to="/userFavorite"
+          class="fs-24 noto-serif text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
+        >
+          <i class="bi bi-heart fs-md-28 fs-lg-32 align-middle me-16"></i>
+        </router-link>
 
         <router-link
           to="/userCart"
@@ -101,7 +117,7 @@ export default {
 
   mounted() {
     this.getCartList();
-    window.scroll(0, 0)
+    window.scroll(0, 0);
   },
 };
 </script>
@@ -116,8 +132,7 @@ a.underline:hover {
   height: 32px;
 }
 .no-active.router-link-active {
-  border-bottom: 0px; 
-
+  border-bottom: 0px;
 }
 .router-link-exact-active {
   border-bottom: 2px solid black;
