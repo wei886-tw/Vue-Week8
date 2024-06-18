@@ -118,6 +118,7 @@ export default  {
           this.imageUrl = res.data.imageUrl
           this.$emit("emitImgUrl", this.imageUrl)
           this.imageUrl = '';
+          this.myModal.hide()
         })
         .catch((err) => {
           console.log(err.response.data.message);

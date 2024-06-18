@@ -114,9 +114,13 @@
                     class="btn btn-footer hover mb-16 color"
                     style="width: 100%"
                     @click="handleFavorite(product.id)"
-                    :class="favoriteList.indexOf(product.id) === -1 ? 'btn-footer' : 'hovered'"
+                    :class="
+                      favoriteList.indexOf(product.id) === -1
+                        ? 'btn-footer'
+                        : 'hovered'
+                    "
                     id="myButton"
-                    >
+                  >
                     <i class="bi bi-heart-fill"></i>
                     &nbsp;加入收藏
                   </button>
@@ -125,11 +129,6 @@
             </tbody>
             <div class="container" v-if="searchProducts.length === 0">
               <p class="pt-32 mb-32 text-center">找不到該產品</p>
-              <div class="container d-flex justify-content-center">
-                <button class="btn btn-footer w-50" @click="backToPreviousPage">
-                  返回上一頁
-                </button>
-              </div>
             </div>
           </table>
 
@@ -224,11 +223,6 @@
           </div>
           <div class="container d-md-none" v-if="searchProducts.length === 0">
             <p class="pt-32 mb-32 text-center">找不到該產品</p>
-            <div class="container d-flex justify-content-center">
-              <button class="btn btn-footer w-50" @click="backToPreviousPage">
-                返回上一頁
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -236,9 +230,9 @@
 
     <div
       class="container d-flex justify-content-center"
-      v-if="searchProduct.length !== 0"
+      v-if="searchResult !== ''"
     >
-      <button class="btn btn-footer w-50" @click="backToPreviousPage">
+      <button class="btn btn-footer w-25 hover" @click="backToPreviousPage">
         返回上一頁
       </button>
     </div>
@@ -282,7 +276,8 @@ export default {
       category: "",
       qty: "",
       favoriteLis: [],
-      myButton: '',
+      myButton: "",
+      searchResult: "",
     };
   },
   computed: {
@@ -298,7 +293,7 @@ export default {
       "handleFavorite",
       "setStorage",
       "getFavoriteList",
-      "test"
+      "test",
     ]),
 
     changeQty() {
@@ -392,6 +387,7 @@ export default {
             );
             alert(`搜尋 ${this.title} 的結果`);
             this.searchProducts = this.userProducts;
+            this.searchResult = 'searchResult'
             this.title = "";
           })
           .catch((err) => {
@@ -423,6 +419,7 @@ export default {
             );
             alert(`搜尋 ${this.title} 的結果`);
             this.searchProducts = this.userProducts;
+            this.searchResult = 'searchResult';
             this.title = "";
           })
           .catch((err) => {
@@ -443,13 +440,10 @@ export default {
         loader.hide();
       }, 1000);
     },
-
-    
   },
   mounted() {
     this.loadingCircle();
     this.getProducts();
-
   },
 };
 </script>
@@ -466,7 +460,7 @@ a:hover {
   color: white;
 }
 .hovered {
-  background-color:#f3f2ee,;
+  background-color: #f3f2ee;
   color: red;
 }
 

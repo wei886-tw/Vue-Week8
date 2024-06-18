@@ -241,7 +241,6 @@ export default {
         this.tempCoupon.due_date = new Date(this.tempCoupon.due_date)
           .toISOString()
           .split("T")[0];
-        // this.tempCoupon.due_date = this.due_date = `${year}-${month}-${date}`;
       } else {
         this.tempCoupon = {};
       }
@@ -273,9 +272,8 @@ export default {
       }
       if (this.tempCoupon.id) {
         console.log("be4:", this.tempCoupon.due_date);
-        this.tempCoupon.due_date = String(Date.parse(this.tempCoupon.due_date) / 1000);
+        this.tempCoupon.due_date = Number(Date.parse(this.tempCoupon.due_date) );
         console.log("after:", this.tempCoupon.due_date);
-
         this.$http
           .put(
             `${this.url}/v2/api/${this.api_path}/admin/coupon/${this.tempCoupon.id}`,

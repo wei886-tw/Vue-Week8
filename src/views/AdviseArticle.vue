@@ -171,7 +171,6 @@ export default {
 
   methods: {
     getUrl(url) {
-      console.log(url)
       this.imageUrl = url;
     },
 
