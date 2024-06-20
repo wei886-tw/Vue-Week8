@@ -293,7 +293,6 @@ export default {
       "handleFavorite",
       "setStorage",
       "getFavoriteList",
-      "test",
     ]),
 
     changeQty() {

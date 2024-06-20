@@ -4,6 +4,7 @@ import { createPinia } from 'pinia';
 
 
 import * as Vue from 'vue'; 
+import { defineComponent } from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
@@ -44,6 +45,23 @@ setLocale('zh_TW')
 // 引入 bootstrap
 import '../src/assets/bootstrap/scss/bootstrap.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
+
+export default defineComponent({
+  setup() {
+    const { value: username, errorMessage: usernameError } = useField('username');
+    const { handleSubmit } = useForm();
+    
+    const onSubmit = handleSubmit(values => {
+      console.log(values);
+    });
+
+    return {
+      username,
+      usernameError,
+      onSubmit
+    };
+  }
+});
 
 
 const app = createApp(App);
