@@ -20,6 +20,7 @@ import 'vue-loading-overlay/dist/css/index.css'
 import {
   Field, Form, ErrorMessage, defineRule, configure
 } from 'vee-validate';
+import { all } from '@vee-validate/rules';
 // 引入 VeeValidate 的驗證規則
 import * as AllRules from '@vee-validate/rules';
 // 引入 VeeValidate 的 i18n 功能
@@ -27,19 +28,9 @@ import { localize, setLocale } from '@vee-validate/i18n';
 // 引入 VeeValidate 的繁體中文語系檔
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 
-defineRule('all', value => {
-  // 你的驗證邏輯
-  if (value !== '') {
-    return true;
-  }
-  return 'This field is required';
-});
 
-// 使用 Object.keys 將 AllRules 轉為陣列並使用 forEach 迴圈將驗證規則加入 VeeValidate
-// 定義自定義驗證規則
-defineRule('all', value => {
-  // 你的驗證邏輯
-  return value !== '';
+Object.entries(all).forEach(([name, rule]) => {
+  defineRule(name, rule);
 });
 
 // 將當前 VeeValidate 的語系設定為繁體中文
