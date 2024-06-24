@@ -9,6 +9,8 @@ import VueAxios from 'vue-axios';
 import App from './App.vue';
 import router from './router';
 
+import { nextTick } from 'vue';
+
 // import Vue Loading
 import {LoadingPlugin} from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css'
@@ -42,6 +44,9 @@ setLocale('zh_TW')
 import '../src/assets/bootstrap/scss/bootstrap.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 export default defineComponent({
   setup() {
     const { value: username, errorMessage: usernameError } = useField('username');
@@ -56,14 +61,23 @@ export default defineComponent({
       usernameError,
       onSubmit
     };
+  },
+  mounted() {
+    nextTick(() => {
+      AOS.init();
+    });
   }
+  
 });
+
+
 
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(VueAxios, axios);
 app.use(LoadingPlugin);
+app.use(AOS.init());
 app.component('VField', Field);
 app.component('VForm', Form);
 app.component('ErrorMessage', ErrorMessage);

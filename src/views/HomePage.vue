@@ -14,6 +14,14 @@
         background-repeat: no-repeat;
         background-position: center;
       "
+      data-aos="zoom-in-up"
+      data-aos-offset="200"
+      data-aos-delay="0"
+      data-aos-duration="2000"
+      data-aos-easing="ease-in-out"
+      data-aos-mirror="true"
+      data-aos-once="false"
+      data-aos-anchor-placement="top-bottom"
     ></div>
     <div
       class="container-fluid px-0 overflow-hidden position-relative mb-48 d-lg-none"
@@ -38,14 +46,34 @@
             class="mb-16"
           />
         </div>
-        <div class="col-sm-12 col-md-6">
+        <div
+          class="col-sm-12 col-md-6"
+          data-aos="fade-right"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <h3 class="fs-24 fs-md-32 tc-sans mb-sm-16">歡迎來到 3C Reuse</h3>
           <p class="fs-16 fs-md-24 tc-sans">
             您好！如果您正在尋找性價比超高的二手
             3C產品，那麼您來對地方了！我們是一個經驗豐富的團隊，在這裡為您提供各種優質的二手電子產品，無論您是需要手機、筆記型電腦、平板電腦還是其他電子設備，我們都能滿足您的需求。
           </p>
         </div>
-        <div class="d-none d-md-block col-md-6 mb-sm-16 mb-md-none">
+        <div
+          class="d-none d-md-block col-md-6 mb-sm-16 mb-md-none"
+          data-aos="fade-left"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <img
             src="/pic/open.jpeg"
             alt="開門圖"
@@ -59,7 +87,17 @@
 
     <div class="container mb-48">
       <div class="row">
-        <div class="col-sm-12 col-md-6 mb-16 mb-md-none">
+        <div
+          class="col-sm-12 col-md-6 mb-16 mb-md-none"
+          data-aos="fade-right"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <img
             src="/pic/pc.jpg"
             alt="電腦圖"
@@ -68,7 +106,17 @@
             style="object-fit: cover; filter: saturate(50%)"
           />
         </div>
-        <div class="col-sm-12 col-md-6 d-flex flex-column mb-sm-24">
+        <div
+          class="col-sm-12 col-md-6 d-flex flex-column mb-sm-24"
+          data-aos="fade-left"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <h3 class="fs-24 fs-md-32 tc-sans mb-16">電腦</h3>
           <p class="fs-16 fs-md-24 tc-sans mb-16">
             如果您需要一台便攜輕薄的筆記型電腦來辦公或者學習，我們也有各種規格和型號的二手筆記型電腦可供選擇。無論您是需要一台性能強悍的遊戲本還是一台適合日常辦公的輕薄本，我們都能滿足您的需求。
@@ -87,7 +135,17 @@
 
     <div class="container mb-48">
       <div class="row">
-        <div class="col-sm-12 d-md-none mb-16">
+        <div
+          class="col-sm-12 d-md-none mb-16"
+          data-aos="fade-right"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <img
             src="/pic/phone.jpg"
             alt="手機圖"
@@ -96,7 +154,17 @@
             style="object-fit: cover; filter: saturate(50%)"
           />
         </div>
-        <div class="col-sm-12 col-md-6 d-flex flex-column mb-16">
+        <div
+          class="col-sm-12 col-md-6 d-flex flex-column mb-16"
+          data-aos="fade-right"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <h3 class="fs-24 fs-md-32 tc-sans mb-16">手機</h3>
           <p class="fs-16 fs-md-24 tc-sans mb-16">
             我們擁有各種品牌和型號的二手手機，從經典的 iPhone
@@ -111,7 +179,17 @@
             </button>
           </div>
         </div>
-        <div class="d-none d-md-block col-md-6 mb-sm-24">
+        <div
+          class="d-none d-md-block col-md-6 mb-sm-24"
+          data-aos="fade-left"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <img
             src="/pic/phone.jpg"
             alt="手機圖"
@@ -125,7 +203,17 @@
 
     <div class="container mb-48">
       <div class="row">
-        <div class="col-sm-12 col-md-6 mb-16 d-flex flex-column">
+        <div
+          class="col-sm-12 col-md-6 mb-16 d-flex flex-column"
+          data-aos="fade-right"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <img
             src="/pic/ipad.jpg"
             alt="平板圖"
@@ -134,7 +222,17 @@
             style="object-fit: cover; filter: saturate(50%)"
           />
         </div>
-        <div class="col-sm-12 col-md-6 d-flex flex-column mb-sm-24">
+        <div
+          class="col-sm-12 col-md-6 d-flex flex-column mb-sm-24"
+          data-aos="fade-left"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <h3 class="fs-24 fs-md-32 tc-sans mb-16">平板電腦</h3>
           <p class="fs-16 fs-md-24 tc-sans mb-16">
             平板電腦已經成為了日常生活中必不可少的電子設備之一，我們也提供各種型號和品牌的二手平板電腦，從
@@ -153,8 +251,18 @@
     </div>
   </div>
 
-  <div class="container mb-48">
-    <p class="fs-24 fs-md-32 ">顧客評論</p>
+  <div
+    class="container mb-48"
+    data-aos="flip-right"
+    data-aos-offset="200"
+    data-aos-delay="0"
+    data-aos-duration="2000"
+    data-aos-easing="ease-in-sine"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center"
+  >
+    <p class="fs-24 fs-md-32">顧客評論</p>
     <SwiperComponent />
   </div>
 

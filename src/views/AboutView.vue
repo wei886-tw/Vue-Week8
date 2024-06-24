@@ -1,7 +1,17 @@
 <template>
   <NavBar />
   <div class="container-fluid px-0 pb-48">
-    <div class="mb-48">
+    <div
+      class="mb-48"
+      data-aos="zoom-in-up"
+      data-aos-offset="200"
+      data-aos-delay="0"
+      data-aos-duration="2000"
+      data-aos-easing="ease-in-out"
+      data-aos-mirror="true"
+      data-aos-once="false"
+      data-aos-anchor-placement="top-bottom"
+    >
       <img
         src="/pic/store-1.jpg"
         alt=""
@@ -15,7 +25,17 @@
   <div class="container-fluid">
     <div class="container mb-48">
       <div class="row">
-        <div class="col-sm-8 col-lg-10 mx-auto">
+        <div
+          class="col-sm-8 col-lg-10 mx-auto"
+          data-aos="flip-up"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top-center"
+        >
           <p class="fs-24 fs-md-32 tc-sans mb-16 fw-bold">品牌故事</p>
           <p class="fs-16 fs-md-24 tc-sans">
             3C Reuse
@@ -26,7 +46,17 @@
     </div>
     <div class="container mb-48">
       <div class="row">
-        <div class="col-sm-8 col-lg-10 mx-auto">
+        <div
+          class="col-sm-8 col-lg-10 mx-auto"
+          data-aos="fade-up"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top-center"
+        >
           <p class="fs-24 fs-md-32 tc-sans mb-16 fw-bold">品質保證</p>
           <p class="fs-16 fs-md-24 tc-sans">
             我們所有的二手產品都經過嚴格的品質檢查和測試，確保其性能穩定和品質優良。您可以放心購買，我們提供的每一台產品都有品質保證。
@@ -37,7 +67,17 @@
 
     <div class="container mb-16">
       <div class="row">
-        <div class="col-sm-8 col-lg-10 mx-auto">
+        <div
+          class="col-sm-8 col-lg-10 mx-auto"
+          data-aos="fade-up"
+          data-aos-offset="200"
+          data-aos-delay="3000"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top-bottom"
+        >
           <p class="fs-24 fs-md-32 tc-sans mb-16 fw-bold">聯絡我們</p>
         </div>
       </div>
@@ -46,8 +86,18 @@
 
   <div class="container mb-48">
     <div class="row d-flex justify-content-center">
-      <div class="col-sm-8 col-lg-5 d-flex flex-column ">
-        <p class="fs-16 fs-md-24 tc-sans ">
+      <div
+        class="col-sm-8 col-lg-5 d-flex flex-column"
+        data-aos="fade-right"
+        data-aos-offset="200"
+        data-aos-delay="3000"
+        data-aos-duration="2000"
+        data-aos-easing="ease-in-sine"
+        data-aos-mirror="true"
+        data-aos-once="false"
+        data-aos-anchor-placement="top"
+      >
+        <p class="fs-16 fs-md-24 tc-sans">
           謝謝您對 3C Reuse
           認可與提攜，我們歡迎各種問題及二手收購，誠摯邀請您來信提案，我們將有專門窗口與您聯繫。
         </p>
@@ -62,7 +112,17 @@
       </div>
 
       <div class="col-sm-8 col-lg-5">
-        <v-form v-slot="{ errors }">
+        <v-form
+          v-slot="{ errors }"
+          data-aos="fade-left"
+          data-aos-offset="200"
+          data-aos-delay="3000"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <div class="container px-0 mb-16">
             <v-field
               type="text"
@@ -111,16 +171,16 @@
               rules="required"
             >
             </v-field>
-            <error-message name="來信內容" class="invalid-feedback "
+            <error-message name="來信內容" class="invalid-feedback"
               ><span class="text-danger ps-8">信件內容必填</span></error-message
             >
             <button
-          type="submit"
-          class="btn btn-dark mt-auto d-block d-lg-none w-100"
-          @click="sendEmail"
-        >
-          寄出信件
-        </button>
+              type="submit"
+              class="btn btn-dark mt-auto d-block d-lg-none w-100"
+              @click="sendEmail"
+            >
+              寄出信件
+            </button>
           </div>
         </v-form>
       </div>
@@ -166,8 +226,8 @@ export default {
   },
 
   mounted() {
-    window.scroll(0, 0)
-  }
+    window.scroll(0, 0);
+  },
 };
 </script>
 
