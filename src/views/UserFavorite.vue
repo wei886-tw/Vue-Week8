@@ -20,7 +20,10 @@
           <tbody>
             <tr v-for="product in favoriteProducts" :key="product.id">
               <td class="align-middle px-0">
-                <button class="btn btn-white">
+                <button
+                  class="btn btn-white"
+                  @click="removeFavorite(product.id)"
+                >
                   <i class="bi bi-trash3-fill fs-md-24"></i>
                 </button>
               </td>
@@ -101,7 +104,7 @@ export default {
 
   computed: {
     ...mapState(favoriteStore, ["favoriteList"]),
-    ...mapState(cartStore, ['cartStore'])
+    ...mapState(cartStore, ["cartStore"]),
   },
 
   components: { NavBar, PageFooter },
@@ -109,7 +112,6 @@ export default {
   methods: {
     ...mapActions(favoriteStore, ["getFavoriteList", "setStorage"]),
     ...mapActions(cartStore, ["getCartList"]),
-
 
     backToShop() {
       this.$router.push("/userProduct");
@@ -151,22 +153,31 @@ export default {
     },
 
     addToCart(id) {
-      this.$http.post(`${this.url}/v2/api/${this.api_path}/cart`, {
-        data: {
-          product_id: id,
-          qty: 1,
-        },
-      })
+      this.$http
+        .post(`${this.url}/v2/api/${this.api_path}/cart`, {
+          data: {
+            product_id: id,
+            qty: 1,
+          },
+        })
         .then(() => {
           alert("加入購物車成功");
           this.favoriteProducts.splice(this.favoriteProducts.indexOf(id), 1);
           this.favoriteList.splice(this.favoriteList.indexOf(id), 1);
-          this.setStorage()
-          this.getCartList()
+          this.setStorage();
+          this.getCartList();
         })
         .catch((err) => {
           console.log(err.response.data.message);
         });
+    },
+
+    removeFavorite(id) {
+      this.favoriteProducts.splice(this.favoriteProducts.indexOf(id), 1);
+      this.favoriteList.splice(this.favoriteList.indexOf(id), 1);
+      this.setStorage();
+      this.getCartList();
+      window.scroll(0, 0);
     },
   },
 
@@ -174,7 +185,7 @@ export default {
     this.loadingCircle();
     this.getFavoriteList();
     this.fetchFavoriteProducts();
-    window.scroll(0, 0)
+    window.scroll(0, 0);
   },
 };
 </script>

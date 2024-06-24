@@ -1,5 +1,7 @@
 <template>
-  <NavBar />
+  <div class="container-fluid px-0">
+    <NavBar />
+  </div>
   <div class="container-fluid px-0 pb-48">
     <div
       class="mb-48"
@@ -97,7 +99,7 @@
         data-aos-once="false"
         data-aos-anchor-placement="top"
       >
-        <p class="fs-16 fs-md-24 tc-sans">
+        <p class="fs-16 fs-md-24 tc-sans mb-16">
           謝謝您對 3C Reuse
           認可與提攜，我們歡迎各種問題及二手收購，誠摯邀請您來信提案，我們將有專門窗口與您聯繫。
         </p>

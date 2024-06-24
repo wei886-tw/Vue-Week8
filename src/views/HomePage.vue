@@ -3,18 +3,8 @@
     <NavBar />
   </div>
 
-  <div
-    class="container-fluid px-0"
-    data-aos="zoom-in-up"
-    data-aos-offset="200"
-    data-aos-delay="0"
-    data-aos-duration="2000"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="false"
-    data-aos-anchor-placement="top-bottom"
-  >
-    <div
+  <div class="container-fluid px-0">
+    <!-- <div
       class="container-fluid px-0 overflow-hidden position-relative mb-48 d-none d-lg-block"
       style="
         background-image: url('pic/store-resized.png');
@@ -23,21 +13,56 @@
         background-repeat: no-repeat;
         background-position: center;
       "
+      data-aos="zoom-in-up"
+      data-aos-offset="200"
+      data-aos-delay="0"
+      data-aos-duration="2000"
+      data-aos-easing="ease-in-out"
+      data-aos-mirror="true"
+      data-aos-once="false"
+      data-aos-anchor-placement="top-bottom"
     ></div>
     <div
       class="container-fluid px-0 overflow-hidden position-relative mb-48 d-lg-none"
       style="
-        background-image: url('pic/apple-store.jpg');
+        background-image: url('pic/store-resized.png');
         height: 540px;
         width: 100%;
-        object-fit: cover;
         background-repeat: no-repeat;
         background-position: center;
       "
-    ></div>
+    ></div> -->
+    <div class="container-fluid px-0">
+      <img
+        src="/pic/store-resized.png"
+        alt=""
+        width="100%"
+        height="540px"
+        style="object-fit: cover"
+        class="mb-48"
+        data-aos="zoom-in-up"
+        data-aos-offset="200"
+        data-aos-delay="0"
+        data-aos-duration="2000"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false"
+        data-aos-anchor-placement="top-bottom"
+      />
+    </div>
     <div class="container mb-48">
       <div class="row">
-        <div class="col-sm-12 d-md-none mb-sm-16">
+        <div
+          class="col-sm-12 d-md-none mb-sm-16"
+          data-aos="fade-left"
+          data-aos-offset="200"
+          data-aos-delay="0"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top"
+        >
           <img
             src="/pic/open.jpeg"
             alt="開門圖"

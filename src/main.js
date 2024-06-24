@@ -1,32 +1,38 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
-import * as Vue from 'vue'; 
-import { defineComponent } from 'vue';
+import * as Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
-import App from './App.vue';
-import router from './router';
-
-import { nextTick } from 'vue';
-
 // import Vue Loading
-import {LoadingPlugin} from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/css/index.css'
+import { LoadingPlugin } from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
 /* 引入 VeeValidate 元件跟功能 */
 import {
   Field, Form, ErrorMessage, defineRule, configure
-} from 'vee-validate';
-import { all } from '@vee-validate/rules';
+} from 'vee-validate'
 // 引入 VeeValidate 的驗證規則
-import * as AllRules from '@vee-validate/rules';
+import { all } from '@vee-validate/rules';
 // 引入 VeeValidate 的 i18n 功能
-import { localize, setLocale } from '@vee-validate/i18n';
+import { localize, setLocale } from '@vee-validate/i18n'
 // 引入 VeeValidate 的繁體中文語系檔
-import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
-// 引入 VeeValidate 的規則
+import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+
+
+// 引入 AOS
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// 引入 bootstrap
+import '../src/assets/bootstrap/scss/bootstrap.scss';
+import "bootstrap-icons/font/bootstrap-icons.css";
+
+import App from './App.vue';
+import router from './router';
+
+// 使用 Object.keys 將 AllRules 轉為陣列並使用 forEach 迴圈將驗證規則加入 VeeValidate
 Object.entries(all).forEach(([name, rule]) => {
   defineRule(name, rule);
 });
@@ -40,49 +46,14 @@ configure({
 // 設定預設語系
 setLocale('zh_TW')
 
-// 引入 bootstrap
-import '../src/assets/bootstrap/scss/bootstrap.scss';
-import "bootstrap-icons/font/bootstrap-icons.css";
-
-// 引入 AOS
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
-export default defineComponent({
-  setup() {
-    const { value: username, errorMessage: usernameError } = useField('username');
-    const { handleSubmit } = useForm();
-    
-    const onSubmit = handleSubmit(values => {
-      console.log(values);
-    });
-
-    return {
-      username,
-      usernameError,
-      onSubmit
-    };
-  },
-  mounted() {
-    nextTick(() => {
-    AOS.init({
-      disable: (el) => el.classList.contains('navbar')
-    });
-    AOS.refresh()
-    })
-    
-  }
-  
-});
-
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(VueAxios, axios);
+AOS.init({disable: 'tablet'})
 app.use(LoadingPlugin);
 app.component('VField', Field);
 app.component('VForm', Form);
 app.component('ErrorMessage', ErrorMessage);
 
 app.mount('#app');
-AOS.init()
