@@ -1,10 +1,10 @@
 <template>
-  <div class="container-fluid px-0 w-100">
-    <nav class="navbar navbar-expand-lg bg-footer fixed-top py-8">
-      <div class="container">
+  <div class="container-fluid px-0">
+    <nav class="navbar navbar-expand-lg bg-footer fixed-top py-8 w-00 overflow-hidden">
+      <div class="container-fluid">
         <router-link
           to="/"
-          class="fs-48 fs-md-48 noto-serif me-md-16 text-dark nav-brand no-active"
+          class="fs-48 noto-serif me-md-16 text-dark nav-brand no-active"
           >3C Reuse</router-link
         >
 
@@ -59,7 +59,7 @@
             <li>
               <router-link
                 to="/userFavorite"
-                class="fs-24 noto-serif text-dark nav-link  me-16 d-lg-none d-lg-block router-link-active "
+                class="fs-24 noto-serif text-dark nav-link me-16 d-lg-none d-lg-block router-link-active"
               >
                 我的收藏
               </router-link>
@@ -71,9 +71,8 @@
           to="/userFavorite"
           class="fs-24 noto-serif text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
         >
-          <i class="bi bi-heart fs-md-28 fs-lg-32 align-middle me-16"></i>
+          <i class="bi bi-heart fs-16 fs-md-28 fs-lg-32 align-middle me-16"></i>
         </router-link>
-
         <router-link
           to="/userCart"
           class="fs-24 noto-serif text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
@@ -136,6 +135,16 @@ a.underline:hover {
 }
 .router-link-exact-active {
   border-bottom: 2px solid black;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  transform: none !important;
+  opacity: 1 !important;
 }
 </style>
 

@@ -44,6 +44,7 @@ setLocale('zh_TW')
 import '../src/assets/bootstrap/scss/bootstrap.scss';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+// 引入 AOS
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -64,23 +65,24 @@ export default defineComponent({
   },
   mounted() {
     nextTick(() => {
-      AOS.init();
+    AOS.init({
+      disable: (el) => el.classList.contains('navbar')
     });
+    AOS.refresh()
+    })
+    
   }
   
 });
-
-
 
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(VueAxios, axios);
 app.use(LoadingPlugin);
-app.use(AOS.init());
 app.component('VField', Field);
 app.component('VForm', Form);
 app.component('ErrorMessage', ErrorMessage);
 
-
 app.mount('#app');
+AOS.init()
