@@ -271,9 +271,6 @@ export default {
         this.tempCoupon.is_enabled = 0;
       }
       if (this.tempCoupon.id) {
-        console.log("be4:", this.tempCoupon.due_date);
-        this.tempCoupon.due_date = Number(Date.parse(this.tempCoupon.due_date) );
-        console.log("after:", this.tempCoupon.due_date);
         this.$http
           .put(
             `${this.url}/v2/api/${this.api_path}/admin/coupon/${this.tempCoupon.id}`,
@@ -282,7 +279,7 @@ export default {
                 title: this.tempCoupon.title,
                 is_enabled: this.tempCoupon.is_enabled,
                 percent: parseInt(this.tempCoupon.percent),
-                due_date: this.tempCoupon_due_date,
+                due_date: Number(Date.parse(this.tempCoupon.due_date) ),
                 code: this.tempCoupon.code,
               },
             }

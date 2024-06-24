@@ -18,28 +18,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="product in favoriteList" :key="product.id">
+            <tr v-for="product in favoriteProducts" :key="product.id">
               <td class="align-middle px-0">
-                <button class="btn btn-white" >
-                  <i
-                    class="bi bi-trash3-fill fs-md-24"
-                  ></i>
+                <button class="btn btn-white">
+                  <i class="bi bi-trash3-fill fs-md-24"></i>
                 </button>
               </td>
               <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
-                {{ product }}
+                {{ product.title }}
               </td>
               <td class="align-middle">
                 <img
-                  
                   alt="產品圖片"
                   class="rwd"
+                  :src="product.imageUrl"
+                  style="object-fit: cover"
                 />
               </td>
-              <td class="align-middle">
+              <td class="align-middle fs-12 fs-sm-16 fs-md-24">
+                {{ product.price }}
               </td>
-              <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
-                <!-- {{ Math.floor(parseInt(product.product.price * product.qty)) }} -->
+              <td class="align-middle">
+                <button class="btn btn-footer" @click="addToCart(product.id)">
+                  加入購物車
+                </button>
               </td>
             </tr>
           </tbody>
@@ -51,7 +53,6 @@
             返回商品頁面
           </button>
         </h2>
-
       </div>
     </div>
   </div>
@@ -69,6 +70,7 @@
 import NavBar from "../components/NavBar.vue";
 import PageFooter from "../components/PageFooter.vue";
 import favoriteStore from "@/store/favoriteStore.js";
+import cartStore from "@/store/cartStore.js";
 import { mapState, mapActions } from "pinia";
 
 export default {
@@ -93,17 +95,20 @@ export default {
       },
       couponModal: "",
       onSale: false,
+      favoriteProducts: [],
     };
   },
 
   computed: {
     ...mapState(favoriteStore, ["favoriteList"]),
+    ...mapState(cartStore, ['cartStore'])
   },
 
   components: { NavBar, PageFooter },
 
   methods: {
-    ...mapActions(favoriteStore, ["getFavoriteList"]),
+    ...mapActions(favoriteStore, ["getFavoriteList", "setStorage"]),
+    ...mapActions(cartStore, ["getCartList"]),
 
 
     backToShop() {
@@ -121,11 +126,55 @@ export default {
       }, 500);
     },
 
+    getProduct(id) {
+      return this.$http
+        .get(`${this.url}/v2/api/${this.api_path}/product/${id}`)
+        .then((res) => {
+          if (this.favoriteProducts.indexOf(res.data.product) === -1) {
+            return res.data.product;
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
+    },
+
+    async fetchFavoriteProducts() {
+      try {
+        const products = await Promise.all(
+          this.favoriteList.map((id) => this.getProduct(id))
+        );
+        this.favoriteProducts = products.filter(Boolean); // 過濾掉任何 undefined 或 null 值
+      } catch (err) {
+        console.log(err.response.data.message);
+      }
+    },
+
+    addToCart(id) {
+      this.$http.post(`${this.url}/v2/api/${this.api_path}/cart`, {
+        data: {
+          product_id: id,
+          qty: 1,
+        },
+      })
+        .then(() => {
+          alert("加入購物車成功");
+          this.favoriteProducts.splice(this.favoriteProducts.indexOf(id), 1);
+          this.favoriteList.splice(this.favoriteList.indexOf(id), 1);
+          this.setStorage()
+          this.getCartList()
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
+    },
   },
 
   mounted() {
     this.loadingCircle();
     this.getFavoriteList();
+    this.fetchFavoriteProducts();
+    window.scroll(0, 0)
   },
 };
 </script>

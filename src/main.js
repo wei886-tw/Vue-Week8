@@ -1,8 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
-
-
 import * as Vue from 'vue'; 
 import { defineComponent } from 'vue';
 import axios from 'axios';
@@ -10,7 +8,6 @@ import VueAxios from 'vue-axios';
 
 import App from './App.vue';
 import router from './router';
-
 
 // import Vue Loading
 import {LoadingPlugin} from 'vue-loading-overlay';
@@ -27,8 +24,7 @@ import * as AllRules from '@vee-validate/rules';
 import { localize, setLocale } from '@vee-validate/i18n';
 // 引入 VeeValidate 的繁體中文語系檔
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
-
-
+// 引入 VeeValidate 的規則
 Object.entries(all).forEach(([name, rule]) => {
   defineRule(name, rule);
 });
@@ -62,7 +58,6 @@ export default defineComponent({
     };
   }
 });
-
 
 const app = createApp(App);
 app.use(createPinia());

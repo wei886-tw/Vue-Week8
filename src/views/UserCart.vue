@@ -20,12 +20,8 @@
           <tbody>
             <tr v-for="product in cartProducts" :key="product.id">
               <td class="align-middle">
-                <button class="btn btn-white" 
-                @click="delCartItem(product.id)"
-                >
-                  <i
-                    class="bi bi-trash3-fill fs-md-24"
-                  ></i>
+                <button class="btn btn-white" @click="delCartItem(product.id)">
+                  <i class="bi bi-trash3-fill fs-md-24"></i>
                 </button>
               </td>
               <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
@@ -36,6 +32,7 @@
                   :src="product.product.imageUrl"
                   alt="產品圖片"
                   class="rwd"
+                  style="object-fit: cover"
                 />
               </td>
               <td class="align-middle">
@@ -72,11 +69,16 @@
               >
                 <div class="container px-0 d-md-flex">
                   <p>原價:&emsp;</p>
-                  <p class="mb-16">{{ Math.floor(cartList.total) }}</p>
+                  <p>{{ Math.floor(cartList.total) }}</p>
                 </div>
                 <div class="container px-0 d-md-flex" v-if="onSale">
                   <p>折扣:&emsp;</p>
-                  <p>{{ Math.floor(cartList.total) - (Math.floor(cartList.final_total)) }}</p>
+                  <p>
+                    {{
+                      Math.floor(cartList.total) -
+                      Math.floor(cartList.final_total)
+                    }}
+                  </p>
                 </div>
                 <div class="container px-0 d-md-flex" v-if="onSale">
                   <p>優惠:&emsp;</p>
@@ -102,7 +104,7 @@
             <div class="col-6">
               <div class="container px-0 justify-content-end d-flex">
                 <button
-                  v-if="cartProducts.length !== 0"
+                  v-if="cartProducts.length !== 0 &&  !onSale"
                   type="button"
                   class="btn w-50 mb-32 btn-footer"
                   @click="showCouponModal"
@@ -216,7 +218,11 @@
           >
             取消
           </button>
-          <button type="button" class="btn btn-primary" @click="getCoupon">
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="getCoupon"
+          >
             領取優惠
           </button>
         </div>
@@ -338,11 +344,11 @@ export default {
         this.$http
           .post(`${this.url}/v2/api/${this.api_path}/coupon`, {
             data: {
-              code: "test7",
+              code: "15",
             },
           })
           .then(() => {
-            alert("已套用優惠券，幫您打 77 折！");
+            alert("已套用優惠券，幫您打 8 折！");
             this.onSale = true;
             this.couponModal.hide();
           })
@@ -377,6 +383,8 @@ export default {
     this.getCartProducts();
     this.loadingCircle();
     this.couponModal = new bootstrap.Modal(this.$refs.couponModal);
+    window.scroll(0, 0);
+
   },
 };
 </script>

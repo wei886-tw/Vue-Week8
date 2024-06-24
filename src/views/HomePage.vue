@@ -7,7 +7,7 @@
     <div
       class="container-fluid px-0 overflow-hidden position-relative mb-48 d-none d-lg-block"
       style="
-        background-image: url('pic/apple-store.jpg');
+        background-image: url('pic/store-resized.png');
         height: 640px;
         width: 100%;
         object-fit: cover;
@@ -154,7 +154,7 @@
   </div>
 
   <div class="container mb-48">
-    <p class="fs-24 fs-md-32 fw-bold">顧客評論</p>
+    <p class="fs-24 fs-md-32 ">顧客評論</p>
     <SwiperComponent />
   </div>
 
@@ -245,6 +245,7 @@ export default {
 
   mounted() {
     this.getArticles();
+    window.scroll(0, 0);
   },
 };
 </script>

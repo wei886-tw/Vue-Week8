@@ -443,6 +443,7 @@ export default {
   mounted() {
     this.loadingCircle();
     this.getProducts();
+    window.scroll(0, 0);
   },
 };
 </script>
