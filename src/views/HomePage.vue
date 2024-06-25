@@ -1,5 +1,5 @@
 <template>
-  <div class="container px-0">
+  <div class="container-fluid px-0 ">
     <NavBar />
   </div>
 
@@ -286,7 +286,7 @@
     data-aos-easing="ease-in-sine"
     data-aos-mirror="true"
     data-aos-once="false"
-    data-aos-anchor-placement="top"
+    data-aos-anchor-placement="top-bottom"
   >
     <p class="fs-24 fs-md-32">顧客評論</p>
     <SwiperComponent />
@@ -420,13 +420,5 @@ export default {
 .btn-footer:hover {
   background-color: black;
   color: white;
-}
-
-/* 確保 AOS 動畫不影響固定定位的元素 */
-[data-aos] {
-  pointer-events: auto !important;
-}
-.aos-animate {
-  pointer-events: auto !important;
 }
 </style>

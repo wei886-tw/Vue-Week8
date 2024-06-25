@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid px-0">
-    <nav class="navbar navbar-expand-lg bg-footer fixed-top py-8 w-00 overflow-hidden">
+  <div class="container-fluid overflow-x-hidden">
+    <nav class="navbar navbar-expand-lg bg-footer fixed-top py-8 w-100 ">
       <div class="container-fluid">
         <router-link
           to="/"
@@ -136,15 +136,10 @@ a.underline:hover {
 .router-link-exact-active {
   border-bottom: 2px solid black;
 }
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1030;
-  transform: none !important;
-  opacity: 1 !important;
+.nav{
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 </style>
 

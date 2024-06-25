@@ -9,21 +9,18 @@ import VueAxios from 'vue-axios';
 import { LoadingPlugin } from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 
+
 /* 引入 VeeValidate 元件跟功能 */
 import {
   Field, Form, ErrorMessage, defineRule, configure
-} from 'vee-validate'
+} from 'vee-validate';
 // 引入 VeeValidate 的驗證規則
 import { all } from '@vee-validate/rules';
 // 引入 VeeValidate 的 i18n 功能
-import { localize, setLocale } from '@vee-validate/i18n'
+import { localize, setLocale } from '@vee-validate/i18n';
 // 引入 VeeValidate 的繁體中文語系檔
-import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 
-
-// 引入 AOS
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 // 引入 bootstrap
 import '../src/assets/bootstrap/scss/bootstrap.scss';
@@ -33,7 +30,7 @@ import App from './App.vue';
 import router from './router';
 
 // 使用 Object.keys 將 AllRules 轉為陣列並使用 forEach 迴圈將驗證規則加入 VeeValidate
-Object.entries(all).forEach(([name, rule]) => {
+Object.entries(all).forEach(([ name, rule ]) => {
   defineRule(name, rule);
 });
 
@@ -41,16 +38,16 @@ Object.entries(all).forEach(([name, rule]) => {
 configure({
   generateMessage: localize({ zh_TW: zhTW }),
   validateOnInput: true
-})
+});
 
 // 設定預設語系
-setLocale('zh_TW')
+setLocale('zh_TW');
 
 const app = createApp(App);
+
 app.use(createPinia());
 app.use(router);
 app.use(VueAxios, axios);
-AOS.init({disable: 'tablet'})
 app.use(LoadingPlugin);
 app.component('VField', Field);
 app.component('VForm', Form);
