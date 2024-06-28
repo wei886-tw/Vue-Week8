@@ -285,7 +285,6 @@ export default {
     ...mapState(favoriteStore, ["favoriteList", "favoriteId"]),
   },
 
-  watch: {},
 
   methods: {
     ...mapActions(cartStore, ["getCartList"]),

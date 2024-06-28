@@ -4,13 +4,13 @@
       <div class="container-fluid">
         <router-link
           to="/"
-          class="fs-48 noto-serif me-md-16 text-dark nav-brand no-active"
+          class="fs-48  me-md-16 text-dark nav-brand no-active"
           >3C Reuse</router-link
         >
 
         <router-link
           to="/userCart"
-          class="fs-24 noto-serif text-dark nav-link active router-link-active underline ms-auto me-24 d-lg-none"
+          class="fs-24  text-dark nav-link active router-link-active underline ms-auto me-24 d-lg-none"
         >
           <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
             <span
@@ -37,7 +37,7 @@
             <li class="nav-item">
               <router-link
                 to="/about"
-                class="fs-24 text-dark noto-serif nav-link router-link-active underline"
+                class="fs-24 text-dark   nav-link router-link-active underline"
               >
                 關於我們
               </router-link>
@@ -45,21 +45,21 @@
             <li class="nav-item">
               <router-link
                 to="/userBlog"
-                class="fs-24 noto-serif text-dark nav-link router-link-active underline"
+                class="fs-24   text-dark nav-link router-link-active underline"
                 >部落格
               </router-link>
             </li>
             <li class="nav-item">
               <router-link
                 to="/userProduct"
-                class="fs-24 noto-serif text-dark nav-link router-link-active underline"
+                class="fs-24   text-dark nav-link router-link-active underline"
                 >所有產品
               </router-link>
             </li>
             <li>
               <router-link
                 to="/userFavorite"
-                class="fs-24 noto-serif text-dark nav-link me-16 d-lg-none d-lg-block router-link-active"
+                class="fs-24   text-dark nav-link me-16 d-lg-none d-lg-block router-link-active"
               >
                 我的收藏
               </router-link>
@@ -69,13 +69,13 @@
 
         <router-link
           to="/userFavorite"
-          class="fs-24 noto-serif text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
+          class="fs-24   text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
         >
           <i class="bi bi-heart fs-16 fs-md-28 fs-lg-32 align-middle me-16"></i>
         </router-link>
         <router-link
           to="/userCart"
-          class="fs-24 noto-serif text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
+          class="fs-24   text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
         >
           <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
             <span

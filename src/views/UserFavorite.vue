@@ -173,10 +173,9 @@ export default {
     },
 
     removeFavorite(id) {
-      this.favoriteProducts.splice(this.favoriteProducts.indexOf(id), 1);
       this.favoriteList.splice(this.favoriteList.indexOf(id), 1);
       this.setStorage();
-      this.getCartList();
+      this.$router.go('/userFavorite')
       window.scroll(0, 0);
     },
   },

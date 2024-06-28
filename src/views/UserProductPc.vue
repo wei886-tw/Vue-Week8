@@ -73,7 +73,13 @@
                     <i class="bi bi-cart-fill"></i>
                     加入購物車
                   </button>
-                  <button class="btn btn-footer hover" style="width: 100%">
+                  <button class="btn btn-footer hover" style="width: 100%" 
+                  @click="handleFavorite(product.id)"
+                    :class="
+                      favoriteList.indexOf(product.id) === -1
+                        ? 'btn-footer'
+                        : 'hovered'
+                    ">
                     <i class="bi bi-heart-fill"></i>
                     &nbsp;加入追蹤
                   </button>
@@ -153,7 +159,12 @@
                 <button
                   class="btn btn-footer fs-14 hover"
                   style="width: 100%"
-                  @click="addToCart(product.id)"
+                  @click="handleFavorite(product.id)"
+                    :class="
+                      favoriteList.indexOf(product.id) === -1
+                        ? 'btn-footer'
+                        : 'hovered'
+                    "
                 >
                   <i class="bi bi-heart-fill"></i>&nbsp;加入追蹤
                 </button>
@@ -182,6 +193,9 @@ import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 import { myMixin } from "@/js/mixin";
+import { mapActions, mapState } from "pinia";
+import cartStore from "@/store/cartStore.js";
+import favoriteStore from "@/store/favoriteStore.js";
 
 export default {
   components: { PageFooter, NavBar, PageNation },
@@ -201,7 +215,19 @@ export default {
     };
   },
 
+  computed: {
+    ...mapState(cartStore, ["storeCart"]),
+    ...mapState(favoriteStore, ["favoriteList", "favoriteId"]),
+  },
+
   methods: {
+    ...mapActions(cartStore, ["getCartList"]),
+    ...mapActions(favoriteStore, [
+      "handleFavorite",
+      "setStorage",
+      "getFavoriteList",
+    ]),
+
     changeQty() {
       this.qty = parseInt(event.target.value);
     },
@@ -310,5 +336,9 @@ a:hover {
 .btn.hover:hover {
   background-color: black;
   color: white;
+}
+.hovered {
+  background-color: #f3f2ee;
+  color: red;
 }
 </style>
