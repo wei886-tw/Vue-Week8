@@ -232,3 +232,12 @@ export default {
   },
 };
 </script>
+
+<style>
+@media screen and (max-width: 767px) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+</style>

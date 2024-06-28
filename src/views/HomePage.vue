@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid px-0 ">
+  <div class="container-fluid px-0">
     <NavBar />
   </div>
 
@@ -395,7 +395,13 @@ export default {
 }
 
 :root {
-    overflow-x: hidden;
-  }
+  overflow-x: hidden;
+}
 
+@media screen and (max-width: 767px) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 </style>
