@@ -4,34 +4,6 @@
   </div>
 
   <div class="container-fluid px-0">
-    <!-- <div
-      class="container-fluid px-0 overflow-hidden position-relative mb-48 d-none d-lg-block"
-      style="
-        background-image: url('pic/store-resized.png');
-        height: 640px;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-      "
-      data-aos="zoom-in-up"
-      data-aos-offset="200"
-      data-aos-delay="0"
-      data-aos-duration="2000"
-      data-aos-easing="ease-in-out"
-      data-aos-mirror="true"
-      data-aos-once="false"
-      data-aos-anchor-placement="top-bottom"
-    ></div>
-    <div
-      class="container-fluid px-0 overflow-hidden position-relative mb-48 d-lg-none"
-      style="
-        background-image: url('pic/store-resized.png');
-        height: 540px;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-      "
-    ></div> -->
     <div class="container-fluid px-0">
       <img
         src="/pic/store-resized.png"
@@ -61,7 +33,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <img
             src="/pic/open.jpeg"
@@ -81,7 +53,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <h3 class="fs-24 fs-md-32 tc-sans mb-sm-16">歡迎來到 3C Reuse</h3>
           <p class="fs-16 fs-md-24 tc-sans">
@@ -98,7 +70,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <img
             src="/pic/open.jpeg"
@@ -122,7 +94,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <img
             src="/pic/pc.jpg"
@@ -141,7 +113,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <h3 class="fs-24 fs-md-32 tc-sans mb-16">電腦</h3>
           <p class="fs-16 fs-md-24 tc-sans mb-16">
@@ -170,7 +142,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <img
             src="/pic/phone.jpg"
@@ -189,7 +161,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <h3 class="fs-24 fs-md-32 tc-sans mb-16">手機</h3>
           <p class="fs-16 fs-md-24 tc-sans mb-16">
@@ -214,7 +186,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <img
             src="/pic/phone.jpg"
@@ -238,7 +210,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <img
             src="/pic/ipad.jpg"
@@ -257,7 +229,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top"
+          data-aos-anchor-placement="top-center"
         >
           <h3 class="fs-24 fs-md-32 tc-sans mb-16">平板電腦</h3>
           <p class="fs-16 fs-md-24 tc-sans mb-16">
@@ -286,7 +258,7 @@
     data-aos-easing="ease-in-sine"
     data-aos-mirror="true"
     data-aos-once="false"
-    data-aos-anchor-placement="top-bottom"
+    data-aos-anchor-placement="top-center"
   >
     <p class="fs-24 fs-md-32">顧客評論</p>
     <SwiperComponent />
@@ -421,4 +393,9 @@ export default {
   background-color: black;
   color: white;
 }
+
+:root {
+    overflow-x: hidden;
+  }
+
 </style>

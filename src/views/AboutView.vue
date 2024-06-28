@@ -36,7 +36,7 @@
           data-aos-easing="ease-in-out"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top-center"
+          data-aos-anchor-placement="top"
         >
           <p class="fs-24 fs-md-32 tc-sans mb-16 fw-bold">品牌故事</p>
           <p class="fs-16 fs-md-24 tc-sans">
@@ -57,7 +57,7 @@
           data-aos-easing="ease-in-out"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top-center"
+          data-aos-anchor-placement="top"
         >
           <p class="fs-24 fs-md-32 tc-sans mb-16 fw-bold">品質保證</p>
           <p class="fs-16 fs-md-24 tc-sans">
@@ -73,12 +73,12 @@
           class="col-sm-8 col-lg-10 mx-auto"
           data-aos="fade-up"
           data-aos-offset="200"
-          data-aos-delay="3000"
+          data-aos-delay="4000"
           data-aos-duration="2000"
           data-aos-easing="ease-in-out"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top-bottom"
+          data-aos-anchor-placement="top"
         >
           <p class="fs-24 fs-md-32 tc-sans mb-16 fw-bold">聯絡我們</p>
         </div>
@@ -92,7 +92,7 @@
         class="col-sm-8 col-lg-5 d-flex flex-column"
         data-aos="fade-right"
         data-aos-offset="200"
-        data-aos-delay="3000"
+        data-aos-delay="4000"
         data-aos-duration="2000"
         data-aos-easing="ease-in-sine"
         data-aos-mirror="true"
@@ -118,7 +118,7 @@
           v-slot="{ errors }"
           data-aos="fade-left"
           data-aos-offset="200"
-          data-aos-delay="3000"
+          data-aos-delay="4000"
           data-aos-duration="2000"
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
@@ -232,5 +232,3 @@ export default {
   },
 };
 </script>
-
-
