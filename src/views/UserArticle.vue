@@ -1,7 +1,7 @@
 <template >
   <nav-bar></nav-bar>
   <div class="container-fluid">
-    <div class="container">
+    <div class="container ">
       <div class="row">
         <div class="col-lg-12 py-32" v-if="article">
           <div
@@ -16,7 +16,7 @@
             />
             <h2 class="fs-24 fs-lg-40 mb-16">{{ article.title }}</h2>
             <div
-              class="container d-flex justify-content-start align-items-baseline mb-8"
+              class="container px-0 d-flex justify-content-start align-items-baseline mb-8"
             >
               <p class="me-16" @click="test">作者：{{ article.author }}</p>
               <p>文章分類：</p>
@@ -25,7 +25,7 @@
                 v-for="tags in tagArr"
                 :key="tags + 1"
               >
-                {{ tags }}
+                <router-link class="text-white">{{ tags }}</router-link>
               </button>
             </div>
             <p class="fs-16 fs-lg-24 new-line">{{ article.content }}</p>

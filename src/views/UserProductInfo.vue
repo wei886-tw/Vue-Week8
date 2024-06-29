@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-4 mb-32">
           <div
             class="container d-flex flex-column justify-content-between pt-80"
           >
@@ -69,6 +69,10 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="container d-flex justify-content-center">
+        <button class="btn btn-dark w-50 hover" @click="backToPrevious">返回上一頁</button>
       </div>
 
       <!-- <div class="row">
@@ -150,6 +154,10 @@ export default {
     changeImg(index) {
       this.product.imageUrl = this.product.imagesUrl[index];
     },
+
+    backToPrevious() {
+      this.$router.push(`/UserProduct`)
+    },
   },
 
 
@@ -176,5 +184,9 @@ export default {
 
 .hover-element:hover {
   border: 4px solid black;
+}
+
+.button:hover {
+  background-color: black;
 }
 </style>

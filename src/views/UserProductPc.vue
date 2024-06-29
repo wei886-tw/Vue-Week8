@@ -325,7 +325,6 @@ export default {
 
   mounted() {
     this.getPcProducts();
-    console.log(this.getCartList);
   },
 };
 </script>
