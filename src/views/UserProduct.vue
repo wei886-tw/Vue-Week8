@@ -28,7 +28,7 @@
                     <button for="input" class="border-0">
                       <i
                         class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8 text-dark bg-footer border-dark"
-                        @click="searchProduct"
+                        @click="searchProduct('pc')"
                       ></i>
                     </button>
                   </div>
@@ -40,9 +40,14 @@
                     class="rounded border-2 btn btn-footer"
                     style="width: 132px; height: 48px; position: relative"
                     ref="type"
-                    @change="changeProductType"
+                    @change="changeProductType('pc')"
                   >
-                    <option value="所有產品" style="position: absolute">
+                    <option
+                      value="所有產品"
+                      style="position: absolute"
+                      readonly
+                      selected
+                    >
                       所有產品
                     </option>
                     <option value="平板" style="position: absolute">
@@ -53,6 +58,12 @@
                     </option>
                     <option value="筆電" style="position: absolute">
                       筆電
+                    </option>
+                    <option value="按金額低到高" style="position: absolute">
+                      按金額低到高
+                    </option>
+                    <option value="按金額高到低" style="position: absolute">
+                      按金額高到低
                     </option>
                   </select>
                 </th>
@@ -121,8 +132,7 @@
                     "
                     id="myButton"
                   >
-                    <i class="bi bi-heart-fill"></i>
-                    &nbsp;加入收藏
+                    <i class="bi bi-heart-fill">加入收藏</i>
                   </button>
                 </td>
               </tr>
@@ -148,7 +158,7 @@
               <button for="input" class="border-0">
                 <i
                   class="bi bi-search fs-12 fs-md-16 fs-lg-24 pe-8 text-dark"
-                  @click="searchProductMobile"
+                  @click="searchProduct('mobile')"
                 ></i>
               </button>
             </div>
@@ -156,13 +166,27 @@
             <select
               name=""
               class="btn btn-footer fs-12"
-              ref="select"
+              ref="selectMobile"
               style="width: 40%"
+              @change="changeProductType('mobile')"
             >
-              <option value="所有產品">所有產品</option>
-              <option value="平板">平板</option>
-              <option value="手機">手機</option>
-              <option value="筆電">筆電</option>
+              <option
+                value="所有產品"
+                style="position: absolute"
+                readonly
+                selected
+              >
+                所有產品
+              </option>
+              <option value="平板" style="position: absolute">平板</option>
+              <option value="手機" style="position: absolute">手機</option>
+              <option value="筆電" style="position: absolute">筆電</option>
+              <option value="按金額低到高" style="position: absolute">
+                按金額低到高
+              </option>
+              <option value="按金額高到低" style="position: absolute">
+                按金額高到低
+              </option>
             </select>
 
             <hr />
@@ -218,6 +242,17 @@
                     加入購物車
                   </button>
                 </div>
+                <button
+                  class="btn btn-footer"
+                  @click="handleFavorite(product.id)"
+                  :class="
+                    favoriteList.indexOf(product.id) === -1
+                      ? 'btn-footer'
+                      : 'hovered'
+                  "
+                >
+                  <i class="bi bi-heart-fill">&nbsp;加入收藏</i>
+                </button>
               </div>
             </div>
           </div>
@@ -285,7 +320,6 @@ export default {
     ...mapState(favoriteStore, ["favoriteList", "favoriteId"]),
   },
 
-
   methods: {
     ...mapActions(cartStore, ["getCartList"]),
     ...mapActions(favoriteStore, [
@@ -332,9 +366,15 @@ export default {
       }
     },
 
-    changeProductType() {
-      this.category = this.$refs.type.value;
-      if (this.category != "所有產品") {
+    changeProductType(device) {
+      if (device === "pc") {
+        this.category = this.$refs.type.value;
+        console.log(this.category);
+      } else {
+        this.category = this.$refs.selectMobile.value;
+        console.log(this.category);
+      }
+      if (this.category != "按金額高到低" && this.category != "按金額低到高") {
         this.$http
           .get(
             `${this.api}/v2/api/${this.api_path}/products?category=${this.category}`
@@ -346,6 +386,34 @@ export default {
               (item) => item.category === this.category
             );
             alert(`顯示所有${this.category}產品`);
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      } else if (this.category === "按金額低到高") {
+        this.$http
+          .get(`${this.api}/v2/api/${this.api_path}/products/all`)
+          .then((res) => {
+            this.userProducts = res.data.products;
+            this.pagination = res.data.pagination;
+            this.userProducts = this.userProducts.sort(
+              (a, b) => a.price - b.price
+            );
+            alert("產品由低價往高價排列");
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      } else if (this.category === "按金額高到低") {
+        this.$http
+          .get(`${this.api}/v2/api/${this.api_path}/products/all`)
+          .then((res) => {
+            this.userProducts = res.data.products;
+            this.pagination = res.data.pagination;
+            this.userProducts = this.userProducts.sort(
+              (a, b) => b.price - a.price
+            );
+            alert("產品由高價往低價排列");
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -372,8 +440,13 @@ export default {
       this.myModal.show();
     },
 
-    searchProduct() {
-      this.title = this.$refs.search.value;
+    searchProduct(device) {
+      if (device === "pc") {
+        this.title = this.$refs.search.value;
+      }
+      else if(device === 'mobile'){
+        this.title = this.$refs.searchMobile.value
+      }
       if (this.title !== undefined && this.title !== "") {
         this.$http
           .get(`${this.api}/v2/api/${this.api_path}/products/all`)
@@ -385,7 +458,7 @@ export default {
             );
             alert(`搜尋 ${this.title} 的結果`);
             this.searchProducts = this.userProducts;
-            this.searchResult = 'searchResult'
+            this.searchResult = "searchResult";
             this.title = "";
           })
           .catch((err) => {
@@ -402,30 +475,6 @@ export default {
       this.$refs.searchMobile.value = "";
       this.searchProduct = ["2"];
       this.$router.go("/userProduct");
-    },
-
-    searchProductMobile() {
-      this.title = this.$refs.searchMobile.value;
-      if (this.title !== undefined) {
-        this.$http
-          .get(`${this.api}/v2/api/${this.api_path}/products/all`)
-          .then((res) => {
-            this.userProducts = res.data.products;
-            this.pagination = {};
-            this.userProducts = this.userProducts.filter((item) =>
-              item.title.includes(this.title)
-            );
-            alert(`搜尋 ${this.title} 的結果`);
-            this.searchProducts = this.userProducts;
-            this.searchResult = 'searchResult';
-            this.title = "";
-          })
-          .catch((err) => {
-            console.log(err.response.data.message);
-          });
-      } else {
-        alert("請輸入關鍵字");
-      }
     },
 
     loadingCircle() {

@@ -229,7 +229,7 @@
           data-aos-easing="ease-in-sine"
           data-aos-mirror="true"
           data-aos-once="false"
-          data-aos-anchor-placement="top-center"
+          data-aos-anchor-placement="top-bottom"
         >
           <h3 class="fs-24 fs-md-32 tc-sans mb-16">平板電腦</h3>
           <p class="fs-16 fs-md-24 tc-sans mb-16">

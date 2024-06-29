@@ -152,7 +152,7 @@
                       <p class="me-8">
                         {{ product.qty }} {{ product.product.unit }}，
                       </p>
-                      <p>價格：{{ product.product.price }}</p>
+                      <p>價格：{{ product.product.price * product.qty }}</p>
                     </div>
                   </div>
                 </div>

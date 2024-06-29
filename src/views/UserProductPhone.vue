@@ -255,6 +255,7 @@ export default {
             },
           })
           .then(() => {
+            this.getCartList();
             alert("成功加入購物車");
           })
           .catch((err) => {

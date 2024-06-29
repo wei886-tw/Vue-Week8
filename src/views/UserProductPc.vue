@@ -73,13 +73,16 @@
                     <i class="bi bi-cart-fill"></i>
                     加入購物車
                   </button>
-                  <button class="btn btn-footer hover" style="width: 100%" 
-                  @click="handleFavorite(product.id)"
+                  <button
+                    class="btn btn-footer hover"
+                    style="width: 100%"
+                    @click="handleFavorite(product.id)"
                     :class="
                       favoriteList.indexOf(product.id) === -1
                         ? 'btn-footer'
                         : 'hovered'
-                    ">
+                    "
+                  >
                     <i class="bi bi-heart-fill"></i>
                     &nbsp;加入追蹤
                   </button>
@@ -160,11 +163,11 @@
                   class="btn btn-footer fs-14 hover"
                   style="width: 100%"
                   @click="handleFavorite(product.id)"
-                    :class="
-                      favoriteList.indexOf(product.id) === -1
-                        ? 'btn-footer'
-                        : 'hovered'
-                    "
+                  :class="
+                    favoriteList.indexOf(product.id) === -1
+                      ? 'btn-footer'
+                      : 'hovered'
+                  "
                 >
                   <i class="bi bi-heart-fill"></i>&nbsp;加入追蹤
                 </button>
@@ -256,6 +259,7 @@ export default {
             },
           })
           .then(() => {
+            this.getCartList();
             alert("成功加入購物車");
           })
           .catch((err) => {
@@ -277,8 +281,7 @@ export default {
             this.userProducts = this.userProducts.filter(
               (item) => item.category === this.category
             );
-            alert(`顯示所有${this.category}產品`)
-
+            alert(`顯示所有${this.category}產品`);
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -322,6 +325,7 @@ export default {
 
   mounted() {
     this.getPcProducts();
+    console.log(this.getCartList);
   },
 };
 </script>
