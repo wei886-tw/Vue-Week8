@@ -11,10 +11,10 @@
           <thead>
             <tr>
               <th class="fs-12 fs-md-24" style="width: 10%">X</th>
-              <th class="fs-12 fs-md-24" style="width: 30%">品名</th>
+              <th class="fs-12 fs-md-24" style="width: 35%">品名</th>
               <th class="fs-12 fs-md-24 rwd">圖片</th>
               <th class="fs-12 fs-md-24" style="width: 20%">價格</th>
-              <th class="fs-12 fs-md-24" style="width: 20%">加入購物車</th>
+              <th class="fs-12 fs-md-24" style="width: 25%">加入購物車</th>
             </tr>
           </thead>
           <tbody>
@@ -28,7 +28,12 @@
                 </button>
               </td>
               <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
-                {{ product.title }}
+                  <router-link
+                    class="text-dark"
+                    style="text-decoration: underline"
+                    :to="`/userProductInfo/${product.id}`"
+                    >{{ product.title }}</router-link
+                  >
               </td>
               <td class="align-middle">
                 <img
@@ -175,7 +180,7 @@ export default {
     removeFavorite(id) {
       this.favoriteList.splice(this.favoriteList.indexOf(id), 1);
       this.setStorage();
-      this.$router.go('/userFavorite')
+      this.$router.go("/userFavorite");
       window.scroll(0, 0);
     },
   },

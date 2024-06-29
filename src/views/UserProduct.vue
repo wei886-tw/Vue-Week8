@@ -60,10 +60,10 @@
                       筆電
                     </option>
                     <option value="按金額低到高" style="position: absolute">
-                      按金額低到高
+                      金額低到高
                     </option>
                     <option value="按金額高到低" style="position: absolute">
-                      按金額高到低
+                      金額高到低
                     </option>
                   </select>
                 </th>
@@ -118,8 +118,7 @@
                     style="width: 100%"
                     @click="addToCart(product.id)"
                   >
-                    <i class="bi bi-cart-fill"></i>
-                    加入購物車
+                    <i class="bi bi-cart-fill"> 加入購物車 </i>
                   </button>
                   <button
                     class="btn btn-footer hover mb-16 color"
@@ -182,10 +181,10 @@
               <option value="手機" style="position: absolute">手機</option>
               <option value="筆電" style="position: absolute">筆電</option>
               <option value="按金額低到高" style="position: absolute">
-                按金額低到高
+                金額低到高
               </option>
               <option value="按金額高到低" style="position: absolute">
-                按金額高到低
+                金額高到低
               </option>
             </select>
 
@@ -274,7 +273,7 @@
 
     <div class="container px-0 pt-32">
       <PageNation
-        v-if="userProducts.length !== 0"
+        v-if="pagination"
         class="d-flex justify-content-center"
         :pagination="pagination"
         :get-page-products="getProducts"
@@ -369,12 +368,10 @@ export default {
     changeProductType(device) {
       if (device === "pc") {
         this.category = this.$refs.type.value;
-        console.log(this.category);
       } else {
         this.category = this.$refs.selectMobile.value;
-        console.log(this.category);
       }
-      if (this.category != "按金額高到低" && this.category != "按金額低到高") {
+      if (this.category != "按金額高到低" && this.category != "按金額低到高"&& this.category != '所有產品') {
         this.$http
           .get(
             `${this.api}/v2/api/${this.api_path}/products?category=${this.category}`
@@ -419,6 +416,7 @@ export default {
             console.log(err.response.data.message);
           });
       } else {
+        alert('顯示所有產品')
         this.getProducts(1);
       }
     },
@@ -443,9 +441,8 @@ export default {
     searchProduct(device) {
       if (device === "pc") {
         this.title = this.$refs.search.value;
-      }
-      else if(device === 'mobile'){
-        this.title = this.$refs.searchMobile.value
+      } else if (device === "mobile") {
+        this.title = this.$refs.searchMobile.value;
       }
       if (this.title !== undefined && this.title !== "") {
         this.$http

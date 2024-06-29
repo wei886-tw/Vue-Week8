@@ -377,6 +377,16 @@ export default {
             console.log(err.response.data.message);
           });
       } else {
+        this.title = "";
+        this.category = "";
+        this.origin_price = "";
+        this.price = "";
+        this.unit = "";
+        this.description = "";
+        this.content = "";
+        this.is_enabled = "";
+        this.imageUrl = "";
+        this.imagesUrl = "";
         this.myModal.show();
       }
     },
@@ -435,6 +445,7 @@ export default {
           })
           .then(() => {
             alert("建立產品成功");
+            this.loading();
             this.getPageProducts(1);
             this.myModal.hide();
           })
@@ -449,6 +460,8 @@ export default {
         .delete(`${this.url}/v2/api/${this.api_path}/admin/product/${id}`)
         .then(() => {
           alert("刪除產品成功");
+          this.loading();
+          this.getPageProducts(1);
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -463,7 +476,6 @@ export default {
     imagesUrlPop() {
       this.imagesUrl.pop();
     },
-
   },
 
   mounted() {
