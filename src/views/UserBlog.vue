@@ -146,8 +146,6 @@ export default {
         });
     },
 
-    filterArticles() {},
-
     loadingCircle() {
       let loader = this.$loading.show({
         container: this.fullPage ? null : this.$refs.formContainer,
@@ -158,6 +156,10 @@ export default {
         loader.hide();
       }, 1500);
     },
+
+    goToBlog(tag) {
+      this.$router.push({ name: 'userBlog', query: { category: tag } })
+    }
   },
 
   mounted() {

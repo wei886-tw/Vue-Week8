@@ -138,7 +138,7 @@ a.underline:hover {
   height: 32px;
 }
 .no-active.router-link-active {
-  border-bottom: 0px;
+  font-weight: normal;
 }
 .router-link-exact-active {
   font-weight: bold;

@@ -314,12 +314,18 @@ export default {
       myButton: "",
       searchResult: "",
       type: "",
+      selectedCategory: this.$route.query.category || '所有產品',
     };
   },
+
   computed: {
     ...mapState(cartStore, ["storeCart"]),
     ...mapState(favoriteStore, ["favoriteList", "favoriteId"]),
   },
+
+  watch: {
+
+    },
 
 
   methods: {
@@ -429,9 +435,11 @@ export default {
     },
 
     getProducts(page) {
-      this.$http
+      if(this.$route.query != "筆電" || this.$route.query != "手機" || this.$route.query  != "平板") {
+        this.$http
         .get(`${this.api}/api/${this.api_path}/products?page=${page}`)
         .then((res) => {
+          this.$refs.type.value = '所有產品'
           this.userProducts = res.data.products;
           this.pagination = res.data.pagination;
           window.scrollTo(0, 0);
@@ -439,6 +447,18 @@ export default {
         .catch((err) => {
           console.log(err.response.data.message);
         });
+      }
+      else{
+        this.$http
+        .get(`${this.api}/v2/api/${this.api_path}/products?category=${this.$route.query.category}`)
+        .then((res) => {
+          this.userProducts = res.data.products;
+          this.pagination = res.data.pagination;
+          this.$refs.type.value = this.$route.query.category
+          window.scrollTo(0, 0);
+        });
+      }
+      
     },
 
     openModal() {

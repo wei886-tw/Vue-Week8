@@ -122,7 +122,7 @@
           <div class="container mt-auto px-0">
             <button
               class="btn btn-footer fs-16 fs-md-24 tc-sans w-100"
-              @click="goToStore('pc')"
+              @click="goToStore('筆電')"
             >
               前往電腦賣場
             </button>
@@ -171,7 +171,7 @@
           <div class="container mt-auto px-0">
             <button
               class="btn btn-footer fs-16 fs-md-24 tc-sans mt-auto w-100"
-              @click="goToShop('phone')"
+              @click="goToStore('手機')"
             >
               前往手機賣場
             </button>
@@ -239,7 +239,7 @@
           <div class="container mt-auto px-0">
             <button
               class="btn btn-footer fs-16 fs-md-24 tc-sans w-100"
-              @click="goToShop('pad')"
+              @click="goToStore('平板')"
             >
               前往平板賣場
             </button>
@@ -277,7 +277,6 @@
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
 import SwiperComponent from "@/components/SwiperComponent.vue";
-import { provide, ref } from "vue";
 
 export default {
   components: { PageFooter, NavBar, SwiperComponent },
@@ -292,6 +291,7 @@ export default {
       isLoading: true,
       fullPage: false,
       swiperEl: "",
+      selectedCategory: '所有產品'
     };
   },
 
@@ -320,24 +320,6 @@ export default {
         .catch((err) => {
           console.log(err.response.data.message);
         });
-    },
-
-    goToShop(type) {
-      if (type === "pc") {
-        this.$router.push(`/userProductPc`);
-      } else if (type === "pad") {
-        this.$router.push(`/userProductPad`);
-      } else if (type === "phone") {
-        this.$router.push(`/userProductPhone`);
-      }
-      let loader = this.$loading.show({
-        container: this.fullPage ? null : this.$refs.formContainer,
-        canCancel: true,
-        onCancel: this.onCancel,
-      });
-      setTimeout(() => {
-        loader.hide();
-      }, 1000);
     },
 
     getArticles() {
