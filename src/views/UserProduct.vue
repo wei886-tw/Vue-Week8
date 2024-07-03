@@ -291,6 +291,7 @@ import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 
+
 import cartStore from "@/store/cartStore.js";
 import favoriteStore from "@/store/favoriteStore.js";
 import { mapState, mapActions } from "pinia";
@@ -312,12 +313,14 @@ export default {
       favoriteLis: [],
       myButton: "",
       searchResult: "",
+      type: "",
     };
   },
   computed: {
     ...mapState(cartStore, ["storeCart"]),
     ...mapState(favoriteStore, ["favoriteList", "favoriteId"]),
   },
+
 
   methods: {
     ...mapActions(cartStore, ["getCartList"]),
@@ -371,7 +374,11 @@ export default {
       } else {
         this.category = this.$refs.selectMobile.value;
       }
-      if (this.category != "按金額高到低" && this.category != "按金額低到高"&& this.category != '所有產品') {
+      if (
+        this.category != "按金額高到低" &&
+        this.category != "按金額低到高" &&
+        this.category != "所有產品"
+      ) {
         this.$http
           .get(
             `${this.api}/v2/api/${this.api_path}/products?category=${this.category}`
@@ -416,7 +423,7 @@ export default {
             console.log(err.response.data.message);
           });
       } else {
-        alert('顯示所有產品')
+        alert("顯示所有產品");
         this.getProducts(1);
       }
     },
@@ -484,6 +491,8 @@ export default {
         loader.hide();
       }, 1000);
     },
+
+    
   },
   mounted() {
     this.loadingCircle();

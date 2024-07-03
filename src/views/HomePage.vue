@@ -122,7 +122,7 @@
           <div class="container mt-auto px-0">
             <button
               class="btn btn-footer fs-16 fs-md-24 tc-sans w-100"
-              @click="goToShop('pc')"
+              @click="goToStore('pc')"
             >
               前往電腦賣場
             </button>
@@ -277,6 +277,7 @@
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
 import SwiperComponent from "@/components/SwiperComponent.vue";
+import { provide, ref } from "vue";
 
 export default {
   components: { PageFooter, NavBar, SwiperComponent },
@@ -347,6 +348,10 @@ export default {
           this.newArticles = JSON.parse(JSON.stringify(this.articles));
         });
     },
+
+    goToStore(type) {
+      this.$router.push({ name: 'userProduct', query: { category: type } })
+    }
   },
 
   mounted() {

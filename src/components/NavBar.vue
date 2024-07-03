@@ -1,16 +1,14 @@
 <template>
-  <div class="container-fluid overflow-x-hidden">
-    <nav class="navbar navbar-expand-lg bg-footer fixed-top py-8 w-100 ">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-footer fixed-top py-8 w-100">
       <div class="container-fluid">
-        <router-link
-          to="/"
-          class="fs-48  me-md-16 text-dark nav-brand no-active"
+        <router-link to="/" class="fs-48 me-md-16 text-dark nav-brand no-active"
           >3C Reuse</router-link
         >
 
         <router-link
           to="/userCart"
-          class="fs-24  text-dark nav-link active router-link-active underline ms-auto me-24 d-lg-none"
+          class="fs-24 text-dark nav-link active router-link-active underline ms-auto me-24 d-lg-none"
         >
           <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
             <span
@@ -20,6 +18,7 @@
             </span>
           </i>
         </router-link>
+        <!-- 漢堡選單 -->
         <button
           class="navbar-toggler px-4 py-4"
           type="button"
@@ -28,6 +27,7 @@
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          @click="toggleNavbar"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,7 +37,7 @@
             <li class="nav-item">
               <router-link
                 to="/about"
-                class="fs-24 text-dark   nav-link router-link-active underline"
+                class="fs-24 text-dark nav-link router-link-active underline"
               >
                 關於我們
               </router-link>
@@ -45,21 +45,21 @@
             <li class="nav-item">
               <router-link
                 to="/userBlog"
-                class="fs-24   text-dark nav-link router-link-active underline"
+                class="fs-24 text-dark nav-link router-link-active underline"
                 >部落格
               </router-link>
             </li>
             <li class="nav-item">
               <router-link
                 to="/userProduct"
-                class="fs-24   text-dark nav-link router-link-active underline"
+                class="fs-24 text-dark nav-link router-link-active underline"
                 >所有產品
               </router-link>
             </li>
             <li>
               <router-link
                 to="/userFavorite"
-                class="fs-24   text-dark nav-link me-16 d-lg-none d-lg-block router-link-active"
+                class="fs-24 text-dark nav-link me-16 d-lg-none d-lg-block router-link-active"
               >
                 我的收藏
               </router-link>
@@ -69,13 +69,13 @@
 
         <router-link
           to="/userFavorite"
-          class="fs-24   text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
+          class="fs-24 text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
         >
           <i class="bi bi-heart fs-16 fs-md-28 fs-lg-32 align-middle me-16"></i>
         </router-link>
         <router-link
           to="/userCart"
-          class="fs-24   text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
+          class="fs-24 text-dark nav-link ms-auto me-16 d-none d-lg-block no-active"
         >
           <i class="bi bi-cart fs-md-28 fs-lg-32 text-end align-middle">
             <span
@@ -112,11 +112,17 @@ export default {
 
   methods: {
     ...mapActions(cartStore, ["getCartList"]),
+
+    toggleNavbar() {
+      const navbarCollapse = document.getElementById("navbarSupportedContent");
+      if (navbarCollapse) {
+        navbarCollapse.classList.toggle("show");
+      }
+    },
   },
 
   mounted() {
     this.getCartList();
-    window.scroll(0, 0);
   },
 };
 </script>
@@ -124,6 +130,7 @@ export default {
 <style lang="scss" scoped>
 a.underline:hover {
   border-bottom: 2px solid black;
+
 }
 
 .button.rwd {
@@ -134,11 +141,10 @@ a.underline:hover {
   border-bottom: 0px;
 }
 .router-link-exact-active {
-  border-bottom: 2px solid black;
+  font-weight: bold;
 }
-.nav{
+.nav {
   width: 100%;
-  max-width: 100%;
   overflow-x: hidden;
 }
 </style>
