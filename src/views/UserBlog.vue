@@ -2,7 +2,7 @@
   <div class="container-fluid px-0 d-flex">
     <NavBar />
   </div>
-  <div class="container-fluid  px-0">
+  <div class="container-fluid px-0">
     <div class="container pt-32 d-flex">
       <div class="row">
         <div class="col-lg-2 d-none d-lg-block">
@@ -10,36 +10,41 @@
             <li class="fs-lg-24 mb-16">
               <router-link
                 to="/userBlog"
-                class="router-link-active text-dark hover"
-                >全部文章</router-link
+                class="text-dark hover" 
+                :class="tag === '全部文章'?  'fw-bold':'fw-normal'"
+                @click="getArticles"
+                >全部文章 </router-link
               >
             </li>
             <li class="fs-lg-24 mb-16">
-              <router-link
-                to="/blogNews"
-                class="router-link-active text-dark hover"
-                >最新消息</router-link
+              <a
+                class="text-dark hover"
+                :class="tag === '最新消息'?  'fw-bold':'fw-normal'"
+                @click="goToBlog('最新消息')"
+                >最新消息</a
               >
             </li>
             <li class="fs-lg-24 mb-16">
-              <router-link
-                to="/blogOnly"
-                class="router-link-active text-dark hover"
-                >本站獨家</router-link
+              <a
+                @click="goToBlog('本站獨家')"
+                :class="tag === '本站獨家'?  'fw-bold':'fw-normal'"
+                class="text-dark hover"
+                >本站獨家</a
               >
             </li>
             <li class="fs-lg-24 mb-16">
-              <router-link
-                to="/blogEvent"
-                class="router-link-active text-dark hover"
-                >活動講座</router-link
+              <a
+                @click="goToBlog('活動講座')"
+                :class="tag === '活動講座'?  'fw-bold':'fw-normal'"
+                class="text-dark hover"
+                >活動講座</a
               >
             </li>
           </ul>
         </div>
 
         <div class="col-12 col-lg-10">
-          <h3 class="fs-40 py-24 text-start">全部文章</h3>
+          <h3 class="fs-40 py-24 text-start">{{ tag }}</h3>
           <hr />
           <ul
             class="list-unstyled gy-16 d-flex d-block d-lg-none justify-content-between"
@@ -52,24 +57,25 @@
               >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <router-link
-                to="/blogNews"
+              <a
+                @click="goToBlog('最新消息')"
                 class="router-link-active text-dark hover"
-                >最新消息</router-link
+                >最新消息</a
               >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <router-link
+              <a
                 to="/blogOnly"
                 class="router-link-active text-dark hover"
-                >本站獨家</router-link
+                @click="goToBlog('本站獨家')"
+                >本站獨家</a
               >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
-              <router-link
-                to="/blogEvent"
+              <a
+                @click="goToBlog('活動講座')"
                 class="router-link-active text-dark hover"
-                >活動講座</router-link
+                >活動講座</a
               >
             </li>
             <hr />
@@ -121,7 +127,6 @@
 import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
 
-
 export default {
   data() {
     return {
@@ -130,12 +135,14 @@ export default {
       articles: {},
       pagination: {},
       isActive: true,
+      tag: "全部文章",
     };
   },
   components: { NavBar, PageFooter },
 
   methods: {
     getArticles() {
+      this.tag = '全部文章'
       this.$http(`${this.url}/v2/api/${this.api_path}/articles`)
         .then((res) => {
           this.articles = res.data.articles;
@@ -158,8 +165,22 @@ export default {
     },
 
     goToBlog(tag) {
-      this.$router.push({ name: 'userBlog', query: { category: tag } })
-    }
+      this.$router.push({ name: "userBlog", query: { category: tag } });
+      this.$http(`${this.url}/v2/api/${this.api_path}/articles?category=${tag}`)
+        .then((res) => {
+          this.articles = res.data.articles;
+          this.articles = this.articles.filter(
+            (item) => item.tag.indexOf(tag) !== -1
+          );
+          this.pagination = res.data.pagination;
+          this.tag = tag;
+
+          this.loadingCircle();
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
+    },
   },
 
   mounted() {
@@ -175,6 +196,10 @@ a.hover:hover {
   text-decoration: underline black;
 }
 .router-link-exact-active {
+  font-weight: bolder;
+}
+
+a.active {
   font-weight: bolder;
 }
 </style>

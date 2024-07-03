@@ -86,21 +86,6 @@ const router = createRouter({
       component: () => import('../views/UserBlog.vue'),
     },
     {
-      path: '/blogNews',
-      name: 'blogNews',
-      component: () => import('../views/BlogNews.vue'),
-    },
-    {
-      path: '/blogOnly',
-      name: 'blogOnly',
-      component: () => import('../views/BlogOnly.vue'),
-    },
-    {
-      path: '/blogEvent',
-      name: 'blogEvent',
-      component: () => import('../views/BlogEvent.vue'),
-    },
-    {
       path: '/userArticle/:id',
       name: 'userArticle',
       component: () => import('../views/UserArticle.vue'),
