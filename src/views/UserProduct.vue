@@ -140,7 +140,8 @@
               <p class="pt-32 mb-32 text-center">找不到該產品</p>
             </div>
           </table>
-
+          
+          <!-- 手機版 -->
           <p class="fs-48 d-md-none text-center mb-16">所有產品</p>
           <div class="container d-md-none d-flex justify-content-between mb-16">
             <div
@@ -174,6 +175,7 @@
                 style="position: absolute"
                 readonly
                 selected
+                ref="selectMobile"
               >
                 所有產品
               </option>
@@ -435,11 +437,12 @@ export default {
     },
 
     getProducts(page) {
-      if(this.$route.query != "筆電" || this.$route.query != "手機" || this.$route.query  != "平板") {
+      if(this.$route.query.category !== "筆電" && this.$route.query.category !=="手機" && this.$route.query.category  !== "平板") {
         this.$http
         .get(`${this.api}/api/${this.api_path}/products?page=${page}`)
         .then((res) => {
           this.$refs.type.value = '所有產品'
+          this.$refs.selectMobile.value = '所有產品'
           this.userProducts = res.data.products;
           this.pagination = res.data.pagination;
           window.scrollTo(0, 0);
@@ -452,9 +455,11 @@ export default {
         this.$http
         .get(`${this.api}/v2/api/${this.api_path}/products?category=${this.$route.query.category}`)
         .then((res) => {
+          this.$refs.type.value = this.$route.query.category
+          this.$refs.selectMobile.value = this.$route.query.category
+          console.log(this.$refs.selectMobile.value)
           this.userProducts = res.data.products;
           this.pagination = res.data.pagination;
-          this.$refs.type.value = this.$route.query.category
           window.scrollTo(0, 0);
         });
       }
