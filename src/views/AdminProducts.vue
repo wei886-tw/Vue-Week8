@@ -315,6 +315,8 @@
 import AdminNavBar from "@/components/AdminNavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 import { myMixin } from "@/js/mixin";
+import Modal from 'bootstrap/js/dist/modal';
+
 export default {
   components: { AdminNavBar, PageNation },
   mixins: [myMixin],
@@ -479,9 +481,9 @@ export default {
   },
 
   mounted() {
-    this.myModal = new bootstrap.Modal(this.$refs.detailModal);
     this.getPageProducts();
     this.loadingCircle();
+    this.myModal = new Modal(this.$refs.detailModal);
   },
 };
 </script>     

@@ -185,6 +185,7 @@
 import AdminNavBar from "@/components/AdminNavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 import { myMixin } from "@/js/mixin";
+import Modal from 'bootstrap/js/dist/modal';
 
 export default {
   components: { AdminNavBar, PageNation },
@@ -234,7 +235,7 @@ export default {
 
   mounted() {
     this.getOrders(1);
-    this.orderModal = new bootstrap.Modal(this.$refs.orderModal);
+    this.orderModal = new Modal(this.$refs.orderModal);
     this.loadingCircle();
   },
 };

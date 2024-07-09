@@ -1,3 +1,4 @@
+
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
@@ -24,6 +25,7 @@ import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 
 // 引入 bootstrap
 import '../src/assets/bootstrap/scss/bootstrap.scss';
+
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import App from './App.vue';

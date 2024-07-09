@@ -104,10 +104,12 @@
             <div class="col-6">
               <div class="container px-0 justify-content-end d-flex">
                 <button
-                  v-if="cartProducts.length !== 0 &&  !onSale"
+                  v-if="cartProducts.length !== 0 && !onSale"
                   type="button"
                   class="btn w-50 mb-32 btn-footer"
                   @click="showCouponModal"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#couponModal"
                 >
                   領取優惠
                 </button>
@@ -132,16 +134,16 @@
   <!-- modal -->
   <div
     class="modal fade"
-    id="exampleModal"
+    id="#couponModal"
     tabindex="-1"
-    aria-labelledby="exampleModalLabel"
+    aria-labelledby="couponModalLabel"
     aria-hidden="true"
     ref="couponModal"
   >
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">領取優惠券</h1>
+          <h1 class="modal-title fs-5" id="couponModalLabel">領取優惠券</h1>
           <button
             type="button"
             class="btn-close"
@@ -218,11 +220,7 @@
           >
             取消
           </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            @click="getCoupon"
-          >
+          <button type="button" class="btn btn-primary" @click="getCoupon">
             領取優惠
           </button>
         </div>
@@ -239,11 +237,12 @@
   </div>
 </template>
 
-<script>
+<script >
 import NavBar from "../components/NavBar.vue";
 import PageFooter from "../components/PageFooter.vue";
 import cartStore from "@/store/cartStore.js";
 import { mapState, mapActions } from "pinia";
+import Modal from 'bootstrap/js/dist/modal';
 
 export default {
   props: ["finalTotal"],
@@ -382,9 +381,8 @@ export default {
   mounted() {
     this.getCartProducts();
     this.loadingCircle();
-    this.couponModal = new bootstrap.Modal(this.$refs.couponModal);
+    this.couponModal = new Modal(this.$refs.couponModal)
     window.scroll(0, 0);
-
   },
 };
 </script>

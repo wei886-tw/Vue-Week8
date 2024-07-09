@@ -180,6 +180,8 @@
 import AdminNavBar from "@/components/AdminNavBar.vue";
 import PageNation from "@/components/PageNation.vue";
 import { myMixin } from "@/js/mixin";
+import Modal from 'bootstrap/js/dist/modal';
+
 
 export default {
   components: { AdminNavBar, PageNation },
@@ -329,7 +331,7 @@ export default {
   },
 
   mounted() {
-    this.myModal = new bootstrap.Modal(this.$refs.couponModal);
+    this.myModal = new Modal(this.$refs.couponModal);
     this.loadingCircle();
     this.getCoupons(1);
 

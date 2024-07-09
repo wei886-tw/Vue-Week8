@@ -153,7 +153,6 @@ export default {
         all === '全部文章' 
       ) {
         this.tag ='全部文章'
-        console.log("no.1 tag:", this.tag)
         this.$router.push({
           name: "userBlog",
         });
@@ -170,7 +169,6 @@ export default {
       } 
       else if(!all && !this.category) {
         this.tag === '全部文章'
-        console.log('no.2', this.tag)
         this.$router.push({
           name: "userBlog",
         });
@@ -185,7 +183,6 @@ export default {
           });
       }
       else {
-        console.log('no.3', all)
         this.tag = this.category;
         this.$http(
           `${this.url}/v2/api/${this.api_path}/articles?category=${this.category}`
@@ -236,7 +233,6 @@ export default {
   },
 
   mounted() {
-    console.log("mounted:", this.tag)
     this.getArticles();
     this.loadingCircle();
     window.scroll(0, 0);
