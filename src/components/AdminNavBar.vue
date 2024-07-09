@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-xl bg-footer fixed-top">
     <div class="container">
-      <RouterLink to="/" class="noto-serif fs-48 text-dark me-16"
+      <RouterLink to="/" class="fs-48 text-dark me-16"
         >3C Reuse</RouterLink
       >
       <button
@@ -18,22 +18,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-24 mb-24">
           <li class="nav-item">
-            <router-link to="/adminProducts" class="fs-24 noto-serif text-dark router-link-active " 
+            <router-link to="/adminProducts" class="fs-24 text-dark router-link-active " 
               >產品列表
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/adminOrders" class="fs-24 noto-serif text-dark router-link-active underline">
+            <router-link to="/adminOrders" class="fs-24 text-dark router-link-active underline">
               訂單管理
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/adminCoupon" class="fs-24 noto-serif text-dark router-link-active underline">
+            <router-link to="/adminCoupon" class="fs-24 text-dark router-link-active underline">
               優惠券管理
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/adminBlog" class="fs-24 noto-serif text-dark router-link-active underline">
+            <router-link to="/adminBlog" class="fs-24 text-dark router-link-active underline">
               文章管理
             </router-link>
           </li>
@@ -41,13 +41,13 @@
 
         <ul class="d-flex list-unstyled gap-md-24">
           <li class="nav-item d-flex justify-content-end">
-            <router-link to="/adminLogin" class="fs-24 noto-serif text-dark"
+            <router-link to="/adminLogin" class="fs-24 text-dark"
               >登入
             </router-link>
           </li>
 
           <li class="nav-item d-flex justify-content-end">
-            <a class="fs-24 noto-serif text-dark" @click="logOut()">登出 </a>
+            <a class="fs-24 text-dark" @click="logOut()">登出 </a>
           </li>
         </ul>
       </div>
@@ -99,6 +99,6 @@ a.underline:hover {
 
 }
 .router-link-exact-active {
-  border-bottom: 2px solid black;
+  font-weight: bold;
 }
 </style>

@@ -145,9 +145,12 @@
 <script>
 import AdminNavBarVue from "@/components/AdminNavBar.vue";
 import UploadImageModalVue from "@/components/UploadImageModal.vue";
+import { myMixin } from "@/js/mixin";
+
 export default {
   props: ["id"],
-
+  mixins: [myMixin],
+  
   components: { AdminNavBarVue, UploadImageModalVue },
   data() {
     return {
@@ -228,6 +231,7 @@ export default {
   mounted() {
     this.getArticle(this.id);
     this.getUrl();
+    this.loadingCircle();
   },
 };
 </script>

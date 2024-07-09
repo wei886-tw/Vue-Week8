@@ -31,7 +31,7 @@
                 class="btn btn-success"
                 @click="goAdviseArticle(article.id)"
               >
-                <!-- <router-link :to="`/adviseArticle/${article.id}`"> </router-link> -->
+                <router-link :to="`/adviseArticle/${article.id}`"> </router-link>
                 修改文章
               </button>
             </td>
@@ -136,6 +136,10 @@ export default {
 
     goAdviseArticle(id) {
       this.$router.push(`/adviseArticle/${id}`);
+      this.$http.get(`${this.url}/v2/api/${this.api_path}/article/${id}`)
+      .then((res) => {
+        this.articles = res.data.articles;
+      })
     },
   },
 

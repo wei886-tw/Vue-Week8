@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import Modal from 'bootstrap/js/dist/modal';
+
 export default  {
   emits: ['emitImgUrl'],
   data() {
@@ -133,7 +135,7 @@ export default  {
     );
     this.$http.defaults.headers.common.Authorization = token;
     this.checkAdmin();
-    this.myModal = new bootstrap.Modal(this.$refs.uploadImageModal)
+    this.myModal = new Modal(this.$refs.uploadImageModal)
   },
 };
 </script>
