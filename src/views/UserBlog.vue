@@ -150,15 +150,16 @@ export default {
   methods: {
     getArticles(all) {
       if (
-        all === '全部文章'
+        all === '全部文章' 
       ) {
-        console.log(this.category)
+        this.tag ='全部文章'
+        console.log("no.1 tag:", this.tag)
         this.$router.push({
           name: "userBlog",
         });
+
         this.loadingCircle();
-        this.tag = "全部文章";
-        this.$http(`${this.url}/v2/api/${this.api_path}/articles`)
+        this.$http.get(`${this.url}/v2/api/${this.api_path}/articles`)
           .then((res) => {
             this.articles = res.data.articles;
             this.pagination = res.data.pagination;
@@ -166,7 +167,25 @@ export default {
           .catch((err) => {
             console.log(err.response.data.message);
           });
-      } else {
+      } 
+      else if(!all && !this.category) {
+        this.tag === '全部文章'
+        console.log('no.2', this.tag)
+        this.$router.push({
+          name: "userBlog",
+        });
+        this.loadingCircle();
+        this.$http.get(`${this.url}/v2/api/${this.api_path}/articles`)
+          .then((res) => {
+            this.articles = res.data.articles;
+            this.pagination = res.data.pagination;
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      }
+      else {
+        console.log('no.3', all)
         this.tag = this.category;
         this.$http(
           `${this.url}/v2/api/${this.api_path}/articles?category=${this.category}`
@@ -178,8 +197,8 @@ export default {
             );
             this.pagination = res.data.pagination;
             this.tag = this.category;
-
             this.loadingCircle();
+            this.tag === ''
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -208,7 +227,6 @@ export default {
           );
           this.pagination = res.data.pagination;
           this.tag = tag;
-
           this.loadingCircle();
         })
         .catch((err) => {
@@ -218,6 +236,7 @@ export default {
   },
 
   mounted() {
+    console.log("mounted:", this.tag)
     this.getArticles();
     this.loadingCircle();
     window.scroll(0, 0);
