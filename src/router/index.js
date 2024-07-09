@@ -14,21 +14,6 @@ const router = createRouter({
       component: () => import('../views/UserProduct.vue'),
     },
     {
-      path: '/userProductPc',
-      name: 'userProductPc',
-      component: () => import('../views/UserProductPc.vue'),
-    },
-    {
-      path: '/userProductPad',
-      name: 'userProductPad',
-      component: () => import('../views/UserProductPad.vue'),
-    },
-    {
-      path: '/userProductPhone',
-      name: 'userProductPhone',
-      component: () => import('../views/UserProductPhone.vue'),
-    },
-    {
       path: '/userProductInfo/:id',
       name: 'userProductInfo',
       component: () => import('../views/UserProductInfo.vue'),
@@ -84,6 +69,7 @@ const router = createRouter({
       path: '/userBlog',
       name: 'userBlog',
       component: () => import('../views/UserBlog.vue'),
+      props: (route) => ({ category: route.query.category }),
     },
     {
       path: '/userArticle/:id',

@@ -1,7 +1,7 @@
 <template >
   <nav-bar></nav-bar>
   <div class="container-fluid">
-    <div class="container ">
+    <div class="container">
       <div class="row">
         <div class="col-lg-12 py-32" v-if="article">
           <div
@@ -24,8 +24,11 @@
                 class="btn btn-dark-gray text-white me-8"
                 v-for="tags in tagArr"
                 :key="tags + 1"
+                @click="goTagPage(tags)"
               >
-                <router-link class="text-white">{{ tags }}</router-link>
+                {{ tags }}
+                <!-- <router-link class="text-white" :to="'/userBlog?category=' + tags">{{ tags }}
+                </router-link> -->
               </button>
             </div>
             <p class="fs-16 fs-lg-24 new-line">{{ article.content }}</p>
@@ -76,6 +79,14 @@ export default {
       setTimeout(() => {
         loader.hide();
       }, 1500);
+    },
+
+    goTagPage(tags) {
+      this.$router.push({
+        name: "userBlog",
+        query: { category: tags },
+      });
+
     },
   },
 

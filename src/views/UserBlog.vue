@@ -8,18 +8,18 @@
         <div class="col-lg-2 d-none d-lg-block">
           <ul class="list-unstyled mt-128 gy-16 d-flex flex-column">
             <li class="fs-lg-24 mb-16">
-              <router-link
+              <a
                 to="/userBlog"
-                class="text-dark hover" 
-                :class="tag === '全部文章'?  'fw-bold':'fw-normal'"
-                @click="getArticles"
-                >全部文章 </router-link
-              >
+                class="text-dark hover"
+                :class="tag === '全部文章' ? 'fw-bold' : 'fw-normal'"
+                @click="getArticles('全部文章')"
+                >全部文章
+              </a>
             </li>
             <li class="fs-lg-24 mb-16">
               <a
                 class="text-dark hover"
-                :class="tag === '最新消息'?  'fw-bold':'fw-normal'"
+                :class="tag === '最新消息' ? 'fw-bold' : 'fw-normal'"
                 @click="goToBlog('最新消息')"
                 >最新消息</a
               >
@@ -27,7 +27,7 @@
             <li class="fs-lg-24 mb-16">
               <a
                 @click="goToBlog('本站獨家')"
-                :class="tag === '本站獨家'?  'fw-bold':'fw-normal'"
+                :class="tag === '本站獨家' ? 'fw-bold' : 'fw-normal'"
                 class="text-dark hover"
                 >本站獨家</a
               >
@@ -35,7 +35,7 @@
             <li class="fs-lg-24 mb-16">
               <a
                 @click="goToBlog('活動講座')"
-                :class="tag === '活動講座'?  'fw-bold':'fw-normal'"
+                :class="tag === '活動講座' ? 'fw-bold' : 'fw-normal'"
                 class="text-dark hover"
                 >活動講座</a
               >
@@ -53,12 +53,14 @@
               <router-link
                 to="/userBlog"
                 class="router-link-active text-dark hover"
+                :class="tag === '全部文章' ? 'fw-bold' : 'fw-normal'"
                 >全部文章</router-link
               >
             </li>
             <li class="fs-16 fs-md-24 mb-16">
               <a
                 @click="goToBlog('最新消息')"
+                :class="tag === '最新消息' ? 'fw-bold' : 'fw-normal'"
                 class="router-link-active text-dark hover"
                 >最新消息</a
               >
@@ -68,6 +70,7 @@
                 to="/blogOnly"
                 class="router-link-active text-dark hover"
                 @click="goToBlog('本站獨家')"
+                :class="tag === '本站獨家' ? 'fw-bold' : 'fw-normal'"
                 >本站獨家</a
               >
             </li>
@@ -75,6 +78,7 @@
               <a
                 @click="goToBlog('活動講座')"
                 class="router-link-active text-dark hover"
+                :class="tag === '活動講座' ? 'fw-bold' : 'fw-normal'"
                 >活動講座</a
               >
             </li>
@@ -138,19 +142,49 @@ export default {
       tag: "全部文章",
     };
   },
+
   components: { NavBar, PageFooter },
 
+  props: ["category"],
+
   methods: {
-    getArticles() {
-      this.tag = '全部文章'
-      this.$http(`${this.url}/v2/api/${this.api_path}/articles`)
-        .then((res) => {
-          this.articles = res.data.articles;
-          this.pagination = res.data.pagination;
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
+    getArticles(all) {
+      if (
+        all === '全部文章'
+      ) {
+        console.log(this.category)
+        this.$router.push({
+          name: "userBlog",
         });
+        this.loadingCircle();
+        this.tag = "全部文章";
+        this.$http(`${this.url}/v2/api/${this.api_path}/articles`)
+          .then((res) => {
+            this.articles = res.data.articles;
+            this.pagination = res.data.pagination;
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      } else {
+        this.tag = this.category;
+        this.$http(
+          `${this.url}/v2/api/${this.api_path}/articles?category=${this.category}`
+        )
+          .then((res) => {
+            this.articles = res.data.articles;
+            this.articles = this.articles.filter(
+              (item) => item.tag.indexOf(this.category) !== -1
+            );
+            this.pagination = res.data.pagination;
+            this.tag = this.category;
+
+            this.loadingCircle();
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+          });
+      }
     },
 
     loadingCircle() {

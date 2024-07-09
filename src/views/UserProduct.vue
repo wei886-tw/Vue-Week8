@@ -457,7 +457,6 @@ export default {
         .then((res) => {
           this.$refs.type.value = this.$route.query.category
           this.$refs.selectMobile.value = this.$route.query.category
-          console.log(this.$refs.selectMobile.value)
           this.userProducts = res.data.products;
           this.pagination = res.data.pagination;
           window.scrollTo(0, 0);
