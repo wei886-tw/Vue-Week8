@@ -18,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="product in favoriteProducts" :key="product.id">
+            <tr v-for="(product, index) in favoriteProducts" :key="product.id">
               <td class="align-middle px-0">
                 <button
                   class="btn btn-white"
@@ -47,7 +47,7 @@
                 {{ product.price }}
               </td>
               <td class="align-middle">
-                <button class="btn btn-footer" @click="addToCart(product.id)">
+                <button class="btn btn-footer" @click="addToCart(product.id, index)">
                   加入購物車
                 </button>
               </td>
@@ -157,7 +157,7 @@ export default {
       }
     },
 
-    addToCart(id) {
+    addToCart(id, index) {
       this.$http
         .post(`${this.url}/v2/api/${this.api_path}/cart`, {
           data: {
@@ -167,10 +167,9 @@ export default {
         })
         .then(() => {
           alert("加入購物車成功");
-          this.favoriteProducts.splice(this.favoriteProducts.indexOf(id), 1);
-          this.favoriteList.splice(this.favoriteList.indexOf(id), 1);
+          this.favoriteProducts.splice(this.favoriteProducts[index], 1);
+          this.favoriteList.splice(this.favoriteList[index], 1);
           this.setStorage();
-          this.getCartList();
         })
         .catch((err) => {
           console.log(err.response.data.message);

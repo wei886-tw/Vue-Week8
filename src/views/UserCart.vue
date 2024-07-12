@@ -75,14 +75,14 @@
                   <p>折扣:&emsp;</p>
                   <p>
                     {{
-                      Math.floor(cartList.total) -
                       Math.floor(cartList.final_total)
                     }}
                   </p>
                 </div>
                 <div class="container px-0 d-md-flex" v-if="onSale">
                   <p>優惠:&emsp;</p>
-                  <p>{{ Math.floor(cartList.final_total) }}</p>
+                  <p>{{  Math.floor(cartList.total) -
+                      Math.floor(cartList.final_total) }}</p>
                 </div>
               </div>
             </td>
@@ -309,11 +309,11 @@ export default {
 
     delCartItem(id) {
       this.$http
-        .delete(`${this.url}/v2/api/${this.api_path}/cart/${id}`)
+        .delete(`${this.url}/v2/api/${this.api_path}/cart/${id}`, id)
         .then(() => {
-          alert("已經刪除");
           this.getCartProducts();
           this.getCartList();
+          alert("已經刪除");
         })
         .cath((err) => {
           console.log(err.message);
