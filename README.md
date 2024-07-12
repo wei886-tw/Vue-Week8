@@ -72,31 +72,35 @@ https://wei886-tw.github.io/Vue-Week8/
 
 ### 部落格
 
-左方可以篩選文章類別
+- 左方可以篩選文章類別
+  
 ![Blog](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/Blog.png)
 
 ### 文章內容
 
-可以透過 hash tag 進入文章類別，目前顯示最新消息
+- 可以透過 hash tag 進入文章類別，目前顯示最新消息
+  
 ![BlogCategory](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/BlogCategory.png)
 
 ### 所有產品頁面
 
-可以透過右方 select 進行產品類別篩選  
+- 可以透過右方 select 進行產品類別篩選
 
-透過中間關鍵字搜尋產品  
+- 透過中間關鍵字搜尋產品  
 
-產品 select 可以調整加入購物車數量
+- 產品 select 可以調整加入購物車數量
 
-加入收藏，再次點選取消收藏
+- 加入收藏，再次點選取消收藏
+  
 ![ProductsList](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/ProductsList.jpg)
 
 ### 收藏頁面
 
-產品加入購物車後自行刪除
+- 產品加入購物車後自行刪除
+  
 ![Collection](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/Collection.jpg)
 
 ### 購物車
 
-領取優惠可以打八折
+- 領取優惠可以打八折
 ![Collection](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/UserCart.png)
