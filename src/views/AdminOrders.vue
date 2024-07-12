@@ -12,7 +12,7 @@
             <th scope="col" style="width: 15%">訂單編號</th>
             <th scope="col" style="width: 10%">價格</th>
             <th scope="col" style="width: 10%">是否付款</th>
-            <th scope="col" style="width: 15%">訂單內容</th>
+            <th scope="col" style="width: 15%">檢視訂單</th>
             <th scope="col" style="width: 15%">刪除訂單</th>
           </tr>
         </thead>
@@ -228,7 +228,6 @@ export default {
 
     openModal(item) {
       this.tempOrder = { ...item };
-      console.log(this.tempOrder.user);
       this.orderModal.show();
     },
   },

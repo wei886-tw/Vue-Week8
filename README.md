@@ -104,3 +104,30 @@ https://wei886-tw.github.io/Vue-Week8/
 
 - 領取優惠可以打八折
 ![Collection](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/UserCart.png)
+
+---
+## 後台介紹  
+
+### 產品列表  
+
+- 可以透過 Bootstrap Modal 對產品列表進行修改新增  
+
+![AdminProducts](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/AdminProducts.png)
+
+
+### 訂單管理  
+
+- 可以透過 Bootstrap Modal 檢視訂單內容  
+
+![AdminOrders](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/AdminOrders.png)
+
+### 優惠券管理  
+
+- 可以透過 Bootstrap Modal 新增或修改優惠券
+![AdminCoupons](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/AdminCoupons.png)
+
+
+### 文章管理  
+
+- 可以透過 Bootstrap Modal 新增或修改文章  
+![AdminArticles](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/AdminArticles.png)
