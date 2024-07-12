@@ -157,24 +157,24 @@ https://wei886-tw.github.io/Vue-Week8/
 以下將會引導你如何安裝此專案到你的電腦上。
 
 ## 取得專案
-``git clone https://github.com/wei886-tw/Vue-Week8 ``
+```git clone https://github.com/wei886-tw/Vue-Week8 ```
 
 ## 環境變數
 請將 `.env` 複製一份並命名為 `.env.copy`，並將裡面的環境變數設定為你的值。
-``cp .env .env.copy``
+（請記得將 .env 中的 VITE_API, VITE_PATH 改為你的 API 。）
+```cp .env .env.copy```
 
 ## 安裝套件
-``npm install ``
+```npm install ```
 
 ## 啟動開發環境
-``npm run dev``
+```npm run dev```
 
 ## 打包專案
-``npm run build``
+```npm run build```
 
 ## 部署專案
-``npm run deploy``
-（請記得將 .env 中的 VITE_API, VITE_PATH 改為你的 API 。）
+```npm run deploy```
 
 
 
