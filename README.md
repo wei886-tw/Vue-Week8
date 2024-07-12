@@ -54,16 +54,16 @@ https://wei886-tw.github.io/Vue-Week8/
 
 ### 首頁
 
-- 前往各賣場
-- Swiper 顧客評論
-- AOS 動畫
+前往各賣場
+Swiper 顧客評論
+AOS 動畫
 
 ![HomePage](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/HomePage.jpeg)
 
 ### 關於我們
 
-- AOS 動畫
-- 聯絡平台
+AOS 動畫
+聯絡平台
 ![About](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/About.png)
 
 ### 部落格
@@ -79,9 +79,7 @@ https://wei886-tw.github.io/Vue-Week8/
 ### 所有產品頁面
 
 可以透過右方 select 進行產品類別篩選
-
 透過中間關鍵字搜尋產品
-
 產品 select 可以調整加入購物車數量
 
 加入收藏，再次點選取消收藏
