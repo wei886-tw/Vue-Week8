@@ -73,7 +73,7 @@ https://wei886-tw.github.io/Vue-Week8/
 
 ### 文章內容
 
-可以透過 hash tag 進入文章類別
+可以透過 hash tag 進入文章類別，目前顯示最新消息
 ![BlogCategory](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/BlogCategory.png)
 
 ### 所有產品頁面
