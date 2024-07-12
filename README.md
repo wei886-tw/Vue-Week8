@@ -54,11 +54,11 @@ https://wei886-tw.github.io/Vue-Week8/
 
 ### 首頁
 
-前往各賣場  
+- 前往各賣場  
 
-Swiper 顧客評論  
+- Swiper 顧客評論  
 
-AOS 動畫
+- AOS 動畫
 
 ![HomePage](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/HomePage.jpeg)
 
