@@ -58,8 +58,7 @@ https://wei886-tw.github.io/Vue-Week8/
 - Swiper 顧客評論
 - AOS 動畫
 
-![[https://raw.githubusercontent.com/wei886-tw/3cReuse/HomePage.jpeg](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/HomePage.jpeg
-)]
+![HomePage](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/HomePage.jpeg)
 
 ### 關於我們
 
