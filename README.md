@@ -130,3 +130,53 @@ https://wei886-tw.github.io/Vue-Week8/
 
 - 可以透過 Bootstrap Modal 新增或修改文章  
 ![AdminArticles](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/AdminArticles.png)
+
+# 資料夾結構
+- .vscode：Visual Studio Code 的設定檔
+- dist：打包後的檔案
+- public：公開的靜態檔案
+- src：專案的程式碼
+  - assets：靜態檔案
+  - components：元件
+  - router：路由
+  - store：狀態管理
+  - views：頁面
+  - App.vue：根元件
+  - main.js：進入點
+- .env.example：環境變數範本
+- .eslintrc.js：ESLint 設定檔
+- .gitignore：Git 忽略檔案
+- .nvmrc：Node.js 版本
+- index.html：進入點 HTML
+- package-lock.json：套件版本鎖定
+- package.json：專案資訊
+- README.md：專案說明
+- vite.config.js：Vite 設定檔
+
+# 安裝與使用
+以下將會引導你如何安裝此專案到你的電腦上。
+
+## 取得專案
+``git clone https://github.com/wei886-tw/Vue-Week8 ``
+
+## 環境變數
+請將 `.env` 複製一份並命名為 `.env.copy`，並將裡面的環境變數設定為你的值。
+``cp .env .env.copy``
+
+## 安裝套件
+``npm install ``
+
+## 啟動開發環境
+``npm run dev``
+
+## 打包專案
+``npm run build``
+
+## 部署專案
+``npm run deploy``
+（請記得將 .env 中的 VITE_API, VITE_PATH 改為你的 API 。）
+
+
+
+
+
