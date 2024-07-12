@@ -168,14 +168,16 @@ https://wei886-tw.github.io/Vue-Week8/
 ```npm install ```
 
 ## 啟動開發環境
-```npm run dev```
+```bash
+npm run dev
 
 ## 打包專案
-```npm run build```
+```bash
+npm run build
 
 ## 部署專案
-```npm run deploy```
-
+```bash
+npm run deploy
 
 
 
