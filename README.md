@@ -64,3 +64,4 @@ https://wei886-tw.github.io/Vue-Week8/
 
 - AOS 動畫
 - 聯絡平台
+![About](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/About.png)
