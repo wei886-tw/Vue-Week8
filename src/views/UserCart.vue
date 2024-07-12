@@ -315,7 +315,7 @@ export default {
           this.getCartList();
           alert("已經刪除");
         })
-        .cath((err) => {
+        .catch((err) => {
           console.log(err.message);
         });
     },
