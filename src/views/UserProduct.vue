@@ -11,7 +11,7 @@
             <thead>
               <tr>
                 <th style="width: 25%" class="align-items-bottom p-0">
-                  <p class="fs-24 fs-md-32 fs-lg-40">所有產品</p>
+                  <p class="fs-24 fs-md-32 fs-lg-40">{{ selectedCategory }}</p>
                 </th>
                 <th style="width: 60%">
                   <div
@@ -140,9 +140,9 @@
               <p class="pt-32 mb-32 text-center">找不到該產品</p>
             </div>
           </table>
-          
+
           <!-- 手機版 -->
-          <p class="fs-48 d-md-none text-center mb-16">所有產品</p>
+          <p class="fs-48 d-md-none text-center mb-16">{{ selectedCategory }}</p>
           <div class="container d-md-none d-flex justify-content-between mb-16">
             <div
               class="rounded border-2 py-0 bg-footer d-flex justify-content-between align-items-center"
@@ -325,11 +325,6 @@ export default {
     ...mapState(favoriteStore, ["favoriteList", "favoriteId"]),
   },
 
-  watch: {
-
-    },
-
-
   methods: {
     ...mapActions(cartStore, ["getCartList"]),
     ...mapActions(favoriteStore, [
@@ -379,8 +374,10 @@ export default {
     changeProductType(device) {
       if (device === "pc") {
         this.category = this.$refs.type.value;
+        this.selectedCategory = this.$refs.type.value;
       } else {
         this.category = this.$refs.selectMobile.value;
+        this.selectedCategory = this.$refs.selectMobile.value;
       }
       if (
         this.category != "按金額高到低" &&
@@ -397,7 +394,8 @@ export default {
             this.userProducts = this.userProducts.filter(
               (item) => item.category === this.category
             );
-            alert(`顯示所有${this.category}產品`);
+            // this.selectedCategory = this.category
+
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -411,7 +409,7 @@ export default {
             this.userProducts = this.userProducts.sort(
               (a, b) => a.price - b.price
             );
-            alert("產品由低價往高價排列");
+            // this.selectedCategory = this.category
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -425,13 +423,12 @@ export default {
             this.userProducts = this.userProducts.sort(
               (a, b) => b.price - a.price
             );
-            alert("產品由高價往低價排列");
+            // this.selectedCategory = this.category
           })
           .catch((err) => {
             console.log(err.response.data.message);
           });
       } else {
-        alert("顯示所有產品");
         this.getProducts(1);
       }
     },
@@ -455,18 +452,16 @@ export default {
         this.$http
         .get(`${this.api}/v2/api/${this.api_path}/products?category=${this.$route.query.category}`)
         .then((res) => {
+          this.$router.push(`/userProduct`)
           this.$refs.type.value = this.$route.query.category
           this.$refs.selectMobile.value = this.$route.query.category
+          this.selectedCategory = this.$route.query.category
           this.userProducts = res.data.products;
           this.pagination = res.data.pagination;
           window.scrollTo(0, 0);
         });
       }
       
-    },
-
-    openModal() {
-      this.myModal.show();
     },
 
     searchProduct(device) {
