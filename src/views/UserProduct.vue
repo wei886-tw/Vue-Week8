@@ -431,6 +431,7 @@ export default {
       } else {
         this.getProducts(1);
       }
+      this.loadingCircle();
     },
 
     getProducts(page) {
