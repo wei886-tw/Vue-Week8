@@ -20,7 +20,7 @@
           <tr v-for="order in orders" :key="order.id" class="align-center">
             <td class="align-center">
               {{ new Date(order.create_at * 1000).getFullYear() }}/{{
-                new Date(order.create_at * 1000).getMonth()
+                new Date(order.create_at * 1000).getMonth() +1
               }}/{{ new Date(order.create_at * 1000).getDate() }}
             </td>
             <td class="align-center">{{ order.id }}</td>
@@ -127,18 +127,13 @@
                     <p class="fs-24 fw-bold mb-8">訂單狀態：</p>
                     <label for="" class="mb-8"> 訂單建立時間： </label>
                     {{ new Date(tempOrder.create_at * 1000).getFullYear() }} /
-                    {{ new Date(tempOrder.create_at * 1000).getMonth() }} /
+                    {{ new Date(tempOrder.create_at * 1000).getMonth() + 1}} /
                     {{ new Date(tempOrder.create_at * 1000).getDate() }}
                   </div>
 
                   <div class="form-check form-switch mb-16">
                     <label for="" class="mb-8">訂單付費狀態：</label>
                     {{ tempOrder.is_paid ? "已付費":"尚未付費" }}
-                  </div>
-
-                  <div class="form-check form-switch mb-16">
-                    <label for="" class="mb-8">訂單數量：</label>
-                    {{ tempOrder.num }}
                   </div>
 
                   <div class="form-check form-switch mb-16">

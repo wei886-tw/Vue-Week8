@@ -59,9 +59,9 @@
               </button>
               <button
                 class="btn btn-gray me-8"
-                @click.prevent="addTag('活動消息')"
+                @click.prevent="addTag('活動講座')"
               >
-                活動消息
+                活動講座
               </button>
               <button
                 class="btn btn-gray me-8"
@@ -220,9 +220,10 @@ export default {
     },
 
     addTag(text) {
-      if (this.tag === undefined) {
-        this.tag = text;
-      } else if (this.tag.search(text) === -1 && this.tag.length !== 0) {
+      if (this.tag.length === 0) {
+        this.tag = []
+        this.tag.push(text)
+      } else if (this.tag.indexOf(text) === -1 && this.tag.length !== 0) {
         this.tag = this.tag.concat("、", text);
       }
     },
