@@ -335,6 +335,7 @@ export default {
 
     changeQty() {
       this.qty = parseInt(event.target.value);
+      console.log(this.qty)
     },
 
     addToCart(product_id) {
@@ -394,8 +395,6 @@ export default {
             this.userProducts = this.userProducts.filter(
               (item) => item.category === this.category
             );
-            // this.selectedCategory = this.category
-
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -409,7 +408,6 @@ export default {
             this.userProducts = this.userProducts.sort(
               (a, b) => a.price - b.price
             );
-            // this.selectedCategory = this.category
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -423,7 +421,6 @@ export default {
             this.userProducts = this.userProducts.sort(
               (a, b) => b.price - a.price
             );
-            // this.selectedCategory = this.category
           })
           .catch((err) => {
             console.log(err.response.data.message);

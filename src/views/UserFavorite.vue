@@ -28,12 +28,12 @@
                 </button>
               </td>
               <td class="fs-12 fs-sm-16 fs-md-24 align-middle">
-                  <router-link
-                    class="text-dark"
-                    style="text-decoration: underline"
-                    :to="`/userProductInfo/${product.id}`"
-                    >{{ product.title }}</router-link
-                  >
+                <router-link
+                  class="text-dark"
+                  style="text-decoration: underline"
+                  :to="`/userProductInfo/${product.id}`"
+                  >{{ product.title }}</router-link
+                >
               </td>
               <td class="align-middle">
                 <img
@@ -47,7 +47,10 @@
                 {{ product.price }}
               </td>
               <td class="align-middle">
-                <button class="btn btn-footer" @click="addToCart(product.id, index)">
+                <button
+                  class="btn btn-footer"
+                  @click="addToCart(product.id, index)"
+                >
                   加入購物車
                 </button>
               </td>
@@ -179,7 +182,7 @@ export default {
     removeFavorite(id) {
       this.favoriteList.splice(this.favoriteList.indexOf(id), 1);
       this.setStorage();
-      this.$router.go("/userFavorite");
+      this.getFavoriteList();
       window.scroll(0, 0);
     },
   },

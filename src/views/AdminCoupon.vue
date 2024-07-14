@@ -74,7 +74,7 @@
           ></button>
         </div>
         <div class="modal-body">
-          <v-form v-slot="{ errors }" action="" ref="form">
+          <v-form v-slot="{ errors }" action="" ref="Form">
             <div class="form-group mb-16">
               <label for="title" class="form-label">優惠券名稱</label>
               <input
@@ -206,30 +206,31 @@ export default {
 
   methods: {
     createCoupon() {
-      this.due_date = parseInt(new Date(this.$refs.date.value).getTime());
-      if (this.is_enabled === true) {
-        this.is_enabled = 1;
+      this.tempCoupon.due_date = parseInt(new Date(this.$refs.date.value).getTime());
+      if (this.tempCoupon.is_enabled === true) {
+        this.tempCoupon.is_enabled = 1;
       } else {
-        this.is_enabled = 0;
+        this.tempCoupon.is_enabled = 0;
       }
       this.$http
         .post(`${this.url}/v2/api/${this.api_path}/admin/coupon`, {
           data: {
-            title: this.title,
-            is_enabled: this.is_enabled,
-            percent: this.percent,
-            due_date: this.due_date,
-            code: this.code,
+            title: this.tempCoupon.title,
+            is_enabled: this.tempCoupon.is_enabled,
+            percent: this.tempCoupon.percent,
+            due_date: this.tempCoupon.due_date,
+            code: this.tempCoupon.code,
           },
         })
         .then(() => {
           alert("建立優惠券成功");
-          this.$refs.form.reset();
+          this.loadingCircle();
+          this.tempCoupon = {};
           this.myModal.hide();
           this.getCoupons(1);
         })
         .catch((err) => {
-          console.log(err.response.data.message);
+          console.log(err);
         });
     },
 
@@ -324,6 +325,7 @@ export default {
         .delete(`${this.url}/v2/api/${this.api_path}/admin/coupon/${id}`)
         .then(() => {
           alert("已刪除優惠券");
+          this.loadingCircle();
           this.getCoupons(1);
         });
     },

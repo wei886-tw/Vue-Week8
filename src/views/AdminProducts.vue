@@ -447,7 +447,7 @@ export default {
           })
           .then(() => {
             alert("建立產品成功");
-            this.loading();
+            this.loadingCircle();
             this.getPageProducts(1);
             this.myModal.hide();
           })
@@ -462,7 +462,7 @@ export default {
         .delete(`${this.url}/v2/api/${this.api_path}/admin/product/${id}`)
         .then(() => {
           alert("刪除產品成功");
-          this.loading();
+          this.loadingCircle();
           this.getPageProducts(1);
         })
         .catch((err) => {
