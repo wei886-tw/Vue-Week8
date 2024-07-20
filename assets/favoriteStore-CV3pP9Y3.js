@@ -1,0 +1,2 @@
+import{B as i}from"./index-Du-7DLFy.js";const s=i("favoriteStore",{state:()=>({favoriteList:[],favoriteId:[]}),actions:{handleFavorite(t){const e=this.favoriteList.indexOf(t);e===-1?(this.favoriteList.push(t),alert("已收藏商品！")):(this.favoriteList.splice(e,1),alert("取消收藏商品！")),this.setStorage()},setStorage(){localStorage.setItem("favoriteList",this.favoriteList)},getFavoriteList(){const t=localStorage.getItem("favoriteList");t&&(this.favoriteList=t.split(","))}}});export{s as f};
+//# sourceMappingURL=favoriteStore-CV3pP9Y3.js.map
