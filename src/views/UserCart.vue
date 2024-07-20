@@ -349,6 +349,7 @@ export default {
           .then(() => {
             alert("已套用優惠券，幫您打 8 折！");
             this.onSale = true;
+            this.getCartProducts()
             this.couponModal.hide();
           })
           .catch((err) => {

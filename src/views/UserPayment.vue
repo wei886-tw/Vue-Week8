@@ -154,7 +154,7 @@ export default {
 
     payBill(id) {
       this.$http
-        .post(`${this.url}/v2/api/{api_path}/pay/${id}`)
+        .post(`${this.url}/v2/api/${this.api_path}/pay/${id}`)
         .then(() => {
           alert("成功付款");
           this.$router.push(`/userOrderResult/${id}`);

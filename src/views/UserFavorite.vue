@@ -173,6 +173,7 @@ export default {
           this.favoriteProducts.splice(this.favoriteProducts[index], 1);
           this.favoriteList.splice(this.favoriteList[index], 1);
           this.setStorage();
+          this.getCartList();
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -182,6 +183,7 @@ export default {
     removeFavorite(id) {
       this.favoriteList.splice(this.favoriteList.indexOf(id), 1);
       this.setStorage();
+      alert("已移除收藏")
       this.getFavoriteList();
       window.scroll(0, 0);
     },
