@@ -184,7 +184,7 @@ export default {
       this.favoriteList.splice(this.favoriteList.indexOf(id), 1);
       this.setStorage();
       alert("已移除收藏")
-      this.getFavoriteList();
+      this.$router.go('/userFavorite')
       window.scroll(0, 0);
     },
   },
