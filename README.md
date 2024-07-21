@@ -90,7 +90,10 @@ https://wei886-tw.github.io/Vue-Week8/
 
 - 產品 select 可以調整加入購物車數量
 
-- 加入收藏，再次點選取消收藏
+- 加入收藏，再次點選取消收藏  
+
+- 點選產品名稱進入產品資訊頁面，是用 Vue Router 做成的 
+
   
 ![ProductsList](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/ProductsList.jpg)
 
