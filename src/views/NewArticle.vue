@@ -251,8 +251,6 @@ export default {
         });
     },
   },
-
-  mounted() {},
 };
 </script>
 

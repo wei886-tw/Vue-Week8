@@ -96,7 +96,7 @@
                 <router-link :to="`/userArticle/${article.id}`">
                   <div class="mb-8 d-flex flex-column justify-content-between">
                     <img
-                      :src="article.image"
+                      :src="article.image.split('?')[0]"
                       alt="文章圖片"
                       style="height: 240px; width: 100%; object-fit: cover"
                       class="mb-16"

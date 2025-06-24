@@ -30,3 +30,4 @@ Test
 *.sw?
 
 *.tsbuildinfo
+.qodo

@@ -24,9 +24,5 @@ export const myMixin = {
           this.$router.push("/adminLogin");
         });
     },
-
-    openModal() {
-      
-    }
   }
 };
