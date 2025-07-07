@@ -9,9 +9,9 @@
             style="width: 80%"
           >
             <img
-              :src="article.image"
+              :src="article.image ? article.image.split('?')[0] : ''"
               alt="文章圖片"
-              style="width: 70%; height: 50%; object-fit: cover"
+              style="width: 100%; height: 50%; object-fit: cover"
               class="mb-32 pt-60"
             />
             <h2 class="fs-24 fs-lg-40 mb-16">{{ article.title }}</h2>
