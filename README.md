@@ -109,6 +109,7 @@ https://wei886-tw.github.io/Vue-Week8/
 ![Collection](https://raw.githubusercontent.com/wei886-tw/3cReuse-pic/main/UserCart.png)
 
 ## 後台介紹  
+- 需要先申請帳號才能登入 ![帳號申請](https://vue3-course-api.hexschool.io/)
 
 ### 產品列表  
 

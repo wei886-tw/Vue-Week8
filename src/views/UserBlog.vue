@@ -168,7 +168,7 @@ export default {
           });
       } 
       else if(!all && !this.category) {
-        this.tag === '全部文章'
+        this.tag = '全部文章'
         this.$router.push({
           name: "userBlog",
         });
@@ -184,7 +184,7 @@ export default {
       }
       else {
         this.tag = this.category;
-        this.$http(
+        this.$http.get(
           `${this.url}/v2/api/${this.api_path}/articles?category=${this.category}`
         )
           .then((res) => {
@@ -195,7 +195,7 @@ export default {
             this.pagination = res.data.pagination;
             this.tag = this.category;
             this.loadingCircle();
-            this.tag === ''
+            this.tag = ''
           })
           .catch((err) => {
             console.log(err.response.data.message);
@@ -216,7 +216,7 @@ export default {
 
     goToBlog(tag) {
       this.$router.push({ name: "userBlog", query: { category: tag } });
-      this.$http(`${this.url}/v2/api/${this.api_path}/articles?category=${tag}`)
+      this.$http.get(`${this.url}/v2/api/${this.api_path}/articles?category=${tag}`)
         .then((res) => {
           this.articles = res.data.articles;
           this.articles = this.articles.filter(
